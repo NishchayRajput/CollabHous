@@ -1,11 +1,9 @@
 const mongoose = require('mongoose');
 
 async function like(req,res){
-    const blog_id ='';
-    const user_id ='';
 }
 async function comment(req,res){
-
+    // const {bId , uId, iId, iT, iC } = req.body;
 }
 async function reply(req,res){
 
