@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const userInfo = require('../models/userinfo');
+const userInfo = require('../models/userInfo');
 require('dotenv').config();
 
 async function login(req, res) {
