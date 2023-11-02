@@ -9,10 +9,9 @@ const Home = () => {
   const [blogs, setBlogs] = useState([]);
   const getAllBlogs = async () => {
     try {
-      const { data } = await axios.get("/api/v1/blog/all-blog");
-      if (data?.success) {
-        setBlogs(data?.blogs);
-      }
+      const { data } = await axios.get("http://localhost:5000/blogs/");
+      setBlogs(data);
+      console.log(blogs);
     } catch (error) {
       console.log(error);
     }
@@ -24,7 +23,7 @@ const Home = () => {
   return (
     <>
       <Box
-        height="100vh"
+        minHeight="100vh"
         color={"black"}
         display={"flex"}
         justifyContent={"center"}
@@ -34,7 +33,7 @@ const Home = () => {
       </Box>
       <Box
         bgcolor={"grey"}
-        height="100vh"
+        minHeight="100vh"
         display={"flex"}
         justifyContent={"center"}
         alignItems={"center"}
@@ -43,7 +42,7 @@ const Home = () => {
       </Box>
       <Box
         bgcolor={"green"}
-        height="100vh"
+        minHeight="100vh"
         display={"flex"}
         justifyContent={"center"}
         alignItems={"center"}
@@ -52,7 +51,7 @@ const Home = () => {
       </Box>
       <Box
         bgcolor={"white"}
-        height="100vh"
+        minHeight="100vh"
         display={"flex"}
         justifyContent={"center"}
         alignItems={"center"}
@@ -61,22 +60,23 @@ const Home = () => {
       </Box>
       <Box
         bgcolor={"grey"}
-        height="100vh"
+        minHeight="100vh"
         display={"flex"}
         justifyContent={"center"}
         alignItems={"center"}
       >
-        <Box>
+        <Box display={'flex'} flexWrap={'wrap'} padding='20px'>
           {blogs &&
             blogs.map((blog) => (
               <BlogCard
-                id={blog?._id}
-                isUser={localStorage.getItem("userId") === blog?.user?._id}
+                id={blog?.user_id}
+                key={blog?.user_id}
+                isUser={localStorage.getItem("userId") === blog?.user?.user_id}
                 title={blog?.title}
-                description={blog?.description}
+                description={blog?.content}
                 image={blog?.image}
                 username={blog?.user?.username}
-                time={blog.createdAt}
+                time={blog.time}
               />
             ))}
         </Box>

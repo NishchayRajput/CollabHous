@@ -9,10 +9,13 @@ import {
   Tabs,
   Tab,
 } from "@mui/material";
+import AvatarDropdown from "./AvatarDropdown";
+import Notification from "./Notification";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { authActions } from "../redux/store";
 import toast from "react-hot-toast";
+// import { View, Text, StyleSheet } from "react-native";
 
 const Header = () => {
   // global state
@@ -38,7 +41,14 @@ const Header = () => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   return (
     <>
       <AppBar
@@ -67,6 +77,8 @@ const Header = () => {
               <Tab label="Join us" LinkComponent={Link} to="/joinUs" />
             </Tabs>
           </Box>
+          <Notification />
+          <AvatarDropdown />
           {/* {isLogin && (
             <Box display={"flex"} marginLeft="auto" marginRight={"auto"}>
               <Tabs

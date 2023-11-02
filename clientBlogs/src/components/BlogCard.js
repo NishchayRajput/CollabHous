@@ -46,7 +46,8 @@ export default function BlogCard({
   return (
     <Card
       sx={{
-        width: "40%",
+        minWidth: "400px",
+        width: "30%",
         margin: "auto",
         mt: 2,
         padding: 2,
