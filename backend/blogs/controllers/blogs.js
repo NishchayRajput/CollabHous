@@ -3,6 +3,29 @@ const Blog = require('../models/blogs');
 const userInfo = require('../../ecommerce/models/userInfo');
 async function blog_card(req, res){
     try {
+    //   const sampleBlogs = [
+    //     {
+    //         user_id: new mongoose.Types.ObjectId('6542215aac5836b8288725a4'), // Replace with a valid user ID from your 'userInfo' collection
+    //         title: 'Sample Blog Title 1',
+    //         content: 'Sample Blog Content 1',
+    //         tags: 'Sample Tag 1',
+    //         like: 0,
+    //         time: moment().format(),
+    //     },
+    //     {
+    //         user_id: new mongoose.Types.ObjectId('6542215aac5836b8288725a4'), // Replace with a valid user ID from your 'userInfo' collection
+    //         title: 'Sample Blog Title 2',
+    //         content: 'Sample Blog Content 2',
+    //         tags: 'Sample Tag 2',
+    //         like: 0,
+    //         time: moment().format(),
+    //     },
+    //     // Add more sample data objects as needed
+    // ];
+
+    // // Save the sample data models to the database
+    // await Blog.insertMany(sampleBlogs);
+
         const blogs = await Blog.find({})
           .sort({ time: -1 })
           .limit(10)
