@@ -5,6 +5,7 @@ import UserBlogs from "./pages/UserBlogs";
 import BlogDetails from "./pages/BlogDetails";
 import { Toaster } from "react-hot-toast";
 import BlogHomeLayout from "./layout/BlogHomeLayout";
+import BlogLayout from "./layout/BlogLayout";
 import Home from "./pages/Home";
 import BlogCard from "./components/BlogCard";
 
@@ -13,15 +14,17 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<BlogHomeLayout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/blogs" element={<Blogs />} />
+          <Route index element={<Home />} />
+
+          <Route path="/blogs" element={<BlogLayout />}>
+            <Route index element={<Blogs />} />
+          </Route>
           <Route path="/joinUs" element={<div>Join us</div>} />
         </Route>
 
-        <Route path="/my-blogs" element={<UserBlogs />} />
+        {/* <Route path="/my-blogs" element={<UserBlogs />} />
         <Route path="/blog-details/:id" element={<BlogDetails />} />
-        <Route path="/blog-card" element={<BlogCard />} />
+        <Route path="/blog-card" element={<BlogCard />} /> */}
       </Routes>
     </>
   );

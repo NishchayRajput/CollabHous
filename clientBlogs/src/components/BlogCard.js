@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
@@ -17,6 +18,24 @@ import axios from "axios";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import SendIcon from "@mui/icons-material/Send";
+import {
+  EmailShareButton,
+  FacebookShareButton,
+  InstapaperShareButton,
+  LinkedinShareButton,
+  TelegramShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+} from "react-share";
+import {
+  EmailIcon,
+  FacebookIcon,
+  InstapaperIcon,
+  LinkedinIcon,
+  TelegramIcon,
+  TwitterIcon,
+  WhatsappIcon,
+} from "react-share";
 
 export default function BlogCard({
   title,
@@ -43,17 +62,22 @@ export default function BlogCard({
       console.log(error);
     }
   };
+
+  const [showSharingBox, setShowSharingBox] = useState(false); // State to control the sharing box visibility
+
   return (
     <Card
       sx={{
-        minWidth: "400px",
-        width: "30%",
+        borderRadius: "10px",
+        backgroundColor: "rgba(75, 75, 75, 1)",
+        minWidth: "100%",
+        height: "100%",
         margin: "auto",
-        mt: 2,
+        mt: 1,
         padding: 2,
-        boxShadow: "5px 5px 10px #ccc",
+        boxShadow: "1px 1px 1px #4B4B4B",
         ":hover:": {
-          boxShadow: "10px 10px 20px #ccc",
+          boxShadow: "5px 5px 5px #4B4B4B",
         },
       }}
     >
@@ -68,48 +92,98 @@ export default function BlogCard({
         </Box>
       )}
 
-      <CardMedia component="img" height="194" image={image} alt="Paella dish" />
-      <Box display={"flex"} justifyContent="space-between" sx={{}}>
-        <CardHeader
-          avatar={
-            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-              {username}
-            </Avatar>
-          }
-          title="Username"
-        />
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <p style={{ padding: "4px" }}>5 min</p>
-
-          <p style={{ padding: "4px" }}>{time}</p>
-          <p
-            style={{
-              color: "red",
-              backgroundColor: "#dc7c7cad",
-              borderRadius: "5px",
-              padding: "4px",
+      <CardMedia component="img" height="50%" image={image} alt="Paella dish" />
+      <Box
+        height="50%"
+        display={"flex"}
+        flexDirection={"column"}
+        justifyContent={"space-around"}
+      >
+        <Box display={"flex"} justifyContent="space-between" sx={{}}>
+          <CardHeader
+            avatar={
+              <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+                {username}
+              </Avatar>
+            }
+            title="Username"
+            sx={{
+              padding: "10px",
+              paddingLeft: "16px",
+              fontSize: "18px",
+              color: "white",
+              fontWeight: "500",
             }}
+          />
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <p style={{ color: "white", padding: "4px" }}>5 min read</p>
+
+            <p style={{ color: "white", padding: "4px" }}>{time}</p>
+            <p
+              style={{
+                color: "red",
+                backgroundColor: "#dc7c7cad",
+                borderRadius: "5px",
+                padding: "4px",
+              }}
+            >
+              Type
+            </p>
+          </div>
+        </Box>
+        <CardContent>
+          <Typography
+            paddingY="10px"
+            sx={{ fontSize: "18px", color: "#F74D79" }}
+            variant="h6"
+            color="text.secondary"
           >
-            Type
-          </p>
-        </div>
+            Title : {title}
+          </Typography>
+          <Typography variant="body2" color="white" fontSize={'15px'}>
+            Description : {description}
+          </Typography>
+        </CardContent>
+        <CardActions
+          disableSpacing
+          onMouseLeave={() => setShowSharingBox(false)}
+        >
+          <IconButton aria-label="add to favorites">
+            <ThumbUpAltIcon />
+          </IconButton>
+          <IconButton
+            aria-label="share"
+            onMouseEnter={() => setShowSharingBox(true)}
+          >
+            <SendIcon />
+          </IconButton>
+          {showSharingBox && (
+            <Box display="flex" alignItems="center">
+              <TwitterShareButton
+                url={"https://www.example.com"}
+                quote={"Dummy text!"}
+                hashtag="#muo"
+              >
+                <TwitterIcon size={32} round />
+              </TwitterShareButton>
+              <EmailShareButton
+                url={"https://www.example.com"}
+                quote={"Dummy text!"}
+                hashtag="#muo"
+              >
+                <EmailIcon size={32} round />
+              </EmailShareButton>
+              <WhatsappShareButton
+                url={"https://www.example.com"}
+                quote={"Dummy text!"}
+                hashtag="#muo"
+              >
+                <WhatsappIcon size={32} round />
+              </WhatsappShareButton>
+            </Box>
+          )}
+        </CardActions>
       </Box>
-      <CardContent>
-        <Typography variant="h6" color="text.secondary">
-          Title : {title}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Description : {description}
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <ThumbUpAltIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <SendIcon />
-        </IconButton>
-      </CardActions>
     </Card>
   );
 }

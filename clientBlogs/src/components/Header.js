@@ -1,21 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  Box,
-  AppBar,
-  Toolbar,
-  Button,
-  Typography,
-  Tabs,
-  Tab,
-} from "@mui/material";
+import { Box, AppBar, Toolbar, Typography, Tabs, Tab } from "@mui/material";
 import AvatarDropdown from "./AvatarDropdown";
 import Notification from "./Notification";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { authActions } from "../redux/store";
 import toast from "react-hot-toast";
-// import { View, Text, StyleSheet } from "react-native";
+import { Link as ScrollLink } from "react-scroll";
 
 const Header = () => {
   // global state
@@ -24,7 +16,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   //state
-  const [value, setValue] = useState();
+  const [value, setValue] = useState(0);
 
   //logout
   const handleLogout = () => {
@@ -54,16 +46,17 @@ const Header = () => {
       <AppBar
         position="sticky"
         sx={{
-          bgcolor: "black",
-          border: "",
+          bgcolor: "rgba(72, 72, 72, 0.3)",
+          border: "2px solid rgba(134, 127, 127, 0.43)",
           width: "80%",
           marginLeft: "auto",
           marginRight: "auto",
           top: "10px",
           borderRadius: "10px",
+         
         }}
       >
-        <Toolbar>
+        <Toolbar >
           <Typography variant="h4">cH</Typography>
           <Box display={"flex"} marginLeft="auto" marginRight={"auto"}>
             <Tabs
@@ -71,44 +64,24 @@ const Header = () => {
               value={value}
               onChange={(e, val) => setValue(val)}
             >
-              <Tab label="Home" LinkComponent={Link} to="/home" />
-              <Tab label="Who we are" LinkComponent={Link} to="/home" />
+              <Tab label="Home" LinkComponent={Link} to="/" />
+              <Tab label="Who we are" LinkComponent={Link} to="/">
+                <ScrollLink
+                  to="whoWeAre"
+                  smooth={true}
+                  offset={-70}
+                  duration={500}
+                >
+                  Who we are
+                </ScrollLink>
+              </Tab>
+
               <Tab label="Blogs" LinkComponent={Link} to="/blogs" />
               <Tab label="Join us" LinkComponent={Link} to="/joinUs" />
             </Tabs>
           </Box>
           <Notification />
           <AvatarDropdown />
-          {/* {isLogin && (
-            <Box display={"flex"} marginLeft="auto" marginRight={"auto"}>
-              <Tabs
-                textColor="inherit"
-                value={value}
-                onChange={(e, val) => setValue(val)}
-              >
-                <Tab label="Blogs" LinkComponent={Link} to="/blogs" />
-                <Tab label="My Blogs" LinkComponent={Link} to="/my-blogs" />
-              </Tabs>
-            </Box>
-          )}
-          <Box display={"flex"} marginLeft="auto">
-            {!isLogin && (
-              <>
-                <Button
-                  sx={{ margin: 1, color: "white" }}
-                  LinkComponent={Link}
-                  to="/login"
-                >
-                  Login
-                </Button>
-              </>
-            )}
-            {isLogin && (
-              <Button onClick={handleLogout} sx={{ margin: 1, color: "white" }}>
-                Logout
-              </Button>
-            )}
-          </Box> */}
         </Toolbar>
       </AppBar>
     </>
