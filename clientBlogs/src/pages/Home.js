@@ -18,7 +18,11 @@ const Home = () => {
   const [selectedButton, setSelectedButton] = useState(1);
   const [displayText, setDisplayText] = useState("");
   const [heroData, setHeroData] = useState([]);
-
+  const formatDate = (isoDate) => {
+    const date = new Date(isoDate);
+    const options = { year: 'numeric', month: 'short', day: 'numeric' };
+    return date.toLocaleDateString(undefined, options);
+  };
   useEffect(() => {
     async function getBlog() {
       try {
@@ -43,7 +47,7 @@ const Home = () => {
     setSelectedButton(buttonId);
     setDisplayText(buttonText);
   };
-  console.log(recentBlog);
+  // console.log(recentBlog);
   return (
     <div>
       <Fullpage>

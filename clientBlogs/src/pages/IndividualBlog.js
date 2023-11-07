@@ -29,30 +29,67 @@ import {
 } from "react-share";
 import Footer from "../components/Footer";
 
-const IndividualBlog = () => {
+export default function IndividualBlog ({
+  title,
+  tag,
+  description,
+  image,
+  username,
+  time,
+  id,
+}){
+  const [showSharingBox, setShowSharingBox] = useState(false); // State to control the sharing box
+  const [allBlogs, setAllBlogs] = useState([]);
+  const [blog, setBlog] = useState([]);
+  const [relatedBlog, setRelatedBlog] = useState([]);
+  const formatDate = (isoDate) => {
+    const date = new Date(isoDate);
+    const options = { year: 'numeric', month: 'short', day: 'numeric' };
+    return date.toLocaleDateString(undefined, options);
+  };
+  const getAllBlogs = async () => {
+    try {
+      const { data } = await axios.get("http://localhost:5000/blogs/");
+      setAllBlogs(data);
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
+// console.log(allBlogs);
+  const filterBlogs = (category) => {
+    const updateBlogs = allBlogs.filter((e) => {
+      let l = e.tag.split(",").length;
+      let check = false;
+      for (let i = 0; i < l - 1; i++) {
+        check = check || e.tag.split(",")[i] === category;
+      }
+      return check;
+    });
+    setRelatedBlog(updateBlogs);
+  };
   // Get the blogId from the URL using useParams
   let { blogId } = useParams();
-
-  // Fetch the individual blog data using the blogId
-  const [blogs, setBlog] = useState([]);
-
+  
   useEffect(() => {
     async function getBlog() {
       try {
         const { data } = await axios.get(
           `http://localhost:5000/blogs/:${blogId}`
         );
+
         setBlog(data);
       } catch (error) {
         console.log(error);
       }
     }
-    getBlog();
+    // getBlog();
+    getAllBlogs();
+    filterBlogs('sample');
   }, []);
 
-  const [showSharingBox, setShowSharingBox] = useState(false); // State to control the sharing box visibility
   // You can use this ID to fetch the specific blog content
-  console.log(blogs);
+
 
   return (
     <div style={{ marginTop: "-68px" }}>
@@ -324,10 +361,10 @@ const IndividualBlog = () => {
           </Box>
           <Box marginBottom={"66px"}>
             <Box display={"flex"} flexWrap={"wrap"}>
-              {blogs &&
-                blogs.map((blog) => (
+              {relatedBlog &&
+                relatedBlog.map((blog) => (
                   <Box
-                    key={blog.user_id}
+                    key={blog._id}
                     maxWidth={"350px"}
                     width={"350px"}
                     mx={"2rem"}
@@ -336,15 +373,15 @@ const IndividualBlog = () => {
                     flexWrap={"wrap"}
                   >
                     <BlogCard
-                      id={blog.user_id}
-                      isUser={
-                        localStorage.getItem("userId") === blog.user?.user_id
-                      }
+                      id={blog._id}
+                      // isUser={
+                      //   localStorage.getItem("userId") === blog.user?.user_id
+                      // }
                       title={blog.title}
                       description={blog.content}
                       image={blog.image}
-                      username={blog.user?.username}
-                      time={blog.time}
+                      username={(blog.user!=null)?blog.user.name:'Username'}
+                      time={formatDate(blog.time)}
                     />
                   </Box>
                 ))}
@@ -356,5 +393,3 @@ const IndividualBlog = () => {
     </div>
   );
 };
-
-export default IndividualBlog;

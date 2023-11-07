@@ -9,7 +9,11 @@ import Footer from "../components/Footer";
 const Blogs = () => {
   const [allBlogs, setAllBlogs] = useState([]);
   const [blogs, setBlogs] = useState([]);
-
+  const formatDate = (isoDate) => {
+    const date = new Date(isoDate);
+    const options = { year: 'numeric', month: 'short', day: 'numeric' };
+    return date.toLocaleDateString(undefined, options);
+  };
   const getAllBlogs = async () => {
     try {
       const { data } = await axios.get("http://localhost:5000/blogs/");
@@ -39,7 +43,7 @@ const Blogs = () => {
     });
     setBlogs(updateBlogs);
   };
-  console.log(valueT);
+  // console.log(allBlogs);
 
   return (
     <>
@@ -175,7 +179,7 @@ const Blogs = () => {
             blogs.map((blog, index) => (
               
               <Box
-              key={blog.user_id}
+              key={blog._id}
               maxWidth="350px"
               width="350px"
               mx="2rem"
@@ -189,20 +193,20 @@ const Blogs = () => {
               }}
               
               >
-                <Link to={`/blogs/${blog.user_id}`} style={{textDecoration:'none'}}>
+                <Link to={`/blogs/${blog._id}`} style={{textDecoration:'none'}}>
                   {" "}
                   {/* Link to individual blog page */}
                   <BlogCard
-                    id={blog.user_id}
-                    isUser={
-                      localStorage.getItem("userId") === blog.user?.user_id
-                    }
-                    tag={'Kalamkari'}
+                    id={blog._id}
+                    // isUser={
+                    //   localStorage.getItem("userId") === blog.user?._id
+                    // }
+                    tag={blog.tag}
                     title={blog.title}
                     description={blog.content}
                     image={blog.image}
-                    username={blog.user?.username}
-                    time='10 Oct'
+                    username={(blog.user!=null)?blog.user.name:'Username'}
+                    time={formatDate(blog.time)}
                   />
                 </Link>
               </Box>

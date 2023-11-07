@@ -81,7 +81,7 @@ const Footer = () => {
             marginBottom={"32px"}
           >
             Instagram
-            <img src="images/Vector.png" style={{ marginLeft: "24px" }} />
+            <img src="images/Vector.png" alt="" style={{ marginLeft: "24px" }} />
           </Typography>
           <Typography
             fontSize={"22px"}
@@ -90,7 +90,7 @@ const Footer = () => {
             marginBottom={"32px"}
           >
             Linkedin
-            <img src="images/Vector.png" style={{ marginLeft: "24px" }} />
+            <img src="images/Vector.png" alt="" style={{ marginLeft: "24px" }} />
           </Typography>
           <Typography
             fontSize={"22px"}
@@ -99,7 +99,7 @@ const Footer = () => {
             marginBottom={"32px"}
           >
             Twitter
-            <img src="images/Vector.png" style={{ marginLeft: "24px" }} />
+            <img src="images/Vector.png" alt="" style={{ marginLeft: "24px" }} />
           </Typography>
         </Box>
         <Box width={"40%"}>
