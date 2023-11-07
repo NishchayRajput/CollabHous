@@ -7,7 +7,7 @@ import CardActions from "@mui/material/CardActions";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import SendIcon from "@mui/icons-material/Send";
-import BlogCard from "./BlogCard";
+import BlogCard from "../components/BlogCard";
 
 import {
   EmailShareButton,
@@ -27,6 +27,7 @@ import {
   TwitterIcon,
   WhatsappIcon,
 } from "react-share";
+import Footer from "../components/Footer";
 
 const IndividualBlog = () => {
   // Get the blogId from the URL using useParams
@@ -35,17 +36,17 @@ const IndividualBlog = () => {
   // Fetch the individual blog data using the blogId
   const [blogs, setBlog] = useState([]);
 
-  const getBlog = async () => {
-    try {
-      const { data } = await axios.get(
-        `http://localhost:5000/blogs/:${blogId}`
-      );
-      setBlog(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
   useEffect(() => {
+    async function getBlog() {
+      try {
+        const { data } = await axios.get(
+          `http://localhost:5000/blogs/:${blogId}`
+        );
+        setBlog(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
     getBlog();
   }, []);
 
@@ -90,7 +91,7 @@ const IndividualBlog = () => {
               <Typography fontSize={"36px"} fontWeight={"900"} color={"grey"}>
                 X
               </Typography>
-              <Typography fontSize={"23px"} color={"white"} fontWeight={'500'}>
+              <Typography fontSize={"23px"} color={"white"} fontWeight={"500"}>
                 CollabHous
               </Typography>
               <Box>
@@ -121,7 +122,7 @@ const IndividualBlog = () => {
               <Typography fontSize={"36px"} fontWeight={"900"} color={"grey"}>
                 X
               </Typography>
-              <Typography fontSize={"23px"} color={"white"} fontWeight={'500'}>
+              <Typography fontSize={"23px"} color={"white"} fontWeight={"500"}>
                 CollabHous
               </Typography>
               <Box>
@@ -172,55 +173,17 @@ const IndividualBlog = () => {
                   <p
                     style={{
                       fontSize: "23px",
-                      color: "red",
-                      backgroundColor: "#dc7c7cad",
+                      color: "#F74D79",
+                      backgroundColor: "rgba(255, 106, 145, 0.12)",
                       borderRadius: "5px",
                       padding: "4px",
+                      paddingLeft: "8px",
+                      paddingRight: "8px",
                     }}
                   >
                     Type
                   </p>
                 </div>
-                <CardActions
-                  disableSpacing
-                  onMouseLeave={() => setShowSharingBox(false)}
-                  sx={{ padding: "0px", gap: "33px" }}
-                >
-                  <IconButton aria-label="add to favorites">
-                    <ThumbUpAltIcon />
-                  </IconButton>
-                  <IconButton
-                    aria-label="share"
-                    onMouseEnter={() => setShowSharingBox(true)}
-                  >
-                    <SendIcon />
-                  </IconButton>
-                  {showSharingBox && (
-                    <Box display="flex" alignItems="center" marginLeft={'8px'} gap={'10px'}>
-                      <TwitterShareButton
-                        url={"https://www.example.com"}
-                        quote={"Dummy text!"}
-                        hashtag="#muo"
-                      >
-                        <TwitterIcon size={32} round />
-                      </TwitterShareButton>
-                      <EmailShareButton
-                        url={"https://www.example.com"}
-                        quote={"Dummy text!"}
-                        hashtag="#muo"
-                      >
-                        <EmailIcon size={32} round />
-                      </EmailShareButton>
-                      <WhatsappShareButton
-                        url={"https://www.example.com"}
-                        quote={"Dummy text!"}
-                        hashtag="#muo"
-                      >
-                        <WhatsappIcon size={32} round />
-                      </WhatsappShareButton>
-                    </Box>
-                  )}
-                </CardActions>
               </Box>
             </Box>
           </Box>
@@ -309,7 +272,12 @@ const IndividualBlog = () => {
                 <SendIcon />
               </IconButton>
               {showSharingBox && (
-                <Box display="flex" alignItems="center" marginLeft={'8px'} gap={'10px'}>
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  marginLeft={"8px"}
+                  gap={"10px"}
+                >
                   <TwitterShareButton
                     url={"https://www.example.com"}
                     quote={"Dummy text!"}
@@ -384,6 +352,7 @@ const IndividualBlog = () => {
           </Box>
         </section>
       </Box>
+      <Footer />
     </div>
   );
 };

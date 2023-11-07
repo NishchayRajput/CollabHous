@@ -45,6 +45,7 @@ export default function BlogCard({
   time,
   id,
   isUser,
+  tag,
 }) {
   const navigate = useNavigate();
   const handleEdit = () => {
@@ -69,16 +70,13 @@ export default function BlogCard({
     <Card
       sx={{
         borderRadius: "10px",
-        backgroundColor: "rgba(75, 75, 75, 1)",
+        backgroundColor: "#2F2F2F",
         minWidth: "100%",
         height: "100%",
         margin: "auto",
         mt: 1,
         padding: 2,
-        boxShadow: "1px 1px 1px #4B4B4B",
-        ":hover:": {
-          boxShadow: "5px 5px 5px #4B4B4B",
-        },
+        border: "1px solid #414141",
       }}
     >
       {isUser && (
@@ -103,10 +101,10 @@ export default function BlogCard({
           <CardHeader
             avatar={
               <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                {username}
+                "Username"
               </Avatar>
             }
-            title="Username"
+            title={username}
             sx={{
               padding: "10px",
               paddingLeft: "16px",
@@ -121,13 +119,15 @@ export default function BlogCard({
             <p style={{ color: "white", padding: "4px" }}>{time}</p>
             <p
               style={{
-                color: "red",
-                backgroundColor: "#dc7c7cad",
+                color: "#F74D79",
+                backgroundColor: "rgba(255, 106, 145, 0.12)",
                 borderRadius: "5px",
                 padding: "4px",
+                paddingLeft: "8px",
+                paddingRight: "8px",
               }}
             >
-              Type
+              {tag}
             </p>
           </div>
         </Box>
@@ -140,7 +140,7 @@ export default function BlogCard({
           >
             Title : {title}
           </Typography>
-          <Typography variant="body2" color="white" fontSize={'15px'}>
+          <Typography variant="body2" color="white" fontSize={"15px"}>
             Description : {description}
           </Typography>
         </CardContent>

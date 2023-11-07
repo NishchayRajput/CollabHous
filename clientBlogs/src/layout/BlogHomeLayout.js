@@ -9,7 +9,7 @@ const BlogHomeLayout = () => {
     <div style={{backgroundColor:"rgba(35, 36, 38, 1)"}}>
         <Header />
         <Outlet />
-        <Footer />
+        {/* <Footer /> */}
     </div >
   )
 }

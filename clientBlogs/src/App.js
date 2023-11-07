@@ -9,7 +9,7 @@ import BlogHomeLayout from "./layout/BlogHomeLayout";
 import BlogLayout from "./layout/BlogLayout";
 import Home from "./pages/Home";
 import BlogCard from "./components/BlogCard";
-import IndividualBlog from "./components/IndividualBlog";
+import IndividualBlog from "./pages/IndividualBlog";
 import Connect from "./pages/Connect";
 
 function App() {

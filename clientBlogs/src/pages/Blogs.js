@@ -5,6 +5,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { Box, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import Footer from "../components/Footer";
 const Blogs = () => {
   const [allBlogs, setAllBlogs] = useState([]);
   const [blogs, setBlogs] = useState([]);
@@ -171,15 +172,22 @@ const Blogs = () => {
       <Box paddingX={"12%"}>
         <Box display={"flex"} flexWrap={"wrap"}>
         {blogs &&
-            blogs.map((blog) => (
+            blogs.map((blog, index) => (
+              
               <Box
-                key={blog.user_id}
-                maxWidth={"350px"}
-                width={"350px"}
-                mx={"2rem"}
-                my={"3rem"}
-                height={"420px"}
-                flexWrap={"wrap"}
+              key={blog.user_id}
+              maxWidth="350px"
+              width="350px"
+              mx="2rem"
+              my="3rem"
+              height="420px"
+              flexWrap="wrap"
+              sx={{
+                // Apply 2-column layout for the first four blogs
+                width: index < 4 ? "50%" : "33.33%",
+                flex: index < 4 ? "0 0 50%" : "0 0 33.33%",
+              }}
+              
               >
                 <Link to={`/blogs/${blog.user_id}`} style={{textDecoration:'none'}}>
                   {" "}
@@ -189,17 +197,19 @@ const Blogs = () => {
                     isUser={
                       localStorage.getItem("userId") === blog.user?.user_id
                     }
+                    tag={'Kalamkari'}
                     title={blog.title}
                     description={blog.content}
                     image={blog.image}
                     username={blog.user?.username}
-                    time={blog.time}
+                    time='10 Oct'
                   />
                 </Link>
               </Box>
             ))}
         </Box>
       </Box>
+      <Footer />
     </>
   );
 };
