@@ -31,6 +31,9 @@ const blogs = new mongoose.Schema({
             moment.tz.setDefault('Asia/Kolkata'); // IST timezone
             return moment();
         },
+    },
+    read_time : {
+        type : Number,
     }
 });
 
