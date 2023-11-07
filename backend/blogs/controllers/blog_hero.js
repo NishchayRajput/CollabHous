@@ -38,6 +38,8 @@ async function blog_hero(req, res) {
             },
             tag: blog.tags,
             like : blog.like,
+            time : blog.time,
+            read_time : blog.read_time,
         }));
 
         //Fetching hero section data for blogs
@@ -54,7 +56,9 @@ async function blog_hero(req, res) {
                     email: mostLikedBlog.user_id.email,
                 },
                 tag: mostLikedBlog.tags,
-                like : mostLikedBlog.like
+                like : mostLikedBlog.like,
+                time : mostLikedBlog.time,
+                read_time : mostLikedBlog.read_time
             };
         }
 
