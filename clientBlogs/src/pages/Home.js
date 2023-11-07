@@ -6,35 +6,51 @@ import BlogCard from "../components/BlogCard";
 import axios from "axios";
 import { Element } from "react-scroll";
 import ControlledCarousel from "../components/ControlledCarousel";
-import HorzBlogCard from "../components/horzBlogCard";
+import HorzBlogCard from "../components/HorzBlogCard";
+import TrendingBlogCard from "../components/TrendingBlogCard";
 
 const Home = () => {
   const [blogs, setBlogs] = useState([]);
+  const [heroData, setHeroData] = useState([]);
+  const [selectedButton, setSelectedButton] = useState(1);
+  const [displayText, setDisplayText] = useState("");
+
   const getAllBlogs = async () => {
     try {
       const { data } = await axios.get("http://localhost:5000/blogs/");
       setBlogs(data);
-      console.log(blogs);
     } catch (error) {
       console.log(error);
     }
   };
+  const getHeroData = async () => {
+    try {
+      const { data } = await axios.get("http://localhost:5000/blogs/hero/");
+      setHeroData(data.heroData);
+      setDisplayText(data.heroData[0].value);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getAllBlogs();
+    getHeroData();
+    
   }, []);
+
   const cImages = [
     { link: "images/carouselSample.png" },
     { link: "images/carouselSample.png" },
   ];
-  const [selectedButton, setSelectedButton] = useState(1);
-  const [displayText, setDisplayText] = useState(
-    "Fair and square to everyone and everything - unbiased; We’re a collective where diversity is celebrated, each person feels cherished and has equal opportunities to thrive and contribute their unique gifts."
-  );
-  console.log(selectedButton);
+
+
   const handleButtonClick = (buttonId, buttonText) => {
     setSelectedButton(buttonId);
     setDisplayText(buttonText);
   };
+
+  console.log(blogs);
   return (
     <div style={{ marginTop: "-68px" }}>
       <Box
@@ -97,12 +113,7 @@ const Home = () => {
                 minWidth: "80px",
               }}
               variant="contained"
-              onClick={() =>
-                handleButtonClick(
-                  1,
-                  "Fair and square to everyone and everything - unbiased; We’re a collective where diversity is celebrated, each person feels cherished and has equal opportunities to thrive and contribute their unique gifts."
-                )
-              }
+              onClick={() => handleButtonClick(1, heroData[0].value)}
             >
               {selectedButton === 1 ? <p>Equitable</p> : <p>E</p>}
             </Button>
@@ -123,12 +134,7 @@ const Home = () => {
                 minWidth: "80px",
               }}
               variant="contained"
-              onClick={() =>
-                handleButtonClick(
-                  2,
-                  "Fair and square to everyone and everything - unbiased; We’re ir unique gifts."
-                )
-              }
+              onClick={() => handleButtonClick(2, heroData[1].value)}
             >
               {selectedButton === 2 ? <p>Trust</p> : <p>T</p>}
             </Button>
@@ -148,12 +154,7 @@ const Home = () => {
                 minWidth: "80px",
               }}
               variant="contained"
-              onClick={() =>
-                handleButtonClick(
-                  3,
-                  "Faire and everything - unbiased; We’re a collective where diversity is celebrated, each person feels cherished and has equal opportunities to thrive ique gifts."
-                )
-              }
+              onClick={() => handleButtonClick(3, heroData[2].value)}
             >
               {selectedButton === 3 ? <p>Relatability</p> : <p>R</p>}
             </Button>
@@ -173,12 +174,7 @@ const Home = () => {
                 minWidth: "80px",
               }}
               variant="contained"
-              onClick={() =>
-                handleButtonClick(
-                  4,
-                  "Fair and square to everyone and everything - unbiased; We’re a collective where diversity is celebrated, each person feels cherished and has equal opportunities to thrive and contribute their unique gifts."
-                )
-              }
+              onClick={() => handleButtonClick(4, heroData[3].value)}
             >
               {selectedButton === 4 ? <p>Identity</p> : <p>I</p>}
             </Button>
@@ -224,9 +220,8 @@ const Home = () => {
                   Who are we?
                 </p>
                 <Box width={"100%"} fontSize={"25px"} color={"#FFFFFF"}>
-                  A commune that transcends individual identities. We engage in
-                  open dialogue to explore the essence of luxury, fashion, and
-                  art, to uncover their intricate connections.
+                {/* {heroData[4].value} */}
+                
                 </Box>
               </Box>
             </Box>
@@ -271,12 +266,9 @@ const Home = () => {
             textAlign={"center"}
             color={"#FFFFFF"}
           >
-            To those who share our mindset - the dreamers, innovators, creators,
-            and influencers. We playfully challenge conventional wisdom by
-            embracing myth-busters, expert advisors, and critics, all within an
-            encouraging environment that values what truly counts.
+            {/* {heroData[6].value} */}
           </Typography>
-          <Typography
+          {/* <Typography
             fontSize={"20px"}
             fontWeight={"400"}
             textAlign={"center"}
@@ -284,56 +276,85 @@ const Home = () => {
           >
             We're not just a voice; we're a united community representing the
             new age India, and we’ve got much more up our sleeve.
-          </Typography>
+          </Typography> */}
         </Box>
       </Box>
       <Box
         className="section"
         minHeight="100vh"
-        
         display={"flex"}
         justifyContent={"center"}
         alignItems={"center"}
         paddingX={"5%"}
         paddingY={"5%"}
       >
-        <Box display={"flex"} flexDirection={"column"} width={'80vw'}>
+        <Box display={"flex"} flexDirection={"column"} width={"80vw"}>
           <Box display={"flex"} justifyContent={"space-between"}>
             <Typography color={"rgba(247, 77, 121, 1)"} fontSize={"41px"}>
               Trending Blogs
             </Typography>
-            <Typography color={"white"} fontSize={"26px"} display={'flex'} alignItems={'center'}>
-              More
-            </Typography>
+
+            <Link to="/blogs" style={{ textDecoration: "none" }}>
+              {" "}
+              <Typography
+                color={"white"}
+                fontSize={"26px"}
+                display={"flex"}
+                alignItems={"center"}
+              >
+                More
+              </Typography>
+            </Link>
           </Box>
-          <Box display={"flex"} height={'77vh'}>
+          <Box display={"flex"} height={"82vh"}>
             <Box width={"50%"}>
-              <BlogCard
+              <TrendingBlogCard
                 // isUser={localStorage.getItem("userId") === blog?.user?.user_id}
                 title={"Title"}
                 description={"content"}
-                image={"image"}
+                image="images/carouselSample.png"
                 username={"username"}
                 time={"time"}
               />
             </Box>
-            <Box width={"50%"}  >
-              <Box width={'90%'} marginX={'auto'} >
-              {blogs &&
-                blogs.map((blog) => (
-                  <HorzBlogCard
-                    id={blog?.user_id}
-                    key={blog?.user_id}
-                    isUser={
-                      localStorage.getItem("userId") === blog?.user?.user_id
-                    }
-                    title={blog?.title}
-                    description={blog?.content}
-                    image={blog?.image}
-                    username={blog?.user?.username}
-                    time={blog.time}
-                  />
-                ))}
+            <Box width={"50%"}>
+              <Box width={"90%"} marginX={"auto"}>
+                <HorzBlogCard
+                  // id={blog?.user_id}
+                  // key={blog?.user_id}
+                  // isUser={
+                  //   localStorage.getItem("userId") === blog?.user?.user_id
+                  // }
+                  title="TITLE"
+                  description="Description"
+                  image="images/carouselSample.png"
+                  username="username"
+                  time="10 October"
+                />
+                <HorzBlogCard
+                  // id={blog?.user_id}
+                  // key={blog?.user_id}
+                  // isUser={
+                  //   localStorage.getItem("userId") === blog?.user?.user_id
+                  // }
+                  title="TITLE"
+                  description="Description"
+                  image="images/carouselSample.png"
+                  username="username"
+                  time="10 October"
+                />
+                <HorzBlogCard
+                  // id={blog?.user_id}
+                  // key={blog?.user_id}
+                  // isUser={
+                  //   localStorage.getItem("userId") === blog?.user?.user_id
+                  // }
+                  title="TITLE"
+                  description="Description"
+                  image="images/carouselSample.png"
+                  username="username"
+                  time="10 October"
+                />
               </Box>
             </Box>
           </Box>

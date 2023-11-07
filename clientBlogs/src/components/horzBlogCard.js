@@ -96,6 +96,7 @@ export default function BlogCard({
           image={image}
           alt="Paella dish"
           minWidth={"50%"}
+          height={'160px'}
           sx={{ width: "50%" }}
         />
         <Box width={"50%"}>
@@ -142,7 +143,7 @@ export default function BlogCard({
           <CardActions
             disableSpacing
             onMouseLeave={() => setShowSharingBox(false)}
-            sx={{padding:'0px', paddingLeft:'10px'}}
+            sx={{paddingTop:'10px', paddingLeft:'10px'}}
           >
             <IconButton aria-label="add to favorites">
               <ThumbUpAltIcon />
@@ -154,7 +155,7 @@ export default function BlogCard({
               <SendIcon />
             </IconButton>
             {showSharingBox && (
-              <Box display="flex" alignItems="center">
+              <Box display="flex" alignItems="center" marginLeft={'8px'} gap={'10px'}>
                 <TwitterShareButton
                   url={"https://www.example.com"}
                   quote={"Dummy text!"}

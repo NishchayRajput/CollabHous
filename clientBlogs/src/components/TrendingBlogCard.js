@@ -72,7 +72,7 @@ export default function BlogCard({
         backgroundColor: "rgba(75, 75, 75, 1)",
         minWidth: "100%",
         height: "100%",
-        
+        margin: "auto",
         mt: 1,
         padding: 2,
         boxShadow: "1px 1px 1px #4B4B4B",
@@ -153,13 +153,12 @@ export default function BlogCard({
           </IconButton>
           <IconButton
             aria-label="share"
-            sx={{marginRight:'5px'}}
             onMouseEnter={() => setShowSharingBox(true)}
           >
             <SendIcon />
           </IconButton>
           {showSharingBox && (
-            <Box display="flex" alignItems="center" gap={'8px'}>
+            <Box display="flex" alignItems="center">
               <TwitterShareButton
                 url={"https://www.example.com"}
                 quote={"Dummy text!"}

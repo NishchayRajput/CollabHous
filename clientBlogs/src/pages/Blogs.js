@@ -22,9 +22,9 @@ const Blogs = () => {
     getAllBlogs();
   }, []);
 
-  const [value, setValue] = React.useState(0);
+  const [valueT, setValueT] = React.useState(0);
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    setValueT(newValue);
   };
 
   const filterBlogs = (category) => {
@@ -38,26 +38,40 @@ const Blogs = () => {
     });
     setBlogs(updateBlogs);
   };
-  console.log(value);
+  console.log(valueT);
 
   return (
     <>
-      <Box mx={"auto"} sx={{ maxWidth: "40%", bgcolor: "background.paper" }}>
+      <Box mx={"auto"} sx={{ maxWidth: "80%", bgcolor: "background.paper" }}>
         <Tabs
-          value={value}
+          value={valueT}
           onChange={handleChange}
           variant="scrollable"
           scrollButtons="none"
           aria-label="scrollable auto tabs example"
-          style={{ backgroundColor: "rgba(35, 36, 38, 1)", color: "white" }}
+          TabIndicatorProps={{
+            style: {
+              backgroundColor: true ? "#F74D79" : "rgba(35, 36, 38, 1)", // Colored underline for selected tab
+            },
+          }}
+          sx={{
+            backgroundColor:'rgba(35, 36, 38, 1)',
+            borderBottom:'1px solid white',
+            // height:'30px'
+          }}
         >
           <Tab
             label="All Categories"
             onClick={() => {
               setBlogs(allBlogs);
             }}
-            sx={{
-              color: value === 0 ? "pink" : "white", // Change text color based on the selected tab
+
+            style={{
+              color: valueT === 0 ? "#F74D79" : "white", // Text color for selected tab
+              fontSize:'24px',
+              textTransform: "none",
+              marginLeft:'20px',
+              marginRight:'20px'
             }}
           />
           <Tab
@@ -65,8 +79,12 @@ const Blogs = () => {
             onClick={() => {
               filterBlogs("Trending");
             }}
-            sx={{
-              color: value === 1 ? "pink" : "white",
+            style={{
+              color: valueT === 1 ? "#F74D79" : "white", // Text color for selected tab
+              fontSize:'24px',
+              textTransform: "none",
+              marginLeft:'20px',
+              marginRight:'20px'
             }}
           />
           <Tab
@@ -74,8 +92,12 @@ const Blogs = () => {
             onClick={() => {
               filterBlogs("Ethnic");
             }}
-            sx={{
-              color: value === 2 ? "pink" : "white",
+            style={{
+              color: valueT === 2 ? "#F74D79" : "white", // Text color for selected tab
+              fontSize:'24px',
+              textTransform: "none",
+              marginLeft:'20px',
+              marginRight:'20px'
             }}
           />
           <Tab
@@ -83,8 +105,12 @@ const Blogs = () => {
             onClick={() => {
               filterBlogs("Classic");
             }}
-            sx={{
-              color: value === 3 ? "pink" : "white",
+            style={{
+              color: valueT === 3 ? "#F74D79" : "white", // Text color for selected tab
+              fontSize:'24px',
+              textTransform: "none",
+              marginLeft:'20px',
+              marginRight:'20px'
             }}
           />
           <Tab
@@ -92,36 +118,87 @@ const Blogs = () => {
             onClick={() => {
               filterBlogs("Community");
             }}
-            sx={{
-              color: value === 4 ? "pink" : "white",
+            style={{
+              color: valueT === 4 ? "#F74D79" : "white", // Text color for selected tab
+              fontSize:'24px',
+              textTransform: "none",
+              marginLeft:'20px',
+              marginRight:'20px'
+            }}
+          />
+          <Tab
+            label="More"
+            onClick={() => {
+              filterBlogs("More");
+            }}
+            style={{
+              color: valueT === 5 ? "#F74D79" : "white", // Text color for selected tab
+              fontSize:'24px',
+              textTransform: "none",
+              marginLeft:'20px',
+              marginRight:'20px'
+            }}
+          />
+          <Tab
+            label="Community2"
+            onClick={() => {
+              filterBlogs("Community2");
+            }}
+            style={{
+              color: valueT === 6 ? "#F74D79" : "white", // Text color for selected tab
+              fontSize:'24px',
+              textTransform: "none",
+              marginLeft:'20px',
+              marginRight:'20px'
+            }}
+          />
+          <Tab
+            label="More"
+            onClick={() => {
+              filterBlogs("More");
+            }}
+            style={{
+              color: valueT === 7 ? "#F74D79" : "white", // Text color for selected tab
+              fontSize:'24px',
+              textTransform: "none",
+              marginLeft:'20px',
+              marginRight:'20px'
             }}
           />
         </Tabs>
       </Box>
 
-      <Box display={"flex"} padding="20px">
+      <Box paddingX={"12%"}>
+        <Box display={"flex"} flexWrap={"wrap"}>
         {blogs &&
-          blogs.map((blog) => (
-            <Box
-              maxWidth={"400px"}
-              widht="30%"
-              mx={"4rem"}
-              my={"4rem"}
-              height={"420px"}
-              flexWrap={"wrap"}
-            >
-              <BlogCard
-                id={blog?.user_id}
-                key={blog?.user_id}
-                isUser={localStorage.getItem("userId") === blog?.user?.user_id}
-                title={blog?.title}
-                description={blog?.content}
-                image={blog?.image}
-                username={blog?.user?.username}
-                time={blog.time}
-              />
-            </Box>
-          ))}
+            blogs.map((blog) => (
+              <Box
+                key={blog.user_id}
+                maxWidth={"350px"}
+                width={"350px"}
+                mx={"2rem"}
+                my={"3rem"}
+                height={"420px"}
+                flexWrap={"wrap"}
+              >
+                <Link to={`/blogs/${blog.user_id}`} style={{textDecoration:'none'}}>
+                  {" "}
+                  {/* Link to individual blog page */}
+                  <BlogCard
+                    id={blog.user_id}
+                    isUser={
+                      localStorage.getItem("userId") === blog.user?.user_id
+                    }
+                    title={blog.title}
+                    description={blog.content}
+                    image={blog.image}
+                    username={blog.user?.username}
+                    time={blog.time}
+                  />
+                </Link>
+              </Box>
+            ))}
+        </Box>
       </Box>
     </>
   );

@@ -3,26 +3,32 @@ import { Box, Tab, Tabs, Typography } from "@mui/material";
 import { Link, Outlet } from "react-router-dom";
 
 const BlogLayout = () => {
- 
   return (
     <>
       <Box mt={"20px"}>
         <Typography
           padding={"10px"}
-          fontSize={"71px"}
-          style={{ textAlign: "center", color:'white' }}
+          marginTop={'50px'}
+          style={{ textAlign: "center", color: "white" }}
         >
           {" "}
-          Our Blogs
+       <img src="images/OurBlogs.png" width='28%' />
         </Typography>
-        <Typography fontSize={'15px'} color={'white'} width={'60%'} mx={'auto'} padding={"30px"} style={{ textAlign: "center", paddingBottom:'70px' }}>
-          Lorem ipsum dolor sit amet consectetur. Mauris vitae orci mauris lacus
-          ac neque ut integer rutrum. Vitae viverra habitant semper at enim nunc
-          sed convallis. Duis sed phasellus quis ultrices sagittis in in urna
-          augue. Eu vestibulum nibh scelerisque odio. Fames tristique elementum
-          mauris egestas. Quisque habitant lobortis mi vitae. Netus dignissim ac
-          bibendum et faucibus lectus ultrices. Tincidunt consectetur
-          pellentesque nisl dignissim amet at ullamcorper lacus.
+        <Typography 
+        className="blogIntro"
+          fontSize={"15px"}
+          width={"60%"}
+          mx={"auto"}
+          padding={"10px"}
+          style={{
+            textAlign: "center",
+            paddingBottom: "100px",
+            color: "#ABABAB",
+          }}
+        >
+          <Box>Welcome to the digital library of personal luxury.</Box>
+          <Box> Written & directed by: The new age of India’s fashion commune</Box>
+         
         </Typography>
       </Box>
       <Outlet />

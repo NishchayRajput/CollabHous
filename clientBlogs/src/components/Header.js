@@ -53,19 +53,45 @@ const Header = () => {
           marginRight: "auto",
           top: "10px",
           borderRadius: "10px",
-         
         }}
       >
-        <Toolbar >
+        <Toolbar>
           <Typography variant="h4">cH</Typography>
           <Box display={"flex"} marginLeft="auto" marginRight={"auto"}>
             <Tabs
               textColor="inherit"
               value={value}
               onChange={(e, val) => setValue(val)}
+              TabIndicatorProps={{
+                style: {
+                  backgroundColor: true ? "#F74D79" : "rgba(35, 36, 38, 1)", // Colored underline for selected tab
+                },
+              }}
             >
-              <Tab label="Home" LinkComponent={Link} to="/" />
-              <Tab label="Who we are" LinkComponent={Link} to="/">
+              <Tab
+                label="Home"
+                LinkComponent={Link}
+                to="/"
+                style={{
+                  color: value === 0 ? "#F74D79" : "white", // Text color for selected tab
+                  textTransform: "none",
+                  fontSize: "14px",
+                  marginLeft:'16px',
+                  marginRight:'16px'
+                }}
+              />
+              <Tab
+                label="Who we are"
+                LinkComponent={Link}
+                to="/"
+                style={{
+                  color: value === 1 ? "#F74D79" : "white", // Text color for selected tab
+                  textTransform: "none",
+                  fontSize: "14px",
+                  marginLeft:'16px',
+                  marginRight:'16px'
+                }}
+              >
                 <ScrollLink
                   to="whoWeAre"
                   smooth={true}
@@ -76,8 +102,30 @@ const Header = () => {
                 </ScrollLink>
               </Tab>
 
-              <Tab label="Blogs" LinkComponent={Link} to="/blogs" />
-              <Tab label="Join us" LinkComponent={Link} to="/joinUs" />
+              <Tab
+                label="Blogs"
+                LinkComponent={Link}
+                to="/blogs"
+                style={{
+                  color: value === 2 ? "#F74D79" : "white", // Text color for selected tab
+                  textTransform: "none",
+                  fontSize: "14px",
+                  marginLeft:'16px',
+                  marginRight:'16px'
+                }}
+              />
+              <Tab
+                label="Connect"
+                LinkComponent={Link}
+                to="/connect"
+                style={{
+                  color: value === 3 ? "#F74D79" : "white", // Text color for selected tab
+                  textTransform: "none",
+                  fontSize: "14px",
+                  marginLeft:'16px',
+                  marginRight:'16px'
+                }}
+              />
             </Tabs>
           </Box>
           <Notification />
