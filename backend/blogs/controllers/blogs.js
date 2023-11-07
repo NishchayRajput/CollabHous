@@ -38,13 +38,17 @@ async function blog_card(req, res){
     
         // Extract relevant data from the blogs
         const formattedBlogs = blogs.map((blog) => ({
+          _id : blog._id,
           title: blog.title,
           content: blog.content,
           user: {
             name: blog.user_id.name,
             email: blog.user_id.email,
           },
-          tag:blog.tags
+          tag:blog.tags,
+          like : blog.like,
+          time : blog.time,
+          read_time : blog.read_time,
         }));
     
         res.status(200).json(formattedBlogs); // Respond with the formatted data
