@@ -9,7 +9,7 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Logout from "@mui/icons-material/Logout";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-
+import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 export default function Notification() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -30,11 +30,17 @@ export default function Notification() {
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
         >
-          <Badge badgeContent={10} color="primary">
-            <Avatar sx={{ width: 30, height: 30 }}>
-              <NotificationsIcon color="action" />
-            </Avatar>
-          </Badge>
+          <Box
+            width="5px"
+            height="5px"
+            bgcolor={"#F74D79"}
+            position={"absolute"}
+            top={"6px"}
+            right={"10px"}
+          ></Box>
+          <NotificationsNoneIcon
+            style={{ height: "24px", width: "24px", color: "white" }}
+          />
         </IconButton>
       </Box>
       <Menu

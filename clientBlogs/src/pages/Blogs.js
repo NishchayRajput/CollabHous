@@ -5,6 +5,8 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { Box, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+
+import TrendingBlogCard from "../components/TrendingBlogCard";
 import Footer from "../components/Footer";
 const Blogs = () => {
   const [allBlogs, setAllBlogs] = useState([]);
@@ -43,7 +45,7 @@ const Blogs = () => {
     });
     setBlogs(updateBlogs);
   };
-  // console.log(allBlogs);
+  console.log(blogs);
 
   return (
     <>
@@ -173,30 +175,47 @@ const Blogs = () => {
         </Tabs>
       </Box>
 
+            
       <Box paddingX={"12%"}>
+        <Box>
+
+        </Box>
         <Box display={"flex"} flexWrap={"wrap"}>
         {blogs &&
             blogs.map((blog, index) => (
-              
               <Box
               key={blog._id}
-              maxWidth="350px"
+              maxWidth="700px"
               width="350px"
               mx="2rem"
               my="3rem"
-              height="420px"
+              minHeight="435px"
+              height='auto'
               flexWrap="wrap"
               sx={{
                 // Apply 2-column layout for the first four blogs
-                width: index < 4 ? "50%" : "33.33%",
-                flex: index < 4 ? "0 0 50%" : "0 0 33.33%",
+                width: (index < 4) ? "42%" : "26.2%",
+                flex: (index < 4) ? "0 0 42%" : "0 0 26.2%",
               }}
               
               >
                 <Link to={`/blogs/${blog._id}`} style={{textDecoration:'none'}}>
                   {" "}
                   {/* Link to individual blog page */}
-                  <BlogCard
+                  {(index<4)?<TrendingBlogCard
+                      id={blog._id}
+                      // isUser={
+                      //   localStorage.getItem("userId") === blog.user?._id
+                      // }
+                      tag={blog.tag}
+                      title={blog.title}
+                      description={blog.content}
+                      image='https://picsum.photos/id/11/300/200'
+                      // image={blog.image}
+                      username={(blog.user!=null)?blog.user.name:'Username'}
+                      time={formatDate(blog.time)}
+                      like={blog.like}
+                    />: <BlogCard
                     id={blog._id}
                     // isUser={
                     //   localStorage.getItem("userId") === blog.user?._id
@@ -204,10 +223,14 @@ const Blogs = () => {
                     tag={blog.tag}
                     title={blog.title}
                     description={blog.content}
-                    image={blog.image}
+                    image='https://picsum.photos/id/11/300/200'
+                    // image={blog.image}
                     username={(blog.user!=null)?blog.user.name:'Username'}
                     time={formatDate(blog.time)}
-                  />
+                    like={blog.like}
+                  />}
+                  
+                 
                 </Link>
               </Box>
             ))}

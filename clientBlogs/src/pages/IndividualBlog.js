@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { Box, Button, Tab, Tabs, Typography, IconButton } from "@mui/material";
 
@@ -28,35 +28,36 @@ import {
   WhatsappIcon,
 } from "react-share";
 import Footer from "../components/Footer";
+import { useSelector } from "react-redux";
 
-export default function IndividualBlog ({
-  title,
-  tag,
-  description,
-  image,
-  username,
-  time,
-  id,
-}){
+export default function IndividualBlog({}) {
+  //global stae
+  let isLogin = useSelector((state) => state.isLogin);
+  isLogin = isLogin || localStorage.getItem("userId");
+  const navigate = useNavigate();
+
+
+  let { blogId } = useParams();
   const [showSharingBox, setShowSharingBox] = useState(false); // State to control the sharing box
   const [allBlogs, setAllBlogs] = useState([]);
   const [blog, setBlog] = useState([]);
   const [relatedBlog, setRelatedBlog] = useState([]);
   const formatDate = (isoDate) => {
     const date = new Date(isoDate);
-    const options = { year: 'numeric', month: 'short', day: 'numeric' };
+    const options = { year: "numeric", month: "short", day: "numeric" };
     return date.toLocaleDateString(undefined, options);
   };
+  const [upvoteCount, setUpvoteCount] = useState(0);
   const getAllBlogs = async () => {
     try {
       const { data } = await axios.get("http://localhost:5000/blogs/");
       setAllBlogs(data);
-      
     } catch (error) {
       console.log(error);
     }
   };
-// console.log(allBlogs);
+
+  // console.log(allBlogs);
   const filterBlogs = (category) => {
     const updateBlogs = allBlogs.filter((e) => {
       let l = e.tag.split(",").length;
@@ -69,28 +70,35 @@ export default function IndividualBlog ({
     setRelatedBlog(updateBlogs);
   };
   // Get the blogId from the URL using useParams
-  let { blogId } = useParams();
-  
+
   useEffect(() => {
     async function getBlog() {
       try {
         const { data } = await axios.get(
-          `http://localhost:5000/blogs/:${blogId}`
+          `http://localhost:5000/blogs/${blogId}`
         );
-
         setBlog(data);
       } catch (error) {
         console.log(error);
       }
     }
-    // getBlog();
+    getBlog();
     getAllBlogs();
-    filterBlogs('sample');
+    filterBlogs("testing");
   }, []);
 
+  const handleUpvote = () => {
+    if (!isLogin) {
+      navigate("/login");
+    } else {
+      // You can implement the upvote logic here, for example, send a request to your backend to record the upvote.
+      // For this example, I'll simply increase the count by 1.
+      setUpvoteCount(upvoteCount + 1);
+      // setUpvoteCount(upvoteCount + 1);
+    }
+  };
   // You can use this ID to fetch the specific blog content
-
-
+  console.log(relatedBlog);
   return (
     <div style={{ marginTop: "-68px" }}>
       <Box>
@@ -123,13 +131,13 @@ export default function IndividualBlog ({
                 color={"#F74D79"}
                 fontWeight={"500"}
               >
-                The Hills of the City
+                {blog.title}
               </Typography>
               <Typography fontSize={"36px"} fontWeight={"900"} color={"grey"}>
                 X
               </Typography>
               <Typography fontSize={"23px"} color={"white"} fontWeight={"500"}>
-                CollabHous
+                Username
               </Typography>
               <Box>
                 <img
@@ -154,13 +162,13 @@ export default function IndividualBlog ({
                 color={"#F74D79"}
                 fontWeight={"500"}
               >
-                The Hills of the City
+                {blog.title}
               </Typography>
               <Typography fontSize={"36px"} fontWeight={"900"} color={"grey"}>
                 X
               </Typography>
               <Typography fontSize={"23px"} color={"white"} fontWeight={"500"}>
-                CollabHous
+                Username
               </Typography>
               <Box>
                 <img //Avatar Image
@@ -188,7 +196,7 @@ export default function IndividualBlog ({
                   <p
                     style={{ fontSize: "23px", color: "white", padding: "4px" }}
                   >
-                    5 min read
+                    {blog.read_time} min read
                   </p>
                   <Box
                     height={"10px"}
@@ -199,7 +207,7 @@ export default function IndividualBlog ({
                   <p
                     style={{ fontSize: "23px", color: "white", padding: "4px" }}
                   >
-                    October 10
+                    {formatDate(blog.time)}
                   </p>
                   <Box
                     height={"10px"}
@@ -218,7 +226,7 @@ export default function IndividualBlog ({
                       paddingRight: "8px",
                     }}
                   >
-                    Type
+                    {blog.tags}
                   </p>
                 </div>
               </Box>
@@ -231,10 +239,15 @@ export default function IndividualBlog ({
               paddingTop={"40px"}
               fontWeight={"500"}
               fontSize={"30px"}
+              paddingBottom={"1rem"}
             >
-              Subtitle
+              Fashion
             </Typography>
-            <Typography color={"white"} paddingY={"20px"} fontSize={"20px"}>
+            <Typography
+              color={"white"}
+              paddingBottom={"20px"}
+              fontSize={"20px"}
+            >
               Lorem ipsum dolor sit amet consectetur. Habitant diam mi semper in
               ultricies ipsum sed ac. Consectetur nascetur sit pharetra donec
               augue netus eget phasellus scelerisque. Laoreet elementum bibendum
@@ -249,10 +262,51 @@ export default function IndividualBlog ({
               sem scelerisque vulputate. Enim tellus ut condimentum tortor sit
               lectus purus. Aliquet eget dui faucibus dui bibendum consequat.
             </Typography>
-            <Box display={"flex"} justifyContent={"center"}>
-              <img src="https://picsum.photos/300/300" />
+            <Box display={"flex"} mt={"1rem"}>
+              {
+                //change this on fetching the image data form database
+                blog.image == null ? (
+                  <Box
+                    display={"flex"}
+                    justifyContent={"center"}
+                    width={"38%"}
+                    paddingRight={"2%"}
+                  >
+                    <img src="https://picsum.photos/300/300" alt="" />
+                  </Box>
+                ) : (
+                  ""
+                )
+              }
+
+              <Typography
+                color={"white"}
+                paddingBottom={"20px"}
+                fontSize={"20px"}
+                width={"60"}
+              >
+                Lorem ipsum dolor sit amet consectetur. Habitant diam mi semper
+                in ultricies ipsum sed ac. Consectetur nascetur sit pharetra
+                donec augue netus eget phasellus scelerisque. Laoreet elementum
+                bibendum penatibus vitae arcu arcu lectus tincidunt. Volutpat
+                nibh netus vitae arcu mattis orci. Lorem faucibus nunc sit at
+                faucibus. Pellentesque turpis habitasse urna id. Dignissim vitae
+                enim congue est ut odio mauris rutrum dictum. Turpis sagittis
+                arcu amet nec adipiscing mattis. Neque viverra sed quis
+                convallis. Non aliquam elit vivamus varius eleifend purus. Massa
+                mattis quam amet tortor arcu nisl. Eros elementum cras orci at
+                proin ut sem dignissim pharetra. Fermentum aliquet in mattis
+                lacus. Cras facilisis nec sem scelerisque vulputate. Enim tellus
+                ut condimentum tortor sit lectus purus. Aliquet eget dui
+                faucibus dui bibendum consequat.
+              </Typography>
             </Box>
-            <Typography color={"white"} paddingY={"20px"} fontSize={"20px"}>
+            <Typography
+              color={"white"}
+              paddingY={"20px"}
+              fontSize={"20px"}
+              mt={"1rem"}
+            >
               Lorem ipsum dolor sit amet consectetur. Habitant diam mi semper in
               ultricies ipsum sed ac. Consectetur nascetur sit pharetra donec
               augue netus eget phasellus scelerisque. Laoreet elementum bibendum
@@ -267,10 +321,51 @@ export default function IndividualBlog ({
               sem scelerisque vulputate. Enim tellus ut condimentum tortor sit
               lectus purus. Aliquet eget dui faucibus dui bibendum consequat.
             </Typography>
-            <Box display={"flex"} justifyContent={"center"}>
-              <img src="https://picsum.photos/300/300" />
+            <Box display={"flex"} mt={"1rem"}>
+              <Typography
+                color={"white"}
+                paddingBottom={"20px"}
+                fontSize={"20px"}
+                width={"60"}
+              >
+                Lorem ipsum dolor sit amet consectetur. Habitant diam mi semper
+                in ultricies ipsum sed ac. Consectetur nascetur sit pharetra
+                donec augue netus eget phasellus scelerisque. Laoreet elementum
+                bibendum penatibus vitae arcu arcu lectus tincidunt. Volutpat
+                nibh netus vitae arcu mattis orci. Lorem faucibus nunc sit at
+                faucibus. Pellentesque turpis habitasse urna id. Dignissim vitae
+                enim congue est ut odio mauris rutrum dictum. Turpis sagittis
+                arcu amet nec adipiscing mattis. Neque viverra sed quis
+                convallis. Non aliquam elit vivamus varius eleifend purus. Massa
+                mattis quam amet tortor arcu nisl. Eros elementum cras orci at
+                proin ut sem dignissim pharetra. Fermentum aliquet in mattis
+                lacus. Cras facilisis nec sem scelerisque vulputate. Enim tellus
+                ut condimentum tortor sit lectus purus. Aliquet eget dui
+                faucibus dui bibendum consequat.
+              </Typography>
+
+              {
+                //change this on fetching the image data form database
+                blog.image == null ? (
+                  <Box
+                    display={"flex"}
+                    justifyContent={"center"}
+                    width={"38%"}
+                    paddingLeft={"2%"}
+                  >
+                    <img src="https://picsum.photos/300/300" alt="" />
+                  </Box>
+                ) : (
+                  ""
+                )
+              }
             </Box>
-            <Typography color={"white"} paddingY={"20px"} fontSize={"20px"}>
+            <Typography
+              color={"white"}
+              paddingY={"20px"}
+              fontSize={"20px"}
+              mt={"1rem"}
+            >
               Lorem ipsum dolor sit amet consectetur. Habitant diam mi semper in
               ultricies ipsum sed ac. Consectetur nascetur sit pharetra donec
               augue netus eget phasellus scelerisque. Laoreet elementum bibendum
@@ -299,14 +394,25 @@ export default function IndividualBlog ({
               onMouseLeave={() => setShowSharingBox(false)}
               sx={{ padding: "0px", paddingLeft: "10px" }}
             >
-              <IconButton aria-label="add to favorites">
-                <ThumbUpAltIcon />
+              <IconButton aria-label="add to favorites" onClick={handleUpvote}>
+                <ThumbUpAltIcon style={{ color: "#F74D79" }} />
+                <span
+                  style={{
+                    marginLeft: 5,
+                    fontSize: "16px",
+                    position: "relative",
+                    bottom: "-2px",
+                    color: "#626262",
+                  }}
+                >
+                  {upvoteCount}
+                </span>
               </IconButton>
               <IconButton
                 aria-label="share"
                 onMouseEnter={() => setShowSharingBox(true)}
               >
-                <SendIcon />
+                <SendIcon style={{ color: "#626262" }} />
               </IconButton>
               {showSharingBox && (
                 <Box
@@ -341,12 +447,12 @@ export default function IndividualBlog ({
             </CardActions>
           </Box>
         </section>
-        <section>
+        <section style={{width:'90%', margin:'auto'}}>
           <Box
             display={"flex"}
             justifyContent={"space-between"}
             alignItems={"center"}
-            width={"90%"}
+            width={"100%"}
             marginX={"auto"}
             marginY={"33px"}
           >
@@ -379,8 +485,9 @@ export default function IndividualBlog ({
                       // }
                       title={blog.title}
                       description={blog.content}
-                      image={blog.image}
-                      username={(blog.user!=null)?blog.user.name:'Username'}
+                      image="https://picsum.photos/300/300"
+                      // image={blog.image}
+                      username={blog.user != null ? blog.user.name : "Username"}
                       time={formatDate(blog.time)}
                     />
                   </Box>
@@ -392,4 +499,4 @@ export default function IndividualBlog ({
       <Footer />
     </div>
   );
-};
+}

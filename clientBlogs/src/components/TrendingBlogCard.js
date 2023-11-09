@@ -17,25 +17,7 @@ import axios from "axios";
 
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
-import SendIcon from "@mui/icons-material/Send";
-import {
-  EmailShareButton,
-  FacebookShareButton,
-  InstapaperShareButton,
-  LinkedinShareButton,
-  TelegramShareButton,
-  TwitterShareButton,
-  WhatsappShareButton,
-} from "react-share";
-import {
-  EmailIcon,
-  FacebookIcon,
-  InstapaperIcon,
-  LinkedinIcon,
-  TelegramIcon,
-  TwitterIcon,
-  WhatsappIcon,
-} from "react-share";
+import { useSelector } from "react-redux";
 
 export default function BlogCard({
   title,
@@ -46,25 +28,29 @@ export default function BlogCard({
   id,
   isUser,
   tag,
+  like,
 }) {
+  // global state
+  let isLogin = useSelector((state) => state.isLogin);
+  isLogin = isLogin || localStorage.getItem("userId");
   const navigate = useNavigate();
-  const handleEdit = () => {
-    navigate(`/blog-details/${id}`);
-  };
 
-  const handleDelete = async () => {
-    try {
-      const { data } = await axios.delete(`/api/v1/blog/delete-blog/${id}`);
-      if (data?.success) {
-        alert("Blog Deleted");
-        window.location.reload();
-      }
-    } catch (error) {
-      console.log(error);
+  const [upvoteCount, setUpvoteCount] = useState(0);
+  const handleUpvote = () => {
+    if (!isLogin) {
+      navigate("/login");
+    } else {
+      // You can implement the upvote logic here, for example, send a request to your backend to record the upvote.
+      // For this example, I'll simply increase the count by 1.
+      setUpvoteCount(upvoteCount + 1);
+      // setUpvoteCount(upvoteCount + 1);
     }
   };
 
   const [showSharingBox, setShowSharingBox] = useState(false); // State to control the sharing box visibility
+  React.useEffect(() => {
+    setUpvoteCount(like);
+  }, []);
 
   return (
     <Card
@@ -72,51 +58,47 @@ export default function BlogCard({
         borderRadius: "10px",
         backgroundColor: "#2F2F2F",
         minWidth: "100%",
-        height: "100%",
+        height: "531px",
         margin: "auto",
         mt: 1,
-        padding: 2,
         border: "1px solid #414141",
       }}
     >
-      {isUser && (
-        <Box display={"flex"}>
-          <IconButton onClick={handleEdit} sx={{ marginLeft: "auto" }}>
-            <ModeEditIcon color="info" />
-          </IconButton>
-          <IconButton onClick={handleDelete}>
-            <DeleteIcon color="error" />
-          </IconButton>
-        </Box>
-      )}
-
       <CardMedia component="img" height="50%" image={image} alt="Paella dish" />
       <Box
         height="50%"
         display={"flex"}
         flexDirection={"column"}
-        justifyContent={"space-around"}
+        // justifyContent={"space-around"}
+        padding="2"
+        marginX={"10px"}
+        marginTop={"16px"}
+        gap={'10px'}
       >
         <Box display={"flex"} justifyContent="space-between" sx={{}}>
           <CardHeader
             avatar={
               <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                "Username"
+                N
               </Avatar>
             }
             title={username}
             sx={{
               padding: "10px",
               paddingLeft: "16px",
-              fontSize: "18px",
+              fontSize: "13px",
               color: "white",
               fontWeight: "500",
             }}
           />
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <p style={{ color: "white", padding: "4px" }}>5 min read</p>
+          <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+            <p style={{ color: "white", padding: "4px", fontSize: "13.4px" }}>
+              5 min read
+            </p>
 
-            <p style={{ color: "white", padding: "4px" }}>{time}</p>
+            <p style={{ color: "white", padding: "4px", fontSize: "13.4px" }}>
+              {time}
+            </p>
             <p
               style={{
                 color: "#F74D79",
@@ -125,13 +107,15 @@ export default function BlogCard({
                 padding: "4px",
                 paddingLeft: "8px",
                 paddingRight: "8px",
+                fontSize: "13.4px",
+                marginRight: "16px",
               }}
             >
               {tag}
             </p>
           </div>
         </Box>
-        <CardContent>
+        <CardContent style={{paddingTop:'0px', paddingBottom:'0px'}}>
           <Typography
             paddingY="10px"
             sx={{ fontSize: "18px", color: "#F74D79" }}
@@ -147,18 +131,35 @@ export default function BlogCard({
         <CardActions
           disableSpacing
           onMouseLeave={() => setShowSharingBox(false)}
+          style={{zIndex:'8'}}
         >
-          <IconButton aria-label="add to favorites">
-            <ThumbUpAltIcon />
+          <IconButton aria-label="add to favorites" onClick={handleUpvote}>
+            <ThumbUpAltIcon style={{ color: "#626262" }} />
+            <span
+              style={{
+                marginLeft: 5,
+                fontSize: "16px",
+                position: "relative",
+                bottom: "-2px",
+                color: "#626262",
+              }}
+            >
+              {upvoteCount}
+            </span>
           </IconButton>
-          <IconButton
+          {/* <IconButton
             aria-label="share"
             onMouseEnter={() => setShowSharingBox(true)}
           >
-            <SendIcon />
+            <SendIcon style={{color:'#626262'}} />
           </IconButton>
           {showSharingBox && (
-            <Box display="flex" alignItems="center">
+            <Box
+              display="flex"
+              alignItems="center"
+              marginLeft={"8px"}
+              gap={"10px"}
+            >
               <TwitterShareButton
                 url={"https://www.example.com"}
                 quote={"Dummy text!"}
@@ -181,7 +182,7 @@ export default function BlogCard({
                 <WhatsappIcon size={32} round />
               </WhatsappShareButton>
             </Box>
-          )}
+          )} */}
         </CardActions>
       </Box>
     </Card>

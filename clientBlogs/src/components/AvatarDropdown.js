@@ -7,8 +7,14 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Logout from "@mui/icons-material/Logout";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { authActions } from "../redux/store";
 
 export default function AvatarDropdown() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -16,6 +22,19 @@ export default function AvatarDropdown() {
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+  const handleLogin = () => {
+    navigate("/login");
+  };
+  const handleLogOut = () => {
+    try {
+      dispatch(authActions.logout());
+      // toast.success("Logout Successfully");
+      navigate("/login");
+      localStorage.clear();
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <React.Fragment>
@@ -28,7 +47,7 @@ export default function AvatarDropdown() {
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
         >
-          <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+          <Avatar sx={{ width: 24, height: 24 }}></Avatar>
         </IconButton>
       </Box>
       <Menu
@@ -36,7 +55,7 @@ export default function AvatarDropdown() {
         id="account-menu"
         open={open}
         onClose={handleClose}
-        onClick={handleClose}
+        // onClick={handleClose}
         PaperProps={{
           elevation: 0,
           sx: {
@@ -44,8 +63,8 @@ export default function AvatarDropdown() {
             filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
             mt: 1.5,
             "& .MuiAvatar-root": {
-              width: 32,
-              height: 32,
+              width: 24,
+              height: 24,
               ml: -0.5,
               mr: 1,
             },
@@ -69,8 +88,16 @@ export default function AvatarDropdown() {
         <MenuItem onClick={handleClose}>
           <Avatar /> Profile
         </MenuItem>
+
         <Divider />
-        <MenuItem onClick={handleClose}>
+
+        <MenuItem onClick={handleLogin}>
+          <ListItemIcon>
+            <Logout fontSize="small" />
+          </ListItemIcon>
+          Login
+        </MenuItem>
+        <MenuItem onClick={handleLogOut}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>

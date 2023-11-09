@@ -1,7 +1,9 @@
 import React from "react";
 import { Box, Tab, Tabs, Typography } from "@mui/material";
 import { Link, Outlet } from "react-router-dom";
-
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+</style>
 const BlogLayout = () => {
   return (
     <>

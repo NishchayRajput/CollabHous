@@ -11,7 +11,9 @@ import Fullpage, {
   FullpageSection,
 } from "@ap.cx/react-fullpage";
 import Footer from "../components/Footer";
-
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+</style>
 const Home = () => {
   const [mostLikedBlog, setMostLikedBlog] = useState([]);
   const [recentBlog, setRecentBlog] = useState([]);
@@ -315,7 +317,7 @@ const Home = () => {
                     </Typography>
                   </Link>
                 </Box>
-                <Box display={"flex"} height={"77vh"}>
+                <Box display={"flex"} height={"70vh"}>
                   <Box width={"50%"}>
                     <TrendingBlogCard
                       // id={blog?.user_id}
@@ -333,10 +335,11 @@ const Home = () => {
                       }
                       time={"10 October"}
                       tag="Kalamkari"
+                      like={mostLikedBlog.like}
                     />
                   </Box>
                   <Box width={"50%"}>
-                    <Box width={"90%"} marginX={"auto"}>
+                    <Box display='flex' flexDirection={'column'} width={"90%"} marginX={"auto"} gap={'10px'} >
                       <HorzBlogCard
                         // id={blog?.user_id}
                         // key={blog?.user_id}
@@ -350,6 +353,7 @@ const Home = () => {
                           recentBlog[0] != null ? recentBlog[0].user.name : ""
                         }
                         time="10 October"
+                          like={recentBlog[0] != null ? recentBlog[0].like : ""}
                       />
                       <HorzBlogCard
                         // id={blog?.user_id}
@@ -364,6 +368,7 @@ const Home = () => {
                         }
                         time="10 October"
                         tag="Kalamkari"
+                          like={recentBlog[1] != null ? recentBlog[1].like : ""}
                       />
                       <HorzBlogCard
                         // id={blog?.user_id}
@@ -378,6 +383,7 @@ const Home = () => {
                         }
                         time="10 October"
                         tag="Kalamkari"
+                        like={recentBlog[2] != null ? recentBlog[2].like : ""}
                       />
                     </Box>
                   </Box>

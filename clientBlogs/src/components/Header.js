@@ -18,29 +18,6 @@ const Header = () => {
   //state
   const [value, setValue] = useState(0);
 
-  //logout
-  const handleLogout = () => {
-    try {
-      dispatch(authActions.logout());
-      toast.success("Logout Successfully");
-      navigate("/login");
-      localStorage.clear();
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
   return (
     <>
       <AppBar
@@ -48,15 +25,15 @@ const Header = () => {
         sx={{
           bgcolor: "rgba(72, 72, 72, 0.3)",
           border: "2px solid rgba(134, 127, 127, 0.43)",
-          width: "80%",
+          width: "68%",
           marginLeft: "auto",
           marginRight: "auto",
           top: "10px",
-          borderRadius: "10px",
+          borderRadius: "16px",
         }}
       >
-        <Toolbar>
-          <Typography variant="h4">cH</Typography>
+        <Toolbar style={{minHeight:'49px', height:'49px'}}>
+          <Typography fontSize='32px'>cH</Typography>
           <Box display={"flex"} marginLeft="auto" marginRight={"auto"}>
             <Tabs
               textColor="inherit"
@@ -129,7 +106,7 @@ const Header = () => {
             </Tabs>
           </Box>
           <Notification />
-          <AvatarDropdown />
+          <AvatarDropdown style={{height:'24px', width:'24px'}}/>
         </Toolbar>
       </AppBar>
     </>

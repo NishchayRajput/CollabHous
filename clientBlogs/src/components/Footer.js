@@ -74,33 +74,66 @@ const Footer = () => {
           >
             Social media
           </Typography>
-          <Typography
-            fontSize={"22px"}
-            fontWeight={500}
-            color={"#7F7F7F"}
-            marginBottom={"32px"}
+          <a
+            href="https://www.instagram.com/your-instagram-username"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ textDecoration: "none" }}
           >
-            Instagram
-            <img src="images/Vector.png" alt="" style={{ marginLeft: "24px" }} />
-          </Typography>
-          <Typography
-            fontSize={"22px"}
-            fontWeight={500}
-            color={"#7F7F7F"}
-            marginBottom={"32px"}
+            <Typography
+              fontSize={"22px"}
+              fontWeight={500}
+              color={"#7F7F7F"}
+              marginBottom={"32px"}
+            >
+              Instagram
+              <img
+                src="images/Vector.png"
+                alt=""
+                style={{ marginLeft: "24px" }}
+              />
+            </Typography>
+          </a>
+          <a
+            href="https://www.linkedin.com/your-username"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ textDecoration: "none" }}
           >
-            Linkedin
-            <img src="images/Vector.png" alt="" style={{ marginLeft: "24px" }} />
-          </Typography>
-          <Typography
-            fontSize={"22px"}
-            fontWeight={500}
-            color={"#7F7F7F"}
-            marginBottom={"32px"}
+            <Typography
+              fontSize={"22px"}
+              fontWeight={500}
+              color={"#7F7F7F"}
+              marginBottom={"32px"}
+            >
+              Linked in
+              <img
+                src="images/Vector.png"
+                alt=""
+                style={{ marginLeft: "24px" }}
+              />
+            </Typography>
+          </a>
+          <a
+            href="https://www.twitter.com/your-username"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ textDecoration: "none" }}
           >
-            Twitter
-            <img src="images/Vector.png" alt="" style={{ marginLeft: "24px" }} />
-          </Typography>
+            <Typography
+              fontSize={"22px"}
+              fontWeight={500}
+              color={"#7F7F7F"}
+              marginBottom={"32px"}
+            >
+              Twitter
+              <img
+                src="images/Vector.png"
+                alt=""
+                style={{ marginLeft: "24px" }}
+              />
+            </Typography>
+          </a>
         </Box>
         <Box width={"40%"}>
           <Typography
@@ -111,30 +144,56 @@ const Footer = () => {
           >
             Contact us
           </Typography>
-          <Typography
-            fontSize={"18px"}
-            fontWeight={500}
-            color={"#7F7F7F"}
-            marginBottom={"10px"}
+
+          <a
+            href="https://www.chcommune.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ textDecoration: "none" }}
           >
-            chcommune.com
-          </Typography>
-          <Typography
-            fontSize={"18px"}
-            fontWeight={500}
-            color={"#7F7F7F"}
-            marginBottom={"10px"}
+            <Typography
+              fontSize={"18px"}
+              fontWeight={500}
+              color={"#7F7F7F"}
+              marginBottom={"10px"}
+            >
+              {" "}
+              chcommune.com
+            </Typography>
+          </a>
+
+          <a
+            href="https://www.collabhous.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ textDecoration: "none" }}
           >
-            collabhous.com
-          </Typography>
-          <Typography
-            fontSize={"18px"}
-            fontWeight={500}
-            color={"#7F7F7F"}
-            marginBottom={"10px"}
+            <Typography
+              fontSize={"18px"}
+              fontWeight={500}
+              color={"#7F7F7F"}
+              marginBottom={"10px"}
+            >
+              {" "}
+              collabhous.com
+            </Typography>{" "}
+          </a>
+          <a
+            href="https://www.hey@collabhous.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ textDecoration: "none" }}
           >
-            hey@collabhous.com
-          </Typography>
+            <Typography
+              fontSize={"18px"}
+              fontWeight={500}
+              color={"#7F7F7F"}
+              marginBottom={"10px"}
+            >
+              {" "}
+              hey@collabhous.com
+            </Typography>{" "}
+          </a>
         </Box>
       </Box>
     </Box>

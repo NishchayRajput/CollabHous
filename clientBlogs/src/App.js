@@ -1,6 +1,7 @@
 import Header from "./components/Header";
 import { Routes, Route } from "react-router-dom";
-
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import Blogs from "./pages/Blogs";
 import UserBlogs from "./pages/UserBlogs";
 import BlogDetails from "./pages/BlogDetails";
@@ -26,7 +27,8 @@ function App() {
           <Route path="/blogs/:blogId" element={<IndividualBlog />} />
           <Route path="/connect" element={<Connect />} />
         </Route>
-
+        <Route path="/register" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
         {/* <Route path="/my-blogs" element={<UserBlogs />} />
         <Route path="/blog-details/:id" element={<BlogDetails />} />
         <Route path="/blog-card" element={<BlogCard />} /> */}

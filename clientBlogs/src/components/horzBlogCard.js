@@ -17,25 +17,7 @@ import axios from "axios";
 
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
-import SendIcon from "@mui/icons-material/Send";
-import {
-  EmailShareButton,
-  FacebookShareButton,
-  InstapaperShareButton,
-  LinkedinShareButton,
-  TelegramShareButton,
-  TwitterShareButton,
-  WhatsappShareButton,
-} from "react-share";
-import {
-  EmailIcon,
-  FacebookIcon,
-  InstapaperIcon,
-  LinkedinIcon,
-  TelegramIcon,
-  TwitterIcon,
-  WhatsappIcon,
-} from "react-share";
+import { useSelector } from "react-redux";
 
 export default function BlogCard({
   title,
@@ -46,71 +28,66 @@ export default function BlogCard({
   id,
   isUser,
   tag,
+  like,
 }) {
+  // global state
+  let isLogin = useSelector((state) => state.isLogin);
+  isLogin = isLogin || localStorage.getItem("userId");
+  
   const navigate = useNavigate();
-  const handleEdit = () => {
-    navigate(`/blog-details/${id}`);
-  };
 
-  const handleDelete = async () => {
-    try {
-      const { data } = await axios.delete(`/api/v1/blog/delete-blog/${id}`);
-      if (data?.success) {
-        alert("Blog Deleted");
-        window.location.reload();
-      }
-    } catch (error) {
-      console.log(error);
+  
+  const [upvoteCount, setUpvoteCount] = useState(0);
+  
+  const handleUpvote = () => {
+    if (!isLogin) {
+      navigate("/login");
+    } else {
+      // You can implement the upvote logic here, for example, send a request to your backend to record the upvote.
+      // For this example, I'll simply increase the count by 1.
+      setUpvoteCount(upvoteCount + 1);
+      // setUpvoteCount(upvoteCount + 1);
     }
   };
 
   const [showSharingBox, setShowSharingBox] = useState(false); // State to control the sharing box visibility
-
+  React.useEffect(() => {
+    setUpvoteCount(like);
+  }, []);
   return (
     <Card
       sx={{
-        height: "190px",
+        height: "165px",
         backgroundColor: "#2F2F2F",
         minWidth: "100%",
         margin: "auto",
         mt: 1,
-
-        padding: 2,
         border: "1px solid #414141",
       }}
     >
-      {isUser && (
-        <Box display={"flex"}>
-          <IconButton onClick={handleEdit} sx={{ marginLeft: "auto" }}>
-            <ModeEditIcon color="info" />
-          </IconButton>
-          <IconButton onClick={handleDelete}>
-            <DeleteIcon color="error" />
-          </IconButton>
-        </Box>
-      )}
+     
       <Box display={"flex"}>
         <CardMedia
           component="img"
           image={image}
           alt="Paella dish"
           minWidth={"50%"}
-          height={"160px"}
+          height={"100%"}
           sx={{ width: "50%" }}
         />
-        <Box width={"50%"}>
-          <Box display={"flex"} justifyContent="space-between">
+        <Box width={"50%"} paddingTop={'5px'}>
+          <Box display={"flex"} justifyContent="space-between" width={'60%'}>
             <CardHeader
               avatar={
-                <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                  "Username"
+                <Avatar sx={{ bgcolor: red[500], height:'24px', width:'24px', fontSize:'15px' }} aria-label="recipe">
+                  N
                 </Avatar>
               }
               title={username}
               sx={{
                 padding: "10px",
                 paddingLeft: "16px",
-                fontSize: "18px",
+                fontSize: "12px",
                 color: "white",
                 fontWeight: "500",
               }}
@@ -131,10 +108,10 @@ export default function BlogCard({
             display={"flex"}
             justifyContent="space-between"
           >
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <p style={{ color: "white", padding: "4px" }}>5 min read</p>
+            <div style={{ display: "flex", alignItems: "center", paddingTop:'10px', paddingLeft:'0px' }}>
+              <p style={{ color: "white", padding: "4px",fontSize:'12px' }}>5 min read</p>
 
-              <p style={{ color: "white", padding: "4px" }}>{time}</p>
+              <p style={{ color: "white", padding: "4px",fontSize:'12px' }}>{time}</p>
               <p
                 style={{
                   color: "#F74D79",
@@ -142,7 +119,7 @@ export default function BlogCard({
                   borderRadius: "5px",
                   padding: "4px",
                   paddingLeft: "8px",
-                  paddingRight: "8px",
+                  paddingRight: "8px",fontSize:'12px'
                 }}
               >
                 {tag}
@@ -152,12 +129,23 @@ export default function BlogCard({
           <CardActions
             disableSpacing
             onMouseLeave={() => setShowSharingBox(false)}
-            sx={{ paddingTop: "10px", paddingLeft: "10px" }}
+            sx={{ paddingTop: "10px", paddingLeft: "10px", paddingBottom:'0px' }}
           >
-            <IconButton aria-label="add to favorites">
-              <ThumbUpAltIcon />
+            <IconButton aria-label="add to favorites" onClick={handleUpvote}>
+              <ThumbUpAltIcon style={{ color: "#626262" }} />
+              <span
+                style={{
+                  marginLeft: 5,
+                  fontSize: "16px",
+                  position: "relative",
+                  bottom: "-2px",
+                  color: "#626262",
+                }}
+              >
+                {upvoteCount}
+              </span>
             </IconButton>
-            <IconButton
+            {/* <IconButton
               aria-label="share"
               onMouseEnter={() => setShowSharingBox(true)}
             >
@@ -192,7 +180,7 @@ export default function BlogCard({
                   <WhatsappIcon size={32} round />
                 </WhatsappShareButton>
               </Box>
-            )}
+            )} */}
           </CardActions>
         </Box>
       </Box>
