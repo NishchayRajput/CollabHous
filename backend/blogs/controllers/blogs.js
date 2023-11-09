@@ -1,22 +1,23 @@
 const mongoose =require('mongoose');
 const Blog = require('../models/blogs');
 const userInfo = require('../../ecommerce/models/userInfo');
+// const moment = require('moment-timezone');
 async function blog_card(req, res){
     try {
     //   const sampleBlogs = [
     //     {
-    //         user_id: new mongoose.Types.ObjectId('6542215aac5836b8288725a4'), // Replace with a valid user ID from your 'userInfo' collection
-    //         title: 'Sample Blog Title 1',
-    //         content: 'Sample Blog Content 1',
-    //         tags: 'Sample Tag 1',
+    //         user_id: new mongoose.Types.ObjectId('654ce4e651b83204e9735c42'), // Replace with a valid user ID from your 'userInfo' collection
+    //         title: 'Sample Blog Title 3',
+    //         content: 'Sample Blog Content 3',
+    //         tags: 'Classic',
     //         like: 0,
     //         time: moment().format(),
     //     },
     //     {
-    //         user_id: new mongoose.Types.ObjectId('6542215aac5836b8288725a4'), // Replace with a valid user ID from your 'userInfo' collection
-    //         title: 'Sample Blog Title 2',
-    //         content: 'Sample Blog Content 2',
-    //         tags: 'Sample Tag 2',
+    //         user_id: new mongoose.Types.ObjectId('654ce4e651b83204e9735c42'), // Replace with a valid user ID from your 'userInfo' collection
+    //         title: 'Sample Blog Title 4',
+    //         content: 'Sample Blog Content 4',
+    //         tags: 'Community',
     //         like: 0,
     //         time: moment().format(),
     //     },
@@ -35,6 +36,9 @@ async function blog_card(req, res){
             select: 'name email',
           })
           .exec();
+          
+
+          console.log(blogs);
     
         // Extract relevant data from the blogs
         const formattedBlogs = blogs.map((blog) => ({

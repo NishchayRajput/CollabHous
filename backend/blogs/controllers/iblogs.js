@@ -1,30 +1,24 @@
 const mongoose = require('mongoose');
-const blog = require('../models/blogs');
+const Blog = require('../models/blogs'); // Import your blog model
 const interaction = require('../models/interaction');
 const extractTokenValue = require('../../token');
+
 async function blogs(req, res) {
-    const token = extractTokenValue(req.headers.cookie);
-    if (!token) {
-        return res.status(401).json({ message: 'No token provided' });
+  try {
+    const blogId = req.params.id;
+
+    // Use Mongoose to find the blog by its ID
+    const blog = await Blog.findById(blogId);
+
+    if (!blog) {
+      return res.status(404).json({ message: 'Blog not found' });
     }
 
-    try {
-        const bdata = await blog.findById(req.params.Id);
-        if (!bdata) {
-            return res.status(404).json({ message: 'Blog not found' });
-        }
-
-        const interactions = await interaction.find({ blog_id: blogId }).populate({path: 'user_id',select: 'name email'});
-        if (!interactions) {
-            return res.status(404).json({ message: 'No interactions found for this blog' });
-        }
-
-        // Continue with your logic here...
-    } catch (error) {
-        return res.status(500).json({ message: 'An error occurred', error: error.message });
-    }
+    // Send the blog data to the frontend as a JSON response
+    res.json(blog);
+  } catch (error) {
+    return res.status(500).json({ message: 'An error occurred', error: error.message });
+  }
 }
-
-
 
 module.exports = blogs;

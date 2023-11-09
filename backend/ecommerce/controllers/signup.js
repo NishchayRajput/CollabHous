@@ -1,9 +1,12 @@
+// Import required modules
 const mongoose = require('mongoose');
 const userInfo = require('../models/userInfo');
 const bcrypt = require('bcrypt');
+
+// Define the signup function
 async function signup(req, res) {
+    // Extract required fields from the request body
     const { name, email, password, g_id } = req.body;
-    // const validationErrors = {};
 
     // Detect Google signup by the presence of g_id
     const isGoogleSignup = !!g_id;
@@ -24,10 +27,13 @@ async function signup(req, res) {
 
     try {
         // Check if the user with the given email or Google ID already exists
-        const existingUser = await userInfo.findOne({
-            $or: [{ email: email }, { g_id: g_id }]
-        });
-
+        let existingUser;
+        if(isGoogleSignup){
+            existingUser = await userInfo.findOne({ g_id: g_id });        
+        }else{
+            existingUser = await userInfo.findOne({ email: email });
+        }
+        
         if (existingUser) {
             return res.status(400).json({ message: "User with this email or Google ID already exists." });
         }
@@ -43,7 +49,7 @@ async function signup(req, res) {
         const newUser = new userInfo({
             name: name,
             email: email,
-            g_id: isGoogleSignup ? g_id : undefined, // Set g_id only for Google signups
+            g_id: isGoogleSignup ? g_id : undefined, // Set g_id to null for non-Google signups
             password: hashedPassword, // Store the hashed password
             isGoogleSignup: isGoogleSignup
         });
@@ -58,4 +64,5 @@ async function signup(req, res) {
     }
 }
 
+// Export the signup function
 module.exports = signup;
