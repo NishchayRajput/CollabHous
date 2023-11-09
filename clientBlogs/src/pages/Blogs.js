@@ -36,16 +36,17 @@ const Blogs = () => {
 
   const filterBlogs = (category) => {
     const updateBlogs = allBlogs.filter((e) => {
-      let l = e.tag.split(",").length;
+      // let l = e.tag.split(",").length;
       let check = false;
-      for (let i = 0; i < l - 1; i++) {
-        check = check || e.tag.split(",")[i] === category;
-      }
+      // for (let i = 0; i < l - 1; i++) {
+        // check = check || e.tag.split(",")[i] === category;
+      // }
+      check = (e.tag === category);
       return check;
     });
+    console.log(updateBlogs);
     setBlogs(updateBlogs);
   };
-  console.log(blogs);
 
   return (
     <>

@@ -39,7 +39,7 @@ const Login = () => {
           },
         }
       );
-      if (data.response.status===200) {
+      if (data.message==='Login successful') {
         toast.success("User login Successfully");
         dispatch(authActions.login());
         navigate("/blogs");

@@ -37,10 +37,11 @@ const Register = () => {
           },
         }
       );
-      if (data.response.status === 201) {
+    
+      if (data.message === "Signup successful") {
         toast.success("User Register Successfully");
         navigate("/login");
-        console.log('Registered successfully');         /////////
+        console.log("Registered successfully"); /////////
       }
     } catch (error) {
       if (error.response) {
