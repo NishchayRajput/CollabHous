@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const userInfo = require('../../ecommerce/models/userInfo');
 require('dotenv').config();
 
 function authenticateMiddleware(req, res, next) {
@@ -17,7 +18,8 @@ function authenticateMiddleware(req, res, next) {
 
   // Extract the token from the request's cookies
   const token = extractTokenValue(req.headers.cookie);
-
+  // console.log(token);
+  // next();
   if (!token) {
     // If no token is provided, return a 401 (Unauthorized) response
     return res.status(401).json({ message: 'Unauthorized: No token provided' });
@@ -29,14 +31,36 @@ function authenticateMiddleware(req, res, next) {
       // If the token is invalid or expired, return a 401 (Unauthorized) response
       return res.status(401).json({ message: 'Unauthorized: Invalid token' });
     }
+    
 
-    // If the token is valid, you can attach the user data to the request for use in protected routes
-    // req.user = user;
-    console.log('Token verified');
+    const existuser = userInfo.findById(user.id);
 
-    // Continue to the next middleware or route handler
+    if(existuser){
+      console.log('Token verified');
+    }
+    else{
+      console.log('Token not verified');
+    }
+    req.body.uId=  user.id;
     next();
   });
 }
 
 module.exports = authenticateMiddleware;
+
+
+
+// const jwt = require('jsonwebtoken');
+// require('dotenv').config(); 
+
+// async function authenticateMiddleware(req, res, next) {
+//   try {
+//     console.log('hello i am  in the middleware');
+//     next();
+
+//   } catch (error) {
+//     console.log('hello i am in the error in middleware');
+//   }
+// }
+
+// module.exports = authenticateMiddleware;
