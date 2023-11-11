@@ -32,8 +32,8 @@ const blogs = new mongoose.Schema({
             return moment();
         },
     },
-    read_time : {
-        type : Number,
+    read_time: {
+        type: Number,
     }
 });
 
