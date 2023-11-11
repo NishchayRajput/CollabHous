@@ -34,7 +34,7 @@ const Login = () => {
     }
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/ecommerce/signup",
+        "http://localhost:5000/ecommerce/login",
         {
           name: inputs.name,
           email: inputs.email,
