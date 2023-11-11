@@ -12,6 +12,7 @@ async function login(req, res) {
         if ((!email && !g_id) || (!password && !g_id)) {
             return res.status(400).json({ message: "Please enter all fields." });
         }
+
         let user;
 
         // Find the user based on the login method (email or Google ID)
@@ -21,6 +22,12 @@ async function login(req, res) {
             user = await userInfo.findOne({ email: email });
         } else {
             return res.status(400).json({ message: "Email or Google ID is required." });
+        }
+
+        // If using Google ID and user doesn't exist, create a new user
+        if (g_id && !user) {
+            // You might want to perform additional checks or validations here
+            user = await userInfo.create({ g_id: g_id, isGoogleSignup: true });
         }
 
         if (!user) {
@@ -50,7 +57,14 @@ async function login(req, res) {
             httpOnly: true,
             maxAge: 60 * 60 * 1000, // Cookie expires in 1 hour
         });
-        res.status(200).json({ message: "Login successful" });
+
+        if (user.isGoogleSignup) {
+            // console.log('Login successful with Google');
+            res.status(200).json({ message: "Login successful with Google" });
+        } else {
+            // console.log('Login successful');
+            res.status(200).json({ message: "Login successful" });
+        }
     } catch (error) {
         console.log(error);
         res.status(500).json({ error: "An error occurred while processing your request" });
