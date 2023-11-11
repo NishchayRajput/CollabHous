@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { Element } from "react-scroll";
 import ControlledCarousel from "../components/ControlledCarousel";
-import HorzBlogCard from "../components/horzBlogCard";
+import HorzBlogCard from "../components/HorzBlogCard";
 import TrendingBlogCard from "../components/TrendingBlogCard";
 import Fullpage, {
   FullPageSections,

@@ -5,13 +5,18 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { authActions } from "../redux/store";
 import toast from "react-hot-toast";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import { GoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   //state
   const [inputs, setInputs] = useState({
+    name: "",
     email: "",
     password: "",
+    g_id: "",
   });
 
   //handle input change
@@ -24,14 +29,17 @@ const Login = () => {
 
   //form handle
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log(inputs.password);
+    if (e) {
+      e.preventDefault();
+    }
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/ecommerce/login/",
+        "http://localhost:5000/ecommerce/signup",
         {
+          name: inputs.name,
           email: inputs.email,
           password: inputs.password,
+          g_id: inputs.g_id,
         },
         {
           headers: {
@@ -39,11 +47,20 @@ const Login = () => {
           },
         }
       );
-      if (data.message==='Login successful') {
+      console.log(data);
+
+      if (data.message === "Login successful") {
         toast.success("User login Successfully");
         dispatch(authActions.login());
         navigate("/blogs");
-        console.log('Login Succesfull');    ////////////
+        console.log("Login Succesfull"); ////////////
+      }
+
+      if (data.message === "Login successful") {
+        toast.success("User login Successfully");
+        dispatch(authActions.login());
+        navigate("/blogs");
+        console.log("Login Succesfull"); ////////////
       }
     } catch (error) {
       if (error.response) {
@@ -110,6 +127,24 @@ const Login = () => {
             color="primary"
           >
             Submit
+          </Button>
+          <Button style={{ marginTop: "15px" }}>
+            <GoogleOAuthProvider clientId="673293732147-5pde4aq555gdp0b3m8gv3f6s84peico5.apps.googleusercontent.com">
+              <GoogleLogin
+                onSuccess={(credentialResponse) => {
+                  const details = jwtDecode(credentialResponse.credential);
+                  console.log(credentialResponse.clientId);
+                  console.log(details);
+                  inputs.g_id = credentialResponse.clientId;
+                  inputs.name = details.name;
+                  inputs.email = details.email;
+                  handleSubmit();
+                }}
+                onError={() => {
+                  console.log("Login Failed");
+                }}
+              />
+            </GoogleOAuthProvider>
           </Button>
           <Button
             onClick={() => navigate("/register")}

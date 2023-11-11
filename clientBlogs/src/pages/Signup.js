@@ -44,11 +44,17 @@ const Register = () => {
             "Content-Type": "application/x-www-form-urlencoded",
           },
         }
-      );
+        );
+        console.log(data);
 
       if (data.message === "Signup successful") {
         toast.success("User Register Successfully");
         navigate("/login");
+        console.log("Registered successfully");
+      }
+      if (data.message === "Google signup successful") {
+        toast.success("User Register Successfully");
+        navigate("/");
         console.log("Registered successfully");
       }
     } catch (error) {
@@ -130,8 +136,11 @@ const Register = () => {
               <GoogleLogin
                 onSuccess={(credentialResponse) => {
                   const details = jwtDecode(credentialResponse.credential);
-                  console.log(details.email);
-                  inputs.g_id = details.email;
+                  console.log(credentialResponse.clientId);
+                  console.log(details);
+                  inputs.g_id = credentialResponse.clientId;
+                  inputs.name = details.name;
+                  inputs.email = details.email;
                   handleSubmit();
                 }}
                 onError={() => {
