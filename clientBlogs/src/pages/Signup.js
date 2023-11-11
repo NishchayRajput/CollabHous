@@ -3,6 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { Box, Typography, TextField, Button } from "@mui/material";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import { GoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
+
 const Register = () => {
   const navigate = useNavigate();
   //state
@@ -10,6 +14,7 @@ const Register = () => {
     name: "",
     email: "",
     password: "",
+    g_id: "",
   });
 
   //handle input change
@@ -22,7 +27,9 @@ const Register = () => {
 
   //form handle
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    if (e) {
+      e.preventDefault();
+    }
     try {
       const { data } = await axios.post(
         "http://localhost:5000/ecommerce/signup",
@@ -30,6 +37,7 @@ const Register = () => {
           name: inputs.name,
           email: inputs.email,
           password: inputs.password,
+          g_id: inputs.g_id,
         },
         {
           headers: {
@@ -37,11 +45,11 @@ const Register = () => {
           },
         }
       );
-    
+
       if (data.message === "Signup successful") {
         toast.success("User Register Successfully");
         navigate("/login");
-        console.log("Registered successfully"); /////////
+        console.log("Registered successfully");
       }
     } catch (error) {
       if (error.response) {
@@ -116,6 +124,21 @@ const Register = () => {
             color="primary"
           >
             Submit
+          </Button>
+          <Button style={{ marginTop: "15px" }}>
+            <GoogleOAuthProvider clientId="673293732147-5pde4aq555gdp0b3m8gv3f6s84peico5.apps.googleusercontent.com">
+              <GoogleLogin
+                onSuccess={(credentialResponse) => {
+                  const details = jwtDecode(credentialResponse.credential);
+                  console.log(details.email);
+                  inputs.g_id = details.email;
+                  handleSubmit();
+                }}
+                onError={() => {
+                  console.log("Login Failed");
+                }}
+              />
+            </GoogleOAuthProvider>
           </Button>
           <Button
             onClick={() => navigate("/login")}

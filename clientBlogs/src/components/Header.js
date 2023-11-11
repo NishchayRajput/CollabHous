@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, AppBar, Toolbar, Typography, Tabs, Tab } from "@mui/material";
 import AvatarDropdown from "./AvatarDropdown";
@@ -17,6 +17,28 @@ const Header = () => {
   const navigate = useNavigate();
   //state
   const [value, setValue] = useState(0);
+  const [scrollValue, setScrollValue] = useState(0);
+  const scrollToPercentage = (percentage) => {
+    const scrollToY =
+      (percentage / 100) * (document.body.scrollHeight - window.innerHeight);
+    window.scrollTo({ top: scrollToY, behavior: "smooth" });
+  };
+  window.addEventListener("scroll", () => {
+    const scrollPercentage =
+      (window.scrollY / (document.body.scrollHeight - window.innerHeight)) *
+      100;
+    setScrollValue(scrollPercentage);
+  });
+  // useEffect(() => {
+  //   async function scrollP() {
+  //   }
+  //   scrollP();
+  // }, []);
+
+  if (value === 0 && scrollValue > 30) setValue(1);
+  if (value === 1 && scrollValue < 30) setValue(0);
+  console.log(scrollValue);
+  console.log("Tab: "+value);
 
   return (
     <>
@@ -32,8 +54,8 @@ const Header = () => {
           borderRadius: "16px",
         }}
       >
-        <Toolbar style={{minHeight:'49px', height:'49px'}}>
-          <Typography fontSize='32px'>cH</Typography>
+        <Toolbar style={{ minHeight: "49px", height: "49px" }}>
+          <Typography fontSize="32px">cH</Typography>
           <Box display={"flex"} marginLeft="auto" marginRight={"auto"}>
             <Tabs
               textColor="inherit"
@@ -53,30 +75,31 @@ const Header = () => {
                   color: value === 0 ? "#F74D79" : "white", // Text color for selected tab
                   textTransform: "none",
                   fontSize: "14px",
-                  marginLeft:'16px',
-                  marginRight:'16px'
+                  marginLeft: "16px",
+                  marginRight: "16px",
                 }}
               />
               <Tab
-                label="Who we are"
+                label="Who are we"
                 LinkComponent={Link}
                 to="/"
                 style={{
                   color: value === 1 ? "#F74D79" : "white", // Text color for selected tab
                   textTransform: "none",
                   fontSize: "14px",
-                  marginLeft:'16px',
-                  marginRight:'16px'
+                  marginLeft: "16px",
+                  marginRight: "16px",
                 }}
+                onClick={() => (value!=1)?scrollToPercentage(42):''}
               >
-                <ScrollLink
-                  to="whoWeAre"
+                {/* <ScrollLink
+                  to="whoAreWe"
                   smooth={true}
                   offset={-70}
                   duration={500}
-                >
-                  Who we are
-                </ScrollLink>
+                > */}
+                Who are we
+                {/* </ScrollLink> */}
               </Tab>
 
               <Tab
@@ -87,8 +110,8 @@ const Header = () => {
                   color: value === 2 ? "#F74D79" : "white", // Text color for selected tab
                   textTransform: "none",
                   fontSize: "14px",
-                  marginLeft:'16px',
-                  marginRight:'16px'
+                  marginLeft: "16px",
+                  marginRight: "16px",
                 }}
               />
               <Tab
@@ -99,14 +122,14 @@ const Header = () => {
                   color: value === 3 ? "#F74D79" : "white", // Text color for selected tab
                   textTransform: "none",
                   fontSize: "14px",
-                  marginLeft:'16px',
-                  marginRight:'16px'
+                  marginLeft: "16px",
+                  marginRight: "16px",
                 }}
               />
             </Tabs>
           </Box>
           <Notification />
-          <AvatarDropdown style={{height:'24px', width:'24px'}}/>
+          <AvatarDropdown style={{ height: "24px", width: "24px" }} />
         </Toolbar>
       </AppBar>
     </>

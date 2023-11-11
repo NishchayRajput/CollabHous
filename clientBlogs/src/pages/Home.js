@@ -11,9 +11,8 @@ import Fullpage, {
   FullpageSection,
 } from "@ap.cx/react-fullpage";
 import Footer from "../components/Footer";
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
-</style>
+import Header from "../components/Header";
+
 const Home = () => {
   const [mostLikedBlog, setMostLikedBlog] = useState([]);
   const [recentBlog, setRecentBlog] = useState([]);
@@ -22,7 +21,7 @@ const Home = () => {
   const [heroData, setHeroData] = useState([]);
   const formatDate = (isoDate) => {
     const date = new Date(isoDate);
-    const options = { year: 'numeric', month: 'short', day: 'numeric' };
+    const options = { year: "numeric", month: "short", day: "numeric" };
     return date.toLocaleDateString(undefined, options);
   };
   useEffect(() => {
@@ -51,7 +50,9 @@ const Home = () => {
   };
   // console.log(recentBlog);
   return (
+    
     <div>
+
       <Fullpage>
         <FullPageSections>
           <FullpageSection id="Home">
@@ -339,7 +340,13 @@ const Home = () => {
                     />
                   </Box>
                   <Box width={"50%"}>
-                    <Box display='flex' flexDirection={'column'} width={"90%"} marginX={"auto"} gap={'10px'} >
+                    <Box
+                      display="flex"
+                      flexDirection={"column"}
+                      width={"90%"}
+                      marginX={"auto"}
+                      gap={"10px"}
+                    >
                       <HorzBlogCard
                         // id={blog?.user_id}
                         // key={blog?.user_id}
@@ -353,7 +360,7 @@ const Home = () => {
                           recentBlog[0] != null ? recentBlog[0].user.name : ""
                         }
                         time="10 October"
-                          like={recentBlog[0] != null ? recentBlog[0].like : ""}
+                        like={recentBlog[0] != null ? recentBlog[0].like : ""}
                       />
                       <HorzBlogCard
                         // id={blog?.user_id}
@@ -368,7 +375,7 @@ const Home = () => {
                         }
                         time="10 October"
                         tag="Kalamkari"
-                          like={recentBlog[1] != null ? recentBlog[1].like : ""}
+                        like={recentBlog[1] != null ? recentBlog[1].like : ""}
                       />
                       <HorzBlogCard
                         // id={blog?.user_id}
