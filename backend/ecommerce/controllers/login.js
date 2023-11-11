@@ -50,6 +50,17 @@ async function login(req, res) {
             httpOnly: true,
             maxAge: 60 * 60 * 1000, // Cookie expires in 1 hour
         });
+        // res.cookie('token', token, {
+        //     httpOnly: true,
+        //     maxAge: 60 * 60 * 1000, // Cookie expires in 1 hour
+        // });
+        if(user.isGoogleSignup){
+            // res.cookie('g_id', user.g_id, {
+            //     httpOnly: true,
+            //     maxAge: 60 * 60 * 1000, // Cookie expires in 1 hour
+            // });
+            res.status(200).json({ message: "Login successful with Google" });
+        }
         res.status(200).json({ message: "Login successful" });
     } catch (error) {
         console.log(error);

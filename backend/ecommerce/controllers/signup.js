@@ -55,9 +55,21 @@ async function signup(req, res) {
         });
 
         // Save the user to the database
-        await newUser.save();
+        const id = await newUser.save();
 
-        res.status(201).json({ message: "Signup successful" });
+        // Create a JWT token for the user
+        const token = jwt.sign({ userId: id}, process.env.secret);
+
+        if(isGoogleSignup){
+            res.cookie('token', token, {
+                httpOnly: true,
+                maxAge: 60 * 60 * 1000, // Cookie expires in 1 hour
+            });
+            return res.status(201).json({ message: "Google signup successful" });
+        }else{
+            return res.status(201).json({ message: "Signup successful" });
+        }
+
     } catch (error) {
         console.log(error);
         res.status(500).json({ error: "An error occurred while processing your request" });
