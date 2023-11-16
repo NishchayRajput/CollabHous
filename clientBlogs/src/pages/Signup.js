@@ -6,6 +6,7 @@ import axios from "axios";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
+import { ReactNotifications, Store } from "react-notifications-component";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -44,23 +45,61 @@ const Register = () => {
             "Content-Type": "application/x-www-form-urlencoded",
           },
         }
-        );
-        console.log(data);
+      );
+      console.log(data);
 
       if (data.message === "Signup successful") {
-        toast.success("User Register Successfully");
+        // toast.success("User Register Successfully");
         navigate("/login");
         console.log("Registered successfully");
+        Store.addNotification({
+          title: "Registered successfully",
+          message: "",
+          type: "success",
+          insert: "top",
+          container: "bottom-center",
+          animationIn: ["animate__animated", "animate__fadeIn"],
+          animationOut: ["animate__animated", "animate__fadeOut"],
+          dismiss: {
+            duration: 2000,
+            onScreen: true,
+          },
+        });
       }
       if (data.message === "Google signup successful") {
-        toast.success("User Register Successfully");
+        // toast.success("User Register Successfully");
         navigate("/");
-        console.log("Registered successfully");
+        Store.addNotification({
+          title: "Registered Successfully",
+          message: "",
+          type: "success",
+          insert: "top",
+          container: "bottom-center",
+          animationIn: ["animate__animated", "animate__fadeIn"],
+          animationOut: ["animate__animated", "animate__fadeOut"],
+          dismiss: {
+            duration: 2000,
+            onScreen: true,
+          },
+        });
       }
     } catch (error) {
       if (error.response) {
         // The server responded with a status code other than 2xx
         console.error(error.response.data); // Error response from the server
+        Store.addNotification({
+          title: "Registered Successfully",
+          message: "",
+          type: "success",
+          insert: "top",
+          container: "bottom-center",
+          animationIn: ["animate__animated", "animate__fadeIn"],
+          animationOut: ["animate__animated", "animate__fadeOut"],
+          dismiss: {
+            duration: 2000,
+            onScreen: true,
+          },
+        });
         console.error(error.response.status); // HTTP status code
         console.error(error.response.headers); // Response headers
       } else if (error.request) {
@@ -138,7 +177,7 @@ const Register = () => {
                   const details = jwtDecode(credentialResponse.credential);
                   console.log(credentialResponse.clientId);
                   console.log(details);
-                  inputs.g_id = credentialResponse.clientId;
+                  inputs.g_id = details.sub;
                   inputs.name = details.name;
                   inputs.email = details.email;
                   handleSubmit();

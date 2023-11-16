@@ -45,8 +45,9 @@ const Header = () => {
       <AppBar
         position="sticky"
         sx={{
-          bgcolor: "rgba(72, 72, 72, 0.3)",
-          border: "2px solid rgba(134, 127, 127, 0.43)",
+          bgcolor: (value === 0 && scrollValue < 10) ? "rgba(72, 72, 72, 0)" : "rgba(72, 72, 72, 0.3)",
+          border: (value === 0 && scrollValue < 10) ? "0px" : "2px solid rgba(134, 127, 127, 0.43)",
+          boxShadow: (value === 0 && scrollValue < 10) ? "none" : "",
           width: "68%",
           marginLeft: "auto",
           marginRight: "auto",

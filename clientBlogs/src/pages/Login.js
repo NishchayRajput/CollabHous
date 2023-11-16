@@ -4,7 +4,8 @@ import { Box, Typography, TextField, Button } from "@mui/material";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { authActions } from "../redux/store";
-import toast from "react-hot-toast";
+import { ReactNotifications, Store } from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
@@ -32,6 +33,7 @@ const Login = () => {
     if (e) {
       e.preventDefault();
     }
+
     try {
       const { data } = await axios.post(
         "http://localhost:5000/ecommerce/login",
@@ -50,19 +52,56 @@ const Login = () => {
       console.log(data);
 
       if (data.message === "Login successful") {
-        toast.success("User login Successfully");
+        // toast.success("User login Successfully");
         dispatch(authActions.login());
-        navigate("/blogs");
-        console.log("Login Succesfull"); ////////////
+        navigate("/");
+        Store.addNotification({
+          title: "User login Successful",
+          message: "",
+          type: "success",
+          insert: "top",
+          container: "bottom-center",
+          animationIn: ["animate__animated", "animate__fadeIn"],
+          animationOut: ["animate__animated", "animate__fadeOut"],
+          dismiss: {
+            duration: 2000,
+            onScreen: true,
+          },
+        });
       }
 
-      if (data.message === "Login successful") {
-        toast.success("User login Successfully");
+      if (data.message === "Login successful with Google") {
+        // toast.success("User Google login Successfully");
         dispatch(authActions.login());
-        navigate("/blogs");
-        console.log("Login Succesfull"); ////////////
+        navigate("/");
+        Store.addNotification({
+          title: "User login Successful",
+          message: "",
+          type: "success",
+          insert: "top",
+          container: "bottom-center",
+          animationIn: ["animate__animated", "animate__fadeIn"],
+          animationOut: ["animate__animated", "animate__fadeOut"],
+          dismiss: {
+            duration: 2000,
+            onScreen: true,
+          },
+        });
       }
     } catch (error) {
+      Store.addNotification({
+        title: error.response.data,
+        message: "",
+        type: "danger",
+        insert: "top",
+        container: "bottom-center",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+        dismiss: {
+          duration: 2000,
+          onScreen: true,
+        },
+      });
       if (error.response) {
         // The server responded with a status code other than 2xx
         console.error(error.response.data); // Error response from the server
@@ -133,9 +172,9 @@ const Login = () => {
               <GoogleLogin
                 onSuccess={(credentialResponse) => {
                   const details = jwtDecode(credentialResponse.credential);
-                  console.log(credentialResponse.clientId);
-                  console.log(details);
-                  inputs.g_id = credentialResponse.clientId;
+                  console.log(credentialResponse);
+                  console.log(details.sub);
+                  inputs.g_id = details.sub;
                   inputs.name = details.name;
                   inputs.email = details.email;
                   handleSubmit();

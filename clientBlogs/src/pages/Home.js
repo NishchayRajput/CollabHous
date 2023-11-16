@@ -48,11 +48,10 @@ const Home = () => {
     setSelectedButton(buttonId);
     setDisplayText(buttonText);
   };
+
   // console.log(recentBlog);
   return (
-    
     <div>
-
       <Fullpage>
         <FullPageSections>
           <FullpageSection id="Home">
@@ -334,9 +333,10 @@ const Home = () => {
                           ? mostLikedBlog.user.name
                           : ""
                       }
-                      time={"10 October"}
-                      tag="Kalamkari"
+                      time={formatDate(mostLikedBlog.time)}
+                      tag={mostLikedBlog.tag}
                       like={mostLikedBlog.like}
+                      read_time={mostLikedBlog.read_time}
                     />
                   </Box>
                   <Box width={"50%"}>
@@ -353,14 +353,17 @@ const Home = () => {
                         // isUser={
                         //   localStorage.getItem("userId") === blog?.user?.user_id
                         // }
-                        tag="Kalamkari"
+                        tag={recentBlog[0] != null ? recentBlog[0].tag : ""}
                         title={recentBlog[0] != null ? recentBlog[0].title : ""}
                         image="images/carouselSample.png"
                         username={
                           recentBlog[0] != null ? recentBlog[0].user.name : ""
                         }
-                        time="10 October"
+                        time={recentBlog[0] != null ? formatDate(recentBlog[0].time) : ""}
                         like={recentBlog[0] != null ? recentBlog[0].like : ""}
+                        read_time={
+                          recentBlog[0] != null ? recentBlog[0].read_time : "5"
+                        }
                       />
                       <HorzBlogCard
                         // id={blog?.user_id}
@@ -373,9 +376,16 @@ const Home = () => {
                         username={
                           recentBlog[1] != null ? recentBlog[1].user.name : ""
                         }
-                        time="10 October"
-                        tag="Kalamkari"
+                        time={
+                          recentBlog[1] != null
+                            ? formatDate(recentBlog[1].time)
+                            : ""
+                        }
+                        tag={recentBlog[1] != null ? recentBlog[1].tag : ""}
                         like={recentBlog[1] != null ? recentBlog[1].like : ""}
+                        read_time={
+                          recentBlog[1] != null ? recentBlog[1].read_time : "5"
+                        }
                       />
                       <HorzBlogCard
                         // id={blog?.user_id}
@@ -388,9 +398,16 @@ const Home = () => {
                         username={
                           recentBlog[2] != null ? recentBlog[2].user.name : ""
                         }
-                        time="10 October"
-                        tag="Kalamkari"
+                        time={
+                          recentBlog[2] != null
+                            ? formatDate(recentBlog[2].time)
+                            : ""
+                        }
+                        tag={recentBlog[2] != null ? recentBlog[2].tag : ""}
                         like={recentBlog[2] != null ? recentBlog[2].like : ""}
+                        read_time={
+                          recentBlog[2] != null ? recentBlog[1].read_time : "5"
+                        }
                       />
                     </Box>
                   </Box>

@@ -31,7 +31,7 @@ export default function AvatarDropdown() {
       dispatch(authActions.logout());
       // toast.success("Logout Successfully");
       navigate("/login");
-      localStorage.clear();
+      // localStorage.clear();
     } catch (error) {
       console.log(error);
     }

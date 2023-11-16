@@ -30,9 +30,6 @@ function App() {
         </Route>
         <Route path="/register" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        {/* <Route path="/my-blogs" element={<UserBlogs />} />
-        <Route path="/blog-details/:id" element={<BlogDetails />} />
-        <Route path="/blog-card" element={<BlogCard />} /> */}
       </Routes>
     </>
   );

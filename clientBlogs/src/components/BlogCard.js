@@ -29,6 +29,7 @@ export default function BlogCard({
   id,
   isUser,
   like,
+  read_time,
 }) {
   // global state
   let isLogin = useSelector((state) => state.isLogin);
@@ -120,7 +121,7 @@ export default function BlogCard({
         <Box paddingLeft={"14px"}>
           <div style={{ display: "flex", alignItems: "center" }}>
             <p style={{ color: "white", padding: "4px", fontSize: "12px" }}>
-              5 min read
+              {read_time} min read
             </p>
 
             <p style={{ color: "white", padding: "4px", fontSize: "12px" }}>

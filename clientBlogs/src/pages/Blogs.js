@@ -231,6 +231,7 @@ const Blogs = () => {
                       username={blog.user != null ? blog.user.name : "Username"}
                       time={formatDate(blog.time)}
                       like={blog.like}
+                      read_time={blog.read_time}
                     />
                   )}
                 </Link>

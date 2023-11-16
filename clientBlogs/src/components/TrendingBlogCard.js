@@ -29,6 +29,7 @@ export default function BlogCard({
   isUser,
   tag,
   like,
+  read_time,
 }) {
   // global state
   let isLogin = useSelector((state) => state.isLogin);
@@ -93,7 +94,7 @@ export default function BlogCard({
           />
           <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
             <p style={{ color: "white", padding: "4px", fontSize: "13.4px" }}>
-              5 min read
+              {read_time} min read
             </p>
 
             <p style={{ color: "white", padding: "4px", fontSize: "13.4px" }}>
@@ -170,7 +171,7 @@ export default function BlogCard({
               <EmailShareButton
                 url={"https://www.example.com"}
                 quote={"Dummy text!"}
-                hashtag="#muo"
+            hashtag="#muo"
               >
                 <EmailIcon size={32} round />
               </EmailShareButton>
