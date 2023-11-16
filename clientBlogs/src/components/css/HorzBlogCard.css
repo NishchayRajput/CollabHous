@@ -1,0 +1,79 @@
+#cardContainer {
+    height: 165px;
+    background-color: #2F2F2F;
+    min-width: 100%;
+    margin: auto;
+    margin-top: 8px;
+    border: 1px solid #414141;
+}
+
+#cardContainer .avatar {
+    background-color: red;
+    height: 24px;
+    width: 24px;
+    font-size: 12px;
+}
+
+#cardContainer .cardHeader {
+    padding: 10px;
+    padding-left: 16px;
+    font-size: 12px;
+    color: white;
+    font-weight: 500;
+}
+
+#cardContainer .title {
+    font-size: 18px;
+    color: #F74D79;
+    padding: 0px 18px
+}
+
+#cardContainer .blogDetails {
+    padding-left: 16px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#cardContainer .blogDetails>div {
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    padding-left: 0p;
+}
+
+#cardContainer .blogDetails>div .readT {
+    color: white;
+    padding: 4px;
+    font-size: 12px;
+}
+
+#cardContainer .blogDetails>div .date {
+    color: white;
+    padding: 4px;
+    font-size: 12px;
+}
+
+#cardContainer .blogDetails>div .tag {
+    color: #F74D79;
+    background-color: rgba(255, 106, 145, 0.12);
+    border-radius: 5px;
+    padding: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+#cardContainer .cardActions {
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 0px;
+}
+
+#cardContainer .upvote {
+    margin-left: 5px;
+    font-size: 16px;
+    position: relative;
+    bottom: -2px;
+    color: #626262;
+}

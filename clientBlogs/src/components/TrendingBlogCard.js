@@ -18,6 +18,7 @@ import axios from "axios";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import { useSelector } from "react-redux";
+import "./css/TrendingBlogCard.css";
 
 export default function BlogCard({
   title,
@@ -54,29 +55,10 @@ export default function BlogCard({
   }, []);
 
   return (
-    <Card
-      sx={{
-        borderRadius: "10px",
-        backgroundColor: "#2F2F2F",
-        minWidth: "100%",
-        height: "531px",
-        margin: "auto",
-        mt: 1,
-        border: "1px solid #414141",
-      }}
-    >
+    <Card id="card">
       <CardMedia component="img" height="50%" image={image} alt="Paella dish" />
-      <Box
-        height="50%"
-        display={"flex"}
-        flexDirection={"column"}
-        // justifyContent={"space-around"}
-        padding="2"
-        marginX={"10px"}
-        marginTop={"16px"}
-        gap={'10px'}
-      >
-        <Box display={"flex"} justifyContent="space-between" sx={{}}>
+      <Box className="cardContent">
+        <Box display={"flex"} justifyContent="space-between">
           <CardHeader
             avatar={
               <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -84,45 +66,17 @@ export default function BlogCard({
               </Avatar>
             }
             title={username}
-            sx={{
-              padding: "10px",
-              paddingLeft: "16px",
-              fontSize: "13px",
-              color: "white",
-              fontWeight: "500",
-            }}
+            className="cardHeader"
           />
-          <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-            <p style={{ color: "white", padding: "4px", fontSize: "13.4px" }}>
-              {read_time} min read
-            </p>
+          <div className="blogDetails">
+            <p className="readT">{read_time} min read</p>
 
-            <p style={{ color: "white", padding: "4px", fontSize: "13.4px" }}>
-              {time}
-            </p>
-            <p
-              style={{
-                color: "#F74D79",
-                backgroundColor: "rgba(255, 106, 145, 0.12)",
-                borderRadius: "5px",
-                padding: "4px",
-                paddingLeft: "8px",
-                paddingRight: "8px",
-                fontSize: "13.4px",
-                marginRight: "16px",
-              }}
-            >
-              {tag}
-            </p>
+            <p className="date">{time}</p>
+            <p className="tag">{tag}</p>
           </div>
         </Box>
-        <CardContent style={{paddingTop:'0px', paddingBottom:'0px'}}>
-          <Typography
-            paddingY="10px"
-            sx={{ fontSize: "18px", color: "#F74D79" }}
-            variant="h6"
-            color="text.secondary"
-          >
+        <CardContent style={{ paddingTop: "0px", paddingBottom: "0px" }}>
+          <Typography variant="h6" className="title">
             Title : {title}
           </Typography>
           <Typography variant="body2" color="white" fontSize={"15px"}>
@@ -132,58 +86,12 @@ export default function BlogCard({
         <CardActions
           disableSpacing
           onMouseLeave={() => setShowSharingBox(false)}
-          style={{zIndex:'8'}}
+          style={{ zIndex: "8" }}
         >
           <IconButton aria-label="add to favorites" onClick={handleUpvote}>
             <ThumbUpAltIcon style={{ color: "#626262" }} />
-            <span
-              style={{
-                marginLeft: 5,
-                fontSize: "16px",
-                position: "relative",
-                bottom: "-2px",
-                color: "#626262",
-              }}
-            >
-              {upvoteCount}
-            </span>
+            <span className="upvote">{upvoteCount}</span>
           </IconButton>
-          {/* <IconButton
-            aria-label="share"
-            onMouseEnter={() => setShowSharingBox(true)}
-          >
-            <SendIcon style={{color:'#626262'}} />
-          </IconButton>
-          {showSharingBox && (
-            <Box
-              display="flex"
-              alignItems="center"
-              marginLeft={"8px"}
-              gap={"10px"}
-            >
-              <TwitterShareButton
-                url={"https://www.example.com"}
-                quote={"Dummy text!"}
-                hashtag="#muo"
-              >
-                <TwitterIcon size={32} round />
-              </TwitterShareButton>
-              <EmailShareButton
-                url={"https://www.example.com"}
-                quote={"Dummy text!"}
-            hashtag="#muo"
-              >
-                <EmailIcon size={32} round />
-              </EmailShareButton>
-              <WhatsappShareButton
-                url={"https://www.example.com"}
-                quote={"Dummy text!"}
-                hashtag="#muo"
-              >
-                <WhatsappIcon size={32} round />
-              </WhatsappShareButton>
-            </Box>
-          )} */}
         </CardActions>
       </Box>
     </Card>

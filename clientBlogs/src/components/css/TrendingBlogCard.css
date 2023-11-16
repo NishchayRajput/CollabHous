@@ -1,0 +1,71 @@
+#card {
+    border-radius: 10px;
+    background-color: #2F2F2F;
+    min-width: 100%;
+    height: 531px;
+    margin: auto;
+    margin-top: 1rem;
+    border: 1px solid #414141;
+}
+
+.cardContent {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 2;
+    margin: 0px 10px;
+    margin-top: 16px;
+    gap: 10px;
+}
+
+#card .cardHeader {
+    padding: 10px;
+    padding-left: 16px;
+    font-size: 13px;
+    color: white;
+    font-weight: 500;
+}
+
+#card .cardContent .blogDetails {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+#card .cardContent .blogDetails .readT {
+    color: white;
+    padding: 4px;
+    font-size: 13.4px;
+}
+
+#card .cardContent .blogDetails .date {
+    color: white;
+    padding: 4px;
+    font-size: 13.4px;
+}
+
+#card .cardContent .blogDetails .tag {
+    color: #F74D79;
+    background-color: rgba(255, 106, 145, 0.12);
+    border-radius: 5px;
+    padding: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    font-size: 13.4px;
+    margin-right: 16px;
+}
+
+#card .cardContent .title {
+    padding: 10px 0px;
+    font-size: 18px;
+    color: #F74D79;
+
+}
+
+#card .cardContent .upvote {
+    margin-left: 5px;
+    font-size: 16px;
+    position: relative;
+    bottom: -2px;
+    color: #626262;
+}

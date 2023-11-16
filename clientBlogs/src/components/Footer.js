@@ -1,21 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Box, Button, Tab, Tabs, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-
+import "./css/Footer.css";
 const Footer = () => {
   return (
-    <Box paddingTop={"3rem"} paddingLeft={"7rem"} borderTop={"3px solid white"}>
+    <Box className="footerContainer">
       <Box>
         <Typography fontSize={"32px"} color={"white"}>
           CH commune
         </Typography>
       </Box>
-      <Box
-        display={"flex"}
-        gap={"150px"}
-        paddingBottom={"3rem"}
-        paddingTop={"26px"}
-      >
+      <Box className="row2">
         <Box width={"30%"}>
           <Typography fontSize={"18px"} color={"white"}>
             Read, react and share the original thoughts of creators and thinkers
@@ -25,67 +20,27 @@ const Footer = () => {
         </Box>
         <Box width={"10%"}>
           <Link to="/home" style={{ textDecoration: "none" }}>
-            <Typography
-              fontSize={"22px"}
-              fontWeight={500}
-              color={"white"}
-              marginBottom={"32px"}
-            >
-              Home
-            </Typography>
+            <Typography className="pageLinks">Home</Typography>
           </Link>
           <Link to="/blogs" style={{ textDecoration: "none" }}>
-            <Typography
-              fontSize={"22px"}
-              fontWeight={500}
-              color={"white"}
-              marginBottom={"32px"}
-            >
-              Blogs
-            </Typography>
+            <Typography className="pageLinks">Blogs</Typography>
           </Link>
           <Link to="/connect" style={{ textDecoration: "none" }}>
-            <Typography
-              fontSize={"22px"}
-              fontWeight={500}
-              color={"white"}
-              marginBottom={"32px"}
-            >
-              Connect
-            </Typography>
+            <Typography className="pageLinks">Connect</Typography>
           </Link>
           <Link to="/faqs" style={{ textDecoration: "none" }}>
-            <Typography
-              fontSize={"22px"}
-              fontWeight={500}
-              color={"white"}
-              marginBottom={"32px"}
-            >
-              FAQs
-            </Typography>
+            <Typography className="pageLinks">FAQs</Typography>
           </Link>
         </Box>
         <Box width={"30%"}>
-          <Typography
-            fontSize={"22px"}
-            fontWeight={500}
-            color={"white"}
-            marginBottom={"32px"}
-          >
-            Social media
-          </Typography>
+          <Typography className="pageLinks">Social media</Typography>
           <a
             href="https://www.instagram.com/your-instagram-username"
             target="_blank"
             rel="noopener noreferrer"
             style={{ textDecoration: "none" }}
           >
-            <Typography
-              fontSize={"22px"}
-              fontWeight={500}
-              color={"#7F7F7F"}
-              marginBottom={"32px"}
-            >
+            <Typography className="socialMedia">
               Instagram
               <img
                 src="images/Vector.png"
@@ -100,12 +55,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             style={{ textDecoration: "none" }}
           >
-            <Typography
-              fontSize={"22px"}
-              fontWeight={500}
-              color={"#7F7F7F"}
-              marginBottom={"32px"}
-            >
+            <Typography className="socialMedia">
               Linked in
               <img
                 src="images/Vector.png"
@@ -120,12 +70,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             style={{ textDecoration: "none" }}
           >
-            <Typography
-              fontSize={"22px"}
-              fontWeight={500}
-              color={"#7F7F7F"}
-              marginBottom={"32px"}
-            >
+            <Typography className="socialMedia">
               Twitter
               <img
                 src="images/Vector.png"
@@ -136,14 +81,7 @@ const Footer = () => {
           </a>
         </Box>
         <Box width={"40%"}>
-          <Typography
-            fontSize={"22px"}
-            fontWeight={500}
-            color={"white"}
-            marginBottom={"70px"}
-          >
-            Contact us
-          </Typography>
+          <Typography className="contactus">Contact us</Typography>
 
           <a
             href="https://www.chcommune.com"
@@ -151,15 +89,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             style={{ textDecoration: "none" }}
           >
-            <Typography
-              fontSize={"18px"}
-              fontWeight={500}
-              color={"#7F7F7F"}
-              marginBottom={"10px"}
-            >
-              {" "}
-              chcommune.com
-            </Typography>
+            <Typography className="email"> chcommune.com</Typography>
           </a>
 
           <a
@@ -168,15 +98,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             style={{ textDecoration: "none" }}
           >
-            <Typography
-              fontSize={"18px"}
-              fontWeight={500}
-              color={"#7F7F7F"}
-              marginBottom={"10px"}
-            >
-              {" "}
-              collabhous.com
-            </Typography>{" "}
+            <Typography className="email"> collabhous.com</Typography>{" "}
           </a>
           <a
             href="https://www.hey@collabhous.com"
@@ -184,15 +106,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             style={{ textDecoration: "none" }}
           >
-            <Typography
-              fontSize={"18px"}
-              fontWeight={500}
-              color={"#7F7F7F"}
-              marginBottom={"10px"}
-            >
-              {" "}
-              hey@collabhous.com
-            </Typography>{" "}
+            <Typography className="email"> hey@collabhous.com</Typography>{" "}
           </a>
         </Box>
       </Box>
