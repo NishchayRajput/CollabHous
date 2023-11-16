@@ -1,0 +1,47 @@
+* {}
+
+.section {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.heroBanner {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.heroBanner .container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+    top: -100px;
+}
+
+.heroBanner .container>.title {
+    font-size: 36px;
+    color: #F74D79;
+    font-weight: 500;
+}
+
+.heroBanner .container>.X {
+    font-size: 36px;
+    font-weight: 900;
+    color: grey;
+}
+
+.heroBanner .container>.username {
+    font-size: 23px;
+    color: white;
+    font-weight: 500;
+}
+
+.heroBanner .container>img {
+    width: "36px";
+    height: "36px";
+    border-radius: "50%";
+}

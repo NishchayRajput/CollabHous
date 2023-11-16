@@ -1,14 +1,9 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import Badge from "@mui/material/Badge";
-import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-import Logout from "@mui/icons-material/Logout";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 export default function Notification() {
   const [anchorEl, setAnchorEl] = React.useState(null);

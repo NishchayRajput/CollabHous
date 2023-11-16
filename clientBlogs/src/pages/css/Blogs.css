@@ -1,0 +1,25 @@
+.mainContainer {
+    max-width: 80%;
+    margin: 0px auto;
+}
+
+.tabsContainer {
+    background-color: rgba(35, 36, 38, 1);
+    border-bottom: 1px solid white;
+}
+
+.tabsContainer .tabs {
+    font-size: 24px;
+    text-transform: none;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.blogCard {
+    max-width: 700px;
+    width: 350px;
+    margin: 3rem 2rem;
+    min-height: 435px;
+    height: auto;
+    flex-wrap: wrap;
+}

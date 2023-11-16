@@ -8,7 +8,8 @@ import { Link } from "react-router-dom";
 
 import TrendingBlogCard from "../components/TrendingBlogCard";
 import Footer from "../components/Footer";
-import Header from "../components/Header";
+import "./css/Blogs.css";
+
 const Blogs = () => {
   const [allBlogs, setAllBlogs] = useState([]);
   const [blogs, setBlogs] = useState([]);
@@ -28,7 +29,6 @@ const Blogs = () => {
   };
   useEffect(() => {
     getAllBlogs();
-   
   }, []);
 
   const [valueT, setValueT] = React.useState(0);
@@ -51,7 +51,7 @@ const Blogs = () => {
 
   return (
     <>
-      <Box mx={"auto"} sx={{ maxWidth: "80%", bgcolor: "background.paper" }}>
+      <Box className="mainContainer">
         <Tabs
           value={valueT}
           onChange={handleChange}
@@ -63,23 +63,16 @@ const Blogs = () => {
               backgroundColor: true ? "#F74D79" : "rgba(35, 36, 38, 1)", // Colored underline for selected tab
             },
           }}
-          sx={{
-            backgroundColor: "rgba(35, 36, 38, 1)",
-            borderBottom: "1px solid white",
-            // height:'30px'
-          }}
+          className="tabsContainer"
         >
           <Tab
             label="All Categories"
             onClick={() => {
               setBlogs(allBlogs);
             }}
+            className="tabs"
             style={{
               color: valueT === 0 ? "#F74D79" : "white", // Text color for selected tab
-              fontSize: "24px",
-              textTransform: "none",
-              marginLeft: "20px",
-              marginRight: "20px",
             }}
           />
           <Tab
@@ -87,12 +80,9 @@ const Blogs = () => {
             onClick={() => {
               filterBlogs("Trending");
             }}
+            className="tabs"
             style={{
               color: valueT === 1 ? "#F74D79" : "white", // Text color for selected tab
-              fontSize: "24px",
-              textTransform: "none",
-              marginLeft: "20px",
-              marginRight: "20px",
             }}
           />
           <Tab
@@ -100,12 +90,9 @@ const Blogs = () => {
             onClick={() => {
               filterBlogs("Ethnic");
             }}
+            className="tabs"
             style={{
               color: valueT === 2 ? "#F74D79" : "white", // Text color for selected tab
-              fontSize: "24px",
-              textTransform: "none",
-              marginLeft: "20px",
-              marginRight: "20px",
             }}
           />
           <Tab
@@ -113,12 +100,9 @@ const Blogs = () => {
             onClick={() => {
               filterBlogs("Classic");
             }}
+            className="tabs"
             style={{
               color: valueT === 3 ? "#F74D79" : "white", // Text color for selected tab
-              fontSize: "24px",
-              textTransform: "none",
-              marginLeft: "20px",
-              marginRight: "20px",
             }}
           />
           <Tab
@@ -126,12 +110,9 @@ const Blogs = () => {
             onClick={() => {
               filterBlogs("Community");
             }}
+            className="tabs"
             style={{
               color: valueT === 4 ? "#F74D79" : "white", // Text color for selected tab
-              fontSize: "24px",
-              textTransform: "none",
-              marginLeft: "20px",
-              marginRight: "20px",
             }}
           />
           <Tab
@@ -139,12 +120,9 @@ const Blogs = () => {
             onClick={() => {
               filterBlogs("More");
             }}
+            className="tabs"
             style={{
               color: valueT === 5 ? "#F74D79" : "white", // Text color for selected tab
-              fontSize: "24px",
-              textTransform: "none",
-              marginLeft: "20px",
-              marginRight: "20px",
             }}
           />
           <Tab
@@ -152,12 +130,9 @@ const Blogs = () => {
             onClick={() => {
               filterBlogs("Community2");
             }}
+            className="tabs"
             style={{
               color: valueT === 6 ? "#F74D79" : "white", // Text color for selected tab
-              fontSize: "24px",
-              textTransform: "none",
-              marginLeft: "20px",
-              marginRight: "20px",
             }}
           />
           <Tab
@@ -165,12 +140,9 @@ const Blogs = () => {
             onClick={() => {
               filterBlogs("More");
             }}
+            className="tabs"
             style={{
               color: valueT === 7 ? "#F74D79" : "white", // Text color for selected tab
-              fontSize: "24px",
-              textTransform: "none",
-              marginLeft: "20px",
-              marginRight: "20px",
             }}
           />
         </Tabs>
@@ -183,13 +155,7 @@ const Blogs = () => {
             blogs.map((blog, index) => (
               <Box
                 key={blog._id}
-                maxWidth="700px"
-                width="350px"
-                mx="2rem"
-                my="3rem"
-                minHeight="435px"
-                height="auto"
-                flexWrap="wrap"
+                className="blogCard"
                 sx={{
                   // Apply 2-column layout for the first four blogs
                   width: index < 4 ? "42%" : "26.2%",

@@ -8,6 +8,7 @@ import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import SendIcon from "@mui/icons-material/Send";
 import BlogCard from "../components/BlogCard";
+import "./css/IndividualBlogs.css";
 
 import {
   EmailShareButton,
@@ -35,7 +36,6 @@ export default function IndividualBlog({}) {
   let isLogin = useSelector((state) => state.isLogin);
   isLogin = isLogin || localStorage.getItem("userId");
   const navigate = useNavigate();
-
 
   let { blogId } = useParams();
   const [showSharingBox, setShowSharingBox] = useState(false); // State to control the sharing box
@@ -105,11 +105,6 @@ export default function IndividualBlog({}) {
         <section>
           <Box
             className="section"
-            minHeight="100vh"
-            color={"black"}
-            display={"flex"}
-            justifyContent={"center"}
-            alignItems={"center"}
             position="relative"
             sx={{
               background: 'url("https://picsum.photos/300/200") no-repeat',
@@ -118,33 +113,13 @@ export default function IndividualBlog({}) {
               backgroundColor: "#00000090",
             }}
           ></Box>
-          <Box width={"100%"} display={"flex"} justifyContent={"center"}>
-            <Box
-              display={"flex"}
-              alignItems={"center"}
-              gap={"16px"}
-              position={"relative"}
-              top="-100px"
-            >
-              <Typography
-                fontSize={"36px"}
-                color={"#F74D79"}
-                fontWeight={"500"}
-              >
-                {blog.title}
-              </Typography>
-              <Typography fontSize={"36px"} fontWeight={"900"} color={"grey"}>
-                X
-              </Typography>
-              <Typography fontSize={"23px"} color={"white"} fontWeight={"500"}>
-                Username
-              </Typography>
-              <Box>
-                <img
-                  src=""
-                  sx={{ width: "36px", height: "36px", borderRaius: "50%" }}
-                />
-              </Box>
+          <Box className="heroBanner">
+            <Box className="container">
+              <Typography className="title">{blog.title}</Typography>
+              <Typography className="X">X</Typography>
+              <Typography className="username">Username</Typography>
+
+              <img src="" />
             </Box>
           </Box>
         </section>
@@ -447,7 +422,7 @@ export default function IndividualBlog({}) {
             </CardActions>
           </Box>
         </section>
-        <section style={{width:'90%', margin:'auto'}}>
+        <section style={{ width: "90%", margin: "auto" }}>
           <Box
             display={"flex"}
             justifyContent={"space-between"}

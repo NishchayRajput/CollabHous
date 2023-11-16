@@ -11,7 +11,7 @@ import Fullpage, {
   FullpageSection,
 } from "@ap.cx/react-fullpage";
 import Footer from "../components/Footer";
-import Header from "../components/Header";
+import "./css/Home.css";
 
 const Home = () => {
   const [mostLikedBlog, setMostLikedBlog] = useState([]);
@@ -55,71 +55,32 @@ const Home = () => {
       <Fullpage>
         <FullPageSections>
           <FullpageSection id="Home">
-            <Box
-              className="section"
-              minHeight="100vh"
-              color={"black"}
-              display={"flex"}
-              justifyContent={"center"}
-              alignItems={"center"}
-              position="relative"
-            >
+            <Box className="section" position="relative">
               <img
                 src="images/heroLanding.png"
                 alt="heroLanding"
-                style={{
-                  objectFit: "cover",
-                  width: "100%",
-                  height: "100%",
-                  position: "absolute",
-                  top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
-                }}
+                className="heroLandingImage"
               />
             </Box>
           </FullpageSection>
           <FullpageSection>
             <Box
               className="section"
-              minHeight="100vh"
-              display={"flex"}
               flexDirection={"column"}
-              justifyContent={"center"}
-              alignItems={"center"}
               paddingTop={"3rem"}
             >
-              <Box
-                minHeight="100vh"
-                width="42%"
-                display={"flex"}
-                flexDirection={"column"}
-                justifyContent={"center"}
-                alignItems={"center"}
-              >
+              <Box className="carouselSection">
                 <Box>
                   <ControlledCarousel image={cImages} />
                 </Box>
-                <Box
-                  display={"flex"}
-                  width={"95%"}
-                  marginY={"15px"}
-                  gap={"15px"}
-                >
+                <Box className="carouselContentContainer">
                   <Button
+                    className="carouselContentBtn"
                     sx={{
-                      borderRadius: "30px",
                       bgcolor:
                         selectedButton === 1
                           ? "rgba(247, 77, 121, 1)"
                           : "rgba(72, 72, 72, 0.3)",
-                      border: "0.83px solid rgba(71, 71, 71, 1)",
-                      "&:hover": {
-                        bgcolor: "#5f5f5f",
-                      },
-                      textTransform: "none",
-                      fontSize: "23px",
-                      minWidth: "80px",
                     }}
                     variant="contained"
                     onClick={() =>
@@ -129,20 +90,12 @@ const Home = () => {
                     {selectedButton === 1 ? <p>Equitable</p> : <p>E</p>}
                   </Button>
                   <Button
+                    className="carouselContentBtn"
                     sx={{
-                      borderRadius: "30px",
                       bgcolor:
                         selectedButton === 2
                           ? "rgba(247, 77, 121, 1)"
                           : "rgba(72, 72, 72, 0.3)",
-                      border: "0.83px solid rgba(71, 71, 71, 1)",
-                      "&:hover": {
-                        bgcolor: "#5f5f5f",
-                      },
-                      textTransform: "none",
-                      fontSize: "23px",
-                      minWidth: "80px",
-                      minWidth: "80px",
                     }}
                     variant="contained"
                     onClick={() =>
@@ -152,19 +105,12 @@ const Home = () => {
                     {selectedButton === 2 ? <p>Trust</p> : <p>T</p>}
                   </Button>
                   <Button
+                    className="carouselContentBtn"
                     sx={{
-                      borderRadius: "30px",
                       bgcolor:
                         selectedButton === 3
                           ? "rgba(247, 77, 121, 1)"
                           : "rgba(72, 72, 72, 0.3)",
-                      border: "0.83px solid rgba(71, 71, 71, 1)",
-                      "&:hover": {
-                        bgcolor: "#5f5f5f",
-                      },
-                      textTransform: "none",
-                      fontSize: "23px",
-                      minWidth: "80px",
                     }}
                     variant="contained"
                     onClick={() =>
@@ -174,19 +120,12 @@ const Home = () => {
                     {selectedButton === 3 ? <p>Relatability</p> : <p>R</p>}
                   </Button>
                   <Button
+                    className="carouselContentBtn"
                     sx={{
-                      borderRadius: "30px",
                       bgcolor:
                         selectedButton === 4
                           ? "rgba(247, 77, 121, 1)"
                           : "rgba(72, 72, 72, 0.3)",
-                      border: "0.83px solid rgba(71, 71, 71, 1)",
-                      "&:hover": {
-                        bgcolor: "#5f5f5f",
-                      },
-                      textTransform: "none",
-                      fontSize: "23px",
-                      minWidth: "80px",
                     }}
                     variant="contained"
                     onClick={() => handleButtonClick(4, heroData[3].value)}
@@ -194,110 +133,38 @@ const Home = () => {
                     {selectedButton === 4 ? <p>Identity</p> : <p>I</p>}
                   </Button>
                 </Box>
-                <Box
-                  paddingY={"20px"}
-                  color={"rgba(177, 177, 177, 1)"}
-                  sx={{ width: "100%", mx: "auto", fontSize: "24px" }}
-                >
-                  {displayText}
-                </Box>
+                <Box className="carouselDisplayText">{displayText}</Box>
               </Box>
             </Box>
           </FullpageSection>
           <FullpageSection id="whoAreWeSection">
-            <Box
-              className="section"
-              minHeight="100vh"
-              display={"flex"}
-              justifyContent={"center"}
-              alignItems={"center"}
-            >
+            <Box className="section">
               <Element name="whoAreWe">
-                <Box display={"flex"} minHeight="100vh">
-                  <Box
-                    width={"50%"}
-                    flexDirection={"column"}
-                    alignItems={"center"}
-                    justifyContent={"center"}
-                    marginY={"auto"}
-                    marginX={"auto"}
-                  >
-                    <Box width={"80%"} marginX={"auto"}>
-                      <p
-                        style={{
-                          fontSize: "45px",
-                          fontWeight: "100",
-                          color: "#F74D79",
-                          marginBottom: "20px",
-                          width: "100%",
-                        }}
-                      >
-                        {" "}
-                        Who are we?
-                      </p>
-                      <Box width={"100%"} fontSize={"25px"} color={"#FFFFFF"}>
-                        {heroData && heroData[6] && heroData[6].value}
-                      </Box>
-                    </Box>
+                <Box className="whoAreWeContainer">
+                  <Box className="contentPanel">
+                    <h2 className="contentHeading"> Who are we?</h2>
+                    <detail>
+                      {heroData && heroData[6] && heroData[6].value}
+                    </detail>
                   </Box>
-                  <Box width={"50%"}>
-                    <img
-                      style={{
-                        objectFit: "cover",
-                        width: "100%",
-                        height: "100vh",
-                      }}
-                      src="images/whoAreWe.png"
-                    ></img>
+                  <Box className="imagePanel">
+                    <img src="images/whoAreWe.png"></img>
                   </Box>
                 </Box>
               </Element>
             </Box>
           </FullpageSection>
           <FullpageSection>
-            <Box
-              className="section"
-              minHeight="100vh"
-              display={"flex"}
-              justifyContent={"center"}
-              alignItems={"center"}
-            >
-              <Box
-                display={"flex"}
-                flexDirection={"column"}
-                width={"60%"}
-                gap={"20px"}
-              >
-                <Box
-                  fontSize={"48px"}
-                  fontWeight={"100"}
-                  textAlign={"center"}
-                  color={"rgba(247, 77, 121, 1)"}
-                >
-                  Welcome
-                </Box>
+            <Box className="section">
+              <Box className="welcomeSection">
+                <h2>Welcome</h2>
 
-                <Typography
-                  fontSize={"20px"}
-                  fontWeight={"400"}
-                  textAlign={"center"}
-                  color={"#FFFFFF"}
-                >
-                  {heroData[6] != null ? heroData[6].value : ""}
-                </Typography>
+                <detail>{heroData[6] != null ? heroData[6].value : ""}</detail>
               </Box>
             </Box>
           </FullpageSection>
           <FullpageSection>
-            <Box
-              className="section"
-              minHeight="100vh"
-              display={"flex"}
-              justifyContent={"center"}
-              alignItems={"center"}
-              paddingX={"5%"}
-              paddingY={"5%"}
-            >
+            <Box className="section" padding={"5%"}>
               <Box display={"flex"} flexDirection={"column"} width={"80vw"}>
                 <Box display={"flex"} justifyContent={"space-between"}>
                   <Typography color={"rgba(247, 77, 121, 1)"} fontSize={"41px"}>
@@ -359,7 +226,11 @@ const Home = () => {
                         username={
                           recentBlog[0] != null ? recentBlog[0].user.name : ""
                         }
-                        time={recentBlog[0] != null ? formatDate(recentBlog[0].time) : ""}
+                        time={
+                          recentBlog[0] != null
+                            ? formatDate(recentBlog[0].time)
+                            : ""
+                        }
                         like={recentBlog[0] != null ? recentBlog[0].like : ""}
                         read_time={
                           recentBlog[0] != null ? recentBlog[0].read_time : "5"
