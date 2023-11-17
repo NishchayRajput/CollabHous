@@ -19,6 +19,7 @@ import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import { useSelector } from "react-redux";
 import "./css/BlogCard.css";
+import Dot from "./Dot";
 
 export default function BlogCard({
   title,
@@ -82,7 +83,13 @@ export default function BlogCard({
                 N
               </Avatar>
             }
-            title={username}
+            title=<p style={{
+              fontFamily: 'Roboto',
+                  fontWeight: "700",
+                  fontSize:"12px",
+                  lineHeight: "14px",
+                  letterSpacing: "0.05em",
+                  color: "white",}}>{username}</p>
             className="cardHeader"
           />
         </Box>
@@ -93,21 +100,52 @@ export default function BlogCard({
             variant="h6"
             color="text.secondary"
           >
-            Title : {title}
+            <p style={{
+                fontFamily: 'Roboto',
+                fontWeight: "700",
+                fontSize: "18px",
+                lineHeight: "21px",
+                letterSpacing: "0.05em",
+                color: "#F74D79",
+                paddingTop: "10px",
+            }}>{title}</p>
           </Typography>
           <Typography variant="body2" color="white" fontSize={"13px"}>
-            Description : {description}
+            <p style={{
+
+                fontFamily: 'Roboto',
+                fontWeight: "300",
+                fontSize: "12px",
+                lineHeight: "14px",
+                letterSpacing: "0.05em",
+                color: "white",
+            }}>{description}</p>
           </Typography>
         </CardContent>
-        <Box paddingLeft={"14px"}>
+        <Box paddingLeft={"22px"}>
           <div style={{ display: "flex", alignItems: "center" }}>
-            <p style={{ color: "white", padding: "4px", fontSize: "12px" }}>
-              {read_time} min read
-            </p>
+          <p style={{ color: "white", padding: "4px", 
+                  fontFamily: 'Questrial',
+                  fontWeight: "400",
+                  fontSize: "12px",
+                  lineHeight: "12px",
+                  letterSpacing:"0.05em",
 
-            <p style={{ color: "white", padding: "4px", fontSize: "12px" }}>
+               }}>
+                {read_time} min read
+              </p>
+                <Dot />
+            <p style={{ color: "white", padding: "4px", 
+                  fontFamily: 'Questrial',
+                  fontWeight: "400",
+                  fontSize: "12px",
+                  lineHeight: "12px",
+                  letterSpacing:"0.05em",
+
+               }}>
               {time}
             </p>
+            <Dot/>
             <p className="tag">{tag}</p>
           </div>
         </Box>

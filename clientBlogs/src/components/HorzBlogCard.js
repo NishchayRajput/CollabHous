@@ -113,7 +113,7 @@ export default function BlogCard({
                }}>
                 {read_time} min read
               </p>
-
+                <Dot />
               <p style={{ color: "white", padding: "4px", fontSize: "12px" }}>
                 {time}
               </p>

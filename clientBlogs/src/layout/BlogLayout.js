@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Tab, Tabs, Typography } from "@mui/material";
 import { Link, Outlet } from "react-router-dom";
+import "../pages/css/Blogs.css";
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
 </style>
@@ -18,15 +19,16 @@ const BlogLayout = () => {
         </Typography>
         <Typography 
         className="blogIntro"
-          fontSize={"15px"}
-          width={"60%"}
-          mx={"auto"}
-          padding={"10px"}
-          style={{
-            textAlign: "center",
-            paddingBottom: "100px",
-            color: "#ABABAB",
-          }}
+          // fontSize={"15px"}
+          // width={"60%"}
+          // mx={"auto"}
+          // padding={"10px"}
+          // style={{
+            
+          //   textAlign: "center",
+          //   paddingBottom: "100px",
+          //   color: "#ABABAB",
+          // }}
         >
           <Box>Welcome to the digital library of personal luxury.</Box>
           <Box> Written & directed by: The new age of India’s fashion commune</Box>
