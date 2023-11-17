@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Questrial&display=swap');
+
+.loginpage{
+    background-image: url("../../../public/images/Login.png");
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.signinBox{
+    width: 37%;
+    height: 58%;
+    background: rgba(31, 28, 28, 0.2);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(11px);
+    /* Note: backdrop-filter has minimal browser support */
+    border-radius: 16px;
+
+
+}
+
+
+.signinBox .signInText{
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 28px;
+line-height: 34px;
+color: #FFFFFF;
+
+}
+
+.signinBox .newUser{
+    margin: 0;
+    padding: 1% 0;
+    display:flex;
+    justify-content: flex-start;
+    font-size: 12px;
+    line-height: 15px; 
+    font-family: 'Montserrat'; 
+    text-decoration: none;
+    text-transform: none;
+}
+
+.signinBox .newUser span{
+    font-weight: 400;
+    color: #FFFFFF;
+}
+
+.signinBox .newUser {
+    font-weight: 700;
+    color: #FF2E64;
+}
+
+.signinBox .continue{
+
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 10px;
+gap: 10px;
+margin-top: 20px;
+margin-left:75%;
+width: 25%;
+height: 25px;
+background: #F74D79;
+border-radius: 16px;
+font-family: 'Montserrat';
+text-transform: none;
+font-weight: 700;
+font-size: 12px;
+line-height: 15px;
+color: #FFFFFF;
+
+}
+
+.signinBox .or{
+    font-size: 15px;
+    font-family: "Montserrat";
+    margin-top: 5%;
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: center;
+}
+
+.signinBox .or div{
+    background-color: white;
+    height: 1px;
+    width: 45%;
+}
+
+
+
