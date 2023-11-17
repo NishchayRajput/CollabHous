@@ -18,6 +18,7 @@ import axios from "axios";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import { useSelector } from "react-redux";
+import Dot from "./Dot";
 
 export default function BlogCard({
   title,
@@ -90,7 +91,14 @@ export default function BlogCard({
                   N
                 </Avatar>
               }
-              title={username}
+              title=<p  style={{
+
+                  fontFamily: 'Roboto',
+                  fontWeight: "700",
+                  fontSize:"12px",
+                  lineHeight: "14px",
+                  letterSpacing: "0.05em",
+                  color: "white",}}>{username}</p>
               sx={{
                 padding: "10px",
                 paddingLeft: "16px",
@@ -107,7 +115,14 @@ export default function BlogCard({
             variant="h6"
             color="text.secondary"
           >
-            Title : {title}
+            <p style={{
+                fontFamily: 'Roboto',
+                fontWeight: "700",
+                fontSize: "18px",
+                lineHeight: "21px",
+                letterSpacing: "0.05em",
+                color: "#F74D79",
+            }}>{title}</p>
           </Typography>
 
           <Box
@@ -123,13 +138,25 @@ export default function BlogCard({
                 paddingLeft: "0px",
               }}
             >
-              <p style={{ color: "white", padding: "4px", fontSize: "12px" }}>
+              <p style={{ color: "white", padding: "4px", 
+                  fontFamily: 'Questrial',
+                  fontWeight: "400",
+                  fontSize: "12px",
+                  lineHeight: "12px",
+                  letterSpacing:"0.05em",
+
+               }}>
                 {read_time} min read
               </p>
-
-              <p style={{ color: "white", padding: "4px", fontSize: "12px" }}>
+             <Dot />
+              <p style={{ color: "white", padding: "4px 4px",  fontFamily: 'Questrial',
+                  fontWeight: "400",
+                  fontSize: "12px",
+                  lineHeight: "12px",
+                  letterSpacing:"0.05em", }}>
                 {time}
               </p>
+              <Dot />
               <p
                 style={{
                   color: "#F74D79",
@@ -140,6 +167,15 @@ export default function BlogCard({
                   paddingRight: "8px",
                   fontSize: "12px",
                   marginLeft: "5px",
+
+
+                fontFamily: 'Questrial',
+                fontWeight: "400",
+                fontSize: "12px",
+                lineHeight: "12px",
+                letterSpacing:"0.05em",
+
+
                 }}
               >
                 {tag}

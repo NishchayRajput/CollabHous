@@ -18,6 +18,8 @@ import axios from "axios";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import { useSelector } from "react-redux";
+import Dot from "./Dot";
+
 
 export default function BlogCard({
   title,
@@ -83,7 +85,14 @@ export default function BlogCard({
                 N
               </Avatar>
             }
-            title={username}
+            title=<p style={{
+                  fontFamily: 'Roboto',
+                  fontWeight: "700",
+                  fontSize:"14.8978px",
+                  lineHeight: "17px",
+                  letterSpacing: "0.05em",
+                  color: "white",
+            }}>{username}</p>
             sx={{
               padding: "10px",
               paddingLeft: "16px",
@@ -93,13 +102,28 @@ export default function BlogCard({
             }}
           />
           <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-            <p style={{ color: "white", padding: "4px", fontSize: "13.4px" }}>
-              {read_time} min read
-            </p>
+            <p style={{ color: "white", padding: "4px",  
 
-            <p style={{ color: "white", padding: "4px", fontSize: "13.4px" }}>
+                  fontFamily: 'Questrial',
+                  fontWeight: "400",
+                  fontSize: "14.8978px",
+                  lineHeight: "15px",
+                  letterSpacing:"0.05em",
+
+            }}>
+              {read_time} min read 
+            </p>
+            <Dot />
+            <p style={{ color: "white", padding: "4px", 
+                  fontFamily: 'Questrial',
+                  fontWeight: "400",
+                  fontSize: "14.8978px",
+                  lineHeight: "15px",
+                  letterSpacing:"0.05em",
+             }}>
               {time}
             </p>
+            <Dot />
             <p
               style={{
                 color: "#F74D79",
@@ -108,8 +132,15 @@ export default function BlogCard({
                 padding: "4px",
                 paddingLeft: "8px",
                 paddingRight: "8px",
-                fontSize: "13.4px",
                 marginRight: "16px",
+
+
+
+                fontFamily: 'Questrial',
+                fontWeight: "400",
+                fontSize: "14.8978px",
+                lineHeight: "15px",
+                letterSpacing:"0.05em",
               }}
             >
               {tag}
@@ -123,10 +154,26 @@ export default function BlogCard({
             variant="h6"
             color="text.secondary"
           >
-            Title : {title}
+            <p style={{
+                fontFamily: 'Roboto',
+                fontWeight: "900",
+                fontSize: "22.3468px",
+                lineHeight: "26px",
+                letterSpacing: "0.05em",
+                color: "#F74D79",
+
+            }}>{title}</p>
           </Typography>
           <Typography variant="body2" color="white" fontSize={"15px"}>
-            Description : {description}
+            <p style={{
+                fontFamily: 'Roboto',
+                fontWeight: "300",
+                fontSize: "14.8978px",
+                lineHeight: "20px",
+                letterSpacing: "0.05em",
+                color: "#FFFFFF",
+
+            }}>{description}</p>
           </Typography>
         </CardContent>
         <CardActions
