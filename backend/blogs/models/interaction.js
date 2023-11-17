@@ -7,7 +7,7 @@ const interaction = new mongoose.Schema({
     user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'userInfo', required: true },
     interaction_id: { type: String ,required : true }, 
     interaction_type: { type: String, required: true },
-    interaction_content: { type: String, required: true },
+    interaction_content: { type: String },
     time: {
         type: Date,
         default: function () {

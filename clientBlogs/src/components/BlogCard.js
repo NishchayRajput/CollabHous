@@ -18,6 +18,7 @@ import axios from "axios";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import { useSelector } from "react-redux";
+import "./css/BlogCard.css";
 
 export default function BlogCard({
   title,
@@ -66,29 +67,15 @@ export default function BlogCard({
     setUpvoteCount(like);
   }, []);
   return (
-    <Card
-      sx={{
-        borderRadius: "10px",
-        backgroundColor: "#2F2F2F",
-        minWidth: "100%",
-        height: "100%",
-
-        mt: 1,
-        
-        border: "1px solid #414141",
-      }}
-    >
-      
-      <CardMedia component="img" height="48%" image={image} alt="Paella dish" />
-      <Box
-        height="50%"
-        display={"flex"}
-        flexDirection={"column"}
-        justifyContent={"space-around"}
-        marginTop={"10px"}
-        padding='2'
-      >
-        <Box display={"flex"} justifyContent="space-between" sx={{}}>
+    <div className="card">
+      <CardMedia
+        className="cardMedia"
+        component="img"
+        image={image}
+        alt="Paella dish"
+      />
+      <Box className="details">
+        <Box display={"flex"} justifyContent="space-between">
           <CardHeader
             avatar={
               <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -96,16 +83,10 @@ export default function BlogCard({
               </Avatar>
             }
             title={username}
-            sx={{
-              padding: "0px",
-              paddingLeft: "16px",
-              fontSize: "18px",
-              color: "white",
-              fontWeight: "500",
-            }}
+            className="cardHeader"
           />
         </Box>
-        <CardContent style={{paddingTop:'2px', paddingBottom:'11px', marginTop:'0px'}}>
+        <CardContent className="cardContent">
           <Typography
             paddingBottom="10px"
             sx={{ fontSize: "18px", color: "#F74D79" }}
@@ -127,39 +108,20 @@ export default function BlogCard({
             <p style={{ color: "white", padding: "4px", fontSize: "12px" }}>
               {time}
             </p>
-            <p
-              style={{
-                color: "#F74D79",
-                backgroundColor: "rgba(255, 106, 145, 0.12)",
-                borderRadius: "5px",
-                padding: "4px",
-                paddingLeft: "5px",
-                paddingRight: "5px",
-                marginLeft: "5px",
-                fontSize: "12px",
-              }}
-            >
-              {tag}
-            </p>
+            <p className="tag">{tag}</p>
           </div>
         </Box>
-        <CardActions disableSpacing style={{paddingTop:'0px', zIndex:'8'}}>
-          <IconButton aria-label="add to favorites" onClick={handleUpvote}>
+        <CardActions disableSpacing style={{ paddingTop: "0px", zIndex: "8" }}>
+          <IconButton arqia-label="add to favorites" onClick={handleUpvote}>
             <ThumbUpAltIcon style={{ color: "#626262" }} />
             <span
-              style={{
-                marginLeft: 5,
-                fontSize: "16px",
-                position: "relative",
-                bottom: "-2px",
-                color: "#626262",
-              }}
+              className="upvote"
             >
               {upvoteCount}
             </span>
           </IconButton>
         </CardActions>
       </Box>
-    </Card>
+    </div>
   );
 }

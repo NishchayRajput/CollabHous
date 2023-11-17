@@ -45,3 +45,154 @@
     height: "36px";
     border-radius: "50%";
 }
+
+.blogBanner {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.blogBanner .container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 6rem;
+    margin-bottom: 2rem;
+}
+
+.blogBanner .container .title {
+    font-size: 36px;
+    color: #F74D79;
+    font-weight: 500;
+}
+
+.blogBanner .container .X {
+    font-size: 36px;
+    font-weight: 900;
+    color: grey;
+}
+
+.blogBanner .container .username {
+    font-size: 23px;
+    color: white;
+    font-weight: 500;
+}
+
+.blogBanner .container>img {
+    width: "36px";
+    height: "36px";
+    border-radius: "50%";
+}
+
+.blogDetail {
+    border-top: 3px solid white;
+    border-bottom: 3px solid white;
+    padding: 25px 0px;
+}
+
+.blogDetail .container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.blogDetail .container>div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.blogDetail .container>div .readT {
+    font-size: 23px;
+    color: white;
+    padding: 4px;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    background-color: #4B4B4B;
+    border-radius: 50%;
+}
+
+.blogDetail .container>div .date {
+    font-size: 23px;
+    color: white;
+    padding: 4px;
+}
+
+.blogDetail .container>div .tag {
+    font-size: 23px;
+    color: #F74D79;
+    background-color: rgba(255, 106, 145, 0.12);
+    border-radius: 5px;
+    padding: 4px;
+    padding: 0px 8px;
+}
+
+.blogContent {
+    width: 90%;
+    margin: 0px auto;
+}
+
+.blogContent .subtitle {
+    color: white;
+    padding-top: 40px;
+    font-weight: 500;
+    font-size: 30px;
+    padding-bottom: 1rem;
+}
+
+.blogContent .content {
+    color: white;
+    padding-bottom: 20px;
+    font-size: 20px;
+}
+
+.reactSection {
+    border-bottom: 3px solid white;
+    padding: 5px 0px;
+    width: 90%;
+    margin: 0px auto;
+}
+
+.reactSection .upvote {
+    margin: 5px;
+    font-size: 16px;
+    position: relative;
+    bottom: -2px;
+    color: #626262;
+}
+
+.reactSection .sharingBox {
+    display: flex;
+    align-items: center;
+    margin-left: 8px;
+    gap: 10px;
+}
+
+.relatedBlogsSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 33px auto;
+}
+
+.relatedBlogsSection .title {
+    font-size: 39px;
+    color: white;
+}
+
+.relatedBlogsSection .more {
+    font-size: 26px;
+    color: white;
+}
+
+.relatedBlogsSection .card {
+    max-width: 350px;
+    width: 350px;
+    margin: 3rem 2rem;
+    height: 420px;
+    flex-wrap: wrap;
+}

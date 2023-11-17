@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { authActions } from "../redux/store";
 import toast from "react-hot-toast";
 import { Link as ScrollLink } from "react-scroll";
+import "./css/Header.css"
 
 
 const Header = () => {
@@ -45,15 +46,11 @@ const Header = () => {
     <>
       <AppBar
         position="sticky"
+        className="appbar"
         sx={{
           bgcolor: (value === 0 && scrollValue < 10) ? "rgba(72, 72, 72, 0)" : "rgba(72, 72, 72, 0.3)",
           border: (value === 0 && scrollValue < 10) ? "0px" : "2px solid rgba(134, 127, 127, 0.43)",
           boxShadow: (value === 0 && scrollValue < 10) ? "none" : "",
-          width: "68%",
-          marginLeft: "auto",
-          marginRight: "auto",
-          top: "10px",
-          borderRadius: "16px",
         }}
       >
         <Toolbar style={{ minHeight: "49px", height: "49px" }}>
@@ -74,6 +71,7 @@ const Header = () => {
                 label="Home"
                 LinkComponent={Link}
                 to="/"
+                className="tab"
                 style={{
                   opacity:"1",
                   color: value === 0 ? "#F74D79" : "white", // Text color for selected tab
@@ -88,6 +86,7 @@ const Header = () => {
                 label="Who are we"
                 LinkComponent={Link}
                 to="/"
+                className="tab"
                 style={{
                   opacity:"1",
                   color: value === 1 ? "#F74D79" : "white", // Text color for selected tab
@@ -114,6 +113,7 @@ const Header = () => {
                 label="Blogs"
                 LinkComponent={Link}
                 to="/blogs"
+                className="tab"
                 style={{
                   opacity:"1",
                   color: value === 2 ? "#F74D79" : "white", // Text color for selected tab
@@ -130,6 +130,7 @@ const Header = () => {
                 label="Connect"
                 LinkComponent={Link}
                 to="/connect"
+                className="tab"
                 style={{
                   opacity:"1",
                   color: value === 3 ? "#F74D79" : "white", // Text color for selected tab

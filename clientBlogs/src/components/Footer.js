@@ -1,21 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Box, Button, Tab, Tabs, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-
+import "./css/Footer.css";
 const Footer = () => {
   return (
-    <Box paddingTop={"3rem"} paddingLeft={"7rem"} borderTop={"3px solid white"}>
+    <Box className="footerContainer">
       <Box>
         <Typography fontSize={"32px"} color={"white"}>
           <span>cH</span><span> Commune</span> 
         </Typography>
       </Box>
-      <Box
-        display={"flex"}
-        gap={"150px"}
-        paddingBottom={"3rem"}
-        paddingTop={"26px"}
-      >
+      <Box className="row2">
         <Box width={"30%"}>
           <Typography fontSize={"18px"} color={"white"}>
             <span style={{
@@ -47,7 +42,7 @@ const Footer = () => {
               marginBottom={"32px"}
               fontFamily= {'Roboto'}
               lineHeight= {"26px"}
-
+              className="pageLinks"
             >
               Home
             </Typography>
@@ -60,6 +55,7 @@ const Footer = () => {
               marginBottom={"32px"}
               fontFamily= {'Roboto'}
               lineHeight= {"26px"}
+              className="pageLinks"
             >
               Blogs
             </Typography>
@@ -72,6 +68,7 @@ const Footer = () => {
               marginBottom={"32px"}
               fontFamily= {'Roboto'}
               lineHeight= {"26px"}
+              className="pageLinks"
             >
               Connect
             </Typography>
@@ -84,6 +81,7 @@ const Footer = () => {
               marginBottom={"32px"}
               fontFamily= {'Roboto'}
               lineHeight= {"26px"}
+              className="pageLinks"
             >
               FAQs
             </Typography>
@@ -100,6 +98,14 @@ const Footer = () => {
           >
             Social media
           </Typography>
+
+
+            
+          
+          
+        </Box>
+        <Box width={"30%"}>
+          <Typography className="pageLinks">Social media</Typography>
           <a
             href="https://www.instagram.com/your-instagram-username"
             target="_blank"
@@ -113,7 +119,9 @@ const Footer = () => {
               marginBottom={"32px"}
               fontFamily= {'Roboto'}
               lineHeight= {"26px"}
+              className="socialMedia"
             >
+            
               Instagram
               <img
                 src="images/Vector.png"
@@ -135,6 +143,7 @@ const Footer = () => {
               marginBottom={"32px"}
               fontFamily= {'Roboto'}
               lineHeight= {"26px"}
+              className="socialMedia"
             >
               Linked in
               <img
@@ -157,6 +166,7 @@ const Footer = () => {
               marginBottom={"32px"}
               fontFamily= {'Roboto'}
               lineHeight= {"26px"}
+              className="socialMedia"
             >
               Twitter
               <img
@@ -175,6 +185,7 @@ const Footer = () => {
             marginBottom={"70px"}
             fontFamily= {'Roboto'}
             lineHeight= {"26px"}
+            className="contactus"
           >
             Contact us
           </Typography>
@@ -185,15 +196,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             style={{ textDecoration: "none" }}
           >
-            <Typography
-              fontSize={"18px"}
-              fontWeight={500}
-              color={"#7F7F7F"}
-              marginBottom={"10px"}
-            >
-              {" "}
-              chcommune.com
-            </Typography>
+            <Typography className="email"> chcommune.com</Typography>
           </a>
 
           <a
@@ -202,15 +205,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             style={{ textDecoration: "none" }}
           >
-            <Typography
-              fontSize={"18px"}
-              fontWeight={500}
-              color={"#7F7F7F"}
-              marginBottom={"10px"}
-            >
-              {" "}
-              collabhous.com
-            </Typography>{" "}
+            <Typography className="email"> collabhous.com</Typography>{" "}
           </a>
           <a
             href="https://www.hey@collabhous.com"
@@ -218,15 +213,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             style={{ textDecoration: "none" }}
           >
-            <Typography
-              fontSize={"18px"}
-              fontWeight={500}
-              color={"#7F7F7F"}
-              marginBottom={"10px"}
-            >
-              {" "}
-              hey@collabhous.com
-            </Typography>{" "}
+            <Typography className="email"> hey@collabhous.com</Typography>{" "}
           </a>
         </Box>
       </Box>

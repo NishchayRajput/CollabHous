@@ -124,105 +124,36 @@ export default function IndividualBlog({}) {
           </Box>
         </section>
         <section style={{ minHeight: "100vh" }}>
-          <Box width={"100%"} display={"flex"} justifyContent={"center"}>
-            <Box
-              display={"flex"}
-              alignItems={"center"}
-              gap={"16px"}
-              marginTop={"6rem"}
-              marginBottom={"2rem"}
-            >
-              <Typography
-                fontSize={"36px"}
-                color={"#F74D79"}
-                fontWeight={"500"}
-              >
-                {blog.title}
-              </Typography>
-              <Typography fontSize={"36px"} fontWeight={"900"} color={"grey"}>
-                X
-              </Typography>
-              <Typography fontSize={"23px"} color={"white"} fontWeight={"500"}>
-                Username
-              </Typography>
-              <Box>
-                <img //Avatar Image
-                  src=""
-                  sx={{ width: "36px", height: "36px", borderRaius: "50%" }}
-                />
-              </Box>
+          <Box className="blogBanner">
+            <Box className="container">
+              <Typography className="title">{blog.title}</Typography>
+              <Typography className="X">X</Typography>
+              <Typography className="username">Username</Typography>
+              <img //Avatar Image
+                src=""
+              />
             </Box>
           </Box>
           <Box
-            borderTop={"3px solid white"}
-            borderBottom={"3px solid white"}
-            paddingY={"25px"}
+            className="blogDetail"
             // paddingX={"3%"}
           >
             <Box display={"flex"} marginX={"auto"} width={"90%"}>
-              <Box
-                display={"flex"}
-                justifyContent={"space-between"}
-                width={"100%"}
-              >
-                <div
-                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
-                >
-                  <p
-                    style={{ fontSize: "23px", color: "white", padding: "4px" }}
-                  >
-                    {blog.read_time} min read
-                  </p>
-                  <Box
-                    height={"10px"}
-                    width={"10px"}
-                    backgroundColor={"#4B4B4B"}
-                    borderRadius={"50%"}
-                  ></Box>
-                  <p
-                    style={{ fontSize: "23px", color: "white", padding: "4px" }}
-                  >
-                    {formatDate(blog.time)}
-                  </p>
-                  <Box
-                    height={"10px"}
-                    width={"10px"}
-                    backgroundColor={"#4B4B4B"}
-                    borderRadius={"50%"}
-                  ></Box>
-                  <p
-                    style={{
-                      fontSize: "23px",
-                      color: "#F74D79",
-                      backgroundColor: "rgba(255, 106, 145, 0.12)",
-                      borderRadius: "5px",
-                      padding: "4px",
-                      paddingLeft: "8px",
-                      paddingRight: "8px",
-                    }}
-                  >
-                    {blog.tags}
-                  </p>
+              <Box className="container">
+                <div>
+                  <p className="readT">{blog.read_time} min read</p>
+                  <Box className="dot"></Box>
+                  <p className="date">{formatDate(blog.time)}</p>
+                  <Box className="dot"></Box>
+                  <p className="tag">{blog.tags}</p>
                 </div>
               </Box>
             </Box>
           </Box>
 
-          <Box width={"90%"} mx={"auto"}>
-            <Typography
-              color={"white"}
-              paddingTop={"40px"}
-              fontWeight={"500"}
-              fontSize={"30px"}
-              paddingBottom={"1rem"}
-            >
-              Fashion
-            </Typography>
-            <Typography
-              color={"white"}
-              paddingBottom={"20px"}
-              fontSize={"20px"}
-            >
+          <Box className="blogContent">
+            <Typography>Fashion</Typography>
+            <Typography className="content">
               Lorem ipsum dolor sit amet consectetur. Habitant diam mi semper in
               ultricies ipsum sed ac. Consectetur nascetur sit pharetra donec
               augue netus eget phasellus scelerisque. Laoreet elementum bibendum
@@ -254,12 +185,7 @@ export default function IndividualBlog({}) {
                 )
               }
 
-              <Typography
-                color={"white"}
-                paddingBottom={"20px"}
-                fontSize={"20px"}
-                width={"60"}
-              >
+              <Typography className="content" width={"60"}>
                 Lorem ipsum dolor sit amet consectetur. Habitant diam mi semper
                 in ultricies ipsum sed ac. Consectetur nascetur sit pharetra
                 donec augue netus eget phasellus scelerisque. Laoreet elementum
@@ -276,12 +202,7 @@ export default function IndividualBlog({}) {
                 faucibus dui bibendum consequat.
               </Typography>
             </Box>
-            <Typography
-              color={"white"}
-              paddingY={"20px"}
-              fontSize={"20px"}
-              mt={"1rem"}
-            >
+            <Typography className="content" mt={"1rem"}>
               Lorem ipsum dolor sit amet consectetur. Habitant diam mi semper in
               ultricies ipsum sed ac. Consectetur nascetur sit pharetra donec
               augue netus eget phasellus scelerisque. Laoreet elementum bibendum
@@ -297,12 +218,7 @@ export default function IndividualBlog({}) {
               lectus purus. Aliquet eget dui faucibus dui bibendum consequat.
             </Typography>
             <Box display={"flex"} mt={"1rem"}>
-              <Typography
-                color={"white"}
-                paddingBottom={"20px"}
-                fontSize={"20px"}
-                width={"60"}
-              >
+              <Typography className="content" width={"60"}>
                 Lorem ipsum dolor sit amet consectetur. Habitant diam mi semper
                 in ultricies ipsum sed ac. Consectetur nascetur sit pharetra
                 donec augue netus eget phasellus scelerisque. Laoreet elementum
@@ -335,12 +251,7 @@ export default function IndividualBlog({}) {
                 )
               }
             </Box>
-            <Typography
-              color={"white"}
-              paddingY={"20px"}
-              fontSize={"20px"}
-              mt={"1rem"}
-            >
+            <Typography className="content" mt={"1rem"}>
               Lorem ipsum dolor sit amet consectetur. Habitant diam mi semper in
               ultricies ipsum sed ac. Consectetur nascetur sit pharetra donec
               augue netus eget phasellus scelerisque. Laoreet elementum bibendum
@@ -358,12 +269,7 @@ export default function IndividualBlog({}) {
           </Box>
         </section>
         <section>
-          <Box
-            borderBottom={"3px solid white"}
-            paddingY={"25px"}
-            width={"90%"}
-            mx={"auto"}
-          >
+          <Box className="reactSection">
             <CardActions
               disableSpacing
               onMouseLeave={() => setShowSharingBox(false)}
@@ -371,17 +277,7 @@ export default function IndividualBlog({}) {
             >
               <IconButton aria-label="add to favorites" onClick={handleUpvote}>
                 <ThumbUpAltIcon style={{ color: "#F74D79" }} />
-                <span
-                  style={{
-                    marginLeft: 5,
-                    fontSize: "16px",
-                    position: "relative",
-                    bottom: "-2px",
-                    color: "#626262",
-                  }}
-                >
-                  {upvoteCount}
-                </span>
+                <span className="upvote">{upvoteCount}</span>
               </IconButton>
               <IconButton
                 aria-label="share"
@@ -390,12 +286,7 @@ export default function IndividualBlog({}) {
                 <SendIcon style={{ color: "#626262" }} />
               </IconButton>
               {showSharingBox && (
-                <Box
-                  display="flex"
-                  alignItems="center"
-                  marginLeft={"8px"}
-                  gap={"10px"}
-                >
+                <Box className="sharingBox">
                   <TwitterShareButton
                     url={"https://www.example.com"}
                     quote={"Dummy text!"}
@@ -423,36 +314,17 @@ export default function IndividualBlog({}) {
           </Box>
         </section>
         <section style={{ width: "90%", margin: "auto" }}>
-          <Box
-            display={"flex"}
-            justifyContent={"space-between"}
-            alignItems={"center"}
-            width={"100%"}
-            marginX={"auto"}
-            marginY={"33px"}
-          >
-            <Typography fontSize={"39px"} color={"white"}>
-              Related Blogs
-            </Typography>
+          <Box className="relatedBlogsSection">
+            <Typography className="title">Related Blogs</Typography>
             <Link to="/blogs" style={{ textDecoration: "none" }}>
-              <Typography fontSize={"26px"} color={"white"}>
-                More
-              </Typography>
+              <Typography className="more">More</Typography>
             </Link>
           </Box>
           <Box marginBottom={"66px"}>
             <Box display={"flex"} flexWrap={"wrap"}>
               {relatedBlog &&
                 relatedBlog.map((blog) => (
-                  <Box
-                    key={blog._id}
-                    maxWidth={"350px"}
-                    width={"350px"}
-                    mx={"2rem"}
-                    my={"3rem"}
-                    height={"420px"}
-                    flexWrap={"wrap"}
-                  >
+                  <Box key={blog._id} className="card">
                     <BlogCard
                       id={blog._id}
                       // isUser={

@@ -18,7 +18,7 @@ import axios from "axios";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import { useSelector } from "react-redux";
-import Dot from "./Dot";
+import "./css/HorzBlogCard.css";import Dot from "./Dot";
 
 export default function BlogCard({
   title,
@@ -56,16 +56,7 @@ export default function BlogCard({
     setUpvoteCount(like);
   }, []);
   return (
-    <Card
-      sx={{
-        height: "165px",
-        backgroundColor: "#2F2F2F",
-        minWidth: "100%",
-        margin: "auto",
-        mt: 1,
-        border: "1px solid #414141",
-      }}
-    >
+    <Card id="cardContainer">
       <Box display={"flex"}>
         <CardMedia
           component="img"
@@ -79,15 +70,7 @@ export default function BlogCard({
           <Box display={"flex"} justifyContent="space-between" width={"100%"}>
             <CardHeader
               avatar={
-                <Avatar
-                  sx={{
-                    bgcolor: red[500],
-                    height: "24px",
-                    width: "24px",
-                    fontSize: "15px",
-                  }}
-                  aria-label="recipe"
-                >
+                <Avatar className="avatar" aria-label="recipe">
                   N
                 </Avatar>
               }
@@ -106,10 +89,12 @@ export default function BlogCard({
                 color: "white",
                 fontWeight: "500",
               }}
+              className="cardHeader"
             />
           </Box>
 
           <Typography
+          className="title"
             paddingX="18px"
             sx={{ fontSize: "18px", color: "#F74D79" }}
             variant="h6"
@@ -125,11 +110,7 @@ export default function BlogCard({
             }}>{title}</p>
           </Typography>
 
-          <Box
-            paddingLeft={"16px"}
-            display={"flex"}
-            justifyContent="space-between"
-          >
+          <Box className="blogDetails">
             <div
               style={{
                 display: "flex",
@@ -148,12 +129,8 @@ export default function BlogCard({
                }}>
                 {read_time} min read
               </p>
-             <Dot />
-              <p style={{ color: "white", padding: "4px 4px",  fontFamily: 'Questrial',
-                  fontWeight: "400",
-                  fontSize: "12px",
-                  lineHeight: "12px",
-                  letterSpacing:"0.05em", }}>
+
+              <p style={{ color: "white", padding: "4px", fontSize: "12px" }}>
                 {time}
               </p>
               <Dot />
@@ -167,15 +144,6 @@ export default function BlogCard({
                   paddingRight: "8px",
                   fontSize: "12px",
                   marginLeft: "5px",
-
-
-                fontFamily: 'Questrial',
-                fontWeight: "400",
-                fontSize: "12px",
-                lineHeight: "12px",
-                letterSpacing:"0.05em",
-
-
                 }}
               >
                 {tag}
@@ -185,22 +153,12 @@ export default function BlogCard({
           <CardActions
             disableSpacing
             onMouseLeave={() => setShowSharingBox(false)}
-            sx={{
-              paddingTop: "10px",
-              paddingLeft: "10px",
-              paddingBottom: "0px",
-            }}
+            className="cardActions"
           >
             <IconButton aria-label="add to favorites" onClick={handleUpvote}>
               <ThumbUpAltIcon style={{ color: "#626262" }} />
               <span
-                style={{
-                  marginLeft: 5,
-                  fontSize: "16px",
-                  position: "relative",
-                  bottom: "-2px",
-                  color: "#626262",
-                }}
+                className="upvote"
               >
                 {upvoteCount}
               </span>

@@ -1,0 +1,40 @@
+.footerContainer {
+    padding-top: 3rem;
+    padding-left: 7rem;
+    border-top: 3px solid white;
+}
+
+.footerContainer .row2 {
+    display: flex;
+    gap: 150px;
+    padding-bottom: 3rem;
+    padding-top: 26px;
+}
+
+.footerContainer .row2 .pageLinks {
+    font-size: 22px;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 32px;
+}
+
+.footerContainer .row2 .socialMedia {
+    font-size: 22px;
+    font-weight: 500;
+    color: #7F7F7F;
+    margin-bottom: 32px;
+}
+
+.footerContainer .row2 .contactus {
+    font-size: 22px;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 70px;
+}
+
+.footerContainer .row2 .email {
+    font-size: 18px;
+    font-weight: 500;
+    color: #7F7F7F;
+    margin-bottom: 10px;
+}

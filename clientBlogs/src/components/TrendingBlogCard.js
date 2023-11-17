@@ -18,8 +18,8 @@ import axios from "axios";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import { useSelector } from "react-redux";
+import "./css/TrendingBlogCard.css";
 import Dot from "./Dot";
-
 
 export default function BlogCard({
   title,
@@ -56,29 +56,10 @@ export default function BlogCard({
   }, []);
 
   return (
-    <Card
-      sx={{
-        borderRadius: "10px",
-        backgroundColor: "#2F2F2F",
-        minWidth: "100%",
-        height: "531px",
-        margin: "auto",
-        mt: 1,
-        border: "1px solid #414141",
-      }}
-    >
+    <Card id="card">
       <CardMedia component="img" height="50%" image={image} alt="Paella dish" />
-      <Box
-        height="50%"
-        display={"flex"}
-        flexDirection={"column"}
-        // justifyContent={"space-around"}
-        padding="2"
-        marginX={"10px"}
-        marginTop={"16px"}
-        gap={'10px'}
-      >
-        <Box display={"flex"} justifyContent="space-between" sx={{}}>
+      <Box className="cardContent">
+        <Box display={"flex"} justifyContent="space-between">
           <CardHeader
             avatar={
               <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -93,6 +74,8 @@ export default function BlogCard({
                   letterSpacing: "0.05em",
                   color: "white",
             }}>{username}</p>
+            title={username}
+            className="cardHeader"
             sx={{
               padding: "10px",
               paddingLeft: "16px",
@@ -101,8 +84,8 @@ export default function BlogCard({
               fontWeight: "500",
             }}
           />
-          <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-            <p style={{ color: "white", padding: "4px",  
+          <div className="blogDetails" style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+            <p className="readT" style={{ color: "white", padding: "4px",  
 
                   fontFamily: 'Questrial',
                   fontWeight: "400",
@@ -120,7 +103,8 @@ export default function BlogCard({
                   fontSize: "14.8978px",
                   lineHeight: "15px",
                   letterSpacing:"0.05em",
-             }}>
+             }}
+             className="date">
               {time}
             </p>
             <Dot />
@@ -142,6 +126,7 @@ export default function BlogCard({
                 lineHeight: "15px",
                 letterSpacing:"0.05em",
               }}
+              className="tag"
             >
               {tag}
             </p>
@@ -154,7 +139,7 @@ export default function BlogCard({
             variant="h6"
             color="text.secondary"
           >
-            <p style={{
+            <p className="title" style={{
                 fontFamily: 'Roboto',
                 fontWeight: "900",
                 fontSize: "22.3468px",
@@ -163,6 +148,18 @@ export default function BlogCard({
                 color: "#F74D79",
 
             }}>{title}</p>
+
+            
+          <div className="blogDetails">
+            <p className="readT">{read_time} min read</p>
+
+            <p className="date">{time}</p>
+            <p className="tag">{tag}</p>
+          </div>
+      
+        <CardContent style={{ paddingTop: "0px", paddingBottom: "0px" }}>
+          <Typography variant="h6" className="title">
+            Title : {title}
           </Typography>
           <Typography variant="body2" color="white" fontSize={"15px"}>
             <p style={{
@@ -179,58 +176,12 @@ export default function BlogCard({
         <CardActions
           disableSpacing
           onMouseLeave={() => setShowSharingBox(false)}
-          style={{zIndex:'8'}}
+          style={{ zIndex: "8" }}
         >
           <IconButton aria-label="add to favorites" onClick={handleUpvote}>
             <ThumbUpAltIcon style={{ color: "#626262" }} />
-            <span
-              style={{
-                marginLeft: 5,
-                fontSize: "16px",
-                position: "relative",
-                bottom: "-2px",
-                color: "#626262",
-              }}
-            >
-              {upvoteCount}
-            </span>
+            <span className="upvote">{upvoteCount}</span>
           </IconButton>
-          {/* <IconButton
-            aria-label="share"
-            onMouseEnter={() => setShowSharingBox(true)}
-          >
-            <SendIcon style={{color:'#626262'}} />
-          </IconButton>
-          {showSharingBox && (
-            <Box
-              display="flex"
-              alignItems="center"
-              marginLeft={"8px"}
-              gap={"10px"}
-            >
-              <TwitterShareButton
-                url={"https://www.example.com"}
-                quote={"Dummy text!"}
-                hashtag="#muo"
-              >
-                <TwitterIcon size={32} round />
-              </TwitterShareButton>
-              <EmailShareButton
-                url={"https://www.example.com"}
-                quote={"Dummy text!"}
-            hashtag="#muo"
-              >
-                <EmailIcon size={32} round />
-              </EmailShareButton>
-              <WhatsappShareButton
-                url={"https://www.example.com"}
-                quote={"Dummy text!"}
-                hashtag="#muo"
-              >
-                <WhatsappIcon size={32} round />
-              </WhatsappShareButton>
-            </Box>
-          )} */}
         </CardActions>
       </Box>
     </Card>
