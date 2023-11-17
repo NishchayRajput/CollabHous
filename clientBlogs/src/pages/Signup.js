@@ -44,6 +44,7 @@ const Register = () => {
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
           },
+          withCredentials: true,
         }
       );
       console.log(data);
