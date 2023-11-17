@@ -19,6 +19,8 @@ import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import { useSelector } from "react-redux";
 import "./css/HorzBlogCard.css";
+import { Link } from "react-router-dom";
+
 export default function BlogCard({
   title,
   description,
@@ -28,7 +30,7 @@ export default function BlogCard({
   id,
   isUser,
   tag,
-  like,
+  likeCount,
   read_time,
 }) {
   // global state
@@ -52,19 +54,23 @@ export default function BlogCard({
 
   const [showSharingBox, setShowSharingBox] = useState(false); // State to control the sharing box visibility
   React.useEffect(() => {
-    setUpvoteCount(like);
+    setUpvoteCount(likeCount);
   }, []);
   return (
     <Card id="cardContainer">
       <Box display={"flex"}>
-        <CardMedia
-          component="img"
-          image={image}
-          alt="Paella dish"
-          minWidth={"50%"}
-          height={"100%"}
-          sx={{ width: "50%" }}
-        />
+        <div style={{ display: "block", width: "50%" }}>
+          <Link to={`/blogs/${id}`}>
+            <CardMedia
+              component="img"
+              image={image}
+              alt="Paella dish"
+              minWidth={"50%"}
+              height={"100%"}
+              sx={{ width: "100%" }}
+            />
+          </Link>
+        </div>
         <Box width={"50%"} paddingTop={"5px"}>
           <Box display={"flex"} justifyContent="space-between" width={"100%"}>
             <CardHeader
@@ -83,20 +89,11 @@ export default function BlogCard({
           </Typography>
 
           <Box className="blogDetails">
-            <div
-            >
-              <p className="readT">
-                {read_time} min read
-              </p>
+            <div>
+              <p className="readT">{read_time} min read</p>
 
-              <p className="date">
-                {time}
-              </p>
-              <p
-                className="tag"
-              >
-                {tag}
-              </p>
+              <p className="date">{time}</p>
+              <p className="tag">{tag}</p>
             </div>
           </Box>
           <CardActions
@@ -106,11 +103,7 @@ export default function BlogCard({
           >
             <IconButton aria-label="add to favorites" onClick={handleUpvote}>
               <ThumbUpAltIcon style={{ color: "#626262" }} />
-              <span
-                className="upvote"
-              >
-                {upvoteCount}
-              </span>
+              <span className="upvote">{upvoteCount ? upvoteCount : "0"}</span>
             </IconButton>
           </CardActions>
         </Box>

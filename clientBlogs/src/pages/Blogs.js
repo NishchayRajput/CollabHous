@@ -160,46 +160,53 @@ const Blogs = () => {
                   // Apply 2-column layout for the first four blogs
                   width: index < 4 ? "42%" : "26.2%",
                   flex: index < 4 ? "0 0 42%" : "0 0 26.2%",
+                  position: "relative",
                 }}
               >
+                {index < 4 ? (
+                  <TrendingBlogCard
+                    id={blog._id}
+                    // isUser={
+                    //   localStorage.getItem("userId") === blog.user?._id
+                    // }
+                    tag={blog.tag}
+                    title={blog.title}
+                    description={blog.content}
+                    image="https://picsum.photos/id/11/300/200"
+                    // image={blog.image}
+                    username={blog.user != null ? blog.user.name : "Username"}
+                    time={formatDate(blog.time)}
+                    like={blog.like}
+                  />
+                ) : (
+                  <BlogCard
+                    id={blog._id}
+                    // isUser={
+                    //   localStorage.getItem("userId") === blog.user?._id
+                    // }
+                    tag={blog.tag}
+                    title={blog.title}
+                    description={blog.content}
+                    image="https://picsum.photos/id/11/300/200"
+                    // image={blog.image}
+                    username={blog.user != null ? blog.user.name : "Username"}
+                    time={formatDate(blog.time)}
+                    like={blog.like}
+                    read_time={blog.read_time}
+                  />
+                )}
                 <Link
                   to={`/blogs/${blog._id}`}
-                  style={{ textDecoration: "none" }}
+                  style={{
+                    textDecoration: "none",
+                    height: "84%",
+                    width: "100%",
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                  }}
                 >
-                  {" "}
-                  {/* Link to individual blog page */}
-                  {index < 4 ? (
-                    <TrendingBlogCard
-                      id={blog._id}
-                      // isUser={
-                      //   localStorage.getItem("userId") === blog.user?._id
-                      // }
-                      tag={blog.tag}
-                      title={blog.title}
-                      description={blog.content}
-                      image="https://picsum.photos/id/11/300/200"
-                      // image={blog.image}
-                      username={blog.user != null ? blog.user.name : "Username"}
-                      time={formatDate(blog.time)}
-                      like={blog.like}
-                    />
-                  ) : (
-                    <BlogCard
-                      id={blog._id}
-                      // isUser={
-                      //   localStorage.getItem("userId") === blog.user?._id
-                      // }
-                      tag={blog.tag}
-                      title={blog.title}
-                      description={blog.content}
-                      image="https://picsum.photos/id/11/300/200"
-                      // image={blog.image}
-                      username={blog.user != null ? blog.user.name : "Username"}
-                      time={formatDate(blog.time)}
-                      like={blog.like}
-                      read_time={blog.read_time}
-                    />
-                  )}
+                  {/* Content inside the Link component (if any) */}
                 </Link>
               </Box>
             ))}

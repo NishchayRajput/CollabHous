@@ -171,6 +171,12 @@
     gap: 10px;
 }
 
+.commentBox {
+    margin: 0px 5%;
+    padding: 25px 0px;
+    width: 90%;
+}
+
 .relatedBlogsSection {
     display: flex;
     justify-content: space-between;

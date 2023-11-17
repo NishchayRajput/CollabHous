@@ -70,7 +70,7 @@ const Login = () => {
         });
       }
 
-      if (data.message === "Login successful with Google") {
+      if (data.message === "Google login successful") {
         // toast.success("User Google login Successfully");
         dispatch(authActions.login());
         navigate("/");
@@ -89,19 +89,6 @@ const Login = () => {
         });
       }
     } catch (error) {
-      Store.addNotification({
-        title: error.response.data,
-        message: "",
-        type: "danger",
-        insert: "top",
-        container: "bottom-center",
-        animationIn: ["animate__animated", "animate__fadeIn"],
-        animationOut: ["animate__animated", "animate__fadeOut"],
-        dismiss: {
-          duration: 2000,
-          onScreen: true,
-        },
-      });
       if (error.response) {
         // The server responded with a status code other than 2xx
         console.error(error.response.data); // Error response from the server

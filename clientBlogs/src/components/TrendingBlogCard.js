@@ -29,7 +29,7 @@ export default function BlogCard({
   id,
   isUser,
   tag,
-  like,
+  likeCount,
   read_time,
 }) {
   // global state
@@ -45,13 +45,12 @@ export default function BlogCard({
       // You can implement the upvote logic here, for example, send a request to your backend to record the upvote.
       // For this example, I'll simply increase the count by 1.
       setUpvoteCount(upvoteCount + 1);
-      // setUpvoteCount(upvoteCount + 1);
     }
   };
 
   const [showSharingBox, setShowSharingBox] = useState(false); // State to control the sharing box visibility
   React.useEffect(() => {
-    setUpvoteCount(like);
+    setUpvoteCount(likeCount);
   }, []);
 
   return (
@@ -89,8 +88,8 @@ export default function BlogCard({
           style={{ zIndex: "8" }}
         >
           <IconButton aria-label="add to favorites" onClick={handleUpvote}>
-            <ThumbUpAltIcon style={{ color: "#626262" }} />
-            <span className="upvote">{upvoteCount}</span>
+            <ThumbUpOffAltIcon style={{ color: "#626262" }} />
+            <span className="upvote">{upvoteCount ? upvoteCount : "0"}</span>
           </IconButton>
         </CardActions>
       </Box>

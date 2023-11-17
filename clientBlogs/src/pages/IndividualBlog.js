@@ -9,7 +9,8 @@ import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import SendIcon from "@mui/icons-material/Send";
 import BlogCard from "../components/BlogCard";
 import "./css/IndividualBlogs.css";
-
+import MapsUgcRoundedIcon from "@mui/icons-material/MapsUgcRounded";
+import CommentBox from "../components/CommentBox"
 import {
   EmailShareButton,
   FacebookShareButton,
@@ -39,6 +40,7 @@ export default function IndividualBlog({}) {
 
   let { blogId } = useParams();
   const [showSharingBox, setShowSharingBox] = useState(false); // State to control the sharing box
+  const [showCommentBox, setShowCommentBox] = useState(false); // State to control the sharing box
   const [allBlogs, setAllBlogs] = useState([]);
   const [blog, setBlog] = useState([]);
   const [relatedBlog, setRelatedBlog] = useState([]);
@@ -96,6 +98,9 @@ export default function IndividualBlog({}) {
       setUpvoteCount(upvoteCount + 1);
       // setUpvoteCount(upvoteCount + 1);
     }
+  };
+  const handleComment = () => {
+    setShowCommentBox(!showCommentBox);
   };
   // You can use this ID to fetch the specific blog content
   console.log(relatedBlog);
@@ -279,6 +284,9 @@ export default function IndividualBlog({}) {
                 <ThumbUpAltIcon style={{ color: "#F74D79" }} />
                 <span className="upvote">{upvoteCount}</span>
               </IconButton>
+              <IconButton aria-label="add to favorites" onClick={handleComment}>
+                <MapsUgcRoundedIcon style={{ color: "#FFFFFF" }} />
+              </IconButton>
               <IconButton
                 aria-label="share"
                 onMouseEnter={() => setShowSharingBox(true)}
@@ -311,7 +319,10 @@ export default function IndividualBlog({}) {
                 </Box>
               )}
             </CardActions>
-          </Box>
+            
+          </Box>{showCommentBox && <div className="commentBox">
+            <CommentBox />
+            </div>}
         </section>
         <section style={{ width: "90%", margin: "auto" }}>
           <Box className="relatedBlogsSection">

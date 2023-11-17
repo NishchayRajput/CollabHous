@@ -113,11 +113,11 @@ export default function BlogCard({
         </Box>
         <CardActions disableSpacing style={{ paddingTop: "0px", zIndex: "8" }}>
           <IconButton arqia-label="add to favorites" onClick={handleUpvote}>
-            <ThumbUpAltIcon style={{ color: "#626262" }} />
+            <ThumbUpOffAltIcon style={{ color: "#626262" }} />
             <span
               className="upvote"
             >
-              {upvoteCount}
+              {upvoteCount ? upvoteCount : "0"}
             </span>
           </IconButton>
         </CardActions>

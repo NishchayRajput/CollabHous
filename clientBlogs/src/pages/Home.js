@@ -32,10 +32,20 @@ const Home = () => {
         setHeroData(data.heroData);
         setRecentBlog(data.latestBlogs);
         setDisplayText(data.heroData[0].value);
+        console.log(data.mostLikedBlog);
       } catch (error) {
         console.log(error);
       }
     }
+    // async function getLike() {
+    //   try {
+    //     const { data } = await axios.get("http://localhost:5000/blogs/like");
+    //     console.log(data);
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // }
+    // getLike();
     getBlog();
   }, []);
 
@@ -187,7 +197,7 @@ const Home = () => {
                 <Box display={"flex"} height={"70vh"}>
                   <Box width={"50%"}>
                     <TrendingBlogCard
-                      // id={blog?.user_id}
+                      id={mostLikedBlog?._id}
                       // key={blog?.user_id}
                       // isUser={
                       //   localStorage.getItem("userId") === blog?.user?.user_id
@@ -202,9 +212,23 @@ const Home = () => {
                       }
                       time={formatDate(mostLikedBlog.time)}
                       tag={mostLikedBlog.tag}
-                      like={mostLikedBlog.like}
+                      likeCount={mostLikedBlog.like}
                       read_time={mostLikedBlog.read_time}
                     />
+                    <Link
+                      to={`/blogs/${mostLikedBlog._id}`}
+                      style={{
+                        textDecoration: "none",
+                        display: "block",
+                        height: "86%",
+                        width: "100%",
+                        position: "relative",
+                        top: "-531px",
+                        left: 0,
+                      }}
+                    >
+                      {/* Content inside the Link component (if any) */}
+                    </Link>
                   </Box>
                   <Box width={"50%"}>
                     <Box
@@ -214,30 +238,36 @@ const Home = () => {
                       marginX={"auto"}
                       gap={"10px"}
                     >
+                      <div style={{ height: "100%" }}>
+                        <HorzBlogCard
+                          id={recentBlog[0]?._id}
+                          // key={blog?.user_id}
+                          // isUser={
+                          //   localStorage.getItem("userId") === blog?.user?.user_id
+                          // }
+                          tag={recentBlog[0] != null ? recentBlog[0].tag : ""}
+                          title={
+                            recentBlog[0] != null ? recentBlog[0].title : ""
+                          }
+                          image="images/carouselSample.png"
+                          username={
+                            recentBlog[0] != null ? recentBlog[0].user.name : ""
+                          }
+                          time={
+                            recentBlog[0] != null
+                              ? formatDate(recentBlog[0].time)
+                              : ""
+                          }
+                          likeCount={recentBlog[0] != null ? recentBlog[0].like : "0"}
+                          read_time={
+                            recentBlog[0] != null
+                              ? recentBlog[0].read_time
+                              : "5"
+                          }
+                        />
+                      </div>
                       <HorzBlogCard
-                        // id={blog?.user_id}
-                        // key={blog?.user_id}
-                        // isUser={
-                        //   localStorage.getItem("userId") === blog?.user?.user_id
-                        // }
-                        tag={recentBlog[0] != null ? recentBlog[0].tag : ""}
-                        title={recentBlog[0] != null ? recentBlog[0].title : ""}
-                        image="images/carouselSample.png"
-                        username={
-                          recentBlog[0] != null ? recentBlog[0].user.name : ""
-                        }
-                        time={
-                          recentBlog[0] != null
-                            ? formatDate(recentBlog[0].time)
-                            : ""
-                        }
-                        like={recentBlog[0] != null ? recentBlog[0].like : ""}
-                        read_time={
-                          recentBlog[0] != null ? recentBlog[0].read_time : "5"
-                        }
-                      />
-                      <HorzBlogCard
-                        // id={blog?.user_id}
+                        id={recentBlog[1]?._id}
                         // key={blog?.user_id}
                         // isUser={
                         //   localStorage.getItem("userId") === blog?.user?.user_id
@@ -253,13 +283,13 @@ const Home = () => {
                             : ""
                         }
                         tag={recentBlog[1] != null ? recentBlog[1].tag : ""}
-                        like={recentBlog[1] != null ? recentBlog[1].like : ""}
+                        likeCount={recentBlog[1] != null ? recentBlog[1].like : "0"}
                         read_time={
                           recentBlog[1] != null ? recentBlog[1].read_time : "5"
                         }
                       />
                       <HorzBlogCard
-                        // id={blog?.user_id}
+                        id={recentBlog[2]?._id}
                         // key={blog?.user_id}
                         // isUser={
                         //   localStorage.getItem("userId") === blog?.user?.user_id
@@ -275,7 +305,7 @@ const Home = () => {
                             : ""
                         }
                         tag={recentBlog[2] != null ? recentBlog[2].tag : ""}
-                        like={recentBlog[2] != null ? recentBlog[2].like : ""}
+                        likeCount={recentBlog[2] != null ? recentBlog[2].like : ""}
                         read_time={
                           recentBlog[2] != null ? recentBlog[1].read_time : "5"
                         }
