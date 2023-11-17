@@ -9,6 +9,8 @@ import "react-notifications-component/dist/theme.css";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
+import "./css/Login.css"
+
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -104,29 +106,44 @@ const Login = () => {
     }
   };
   return (
-    <div style={{ marginTop: "8rem" }}>
-      <form onSubmit={handleSubmit}>
+    <div className="loginpage">
+      <img src="images/logo.png" />
+      <form onSubmit={handleSubmit} className="signinBox">
         <Box
           maxWidth={450}
           display="flex"
           flexDirection={"column"}
-          alignItems="center"
+          //alignItems="center"
           justifyContent={"center"}
           margin="auto"
           marginTop={5}
-          boxShadow="10px 10px 20px #ccc"
+          //boxShadow="10px 10px 20px #ccc"
           padding={3}
           borderRadius={5}
         >
           <Typography
-            variant="h4"
-            sx={{ textTransform: "uppercase" }}
-            padding={3}
-            textAlign="center"
-          >
-            Login
-          </Typography>
+            //variant="h4"
+            // // sx={{ textTransform: "uppercase" }}
+            // padding={3}
+            // textAlign="center"
 
+            // color={"white"}
+            // fontFamily={"Montserrat"}
+            // fontSize={"28px"}
+            // fontWeight={"700"}
+            // lineHeight={"34px"}
+
+            className="signInText"
+          >
+            Sign In
+          </Typography>
+          <Button
+            onClick={() => navigate("/register")}
+            className="newUser"
+          >
+          <span>New User? &nbsp;</span>Create an account
+          </Button>
+          
           <TextField
             placeholder="email"
             value={inputs.email}
@@ -148,12 +165,14 @@ const Login = () => {
 
           <Button
             type="submit"
-            sx={{ borderRadius: 3, marginTop: 3 }}
-            variant="contained"
-            color="primary"
+            // sx={{ borderRadius: 3, marginTop: 3 }}
+            // variant="contained"
+            // color="primary"
+            className="continue"
           >
-            Submit
+            Continue
           </Button>
+          <div className="or"><div></div>&nbsp;Or&nbsp; <div></div></div>
           <Button style={{ marginTop: "15px" }}>
             <GoogleOAuthProvider clientId="673293732147-5pde4aq555gdp0b3m8gv3f6s84peico5.apps.googleusercontent.com">
               <GoogleLogin
@@ -172,12 +191,7 @@ const Login = () => {
               />
             </GoogleOAuthProvider>
           </Button>
-          <Button
-            onClick={() => navigate("/register")}
-            sx={{ borderRadius: 3, marginTop: 3 }}
-          >
-            Not a user ? Please Register
-          </Button>
+          
         </Box>
       </form>
     </div>

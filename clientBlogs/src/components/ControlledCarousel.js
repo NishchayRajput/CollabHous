@@ -1,17 +1,20 @@
 import React from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import "./css/ControlledCarousel.css";
 
 const MyCarousel = ({image}) => {
   // console.log(image);
   return (
     <div style={{ width: "95%", margin: "0 auto", borderRadius: "20px" }}>
-      <Carousel
+      <Carousel 
+      axis="horizontal"
         showStatus={false} // Hide status indicators
         showThumbs={false} // Hide thumbnail images
         infiniteLoop // Enable infinite looping
         useKeyboardArrows // Enable keyboard navigation
         autoPlay={true}
+        
       >
         
         {image.map((image) => (

@@ -80,7 +80,7 @@ const Home = () => {
               paddingTop={"3rem"}
             >
               <Box className="carouselSection">
-                <Box>
+                <Box >
                   <ControlledCarousel image={cImages} />
                 </Box>
                 <Box className="carouselContentContainer">
@@ -177,7 +177,12 @@ const Home = () => {
             <Box className="section" padding={"5%"}>
               <Box display={"flex"} flexDirection={"column"} width={"80vw"}>
                 <Box display={"flex"} justifyContent={"space-between"}>
-                  <Typography color={"rgba(247, 77, 121, 1)"} fontSize={"41px"}>
+                  <Typography color={"rgba(247, 77, 121, 1)"} fontSize={"41px"} 
+                    fontFamily='Questrial'
+                    fontWeight={"400"}
+                    lineHeight= {"42px"}
+                    letterSpacing= {"0.05em"}
+                  >
                     Trending Blogs
                   </Typography>
 
@@ -189,6 +194,11 @@ const Home = () => {
                       display={"flex"}
                       alignItems={"center"}
                       paddingRight={"24px"}
+
+                      fontFamily= 'Roboto'
+                      fontWeight={"400"}
+                      lineHeight={"30px"}
+                      letterSpacing={"0.05em"}
                     >
                       More
                     </Typography>

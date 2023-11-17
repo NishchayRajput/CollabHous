@@ -20,6 +20,8 @@ import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import { useSelector } from "react-redux";
 import "./css/HorzBlogCard.css";
 import { Link } from "react-router-dom";
+import "./css/HorzBlogCard.css";
+import Dot from "./Dot";
 
 export default function BlogCard({
   title,
@@ -79,21 +81,76 @@ export default function BlogCard({
                   N
                 </Avatar>
               }
-              title={username}
+              title=<p
+                style={{
+                  fontFamily: "Roboto",
+                  fontWeight: "700",
+                  fontSize: "12px",
+                  lineHeight: "14px",
+                  letterSpacing: "0.05em",
+                  color: "white",
+                }}
+              >
+                {username}
+              </p>
               className="cardHeader"
             />
           </Box>
 
           <Typography className="title" variant="h6" color="text.secondary">
-            Title : {title}
+            <p
+              style={{
+                fontFamily: "Roboto",
+                fontWeight: "700",
+                fontSize: "18px",
+                lineHeight: "21px",
+                letterSpacing: "0.05em",
+                color: "#F74D79",
+              }}
+            >
+              {title}
+            </p>
           </Typography>
 
           <Box className="blogDetails">
             <div>
-              <p className="readT">{read_time} min read</p>
-
-              <p className="date">{time}</p>
-              <p className="tag">{tag}</p>
+              <p
+                style={{
+                  color: "white",
+                  padding: "4px",
+                  fontFamily: "Questrial",
+                  fontWeight: "400",
+                  fontSize: "12px",
+                  lineHeight: "12px",
+                  letterSpacing: "0.05em",
+                }}
+                className="readT"
+              >
+                {read_time} min read
+              </p>
+              <Dot />
+              <p
+                style={{ color: "white", padding: "4px", fontSize: "12px" }}
+                className="date"
+              >
+                {time}
+              </p>
+              <Dot />
+              <p
+                style={{
+                  color: "#F74D79",
+                  backgroundColor: "rgba(255, 106, 145, 0.12)",
+                  borderRadius: "5px",
+                  padding: "4px",
+                  paddingLeft: "8px",
+                  paddingRight: "8px",
+                  fontSize: "12px",
+                  marginLeft: "5px",
+                }}
+                className="tag"
+              >
+                {tag}
+              </p>
             </div>
           </Box>
           <CardActions

@@ -7,31 +7,64 @@ const Footer = () => {
     <Box className="footerContainer">
       <Box>
         <Typography fontSize={"32px"} color={"white"}>
-          CH commune
+          <span>cH</span><span> Commune</span> 
         </Typography>
       </Box>
       <Box className="row2">
         <Box width={"30%"}>
           <Typography fontSize={"18px"} color={"white"}>
-            Read, react and share the original thoughts of creators and thinkers
-            on personal luxury. Explore our content to delve into the minds
-            shaping these industries.
+            <span style={{
+                fontFamily: 'Roboto',
+                fontWeight: "500",
+                fontSize: "18px",
+                lineHeight: "142.4%",
+                color: "#FFFFFF",
+            }}>Read, react and share the original thoughts of creators and thinkers
+            on personal luxury.</span><span style={{
+
+                    fontFamily: 'Roboto',
+                    fontStyle: "italic",
+                    fontWeight: "400",
+                    fontSize: "18px",
+                    lineHeight: "142.4%",
+                    color: "#FFFFFF",
+
+            }}> Explore our content to delve into the minds
+            shaping these industries.</span>
           </Typography>
         </Box>
         <Box width={"10%"}>
           <Link to="/home" style={{ textDecoration: "none" }}>
-            <Typography className="pageLinks">Home</Typography>
+            <Typography
+              className="pageLinks"
+            >
+              Home
+            </Typography>
           </Link>
           <Link to="/blogs" style={{ textDecoration: "none" }}>
-            <Typography className="pageLinks">Blogs</Typography>
+            <Typography
+
+              className="pageLinks"
+            >
+              Blogs
+            </Typography>
           </Link>
           <Link to="/connect" style={{ textDecoration: "none" }}>
-            <Typography className="pageLinks">Connect</Typography>
+            <Typography
+              className="pageLinks"
+            >
+              Connect
+            </Typography>
           </Link>
           <Link to="/faqs" style={{ textDecoration: "none" }}>
-            <Typography className="pageLinks">FAQs</Typography>
+            <Typography
+              className="pageLinks"
+            >
+              FAQs
+            </Typography>
           </Link>
         </Box>
+        
         <Box width={"30%"}>
           <Typography className="pageLinks">Social media</Typography>
           <a
@@ -40,7 +73,10 @@ const Footer = () => {
             rel="noopener noreferrer"
             style={{ textDecoration: "none" }}
           >
-            <Typography className="socialMedia">
+            <Typography
+              className="socialMedia"
+            >
+            
               Instagram
               <img
                 src="images/Vector.png"
@@ -55,7 +91,10 @@ const Footer = () => {
             rel="noopener noreferrer"
             style={{ textDecoration: "none" }}
           >
-            <Typography className="socialMedia">
+            <Typography
+ 
+              className="socialMedia"
+            >
               Linked in
               <img
                 src="images/Vector.png"
@@ -70,7 +109,10 @@ const Footer = () => {
             rel="noopener noreferrer"
             style={{ textDecoration: "none" }}
           >
-            <Typography className="socialMedia">
+            <Typography
+       
+              className="socialMedia"
+            >
               Twitter
               <img
                 src="images/Vector.png"
@@ -81,7 +123,12 @@ const Footer = () => {
           </a>
         </Box>
         <Box width={"40%"}>
-          <Typography className="contactus">Contact us</Typography>
+          <Typography
+   
+            className="contactus"
+          >
+            Contact us
+          </Typography>
 
           <a
             href="https://www.chcommune.com"

@@ -19,6 +19,7 @@ import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import { useSelector } from "react-redux";
 import "./css/TrendingBlogCard.css";
+import Dot from "./Dot";
 
 export default function BlogCard({
   title,
@@ -64,22 +65,54 @@ export default function BlogCard({
                 N
               </Avatar>
             }
-            title={username}
+            title=<p style={{
+                  fontFamily: 'Roboto',
+                  fontWeight: "700",
+                  fontSize:"14.8978px",
+                  lineHeight: "17px",
+                  letterSpacing: "0.05em",
+                  color: "white",
+            }}>{username}</p>
+            
             className="cardHeader"
+    
           />
-          <div className="blogDetails">
-            <p className="readT">{read_time} min read</p>
-
-            <p className="date">{time}</p>
-            <p className="tag">{tag}</p>
+          <div className="blogDetails" >
+            <p className="readT">
+              {read_time} min read 
+            </p>
+            <Dot />
+            <p className="date">
+              {time}
+            </p>
+            <Dot />
+            <p className="tag">
+              {tag}
+            </p>
           </div>
         </Box>
-        <CardContent style={{ paddingTop: "0px", paddingBottom: "0px" }}>
-          <Typography variant="h6" className="title">
-            Title : {title}
+        <CardContent style={{paddingTop:'0px', paddingBottom:'0px'}}>
+          <Typography
+            paddingY="10px"
+            sx={{ fontSize: "18px", color: "#F74D79" }}
+            variant="h6"
+            color="text.secondary"
+          >
+            <p className="title">{title}</p>
           </Typography>
+        </CardContent>
+        <CardContent style={{ paddingTop: "0px", paddingBottom: "0px" }}>
+         
           <Typography variant="body2" color="white" fontSize={"15px"}>
-            Description : {description}
+            <p style={{
+                fontFamily: 'Roboto',
+                fontWeight: "300",
+                fontSize: "14.8978px",
+                lineHeight: "20px",
+                letterSpacing: "0.05em",
+                color: "#FFFFFF",
+
+            }}>{description}</p>
           </Typography>
         </CardContent>
         <CardActions

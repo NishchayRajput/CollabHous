@@ -10,6 +10,7 @@ import toast from "react-hot-toast";
 import { Link as ScrollLink } from "react-scroll";
 import "./css/Header.css"
 
+
 const Header = () => {
   // global state
   let isLogin = useSelector((state) => state.isLogin);
@@ -62,6 +63,7 @@ const Header = () => {
               TabIndicatorProps={{
                 style: {
                   backgroundColor: true ? "#F74D79" : "rgba(35, 36, 38, 1)", // Colored underline for selected tab
+                  
                 },
               }}
             >
@@ -71,7 +73,13 @@ const Header = () => {
                 to="/"
                 className="tab"
                 style={{
+                  opacity:"1",
                   color: value === 0 ? "#F74D79" : "white", // Text color for selected tab
+                  textTransform: "none",
+                  fontSize: "14px",
+                  marginLeft: "16px",
+                  marginRight: "16px",
+                  fontFamily: "Questrial",
                 }}
               />
               <Tab
@@ -80,7 +88,13 @@ const Header = () => {
                 to="/"
                 className="tab"
                 style={{
+                  opacity:"1",
                   color: value === 1 ? "#F74D79" : "white", // Text color for selected tab
+                  textTransform: "none",
+                  fontSize: "14px",
+                  marginLeft: "16px",
+                  marginRight: "16px",
+                  fontFamily: "Questrial",
                 }}
                 onClick={() => (value!=1)?scrollToPercentage(42):''}
               >
@@ -95,21 +109,36 @@ const Header = () => {
               </Tab>
 
               <Tab
+                
                 label="Blogs"
                 LinkComponent={Link}
                 to="/blogs"
                 className="tab"
                 style={{
+                  opacity:"1",
                   color: value === 2 ? "#F74D79" : "white", // Text color for selected tab
+                  textTransform: "none",
+                  fontSize: "14px",
+                  marginLeft: "16px",
+                  marginRight: "16px",
+                  fontFamily: "Questrial",
+               
                 }}
               />
               <Tab
+                
                 label="Connect"
                 LinkComponent={Link}
                 to="/connect"
                 className="tab"
                 style={{
+                  opacity:"1",
                   color: value === 3 ? "#F74D79" : "white", // Text color for selected tab
+                  textTransform: "none",
+                  fontSize: "14px",
+                  marginLeft: "16px",
+                  marginRight: "16px",
+                  fontFamily: "Questrial",
                 }}
               />
             </Tabs>
