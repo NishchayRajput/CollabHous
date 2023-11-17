@@ -1,9 +1,80 @@
 
-.backgorund-image{
-    background: url("images/contactus_hero_image.png") ;
-    height: 832px;
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;1,300&family=Roboto:wght@500&display=swap');
+
+.background{
+   /* background-image: url('../../assets/images/individualBlog.png') ;
+    height: 832px; 
     width: 1280px;
+    margin-top: 0px;
+    margin-left: 0px;*/
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform: translate(0%, -5%);
 }
 .button{
     display: flex;
+    margin-left: 426px;
+    margin-top: 387px;
+    width: 429px;
+    height: 57.84px;
+    gap: 39px;
+    align-items: center;
+
+    
+}
+#btn1{
+    color: white;
+    width: 195px;
+    height: 57.84px;
+    border-radius: 26.86px;
+    padding: 14.92px 14.92px;
+}
+#btn2{
+    color: #000000;
+    width: 195px;
+    height: 57.84px;
+    border-radius: 26.86px;
+    padding: 14.92px 14.92px;
+    border-color: #000000;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 5%;
+    line-height: auto;
+    
+}
+
+.box1{
+    display: grid;
+    grid-template-rows: 10px;
+    color: white;
+    width: 445px;
+    height: 368px;
+    background-color: #2F2F2F;
+    margin-left: 78px;
+    margin-top: 1062px;
+    border-radius: 8.36px;
+    background-color: #414141;
+    border-color: white;
+}
+ .middle-left p{
+    color: #F74D79;
+    width: 313px;
+    height: 38px;
+    margin-left: 138px;
+    margin-top: 998px;
+}
+.middle-left h1{
+    color: white;
+    height: 142.67px;
+    width: 126.45px;
+    margin-left: 209px;
+    margin-top: 832px;
+
+}
+.continue{
+    width: 445px;
+    height: 61px;
+    margin-left: 78px;
+    margin-top: 1442px;
 }
