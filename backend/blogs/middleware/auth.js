@@ -31,9 +31,8 @@ function authenticateMiddleware(req, res, next) {
       // If the token is invalid or expired, return a 401 (Unauthorized) response
       return res.status(401).json({ message: 'Unauthorized: Invalid token' });
     }
-    
-
-    const existuser = userInfo.findById(user.id);
+    // console.log(user);
+    const existuser = userInfo.findById(user.userId);
 
     if(existuser){
       console.log('Token verified');
@@ -41,7 +40,8 @@ function authenticateMiddleware(req, res, next) {
     else{
       console.log('Token not verified');
     }
-    req.body.uId=  user.id;
+    // console.log(user.id);
+    req.body.uId=  user.userId;
     next();
   });
 }

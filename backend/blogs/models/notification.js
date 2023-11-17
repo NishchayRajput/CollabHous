@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const blogs = require('./blogs');
 const notifications = new mongoose.Schema({
     parent_id: {
         type: mongoose.Schema.Types.ObjectId,
@@ -9,6 +9,11 @@ const notifications = new mongoose.Schema({
     user_id : {
         type : mongoose.Schema.Types.ObjectId,
         ref : 'userInfo',
+        required : true
+    },
+    blog_id : {
+        type : mongoose.Schema.Types.ObjectId,
+        ref : 'blogs',
         required : true
     },
     type : {
