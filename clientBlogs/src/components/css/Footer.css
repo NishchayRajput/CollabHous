@@ -13,23 +13,30 @@
 
 .footerContainer .row2 .pageLinks {
     font-size: 22px;
-    font-weight: 500;
+    font-weight: 700;
     color: white;
     margin-bottom: 32px;
+    font-family: "Roboto";
+    line-height: 26px;
+
 }
 
 .footerContainer .row2 .socialMedia {
     font-size: 22px;
-    font-weight: 500;
+    font-weight: 700;
     color: #7F7F7F;
     margin-bottom: 32px;
+    font-family: "Roboto";
+    line-height: 26px;
 }
 
 .footerContainer .row2 .contactus {
     font-size: 22px;
-    font-weight: 500;
+    font-weight: 700;
     color: white;
     margin-bottom: 70px;
+    font-family: "Roboto";
+    line-height: 26px;
 }
 
 .footerContainer .row2 .email {

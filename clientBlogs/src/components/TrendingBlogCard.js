@@ -74,60 +74,20 @@ export default function BlogCard({
                   letterSpacing: "0.05em",
                   color: "white",
             }}>{username}</p>
-            title={username}
+            
             className="cardHeader"
-            sx={{
-              padding: "10px",
-              paddingLeft: "16px",
-              fontSize: "13px",
-              color: "white",
-              fontWeight: "500",
-            }}
+    
           />
-          <div className="blogDetails" style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-            <p className="readT" style={{ color: "white", padding: "4px",  
-
-                  fontFamily: 'Questrial',
-                  fontWeight: "400",
-                  fontSize: "14.8978px",
-                  lineHeight: "15px",
-                  letterSpacing:"0.05em",
-
-            }}>
+          <div className="blogDetails" >
+            <p className="readT">
               {read_time} min read 
             </p>
             <Dot />
-            <p style={{ color: "white", padding: "4px", 
-                  fontFamily: 'Questrial',
-                  fontWeight: "400",
-                  fontSize: "14.8978px",
-                  lineHeight: "15px",
-                  letterSpacing:"0.05em",
-             }}
-             className="date">
+            <p className="date">
               {time}
             </p>
             <Dot />
-            <p
-              style={{
-                color: "#F74D79",
-                backgroundColor: "rgba(255, 106, 145, 0.12)",
-                borderRadius: "5px",
-                padding: "4px",
-                paddingLeft: "8px",
-                paddingRight: "8px",
-                marginRight: "16px",
-
-
-
-                fontFamily: 'Questrial',
-                fontWeight: "400",
-                fontSize: "14.8978px",
-                lineHeight: "15px",
-                letterSpacing:"0.05em",
-              }}
-              className="tag"
-            >
+            <p className="tag">
               {tag}
             </p>
           </div>
@@ -139,28 +99,11 @@ export default function BlogCard({
             variant="h6"
             color="text.secondary"
           >
-            <p className="title" style={{
-                fontFamily: 'Roboto',
-                fontWeight: "900",
-                fontSize: "22.3468px",
-                lineHeight: "26px",
-                letterSpacing: "0.05em",
-                color: "#F74D79",
-
-            }}>{title}</p>
-
-            
-          <div className="blogDetails">
-            <p className="readT">{read_time} min read</p>
-
-            <p className="date">{time}</p>
-            <p className="tag">{tag}</p>
-          </div>
-      
-        <CardContent style={{ paddingTop: "0px", paddingBottom: "0px" }}>
-          <Typography variant="h6" className="title">
-            Title : {title}
+            <p className="title">{title}</p>
           </Typography>
+        </CardContent>
+        <CardContent style={{ paddingTop: "0px", paddingBottom: "0px" }}>
+         
           <Typography variant="body2" color="white" fontSize={"15px"}>
             <p style={{
                 fontFamily: 'Roboto',

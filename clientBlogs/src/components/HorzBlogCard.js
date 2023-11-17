@@ -82,21 +82,12 @@ export default function BlogCard({
                   lineHeight: "14px",
                   letterSpacing: "0.05em",
                   color: "white",}}>{username}</p>
-              sx={{
-                padding: "10px",
-                paddingLeft: "16px",
-                fontSize: "12px",
-                color: "white",
-                fontWeight: "500",
-              }}
               className="cardHeader"
             />
           </Box>
 
           <Typography
           className="title"
-            paddingX="18px"
-            sx={{ fontSize: "18px", color: "#F74D79" }}
             variant="h6"
             color="text.secondary"
           >
@@ -111,14 +102,7 @@ export default function BlogCard({
           </Typography>
 
           <Box className="blogDetails">
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                paddingTop: "10px",
-                paddingLeft: "0px",
-              }}
-            >
+            <div>
               <p style={{ color: "white", padding: "4px", 
                   fontFamily: 'Questrial',
                   fontWeight: "400",

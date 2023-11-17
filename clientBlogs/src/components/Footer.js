@@ -36,12 +36,6 @@ const Footer = () => {
         <Box width={"10%"}>
           <Link to="/home" style={{ textDecoration: "none" }}>
             <Typography
-              fontSize={"22px"}
-              fontWeight={700}
-              color={"white"}
-              marginBottom={"32px"}
-              fontFamily= {'Roboto'}
-              lineHeight= {"26px"}
               className="pageLinks"
             >
               Home
@@ -49,12 +43,7 @@ const Footer = () => {
           </Link>
           <Link to="/blogs" style={{ textDecoration: "none" }}>
             <Typography
-              fontSize={"22px"}
-              fontWeight={700}
-              color={"white"}
-              marginBottom={"32px"}
-              fontFamily= {'Roboto'}
-              lineHeight= {"26px"}
+
               className="pageLinks"
             >
               Blogs
@@ -62,12 +51,6 @@ const Footer = () => {
           </Link>
           <Link to="/connect" style={{ textDecoration: "none" }}>
             <Typography
-              fontSize={"22px"}
-              fontWeight={700}
-              color={"white"}
-              marginBottom={"32px"}
-              fontFamily= {'Roboto'}
-              lineHeight= {"26px"}
               className="pageLinks"
             >
               Connect
@@ -75,35 +58,13 @@ const Footer = () => {
           </Link>
           <Link to="/faqs" style={{ textDecoration: "none" }}>
             <Typography
-              fontSize={"22px"}
-              fontWeight={700}
-              color={"white"}
-              marginBottom={"32px"}
-              fontFamily= {'Roboto'}
-              lineHeight= {"26px"}
               className="pageLinks"
             >
               FAQs
             </Typography>
           </Link>
         </Box>
-        <Box width={"30%"}>
-          <Typography
-            fontSize={"22px"}
-            fontWeight={700}
-            color={"white"}
-            marginBottom={"32px"}
-            fontFamily= {'Roboto'}
-            lineHeight= {"26px"}
-          >
-            Social media
-          </Typography>
-
-
-            
-          
-          
-        </Box>
+        
         <Box width={"30%"}>
           <Typography className="pageLinks">Social media</Typography>
           <a
@@ -113,12 +74,6 @@ const Footer = () => {
             style={{ textDecoration: "none" }}
           >
             <Typography
-              fontSize={"22px"}
-              fontWeight={700}
-              color={"#7F7F7F"}
-              marginBottom={"32px"}
-              fontFamily= {'Roboto'}
-              lineHeight= {"26px"}
               className="socialMedia"
             >
             
@@ -137,12 +92,7 @@ const Footer = () => {
             style={{ textDecoration: "none" }}
           >
             <Typography
-              fontSize={"22px"}
-              fontWeight={700}
-              color={"#7F7F7F"}
-              marginBottom={"32px"}
-              fontFamily= {'Roboto'}
-              lineHeight= {"26px"}
+ 
               className="socialMedia"
             >
               Linked in
@@ -160,12 +110,7 @@ const Footer = () => {
             style={{ textDecoration: "none" }}
           >
             <Typography
-              fontSize={"22px"}
-              fontWeight={700}
-              color={"#7F7F7F"}
-              marginBottom={"32px"}
-              fontFamily= {'Roboto'}
-              lineHeight= {"26px"}
+       
               className="socialMedia"
             >
               Twitter
@@ -179,12 +124,7 @@ const Footer = () => {
         </Box>
         <Box width={"40%"}>
           <Typography
-            fontSize={"22px"}
-            fontWeight={700}
-            color={"white"}
-            marginBottom={"70px"}
-            fontFamily= {'Roboto'}
-            lineHeight= {"26px"}
+   
             className="contactus"
           >
             Contact us

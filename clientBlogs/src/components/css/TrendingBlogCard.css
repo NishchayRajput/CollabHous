@@ -32,17 +32,17 @@
     gap: 6px;
 }
 
-#card .cardContent .blogDetails .readT {
+#card .cardContent .blogDetails .readT, .date{
     color: white;
     padding: 4px;
-    font-size: 13.4px;
+    font-family: 'Questrial';
+    font-weight: 400;
+    font-size: 14.8978px;
+    line-height: 15px;
+    letter-spacing:0.05em;
+
 }
 
-#card .cardContent .blogDetails .date {
-    color: white;
-    padding: 4px;
-    font-size: 13.4px;
-}
 
 #card .cardContent .blogDetails .tag {
     color: #F74D79;
@@ -53,12 +53,21 @@
     padding-right: 8px;
     font-size: 13.4px;
     margin-right: 16px;
+    font-family: 'Questrial';
+    font-weight: 400;
+    font-size: 14.8978px;
+    line-height: 15px;
+    letter-spacing:0.05em;
+
 }
 
 #card .cardContent .title {
-    padding: 10px 0px;
-    font-size: 18px;
     color: #F74D79;
+    font-family: 'Roboto';
+    font-weight: 900;
+    font-size: 22.346px;
+    line-height: 26px;
+    letter-spacing:0.05em;
 
 }
 
