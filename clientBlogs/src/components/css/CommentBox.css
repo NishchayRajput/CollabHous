@@ -1,52 +1,57 @@
-.mainContainer{
-    
-    width:64.26%;
-   
+.mainContainer {
+    width: 64.26%;
     margin: 0px auto;
 }
-.typeBox{
-    padding:14px;
-     /* height: 120px; */
+
+.typeBox {
+    padding: 14px;
+    /* height: 120px; */
     border-radius: 8px;
     background-color: #2F2F2F;
     border: 1px solid #414141;
 }
-.typeBox .userDetail{
+
+.typeBox .userDetail {
     display: flex;
-    
+
 }
-.typeBox .userDetail .logo{
-    width:32px;
-    height:32px;
+
+.typeBox .userDetail .logo {
+    width: 32px;
+    height: 32px;
     color: white;
-    padding:5px;
+    padding: 5px;
     border-radius: 50%;
     background-color: #000000;
 
 }
-.typeBox .userDetail .username{
+
+.typeBox .userDetail .username {
     padding: 5px;
-    color:aliceblue;
+    color: aliceblue;
     font-weight: 500;
 
 }
-.typeBox .textArea{
-    height:56px;
-    margin-left:37px;
-    margin-top:10px;
+
+.typeBox .textArea {
+    height: 56px;
+    margin-left: 37px;
+    margin-top: 10px;
     color: #A0A0A0;
 }
-.typeBox .buttonArea{
-  display: flex;
-  justify-content: flex-end;
+
+.typeBox .buttonArea {
+    display: flex;
+    justify-content: flex-end;
 }
-.typeBox .respondBtn{
+
+.typeBox .respondBtn {
     /* position: absolute; */
     right: 0px;
-    width:85px;
+    width: 85px;
     /* height:23px; */
     color: white;
-    padding:5px 10px;
+    padding: 5px 10px;
     border-radius: 18px;
     border: 1px solid white;
 }
