@@ -60,6 +60,7 @@ const Home = () => {
   };
 
   // console.log(recentBlog);
+  
   return (
     <div>
       <Fullpage>
@@ -75,10 +76,11 @@ const Home = () => {
           </FullpageSection>
           <FullpageSection>
             <Box
+            //keeping the inline css, other boxes which are of class section but dont have paddingtop and flexdirection
               className="section"
               flexDirection={"column"}
               paddingTop={"3rem"}
-            >
+            >  
               <Box className="carouselSection">
                 <Box >
                   <ControlledCarousel image={cImages} />
@@ -174,38 +176,24 @@ const Home = () => {
             </Box>
           </FullpageSection>
           <FullpageSection>
-            <Box className="section" padding={"5%"}>
-              <Box display={"flex"} flexDirection={"column"} width={"80vw"}>
-                <Box display={"flex"} justifyContent={"space-between"}>
-                  <Typography color={"rgba(247, 77, 121, 1)"} fontSize={"41px"} 
-                    fontFamily='Questrial'
-                    fontWeight={"400"}
-                    lineHeight= {"42px"}
-                    letterSpacing= {"0.05em"}
-                  >
+            <Box className="blogSection" >
+              <Box className="blogSectionInner">
+                <Box className="blogHeadings">
+                  <Typography className="trendingBlogsText">
                     Trending Blogs
                   </Typography>
 
                   <Link to="/blogs" style={{ textDecoration: "none" }}>
                     {" "}
                     <Typography
-                      color={"white"}
-                      fontSize={"26px"}
-                      display={"flex"}
-                      alignItems={"center"}
-                      paddingRight={"24px"}
-
-                      fontFamily= 'Roboto'
-                      fontWeight={"400"}
-                      lineHeight={"30px"}
-                      letterSpacing={"0.05em"}
+                      className="moreText"
                     >
                       More
                     </Typography>
                   </Link>
                 </Box>
-                <Box display={"flex"} height={"70vh"}>
-                  <Box width={"50%"}>
+                <Box className="blogsBox">
+                  <Box className="trendingBlog">
                     <TrendingBlogCard
                       id={mostLikedBlog?._id}
                       // key={blog?.user_id}
@@ -240,13 +228,9 @@ const Home = () => {
                       {/* Content inside the Link component (if any) */}
                     </Link>
                   </Box>
-                  <Box width={"50%"}>
+                  <Box className="horzBlogsOuter" >
                     <Box
-                      display="flex"
-                      flexDirection={"column"}
-                      width={"90%"}
-                      marginX={"auto"}
-                      gap={"10px"}
+                      className="horzBlogsInner"
                     >
                       <div style={{ height: "100%" }}>
                         <HorzBlogCard

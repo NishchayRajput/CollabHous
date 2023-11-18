@@ -1,0 +1,110 @@
+.settingsContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+    align-items: center;
+    /* background-color: pink; */
+    height: 100%;
+    width: 60vw;
+    margin: 10vh 20vw 0 20vw;
+    padding-bottom: 10vh;
+
+}
+
+#userBoard, #userDetails {
+    border-radius: 10px;
+    background-color: #2F2F2F;
+    min-width: 100%;
+    border: 1px solid #414141;
+}
+
+#userBoard {
+    height: 35vh;
+    position: relative;
+}
+
+#userDetails{
+    height: 50vh;
+    padding-bottom: 60vh;
+}
+
+#avatar{
+    position: relative;
+    left: 5%;
+    top: -19%;
+    height:12vh;
+    width:12vh;
+    border: "2px solid blue";
+    margin: 0;
+    padding: 0;
+}
+
+.username{
+    position: absolute;
+    top: 52%;
+    left: 14%;
+    
+}
+
+.bio{
+    position: absolute;
+    top: 70%;
+    left: 15.5%;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 19px;
+
+    color: #787878;
+
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4% 13%;
+    gap: 6vh;
+}
+
+.row{
+    display: flex;
+    justify-content: space-between;
+}
+
+.label{
+
+        font-family: 'Questrial' !important;
+        font-style: normal !important;
+        font-weight: 400 !important;
+        font-size: 20px !important;
+        line-height: 16px !important;
+
+        color: #FFFFFF !important;
+
+
+}
+
+.values{
+
+        font-family: 'Questrial'!important;
+        font-style: normal !important;
+        font-weight: 400 !important;
+        font-size: 20px !important;
+        line-height: 16px !important;
+
+        color: #787878 !important;
+
+
+}
+
+.signout{
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+
+
