@@ -176,8 +176,6 @@ const Register = () => {
               <GoogleLogin
                 onSuccess={(credentialResponse) => {
                   const details = jwtDecode(credentialResponse.credential);
-                  console.log(credentialResponse.clientId);
-                  console.log(details);
                   inputs.g_id = details.sub;
                   inputs.name = details.name;
                   inputs.email = details.email;

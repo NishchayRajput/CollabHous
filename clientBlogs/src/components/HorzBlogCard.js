@@ -18,7 +18,10 @@ import axios from "axios";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import { useSelector } from "react-redux";
-import "./css/HorzBlogCard.css";import Dot from "./Dot";
+import "./css/HorzBlogCard.css";
+import { Link } from "react-router-dom";
+import "./css/HorzBlogCard.css";
+import Dot from "./Dot";
 
 export default function BlogCard({
   title,
@@ -29,7 +32,7 @@ export default function BlogCard({
   id,
   isUser,
   tag,
-  like,
+  likeCount,
   read_time,
 }) {
   // global state
@@ -53,19 +56,23 @@ export default function BlogCard({
 
   const [showSharingBox, setShowSharingBox] = useState(false); // State to control the sharing box visibility
   React.useEffect(() => {
-    setUpvoteCount(like);
+    setUpvoteCount(likeCount);
   }, []);
   return (
     <Card id="cardContainer">
       <Box display={"flex"}>
-        <CardMedia
-          component="img"
-          image={image}
-          alt="Paella dish"
-          minWidth={"50%"}
-          height={"100%"}
-          sx={{ width: "50%" }}
-        />
+        <div style={{ display: "block", width: "50%" }}>
+          <Link to={`/blogs/${id}`}>
+            <CardMedia
+              component="img"
+              image={image}
+              alt="Paella dish"
+              minWidth={"50%"}
+              height={"100%"}
+              sx={{ width: "100%" }}
+            />
+          </Link>
+        </div>
         <Box width={"50%"} paddingTop={"5px"}>
           <Box display={"flex"} justifyContent="space-between" width={"100%"}>
             <CardHeader
@@ -74,47 +81,58 @@ export default function BlogCard({
                   N
                 </Avatar>
               }
-              title=<p  style={{
-
-                  fontFamily: 'Roboto',
+              title=<p
+                style={{
+                  fontFamily: "Roboto",
                   fontWeight: "700",
-                  fontSize:"12px",
+                  fontSize: "12px",
                   lineHeight: "14px",
                   letterSpacing: "0.05em",
-                  color: "white",}}>{username}</p>
+                  color: "white",
+                }}
+              >
+                {username}
+              </p>
               className="cardHeader"
             />
           </Box>
 
-          <Typography
-          className="title"
-            variant="h6"
-            color="text.secondary"
-          >
-            <p style={{
-                fontFamily: 'Roboto',
+          <Typography className="title" variant="h6" color="text.secondary">
+            <p
+              style={{
+                fontFamily: "Roboto",
                 fontWeight: "700",
                 fontSize: "18px",
                 lineHeight: "21px",
                 letterSpacing: "0.05em",
                 color: "#F74D79",
-            }}>{title}</p>
+              }}
+            >
+              {title}
+            </p>
           </Typography>
 
           <Box className="blogDetails">
             <div>
-              <p style={{ color: "white", padding: "4px", 
-                  fontFamily: 'Questrial',
+              <p
+                style={{
+                  color: "white",
+                  padding: "4px",
+                  fontFamily: "Questrial",
                   fontWeight: "400",
                   fontSize: "12px",
                   lineHeight: "12px",
-                  letterSpacing:"0.05em",
-
-               }}>
+                  letterSpacing: "0.05em",
+                }}
+                className="readT"
+              >
                 {read_time} min read
               </p>
-                <Dot />
-              <p style={{ color: "white", padding: "4px", fontSize: "12px" }}>
+              <Dot />
+              <p
+                style={{ color: "white", padding: "4px", fontSize: "12px" }}
+                className="date"
+              >
                 {time}
               </p>
               <Dot />
@@ -129,6 +147,7 @@ export default function BlogCard({
                   fontSize: "12px",
                   marginLeft: "5px",
                 }}
+                className="tag"
               >
                 {tag}
               </p>
@@ -141,11 +160,7 @@ export default function BlogCard({
           >
             <IconButton aria-label="add to favorites" onClick={handleUpvote}>
               <ThumbUpAltIcon style={{ color: "#626262" }} />
-              <span
-                className="upvote"
-              >
-                {upvoteCount}
-              </span>
+              <span className="upvote">{upvoteCount ? upvoteCount : "0"}</span>
             </IconButton>
           </CardActions>
         </Box>

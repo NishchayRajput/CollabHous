@@ -39,8 +39,8 @@ const Header = () => {
 
   if (value === 0 && scrollValue > 30) setValue(1);
   if (value === 1 && scrollValue < 30) setValue(0);
-  console.log(scrollValue);
-  console.log("Tab: "+value);
+  // console.log(scrollValue);
+  // console.log("Tab: "+value);
 
   return (
     <>
