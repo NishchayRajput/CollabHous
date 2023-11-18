@@ -10,9 +10,7 @@
     height: 100vh;
 }
 
-.signinBox{
-    width: 28vw;
-    height: 60vh;
+.signinBox, .signupBox{
     background: rgba(31, 28, 28, 0.2);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(11px);
@@ -20,8 +18,19 @@
     border-radius: 16px;
 }
 
+.signupBox{
+    width: 28vw;
+    height: 70vh;
+}
 
-.signinBox .signInText{
+.signinBox{
+    width: 28vw;
+    height: 60vh;
+}
+
+
+
+.signinBox .signInText, .signupBox .signInText{
 
 font-family: 'Montserrat';
 font-style: normal;
@@ -32,34 +41,44 @@ color: #FFFFFF;
 
 }
 
-.signinBox .newUser{
+.signinBox .newUser, .signupBox .newUser, .requirements{
     margin: 0;
     padding: 1% 0;
     display:flex;
     justify-content: flex-start;
-    font-size: 12px;
+    font-size: 15px;
     line-height: 15px; 
     font-family: 'Montserrat'; 
     text-decoration: none;
     text-transform: none;
 }
 
-.signinBox .newUser span{
+.signinBox .newUser span, .signupBox .newUser span, .requirements{
     font-weight: 400;
     color: #FFFFFF;
 }
 
-.signinBox .newUser {
+.signupBox .stepNo{
+    font-weight: 550;
+}
+
+.signinBox .newUser, .signupBox .newUser {
     font-weight: 700;
     color: #FF2E64;
 }
+
 
 .signinBox .password{
     display: flex;
     align-items: center;
 }
 
-.signinBox .continue{
+.requirements{
+    font-size: 9px;
+    font-weight: 600;
+}
+
+.signinBox .continue, .signupBox .continue{
 
 display: flex;
 flex-direction: row;
@@ -82,7 +101,7 @@ color: #FFFFFF;
 
 }
 
-.signinBox .or{
+.signinBox .or, .signupBox .or{
     font-size: 15px;
     font-family: "Montserrat";
     margin-top: 5%;
@@ -92,18 +111,15 @@ color: #FFFFFF;
     justify-content: center;
 }
 
-.signinBox .or div{
+.signinBox .or div, .signupBox .or div{
     background-color: white;
     height: 1px;
     width: 45%;
 }
 
-.signinBox .loginDetails{
-    color: white !important;
-    text-decoration: none;
-}
 
-.signinBox .submit .loginWith{
+
+.signinBox .submit .loginWith, .signupBox .submit .loginWith{
     /* Frame 139 */
 
 /* box-sizing: border-box; */
@@ -129,7 +145,7 @@ text-transform: none;
 
 }
 
-.signinBox .submit{
+.signinBox .submit, .signupBox .submit{
     display: flex;
     align-items: center;
     justify-content: center;

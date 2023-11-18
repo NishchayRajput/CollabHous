@@ -214,7 +214,7 @@ const Login = () => {
             type="submit"
             className="continue"
           >
-            Continue
+            Login
           </Button>
           <div className="or"><div></div>&nbsp;Or&nbsp; <div></div></div>
           <div className="submit">
