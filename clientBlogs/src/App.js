@@ -7,6 +7,7 @@ import BlogLayout from "./layout/BlogLayout";
 import Home from "./pages/Home";
 import IndividualBlog from "./pages/IndividualBlog";
 import Connect from "./pages/Connect";
+import Settings from "./pages/Settings";
 
 function App() {
   return (
@@ -21,9 +22,11 @@ function App() {
           </Route>
           <Route path="/blogs/:blogId" element={<IndividualBlog />} />
           <Route path="/connect" element={<Connect />} />
+          <Route path="/settings" element={<Settings />} />
         </Route>
         <Route path="/register" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        
       </Routes>
     </>
   );

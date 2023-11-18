@@ -1,10 +1,53 @@
 * {}
 
-.section {
+.section{
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.blogSection{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5%;
+}
+
+.blogSectionInner{
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+}
+
+.blogHeadings{
+    display: flex;
+    justify-content:space-between;
+}
+
+.blogsBox{
+    display: flex;
+    justify-content: center;
+    height: 70vh;
+}
+
+.trendingBlog{
+    width: 50%;
+}
+
+.horzBlogsOuter{
+    width: 50%;
+}
+
+.horzBlogsInner{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 8px;
+    gap:10px;
+    
 }
 
 .heroLandingImage {
@@ -170,4 +213,28 @@ letter-spacing: 0.05em;
 color: #FFFFFF;
 
 
+}
+
+
+.trendingBlogsText{
+    color:rgba(247, 77, 121, 1) !important; 
+    font-size:41px !important;
+    font-family:"Questrial" !important;
+    font-weight: 400 !important;
+    line-height: 42px !important;
+    letter-spacing: 0.05em !important;
+                    
+}
+
+.moreText{
+
+    color: white !important;
+    font-size: 26px !important;
+    display: flex !important;
+    align-items: center !important;
+    padding-right: 40px !important;
+    font-family: "Roboto" !important;
+    font-weight: 400 !important;
+    line-height: 30px !important;
+    letter-spacing: 0.05em !important;
 }

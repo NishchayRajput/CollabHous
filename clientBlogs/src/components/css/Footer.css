@@ -45,3 +45,49 @@
     color: #7F7F7F;
     margin-bottom: 10px;
 }
+
+.logo{
+    font-size: 40px !important;
+    color: white !important;
+    font-family: "Roboto" !important;
+
+}
+
+.logo .commune{
+    font-family: "blah";
+    font-style: italic;
+}
+
+.contentOuter{
+    width: 30%;
+}
+
+.contentPartOne{
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 142.4%;
+    color: #FFFFFF;
+}
+
+.contentPartTwo{
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 142.4%;
+    color: #FFFFFF;
+}
+
+.pages{
+    width: 10%;
+}
+
+.socialmedia{
+    width: 30%;
+}
+
+.contact{
+    width: 40%;
+}
+
