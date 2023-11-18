@@ -25,16 +25,3 @@
     height: auto;
     flex-wrap: wrap;
 }
-
-.blogIntro{
-    font-family: 'Questrial';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14.25px;
-    line-height: 15px;
-    color: #ABABAB;
-    margin: auto;
-    padding: 10px;
-    text-align: center;
-    padding-bottom: 100px;
-}
