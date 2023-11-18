@@ -10,7 +10,7 @@ import SendIcon from "@mui/icons-material/Send";
 import BlogCard from "../components/BlogCard";
 import "./css/IndividualBlogs.css";
 import MapsUgcRoundedIcon from "@mui/icons-material/MapsUgcRounded";
-import CommentBox from "../components/CommentBox"
+import CommentArea from "../components/CommentArea"
 import {
   EmailShareButton,
   FacebookShareButton,
@@ -40,7 +40,7 @@ export default function IndividualBlog({}) {
 
   let { blogId } = useParams();
   const [showSharingBox, setShowSharingBox] = useState(false); // State to control the sharing box
-  const [showCommentBox, setShowCommentBox] = useState(false); // State to control the sharing box
+  const [showCommentBox, setShowCommentBox] = useState(true); // State to control the sharing box
   const [allBlogs, setAllBlogs] = useState([]);
   const [blog, setBlog] = useState([]);
   const [relatedBlog, setRelatedBlog] = useState([]);
@@ -321,7 +321,7 @@ export default function IndividualBlog({}) {
             </CardActions>
             
           </Box>{showCommentBox && <div className="commentBox">
-            <CommentBox />
+            <CommentArea />
             </div>}
         </section>
         <section style={{ width: "90%", margin: "auto" }}>
