@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, Typography, TextField, Button } from "@mui/material";
 import axios from "axios";
@@ -7,15 +7,12 @@ import { authActions } from "../redux/store";
 import { ReactNotifications, Store } from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import { GoogleLogin,useGoogleLogin } from "@react-oauth/google";
+import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
-import {Icon} from 'react-icons-kit';
-import {eyeOff} from 'react-icons-kit/feather/eyeOff';
-import {eye} from 'react-icons-kit/feather/eye';
+import { Icon } from "react-icons-kit";
+import { eyeOff } from "react-icons-kit/feather/eyeOff";
+import { eye } from "react-icons-kit/feather/eye";
 import "./css/Login.css";
-
-
-
 
 const Login = () => {
   const navigate = useNavigate();
@@ -28,23 +25,20 @@ const Login = () => {
     g_id: "",
   });
 
-
   //eye icon near password
   const [password, setPassword] = useState("");
-  const [type, setType] = useState('password');
+  const [type, setType] = useState("password");
   const [icon, setIcon] = useState(eyeOff);
 
   const handleToggle = () => {
-  
-    if (type==='password'){
-       setIcon(eye);
-       setType('text')
+    if (type === "password") {
+      setIcon(eye);
+      setType("text");
     } else {
-       setIcon(eyeOff)
-       setType('password')
+      setIcon(eyeOff);
+      setType("password");
     }
-  }
-
+  };
 
   //handle input change
   const handleChange = (e) => {
@@ -75,7 +69,6 @@ const Login = () => {
           },
         }
       );
-      console.log(data);
 
       if (data.message === "Login successful") {
         // toast.success("User login Successfully");
@@ -131,7 +124,7 @@ const Login = () => {
   };
   const login = useGoogleLogin({
     //onSuccess: tokenResponse => console.log(tokenResponse),
-    onSuccess:(credentialResponse) => {
+    onSuccess: (credentialResponse) => {
       const details = jwtDecode(credentialResponse.credential);
       console.log(credentialResponse);
       console.log(details.sub);
@@ -140,10 +133,25 @@ const Login = () => {
       inputs.email = details.email;
       handleSubmit();
     },
-    onError:() => {
+    onError: () => {
       console.log("Login Failed");
-    }
+    },
   });
+
+  useEffect(() => {
+    const getVerification = async () => {
+      try {
+        const { data } = await axios.get(
+          "http://localhost:5000/ecommerce/verify"
+        );
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getVerification();
+  }, []);
+
   return (
     <div className="loginpage">
       <img src="images/logo.png" />
@@ -160,18 +168,11 @@ const Login = () => {
           padding={3}
           borderRadius={5}
         >
-          <Typography
-            className="signInText"
-          >
-            Sign In
-          </Typography>
-          <Button
-            onClick={() => navigate("/register")}
-            className="newUser"
-          >
-          <span>New User? &nbsp;</span>Create an account
+          <Typography className="signInText">Sign In</Typography>
+          <Button onClick={() => navigate("/register")} className="newUser">
+            <span>New User? &nbsp;</span>Create an account
           </Button>
-          
+
           <TextField
             placeholder="Email"
             value={inputs.email}
@@ -181,12 +182,18 @@ const Login = () => {
             required
             onChange={handleChange}
             variant="standard"
-            sx={{'& .MuiInput-underline:before': {
-                borderBottomColor: 'white'},
-                input: {color: "white", fontFamily: "Montserrat", fontSize: "15px"}, 
+            sx={{
+              "& .MuiInput-underline:before": {
+                borderBottomColor: "white",
+              },
+              input: {
+                color: "white",
+                fontFamily: "Montserrat",
+                fontSize: "15px",
+              },
             }}
           />
-          
+
           <TextField
             placeholder="Password"
             value={inputs.password}
@@ -196,34 +203,39 @@ const Login = () => {
             required
             onChange={handleChange}
             variant="standard"
-            sx={{'& .MuiInput-underline:before': {
-            borderBottomColor: 'white'},
-            input: {color: "white", fontFamily: "Montserrat", fontSize: "15px"}}}
+            sx={{
+              "& .MuiInput-underline:before": {
+                borderBottomColor: "white",
+              },
+              input: {
+                color: "white",
+                fontFamily: "Montserrat",
+                fontSize: "15px",
+              },
+            }}
             InputProps={{
               endAdornment: (
-              <React.Fragment>
-                <span onClick={handleToggle} style={{ cursor: 'pointer' }}>
-                  <Icon icon={icon} size={12} style={{ color: '#FFFFFF' }} />
-                </span>
-              </React.Fragment>
-            ),
+                <React.Fragment>
+                  <span onClick={handleToggle} style={{ cursor: "pointer" }}>
+                    <Icon icon={icon} size={12} style={{ color: "#FFFFFF" }} />
+                  </span>
+                </React.Fragment>
+              ),
             }}
           />
-            
-          <Button
-            type="submit"
-            className="continue"
-          >
+
+          <Button type="submit" className="continue">
             Login
           </Button>
-          <div className="or"><div></div>&nbsp;Or&nbsp; <div></div></div>
+          <div className="or">
+            <div></div>&nbsp;Or&nbsp; <div></div>
+          </div>
           <div className="submit">
             <Button className="loginWith" onClick={() => login()}>
-                      Continue with Google
+              Continue with Google
             </Button>
             <Button className="loginWith">Continue with Facebook</Button>
           </div>
-          
         </Box>
       </form>
     </div>

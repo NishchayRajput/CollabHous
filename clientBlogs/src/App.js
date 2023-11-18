@@ -17,7 +17,6 @@ function App() {
         <Route path="/" element={<BlogHomeLayout />}>
           <Route index element={<Home />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/home" element={<Home />} />
           <Route path="/blogs" element={<BlogLayout />}>
             <Route index element={<Blogs />} />
           </Route>
