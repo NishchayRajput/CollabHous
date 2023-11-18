@@ -2,11 +2,57 @@ const mongoose = require('mongoose');
 const moment = require('moment-timezone');
 const Hero = require('../models/hero');
 const Blog = require('../models/blogs');
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
+const Interaction = require('../models/interaction');
 const userInfo = require('../../ecommerce/models/userInfo');
 
 async function blog_hero(req, res) {
     try {
-        
+        // Function to extract the token value from a cookie string
+        function extractTokenValue(tokenString) {
+            if (tokenString && typeof tokenString === 'string') {
+                const tokenIndex = tokenString.indexOf('token=');
+
+                if (tokenIndex !== -1) {
+                    const tokenStartIndex = tokenIndex + 6;
+                    const tokenEndIndex = tokenString.indexOf(';', tokenStartIndex);
+                    const tokenValue = tokenEndIndex !== -1
+                        ? tokenString.substring(tokenStartIndex, tokenEndIndex)
+                        : tokenString.substring(tokenStartIndex);
+
+                    return tokenValue;
+                } else {
+                    return null; // 'token=' not found in the string
+                }
+            } else {
+                return null; // Handle the case where tokenString is undefined or not a string
+            }
+        }
+
+        // Extract the token from the request's cookies
+        const token = extractTokenValue(req.headers.cookie);
+        let id;
+        if (token) {
+            jwt.verify(token, process.env.secret, async(err, user) => {
+                if (err) {
+                    // If the token is invalid or expired, return a 401 (Unauthorized) response
+                    return res.status(401).json({ message: 'Unauthorized: Invalid token' });
+                }
+                // console.log(user);
+                const existuser = userInfo.findById(user.userId);
+
+                if (existuser) {
+                    console.log('Token verified');
+                }
+                else {
+                    console.log('Token not verified');
+                }
+                id = user.userId;
+                // next();
+            });
+            // console.log(id);
+        }
         // Find the 3 latest blogs, sorted by the 'time' field in descending order
         const latestBlogs = await Blog.find({})
             .sort({ time: -1 })
@@ -29,26 +75,56 @@ async function blog_hero(req, res) {
             .exec();
 
         // Format the data for the latest blogs
-        const formattedLatestBlogs = latestBlogs.map((blog) => ({
-            title: blog.title,
-            content: blog.content,
-            user: {
-                name: blog.user_id.name,
-                email: blog.user_id.email,
-            },
-            tag: blog.tags,
-            like : blog.like,
-            time : blog.time,
-            read_time : blog.read_time,
-        }));
+        
+        const formattedLatestBlogs = await Promise.all(
+            latestBlogs.map(async (blog) => {
+                // Find the interaction with the specified blog_id and interaction_id
+                const likeInteraction = await Interaction.find({
+                    blog_id: blog._id,
+                    interaction_type: 'like',
+                    user_id: id
+                }).exec();
 
+                const likeStatus = !!likeInteraction.length;
+
+                // Create a new object with the required properties
+                const formattedBlog = {
+                    id : blog._id,
+                    title: blog.title,
+                    content: blog.content,
+                    user: {
+                        name: blog.user_id.name,
+                        email: blog.user_id.email,
+                    },
+                    tag: blog.tags,
+                    like: blog.like,
+                    time: blog.time,
+                    read_time: blog.read_time,
+                    like_status: likeStatus,
+                };
+
+                return formattedBlog;
+            })
+        );
+
+        // Now, formattedLatestBlogs will have an additional property like_status for each blog
         //Fetching hero section data for blogs
         const heroData = await Hero.find({}).exec();
 
         // Format the data for the most liked blog
+        // Format the data for the most liked blog
         let formattedMostLikedBlog = null;
         if (mostLikedBlog) {
+            const mostLikedBlogInteraction = await Interaction.find({
+                blog_id: mostLikedBlog._id,
+                interaction_type: 'like',
+                user_id: id
+            }).exec();
+
+            const likeStatusMostLikedBlog = !!mostLikedBlogInteraction.length;
+
             formattedMostLikedBlog = {
+                id : mostLikedBlog._id,
                 title: mostLikedBlog.title,
                 content: mostLikedBlog.content,
                 user: {
@@ -56,16 +132,17 @@ async function blog_hero(req, res) {
                     email: mostLikedBlog.user_id.email,
                 },
                 tag: mostLikedBlog.tags,
-                like : mostLikedBlog.like,
-                time : mostLikedBlog.time,
-                read_time : mostLikedBlog.read_time
+                like: mostLikedBlog.like,
+                time: mostLikedBlog.time,
+                read_time: mostLikedBlog.read_time,
+                like_status: likeStatusMostLikedBlog,
             };
         }
 
         res.status(200).json({
             latestBlogs: formattedLatestBlogs,
             mostLikedBlog: formattedMostLikedBlog,
-            heroData  : heroData,
+            heroData: heroData,
         });
     } catch (error) {
         console.error('Error fetching and formatting blogs:', error);
