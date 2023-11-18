@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, Typography, TextField, Button } from "@mui/material";
 import axios from "axios";
@@ -13,7 +13,6 @@ import {Icon} from 'react-icons-kit';
 import {eyeOff} from 'react-icons-kit/feather/eyeOff';
 import {eye} from 'react-icons-kit/feather/eye';
 import "./css/Login.css";
-
 
 
 
@@ -75,7 +74,6 @@ const Login = () => {
           },
         }
       );
-      console.log(data);
 
       if (data.message === "Login successful") {
         // toast.success("User login Successfully");
@@ -144,6 +142,22 @@ const Login = () => {
       console.log("Login Failed");
     }
   });
+
+  // useEffect(() => {
+  //   const getVerification = async () => {
+  //     try {
+  //       const { data } = await axios.get(
+  //         "http://localhost:5000/ecommerce/verify"
+  //       );
+  //       console.log(data);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   getVerification();
+  // }, []);
+  
+
   return (
     <div className="loginpage">
       <img src="images/logo.png" />
