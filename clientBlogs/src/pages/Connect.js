@@ -10,37 +10,46 @@ const Connect = () => {
       <div style={{ backgroundColor: "rgba(35, 36, 38, 1)" }}>
 
 
-        <Box className="section" position="relative">
+        <div className="section">
           <img
             src="images/contactus_hero_image.png"
             alt="heroLanding"
             className="background"
           />
-
-        </Box>
-
-        {/* <div className="button">
+          <div className="button">
             <button id="btn1">Connect</button>
             <button id="btn2"> Job Openings</button>
 
-          </div> */}
-      </div>
+          </div>
 
-      {/* 
-      <div className="middle-left">
-        <h1>cH</h1>
-        <p>What interests you? </p>
-        <div classname="box1">
-          <div > Digital Communities</div>
-          <div>Fashion Blogging</div>
-          <div>Digital marketing</div>
-          <div>Collaborations</div>
-          <div>Buying</div>
-          <div>Buying</div>
         </div>
-        <div classname="continue">Continue</div>
-      </div> */}
+        <div className="middlepart">
+          <div className="box1">
+            <div className="ch">
+            <p ><span className="c">C</span><span className="h"> H</span></p>
+            </div>
+            <p className="pink">What interests you? </p>
+            <div className="container">
+              <div  className="item1"> Digital Communities</div>
+              <div className="item2"> Fashion Blogging</div>
+              <div className="item3">Digital marketing</div>
+              <div className="item4">Collaborations</div>
+              <div className="item5">Buying</div>
+              <div className="item5">Buying</div>
+            </div>
+            {/* <p classname="cont">Continue</p> */}
+            <div className="cont">Continue</div>
 
+            <div className="ch2">
+            <p ><span className="c">C</span><span className="h"> H</span></p>
+            </div>
+          </div>
+          <div className="box2">
+          </div>
+        </div>
+
+
+      </div>
     </div>
   );
 };
