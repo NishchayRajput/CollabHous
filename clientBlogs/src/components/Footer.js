@@ -6,34 +6,20 @@ const Footer = () => {
   return (
     <Box className="footerContainer">
       <Box>
-        <Typography fontSize={"32px"} color={"white"}>
-          <span>cH</span><span> Commune</span> 
+        <Typography className="logo">
+          <span>cH</span><span className="commune"> Commune</span> 
         </Typography>
       </Box>
       <Box className="row2">
-        <Box width={"30%"}>
-          <Typography fontSize={"18px"} color={"white"}>
-            <span style={{
-                fontFamily: 'Roboto',
-                fontWeight: "500",
-                fontSize: "18px",
-                lineHeight: "142.4%",
-                color: "#FFFFFF",
-            }}>Read, react and share the original thoughts of creators and thinkers
-            on personal luxury.</span><span style={{
-
-                    fontFamily: 'Roboto',
-                    fontStyle: "italic",
-                    fontWeight: "400",
-                    fontSize: "18px",
-                    lineHeight: "142.4%",
-                    color: "#FFFFFF",
-
-            }}> Explore our content to delve into the minds
+        <Box className="contentOuter">
+          <Typography>
+            <span 
+            className="contentPartOne">Read, react and share the original thoughts of creators and thinkers
+            on personal luxury.</span><span className="contentPartTwo"> Explore our content to delve into the minds
             shaping these industries.</span>
           </Typography>
         </Box>
-        <Box width={"10%"}>
+        <Box className="pages" >
           <Link to="/home" style={{ textDecoration: "none" }}>
             <Typography
               className="pageLinks"
@@ -65,7 +51,7 @@ const Footer = () => {
           </Link>
         </Box>
         
-        <Box width={"30%"}>
+        <Box className="socialmedia">
           <Typography className="pageLinks">Social media</Typography>
           <a
             href="https://www.instagram.com/your-instagram-username"
@@ -122,7 +108,7 @@ const Footer = () => {
             </Typography>
           </a>
         </Box>
-        <Box width={"40%"}>
+        <Box className="contact">
           <Typography
    
             className="contactus"
