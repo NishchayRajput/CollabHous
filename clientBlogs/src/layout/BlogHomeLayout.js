@@ -6,7 +6,7 @@ import Footer from '../components/Footer'
 
 const BlogHomeLayout = () => {
   return (
-    <div style={{backgroundColor:"rgba(35, 36, 38, 1)"}}>
+    <div style={{backgroundColor:"rgba(35, 36, 38, 1)",margin:0}}>
         <Header />
         <Outlet />
         {/* <Footer /> */}
