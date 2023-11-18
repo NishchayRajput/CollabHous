@@ -6,7 +6,7 @@
     /* background-color: pink; */
     height: 100%;
     width: 60vw;
-    margin: 10vh 20vw 0 20vw;
+    margin: 6vh 20vw 0 20vw;
     padding-bottom: 10vh;
 
 }
@@ -24,8 +24,8 @@
 }
 
 #userDetails{
-    height: 50vh;
-    padding-bottom: 60vh;
+    min-height: 50vh;
+    
 }
 
 #avatar{
@@ -40,10 +40,18 @@
 }
 
 .username{
+
+    color: white !important;
+    font-family: 'Roboto'!important;
+    font-weight: 700 !important;
+    font-size: 26px !important;
+    line-height: 28px !important;
+}
+
+.usernameHeader{
     position: absolute;
     top: 52%;
     left: 14%;
-    
 }
 
 .bio{
@@ -99,10 +107,31 @@
 
 
 }
-
-.signout{
+.signoutDiv{
     display: flex;
     justify-content: flex-end;
+}
+.signout{
+    font-family: 'Roboto' !important;
+    font-weight: 700 !important;
+    font-size: 16px !important;
+    line-height: 19px !important;
+    color: #545454 !important;
+
+}
+
+.socialMediaDrop{
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+    padding: 2vh 0 3vh 5vw;
+}
+
+.dataDrop{
+    display: flex;
+    flex-direction: row;
+    gap: 2vh;
+
 }
 
 
