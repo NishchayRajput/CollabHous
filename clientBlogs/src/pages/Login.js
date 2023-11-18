@@ -7,9 +7,15 @@ import { authActions } from "../redux/store";
 import { ReactNotifications, Store } from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import { GoogleLogin } from "@react-oauth/google";
+import { GoogleLogin,useGoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
-import "./css/Login.css"
+import {Icon} from 'react-icons-kit';
+import {eyeOff} from 'react-icons-kit/feather/eyeOff';
+import {eye} from 'react-icons-kit/feather/eye';
+import "./css/Login.css";
+
+
+
 
 const Login = () => {
   const navigate = useNavigate();
@@ -21,6 +27,24 @@ const Login = () => {
     password: "",
     g_id: "",
   });
+
+
+  //eye icon near password
+  const [password, setPassword] = useState("");
+  const [type, setType] = useState('password');
+  const [icon, setIcon] = useState(eyeOff);
+
+  const handleToggle = () => {
+  
+    if (type==='password'){
+       setIcon(eye);
+       setType('text')
+    } else {
+       setIcon(eyeOff)
+       setType('password')
+    }
+  }
+
 
   //handle input change
   const handleChange = (e) => {
@@ -118,6 +142,21 @@ const Login = () => {
       }
     }
   };
+  const login = useGoogleLogin({
+    //onSuccess: tokenResponse => console.log(tokenResponse),
+    onSuccess:(credentialResponse) => {
+      const details = jwtDecode(credentialResponse.credential);
+      console.log(credentialResponse);
+      console.log(details.sub);
+      inputs.g_id = details.sub;
+      inputs.name = details.name;
+      inputs.email = details.email;
+      handleSubmit();
+    },
+    onError:() => {
+      console.log("Login Failed");
+    }
+  });
   return (
     <div className="loginpage">
       <img src="images/logo.png" />
@@ -135,17 +174,6 @@ const Login = () => {
           borderRadius={5}
         >
           <Typography
-            //variant="h4"
-            // // sx={{ textTransform: "uppercase" }}
-            // padding={3}
-            // textAlign="center"
-
-            // color={"white"}
-            // fontFamily={"Montserrat"}
-            // fontSize={"28px"}
-            // fontWeight={"700"}
-            // lineHeight={"34px"}
-
             className="signInText"
           >
             Sign In
@@ -158,52 +186,56 @@ const Login = () => {
           </Button>
           
           <TextField
-            placeholder="email"
+            placeholder="Email"
             value={inputs.email}
             name="email"
             margin="normal"
             type={"email"}
             required
             onChange={handleChange}
+            variant="standard"
+            sx={{'& .MuiInput-underline:before': {
+                borderBottomColor: 'white'},
+                input: {color: "white", fontFamily: "Montserrat", fontSize: "15px"}, 
+            }}
           />
+          
           <TextField
-            placeholder="password"
+            placeholder="Password"
             value={inputs.password}
             name="password"
             margin="normal"
-            type={"password"}
+            type={type}
             required
             onChange={handleChange}
+            variant="standard"
+            sx={{'& .MuiInput-underline:before': {
+            borderBottomColor: 'white'},
+            input: {color: "white", fontFamily: "Montserrat", fontSize: "15px"}}}
+            InputProps={{
+              endAdornment: (
+              <React.Fragment>
+                <span onClick={handleToggle} style={{ cursor: 'pointer' }}>
+                  <Icon icon={icon} size={12} style={{ color: '#FFFFFF' }} />
+                </span>
+              </React.Fragment>
+            ),
+            }}
           />
-
+            
           <Button
             type="submit"
-            // sx={{ borderRadius: 3, marginTop: 3 }}
-            // variant="contained"
-            // color="primary"
             className="continue"
           >
             Continue
           </Button>
           <div className="or"><div></div>&nbsp;Or&nbsp; <div></div></div>
-          <Button style={{ marginTop: "15px" }}>
-            <GoogleOAuthProvider clientId="673293732147-5pde4aq555gdp0b3m8gv3f6s84peico5.apps.googleusercontent.com">
-              <GoogleLogin
-                onSuccess={(credentialResponse) => {
-                  const details = jwtDecode(credentialResponse.credential);
-                  console.log(credentialResponse);
-                  console.log(details.sub);
-                  inputs.g_id = details.sub;
-                  inputs.name = details.name;
-                  inputs.email = details.email;
-                  handleSubmit();
-                }}
-                onError={() => {
-                  console.log("Login Failed");
-                }}
-              />
-            </GoogleOAuthProvider>
-          </Button>
+          <div className="submit">
+            <Button className="loginWith" onClick={() => login()}>
+                      Continue with Google
+            </Button>
+            <Button className="loginWith">Continue with Facebook</Button>
+          </div>
           
         </Box>
       </form>

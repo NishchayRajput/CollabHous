@@ -7,13 +7,18 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import { ReactNotifications, Store } from 'react-notifications-component';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
     <BrowserRouter>
       <React.StrictMode>
+      <GoogleOAuthProvider clientId="673293732147-5pde4aq555gdp0b3m8gv3f6s84peico5.apps.googleusercontent.com">
         <ReactNotifications />
+
         <App />
+        </GoogleOAuthProvider>
       </React.StrictMode>
     </BrowserRouter>
   </Provider>

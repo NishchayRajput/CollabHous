@@ -11,15 +11,13 @@
 }
 
 .signinBox{
-    width: 37%;
-    height: 58%;
+    width: 28vw;
+    height: 60vh;
     background: rgba(31, 28, 28, 0.2);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(11px);
     /* Note: backdrop-filter has minimal browser support */
     border-radius: 16px;
-
-
 }
 
 
@@ -54,6 +52,11 @@ color: #FFFFFF;
 .signinBox .newUser {
     font-weight: 700;
     color: #FF2E64;
+}
+
+.signinBox .password{
+    display: flex;
+    align-items: center;
 }
 
 .signinBox .continue{
@@ -95,5 +98,49 @@ color: #FFFFFF;
     width: 45%;
 }
 
+.signinBox .loginDetails{
+    color: white !important;
+    text-decoration: none;
+}
+
+.signinBox .submit .loginWith{
+    /* Frame 139 */
+
+/* box-sizing: border-box; */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: flex-end;
+align-items: center;
+padding: 10px 30px 10px 10px;
+gap: 10px;
+height: 5vh;
+width: 20vw;
+border: 1px solid #7B7B7B;
+border-radius: 40px;
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 15px;
+color: #FFFFFF;
+text-transform: none;
+
+}
+
+.signinBox .submit{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10% 5%;
+    flex-direction: column;
+    gap: 3vh;
+}
+
+.loginpage img{
+    height: 10vw;
+    width: auto;
+}
 
 
