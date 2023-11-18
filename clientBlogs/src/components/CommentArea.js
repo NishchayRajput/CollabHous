@@ -4,7 +4,7 @@ import CommentCard from "./CommentCard";
 
 const CommentArea = () => {
   return (
-    <div className="container">
+    <div className="containerCommentArea">
       <form className="typeBox">
         <div className="userDetail">
           <div className="logoUsernameContainer">
