@@ -3,15 +3,17 @@
 .mainContainer {
     max-width: 80%;
     margin: 0px auto;
+  
 }
 
 .tabsContainer {
     background-color: rgba(35, 36, 38, 1);
     border-bottom: 1px solid white;
+    
 }
 
 .tabsContainer .tabs {
-    font-size: 24px;
+    font-size: 1.5rem;
     text-transform: none;
     margin-left: 20px;
     margin-right: 20px;
@@ -24,4 +26,32 @@
     min-height: 435px;
     height: auto;
     flex-wrap: wrap;
+}
+
+
+
+@media only screen and (min-width:2560px) {
+    .mainContainer {
+        max-width:1300px;
+    }
+
+
+}
+@media only screen and (max-width:1025px) {
+   
+
+
+}
+@media only screen and (max-width:800px) {
+    .tabsContainer .tabs {
+        font-size: 1.1rem;
+    }
+
+
+}
+
+@media only screen and (max-width:430px) {
+    .tabsContainer .tabs {
+        font-size: 1rem;
+    }
 }

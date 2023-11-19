@@ -148,8 +148,8 @@ const Blogs = () => {
         </Tabs>
       </Box>
 
-      <Box paddingX={"12%"}>
-        <Box></Box>
+      <Box paddingX={"10%"}>
+      
         <Box display={"flex"} flexWrap={"wrap"}>
           {blogs &&
             blogs.map((blog, index) => (

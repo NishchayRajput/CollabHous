@@ -8,8 +8,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { authActions } from "../redux/store";
 import toast from "react-hot-toast";
 import { Link as ScrollLink } from "react-scroll";
-import "./css/Header.css"
-
+import "./css/Header.css";
+import Hamburger from "./Hamburger";
 
 const Header = () => {
   // global state
@@ -23,7 +23,7 @@ const Header = () => {
   const scrollToPercentage = (percentage) => {
     const scrollToY =
       (percentage / 100) * (document.body.scrollHeight - window.innerHeight);
-    window.scrollTo({ top: scrollToY, behavior: "smooth" });
+    window.scrollTo({ top: scrollToY, behavior: "instant" });
   };
   window.addEventListener("scroll", () => {
     const scrollPercentage =
@@ -48,12 +48,18 @@ const Header = () => {
         position="sticky"
         className="appbar"
         sx={{
-          bgcolor: (value === 0 && scrollValue < 10) ? "rgba(72, 72, 72, 0)" : "rgba(72, 72, 72, 0.3)",
-          border: (value === 0 && scrollValue < 10) ? "0px" : "2px solid rgba(134, 127, 127, 0.43)",
-          boxShadow: (value === 0 && scrollValue < 10) ? "none" : "",
+          bgcolor:
+            value === 0 && scrollValue < 10
+              ? "rgba(72, 72, 72, 0)"
+              : "rgba(72, 72, 72, 0.3)",
+          border:
+            value === 0 && scrollValue < 10
+              ? "0px"
+              : "2px solid rgba(134, 127, 127, 0.43)",
+          boxShadow: value === 0 && scrollValue < 10 ? "none" : "",
         }}
       >
-        <Toolbar style={{ minHeight: "49px", height: "49px" }}>
+        <Toolbar className="toolbar">
           <Typography fontSize="32px">cH</Typography>
           <Box display={"flex"} marginLeft="auto" marginRight={"auto"}>
             <Tabs
@@ -63,7 +69,6 @@ const Header = () => {
               TabIndicatorProps={{
                 style: {
                   backgroundColor: true ? "#F74D79" : "rgba(35, 36, 38, 1)", // Colored underline for selected tab
-                  
                 },
               }}
             >
@@ -71,15 +76,10 @@ const Header = () => {
                 label="Home"
                 LinkComponent={Link}
                 to="/"
+                onClick={() => scrollToPercentage(0)}
                 className="tab"
                 style={{
-                  opacity:"1",
                   color: value === 0 ? "#F74D79" : "white", // Text color for selected tab
-                  textTransform: "none",
-                  fontSize: "14px",
-                  marginLeft: "16px",
-                  marginRight: "16px",
-                  fontFamily: "Questrial",
                 }}
               />
               <Tab
@@ -88,63 +88,42 @@ const Header = () => {
                 to="/"
                 className="tab"
                 style={{
-                  opacity:"1",
                   color: value === 1 ? "#F74D79" : "white", // Text color for selected tab
-                  textTransform: "none",
-                  fontSize: "14px",
-                  marginLeft: "16px",
-                  marginRight: "16px",
-                  fontFamily: "Questrial",
                 }}
-                onClick={() => (value!=1)?scrollToPercentage(42):''}
+                onClick={() => (value != 1 ? scrollToPercentage(42) : "")}
               >
-                {/* <ScrollLink
-                  to="whoAreWe"
-                  smooth={true}
-                  offset={-70}
-                  duration={500}
-                > */}
                 Who are we
-                {/* </ScrollLink> */}
               </Tab>
 
               <Tab
-                
                 label="Blogs"
                 LinkComponent={Link}
                 to="/blogs"
+                onClick={() => scrollToPercentage(0)}
                 className="tab"
                 style={{
-                  opacity:"1",
                   color: value === 2 ? "#F74D79" : "white", // Text color for selected tab
-                  textTransform: "none",
-                  fontSize: "14px",
-                  marginLeft: "16px",
-                  marginRight: "16px",
-                  fontFamily: "Questrial",
-               
                 }}
               />
               <Tab
-                
                 label="Connect"
                 LinkComponent={Link}
                 to="/connect"
+                onClick={() => scrollToPercentage(0)}
                 className="tab"
                 style={{
-                  opacity:"1",
                   color: value === 3 ? "#F74D79" : "white", // Text color for selected tab
-                  textTransform: "none",
-                  fontSize: "14px",
-                  marginLeft: "16px",
-                  marginRight: "16px",
-                  fontFamily: "Questrial",
                 }}
               />
             </Tabs>
           </Box>
           <Notification />
-          <AvatarDropdown style={{ height: "24px", width: "24px" }} />
+          <div id="avatarContainer">
+            {" "}
+            <AvatarDropdown />
+          </div>
+
+          <Hamburger />
         </Toolbar>
       </AppBar>
     </>

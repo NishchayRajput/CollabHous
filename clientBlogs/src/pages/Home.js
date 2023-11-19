@@ -32,7 +32,7 @@ const Home = () => {
         setHeroData(data.heroData);
         setRecentBlog(data.latestBlogs);
         setDisplayText(data.heroData[0].value);
-        console.log(data.mostLikedBlog);
+        // console.log(data.mostLikedBlog);
       } catch (error) {
         console.log(error);
       }
