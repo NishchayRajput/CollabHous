@@ -19,7 +19,7 @@
     align-items: center;
     gap: 16px;
     position: relative;
-    top: -334px;
+    top: -100px;
 }
 
 .heroBanner .container>.title {
@@ -27,7 +27,14 @@
     color: #F74D79;
     font-weight: 500;
 }
+.heroBanner .container .usernameContainer {
 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    justify-content: flex-start;
+}
 .heroBanner .container .usernameContainer>.X {
     font-size: 36px;
     font-weight: 900;
@@ -65,7 +72,14 @@
     color: #F74D79;
     font-weight: 500;
 }
+.blogBanner .container .usernameContainer {
 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    justify-content: flex-start;
+}
 .blogBanner .container .X {
     font-size: 36px;
     font-weight: 900;
@@ -213,6 +227,7 @@
         flex-direction: column;
         width: 100%;
         padding: 10vw;
+        top: -334px;
     }
 
     .heroBanner .container .usernameContainer {

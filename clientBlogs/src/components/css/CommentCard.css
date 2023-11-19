@@ -235,9 +235,16 @@
 @media only screen and (max-width:430px) {
     .commentCard .textArea {
         height: auto;
+        width: 60%;
     }
 
     .commentCard .buttonArea {
         padding-top: 10px;
+    }
+    .typeBox #textBox {
+width:60%;
+    }
+    .typeBox #respondBtn {
+        margin-top:20px;
     }
 }
