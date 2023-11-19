@@ -17,7 +17,7 @@ const Connect = () => {
             alt="heroLanding"
             className="background"
           />
-          <div className="button">
+          <div className="buttons_top">
             <button className="btn1">Connect</button>
             <button className="btn2"> Job Openings</button>
 
