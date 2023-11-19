@@ -12,7 +12,7 @@
     padding: 1vw !important;
 }
 
-.cardHeading{
+.settingsCard .cardHeading{
     font-family: 'Roboto' !important;
     font-style: normal !important;
     font-weight: 700 !important;
@@ -23,7 +23,7 @@
     color: #FFFFFF !important;
 }
 
-.cardContent{
+.settingsCard .cardContent{
 
 font-family: 'Roboto' !important;
 font-style: normal !important;
@@ -38,7 +38,7 @@ color: #FFFFFF !important;
 
 }
 
-.button{
+.settingsCard .button{
     width:9vw;
     height: 1.5vw;
     padding: 0 !important;
@@ -79,14 +79,14 @@ color: #F74D79 !important;
         height: 15vw !important;
     }
 
-    .cardHeading{
+    .settingsCard .cardHeading{
         font-weight: 500 !important;
         font-size: 10px !important;
         line-height: 13px !important;
         letter-spacing: 0.05em !important;
     }
 
-    .cardContent{
+    .settingsCard .cardContent{
         font-weight: 400 !important;
         font-size: 9px !important;
         line-height: 14px !important;

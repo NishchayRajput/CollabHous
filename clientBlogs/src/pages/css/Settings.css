@@ -11,37 +11,37 @@
 
 }
 
-#userBoard, #userDetails {
+.settingsContainer #userBoard, #userDetails {
     border-radius: 10px;
     background-color: #2F2F2F;
     min-width: 100%;
     border: 1px solid #414141;
 }
 
-#userBoard {
+.settingsContainer #userBoard {
     height: 35vh;
     position: relative;
 }
 
-#userBoard .div1{
+.settingsContainer #userBoard .div1{
     display: flex;
     gap: 0.1vw;
     margin-left: 3vw;
 }
 
-.div2{
+.settingsContainer .div2{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
   
 }
 
-#userDetails{
+.settingsContainer #userDetails{
     min-height: 50vh;
     
 }
 
-#avatar{
+.settingsContainer #avatar{
     height: 10vw;
     width: 10vw;
     max-width: 180px;
@@ -53,7 +53,7 @@
 
 
 
-.username{
+.settingsContainer .username{
 
     color: white !important;
     font-family: 'Roboto'!important;
@@ -64,7 +64,7 @@
 
 
 
-.bio{
+.settingsContainer .bio{
  
 
     font-family: 'Roboto';
@@ -77,7 +77,7 @@
 
 } 
 
-.info{
+.settingsContainer .info{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -85,12 +85,12 @@
     gap: 6vh;
 }
 
-.row{
+.settingsContainer .row{
     display: flex;
     justify-content: space-between;
 }
 
-.label{
+.settingsContainer .label{
 
         font-family: 'Questrial' !important;
         font-style: normal !important;
@@ -103,7 +103,7 @@
 
 }
 
-.values{
+.settingsContainer  .values{
 
         font-family: 'Questrial'!important;
         font-style: normal !important;
@@ -115,11 +115,11 @@
 
 
 }
-.signoutDiv{
+.settingsContainer  .signoutDiv{
     display: flex;
     justify-content: flex-end;
 }
-.signout{
+.settingsContainer  .signout{
     font-family: 'Roboto' !important;
     font-weight: 700 !important;
     font-size: 16px !important;
@@ -128,14 +128,14 @@
 
 }
 
-.socialMediaDrop{
+.settingsContainer  .socialMediaDrop{
     display: flex;
     flex-direction: column;
     gap: 3vh;
     padding: 2vh 0 3vh 5vw;
 }
 
-.dataDrop{
+.settingsContainer .dataDrop{
     display: flex;
     flex-direction: row;
     gap: 2vh;
@@ -145,7 +145,7 @@
 /*******************************************************/
 
 @media screen and (max-width:768px){
-    .dataDrop{
+    .settingsContainer .dataDrop{
         display: grid;
         grid-template-columns: [first] 50% [second] 50%;
         justify-self: center ;
@@ -155,23 +155,23 @@
 }
 
 @media screen and (max-width:375px) {
-    #userBoard, #userDetails {
+    .settingsContainer #userBoard, #userDetails {
         background-color: rgba(35, 36, 38, 1);
         border: none;
         box-shadow: none;
     }
 
-    #userBoard .img{
+    .settingsContainer #userBoard .img{
         visibility: hidden;
     }
 
-    #avatar{
+    .settingsContainer #avatar{
         top: 0;
         height: 100px;
         width: 100px;
     }
 
-    .div1{
+    .settingsContainer .div1{
         position: absolute;
         top: 10vh;
         align-items: center;
@@ -184,15 +184,15 @@
         gap: 0;
     }
 
-    #userBoard, #userDetails{
+    .settingsContainer #userBoard, #userDetails{
         width: 100%;
     }
 
-    #userBoard{
+    .settingsContainer #userBoard{
         height: 30vh ;
     }
 
-    .dataDrop{
+    .settingsContainer .dataDrop{
         display: flex;
         flex-direction: column;
         gap: 3vh;

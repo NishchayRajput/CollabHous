@@ -241,7 +241,7 @@ const Register = () => {
             type="submit"
             className="continue"
           >
-            Next
+            Continue
           </Button>
           <div className="or"><div></div>&nbsp;Or&nbsp; <div></div></div>
           <div className="submit">
