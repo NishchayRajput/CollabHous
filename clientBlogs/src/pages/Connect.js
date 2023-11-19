@@ -18,8 +18,8 @@ const Connect = () => {
             className="background"
           />
           <div className="button">
-            <button id="btn1">Connect</button>
-            <button id="btn2"> Job Openings</button>
+            <button className="btn1">Connect</button>
+            <button className="btn2"> Job Openings</button>
 
           </div>
 
