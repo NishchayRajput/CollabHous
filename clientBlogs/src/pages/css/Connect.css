@@ -23,6 +23,7 @@
 
 .button {
     display: flex;
+    flex-direction: row;
     gap: 39px;
     align-items: center;
     justify-content: center;
@@ -508,9 +509,9 @@
     .btn1,
     .btn2 {
         width: 50vw;
-        letter-spacing: 1.194px;
-        line-height: normal;
-        font-size: 20px;
+        font-size: 15px;
+        padding: 40px 0px 10px 0px ;
+        align-items: center;
     }
 
     .middlepart {
