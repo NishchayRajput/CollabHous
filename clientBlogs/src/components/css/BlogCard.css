@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+
 .card {
     border-radius: 10px;
     background-color: #2F2F2F;
@@ -33,6 +36,53 @@
     padding-top: 2px;
     padding-bottom: 11px;
     margin-top: 0px;
+}
+
+.card .cardContent .titleContainer {
+    padding-bottom: 10px;
+    font-size: 18px;
+    color: #F74D79
+}
+
+.card .cardContent .titleContainer .title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.05em;
+    color: #F74D79;
+    padding-top: 10px;
+    text-align: start;
+}
+
+.card .cardContent .description {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.05em;
+    color: white;
+    text-align: start;
+}
+
+.card .read_time {
+    color: white;
+    padding: 4px;
+    font-family: 'Questrial', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 0.05em;
+}
+
+.card .date {
+    color: white;
+    padding: 4px;
+    font-family: 'Questrial', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 0.05em;
 }
 
 .card .tag {

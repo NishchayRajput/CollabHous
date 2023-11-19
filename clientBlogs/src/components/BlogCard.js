@@ -84,80 +84,45 @@ export default function BlogCard({
               </Avatar>
             }
             className="cardHeader"
-            title=<p style={{
-              fontFamily: 'Roboto',
-                  fontWeight: "700",
-                  fontSize:"12px",
-                  lineHeight: "14px",
-                  letterSpacing: "0.05em",
-                  color: "white",}}>{username}</p>
-            
-          />
-        </Box>
-        <CardContent className="cardContent">
-          <Typography
-            paddingBottom="10px"
-            sx={{ fontSize: "18px", color: "#F74D79" }}
-            variant="h6"
-            color="text.secondary"
-          >
-            <p style={{
-                fontFamily: 'Roboto',
+            title=<p
+              style={{
+                fontFamily: "Roboto",
                 fontWeight: "700",
-                fontSize: "18px",
-                lineHeight: "21px",
-                letterSpacing: "0.05em",
-                color: "#F74D79",
-                paddingTop: "10px",
-            }}>{title}</p>
-          </Typography>
-          <Typography variant="body2" color="white" fontSize={"13px"}>
-            <p style={{
-
-                fontFamily: 'Roboto',
-                fontWeight: "300",
                 fontSize: "12px",
                 lineHeight: "14px",
                 letterSpacing: "0.05em",
                 color: "white",
-            }}>{description}</p>
+              }}
+            >
+              {username}
+            </p>
+          />
+        </Box>
+        <CardContent className="cardContent">
+          <Typography
+            className="titleContainer"
+            variant="h6"
+            color="text.secondary"
+          >
+            <p className="title">{title}</p>
+          </Typography>
+          <Typography variant="body2">
+            <p className="description">{description}</p>
           </Typography>
         </CardContent>
         <Box paddingLeft={"22px"}>
           <div style={{ display: "flex", alignItems: "center" }}>
-          <p style={{ color: "white", padding: "4px", 
-                  fontFamily: 'Questrial',
-                  fontWeight: "400",
-                  fontSize: "12px",
-                  lineHeight: "12px",
-                  letterSpacing:"0.05em",
-
-               }}>
-                {read_time} min read
-              </p>
-                <Dot />
-            <p style={{ color: "white", padding: "4px", 
-                  fontFamily: 'Questrial',
-                  fontWeight: "400",
-                  fontSize: "12px",
-                  lineHeight: "12px",
-                  letterSpacing:"0.05em",
-
-               }}>
-              {time}
-            </p>
-            <Dot/>
+            <p className="read_time">{read_time} min read</p>
+            <Dot />
+            <p className="date">{time}</p>
+            <Dot />
             <p className="tag">{tag}</p>
           </div>
         </Box>
         <CardActions disableSpacing style={{ paddingTop: "0px", zIndex: "8" }}>
           <IconButton arqia-label="add to favorites" onClick={handleUpvote}>
             <ThumbUpOffAltIcon style={{ color: "#626262" }} />
-            <span
-              className="upvote"
-            >
-              {upvoteCount ? upvoteCount : "0"}
-            </span>
+            <span className="upvote">{upvoteCount ? upvoteCount : "0"}</span>
           </IconButton>
         </CardActions>
       </Box>
