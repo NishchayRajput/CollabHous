@@ -6,7 +6,7 @@ import "./BlogLayout.css";
 const BlogLayout = () => {
   return (
     <>
-      <Box mt={"20px"}>
+      <Box id="layoutContainer">
         <Typography className="ourBlogContainer">
           <div className="fontContainer1">
             <Typography className="font1">Our Blogs</Typography>
@@ -16,9 +16,11 @@ const BlogLayout = () => {
             <Typography className="font2">Our Blogs</Typography>
           </div>
         </Typography>
-        <Typography className="blogIntro">
-          <Box>Welcome to the digital library of personal luxury.</Box>
-          <Box>
+        <Typography className="blogIntroContainer">
+          <Box className="blogIntro">
+            Welcome to the digital library of personal luxury.
+          </Box>
+          <Box className="blogIntro">
             Written & directed by: The new age of India’s fashion commune
           </Box>
         </Typography>

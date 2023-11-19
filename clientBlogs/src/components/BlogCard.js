@@ -83,6 +83,7 @@ export default function BlogCard({
                 N
               </Avatar>
             }
+            className="cardHeader"
             title=<p style={{
               fontFamily: 'Roboto',
                   fontWeight: "700",
@@ -90,7 +91,7 @@ export default function BlogCard({
                   lineHeight: "14px",
                   letterSpacing: "0.05em",
                   color: "white",}}>{username}</p>
-            className="cardHeader"
+            
           />
         </Box>
         <CardContent className="cardContent">

@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: relative;
+  width: 32px;
+  height: 30px;
+  margin-left: 20px;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: #ffffff;
+}
+
+/* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+  background: #ffffff;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+  top: 2.5em !important;
+  right: 1.5em !important;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #bdc3c7;
+}
+
+/*
+Sidebar wrapper styles
+Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+*/
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+  width: 100% !important;
+  top: 0px;
+   backdrop-filter: blur(5px);
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: rgba(0, 0, 0, 0.468);
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+ 
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #000000;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: #b8b7ad;
+  padding: 0.8em;
+
+}
+
+/* Individual item */
+.bm-item {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20%;
+  color: white;
+  text-decoration: none;
+  font-family: 'Questrial', sans-serif;
+font-size: 1.5rem;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: none !important;
+}
+
+.break-line{
+  height:2px;
+  width:30%;
+  border: 1px solid white;
+}
+
+
+
+
+/* RESPONSIVENESS */
+
+@media only screen and (min-width: 800px) {
+  #outer-container {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  #outer-container {
+    /* display:contents; */
+  }
+}
