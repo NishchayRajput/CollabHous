@@ -17,6 +17,7 @@
     font-style: normal !important;
     font-weight: 700 !important;
     font-size: 15px !important;
+    text-align: center;
     line-height: 9px !important;
     letter-spacing: 0.05em !important;
     color: #FFFFFF !important;
@@ -60,4 +61,42 @@ color: #F74D79 !important;
 }
 
 }
+
+
+/*******************************************************************/
+
+
+@media screen and (max-width:1440px){
+    .settingsCard{
+        height: 10vw !important;
+    }
+}
+
+
+@media screen and (max-width:1024px){
+    .settingsCard{
+        width: 11vw !important;
+        height: 15vw !important;
+    }
+
+    .cardHeading{
+        font-weight: 500 !important;
+        font-size: 10px !important;
+        line-height: 13px !important;
+        letter-spacing: 0.05em !important;
+    }
+
+    .cardContent{
+        font-weight: 400 !important;
+        font-size: 9px !important;
+        line-height: 14px !important;
+    }
+}
+
+@media screen and (max-width:768px){
+    .settingsCard{
+        width: 100% !important;
+    }
+}
+
 

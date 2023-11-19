@@ -23,21 +23,35 @@
     position: relative;
 }
 
+#userBoard .div1{
+    display: flex;
+    gap: 0.1vw;
+    margin-left: 3vw;
+}
+
+.div2{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  
+}
+
 #userDetails{
     min-height: 50vh;
     
 }
 
 #avatar{
-    position: relative;
-    left: 5%;
-    top: -19%;
-    height:12vh;
-    width:12vh;
+    height: 10vw;
+    width: 10vw;
+    max-width: 180px;
+    max-height: 180px;
+    top: -5vw;
     border: "2px solid blue";
-    margin: 0;
-    padding: 0;
+    
 }
+
+
 
 .username{
 
@@ -48,16 +62,10 @@
     line-height: 28px !important;
 }
 
-.usernameHeader{
-    position: absolute;
-    top: 52%;
-    left: 14%;
-}
+
 
 .bio{
-    position: absolute;
-    top: 70%;
-    left: 15.5%;
+ 
 
     font-family: 'Roboto';
     font-style: normal;
@@ -67,7 +75,7 @@
 
     color: #787878;
 
-}
+} 
 
 .info{
     display: flex;
@@ -131,8 +139,21 @@
     display: flex;
     flex-direction: row;
     gap: 2vh;
-
+    
 }
+
+/*******************************************************/
+
+@media screen and (max-width:768px){
+    .dataDrop{
+        display: grid;
+        grid-template-columns: [first] 50% [second] 50%;
+        justify-self: center ;
+        align-self: center;
+
+    }
+}
+
 
 
 
