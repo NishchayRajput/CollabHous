@@ -174,6 +174,7 @@ const Login = () => {
           </Button>
 
           <TextField
+            className="email"
             placeholder="Email"
             value={inputs.email}
             name="email"
@@ -195,6 +196,7 @@ const Login = () => {
           />
 
           <TextField
+            className="password"
             placeholder="Password"
             value={inputs.password}
             name="password"
