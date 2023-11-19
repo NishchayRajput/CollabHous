@@ -2,13 +2,14 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
 
-.commentContainer{
+.commentContainer {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-end;
 }
+
 .commentCard {
     width: 100%;
     margin: 8px auto;
@@ -72,12 +73,12 @@
 }
 
 .commentCard .textArea {
-    height: 56px;
+    height: auto;
     width: 90%;
     margin: 7px auto;
     margin-bottom: 0px;
     translate: 4px;
-    line-height:16px;
+    line-height: 16px;
     color: #A0A0A0;
     font-size: 14px;
     letter-spacing: 1px;
@@ -183,6 +184,7 @@
     margin-top: 10px;
     color: #A0A0A0;
 }
+
 .replyBox #textBox {
     height: 56px;
     margin-left: 11px;
@@ -193,9 +195,12 @@
     width: 90%;
     font-size: 15px;
     font-family: 'Questrial', sans-serif;
-    white-space: pre-wrap; /* Allow wrapping */
-    overflow-wrap: break-word; /* This property allows long words to be broken and wrap to the next line */
-    word-wrap: break-word; /* Additional property for compatibility */
+    white-space: pre-wrap;
+    /* Allow wrapping */
+    overflow-wrap: break-word;
+    /* This property allows long words to be broken and wrap to the next line */
+    word-wrap: break-word;
+    /* Additional property for compatibility */
 }
 
 
@@ -223,4 +228,16 @@
     border-radius: 18px;
     border: 1px solid white;
     background-color: #2F2F2F;
+}
+
+
+
+@media only screen and (max-width:430px) {
+    .commentCard .textArea {
+        height: auto;
+    }
+
+    .commentCard .buttonArea {
+        padding-top: 10px;
+    }
 }

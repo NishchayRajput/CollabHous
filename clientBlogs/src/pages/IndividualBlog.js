@@ -121,10 +121,11 @@ export default function IndividualBlog({}) {
           <Box className="heroBanner">
             <Box className="container">
               <Typography className="title">{blog.title}</Typography>
-              <Typography className="X">X</Typography>
-              <Typography className="username">Username</Typography>
-
-              <img src="" />
+              <div className="usernameContainer">
+                <Typography className="X">X</Typography>
+                <Typography className="username">Username</Typography>
+                <img src="" />{" "}
+              </div>
             </Box>
           </Box>
         </section>
@@ -132,11 +133,11 @@ export default function IndividualBlog({}) {
           <Box className="blogBanner">
             <Box className="container">
               <Typography className="title">{blog.title}</Typography>
-              <Typography className="X">X</Typography>
-              <Typography className="username">Username</Typography>
-              <img //Avatar Image
-                src=""
-              />
+              <div className="usernameContainer">
+                <Typography className="X">X</Typography>
+                <Typography className="username">Username</Typography>
+                <img src="" />{" "}
+              </div>
             </Box>
           </Box>
           <Box
@@ -156,7 +157,11 @@ export default function IndividualBlog({}) {
             </Box>
           </Box>
 
-          <Box className="blogContent">
+          <Box
+            className="blogContent"
+            display={"flex"}
+            style={{ flexWrap: "wrap" }}
+          >
             <Typography className="subtitle">Fashion</Typography>
             <Typography className="content">
               Lorem ipsum dolor sit amet consectetur. Habitant diam mi semper in
@@ -173,7 +178,11 @@ export default function IndividualBlog({}) {
               sem scelerisque vulputate. Enim tellus ut condimentum tortor sit
               lectus purus. Aliquet eget dui faucibus dui bibendum consequat.
             </Typography>
-            <Box display={"flex"} mt={"1rem"}>
+            <Box
+              className="blogContent"
+              display={"flex"}
+              style={{ flexWrap: "wrap" }}
+            >
               {
                 //change this on fetching the image data form database
                 blog.image == null ? (
@@ -222,7 +231,11 @@ export default function IndividualBlog({}) {
               sem scelerisque vulputate. Enim tellus ut condimentum tortor sit
               lectus purus. Aliquet eget dui faucibus dui bibendum consequat.
             </Typography>
-            <Box display={"flex"} mt={"1rem"}>
+            <Box
+              className="blogContent"
+              display={"flex"}
+              style={{ flexWrap: "wrap" }}
+            >
               <Typography className="content" width={"60"}>
                 Lorem ipsum dolor sit amet consectetur. Habitant diam mi semper
                 in ultricies ipsum sed ac. Consectetur nascetur sit pharetra

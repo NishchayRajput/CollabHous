@@ -30,7 +30,7 @@ const Connect = () => {
               <p ><span className="c">C</span><span className="h"> H</span></p>
             </div>
             <p className="pink">What interests you? </p>
-            <div className="container">
+            <div className="connect_container">
               <div className="item"> Digital Communities</div><span className="addline"></span>
               <div className="item"> Fashion Blogging</div><span className="addline"></span>
               <div className="item">Digital marketing</div><span className="addline"></span>
