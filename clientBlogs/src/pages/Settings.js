@@ -42,7 +42,7 @@ const Settings = ()=> {
         <div style={{ minHeight: "100vh", backgroundColor: "rgba(35, 36, 38, 1)" }}>
             <div className="settingsContainer">
                 <Card id="userBoard">
-                    <CardMedia component="img" height="55%" image={image} alt="Paella dish" style={{backgroundColor:'pink'}} />
+                    <CardMedia className="img" component="img" height="55%" image={image} alt="Paella dish" style={{backgroundColor:'pink'}} />
                     <div className="div1">
                     <Avatar id="avatar" sx={{ border: "2px solid rgba(35, 36, 38, 1)",boxShadow: 20}}></Avatar>
                     <div className="div2">

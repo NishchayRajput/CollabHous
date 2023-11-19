@@ -154,6 +154,51 @@
     }
 }
 
+@media screen and (max-width:375px) {
+    #userBoard, #userDetails {
+        background-color: rgba(35, 36, 38, 1);
+        border: none;
+        box-shadow: none;
+    }
+
+    #userBoard .img{
+        visibility: hidden;
+    }
+
+    #avatar{
+        top: 0;
+        height: 100px;
+        width: 100px;
+    }
+
+    .div1{
+        position: absolute;
+        top: 10vh;
+        align-items: center;
+        
+    }
+    
+    .settingsContainer{
+        margin:0 !important;
+        width:100vw;
+        gap: 0;
+    }
+
+    #userBoard, #userDetails{
+        width: 100%;
+    }
+
+    #userBoard{
+        height: 30vh ;
+    }
+
+    .dataDrop{
+        display: flex;
+        flex-direction: column;
+        gap: 3vh;
+    }
+}
+
 
 
 

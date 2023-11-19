@@ -95,7 +95,24 @@ color: #F74D79 !important;
 
 @media screen and (max-width:768px){
     .settingsCard{
-        width: 100% !important;
+        width: 100% ;
+    }
+}
+
+@media screen and (max-width:375px){
+    .settingsCard{
+        width: 100% !important ;
+        height: 10vh !important;
+    }
+    .cardHeading{
+        font-size: 15px !important;
+        padding-bottom: 0.5vh;
+    }
+    .cardContent{
+        font-size: 10px !important;
+    }
+    .button{
+        height: 3vh;
     }
 }
 
