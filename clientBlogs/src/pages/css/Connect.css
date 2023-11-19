@@ -21,12 +21,15 @@
     transform: translate(0, 0);
 }
 
-.button {
+.buttons_top {
     display: flex;
     flex-direction: row;
     gap: 39px;
     align-items: center;
     justify-content: center;
+    /* z-index: 2; */
+    /* width: 100px; */
+    /* width: 50%; */
 }
 
 .btn1 {
@@ -501,16 +504,16 @@
 
 @media only screen and (min-width: 375px) and (max-width:767px) {
 
-    .button {
+    .buttons_top {
         flex-direction: column;
 
-    }
+    } 
 
     .btn1,
     .btn2 {
-        width: 50vw;
+        width: 30vw;
         font-size: 15px;
-        padding: 40px 0px 10px 0px ;
+        /* height: 100px; */
         align-items: center;
     }
 
@@ -647,7 +650,6 @@
     }
     
     .or_continue {
- 
         font-size: 14px;
         font-weight: 500;
  
