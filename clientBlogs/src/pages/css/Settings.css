@@ -11,35 +11,49 @@
 
 }
 
-#userBoard, #userDetails {
+.settingsContainer #userBoard, #userDetails {
     border-radius: 10px;
     background-color: #2F2F2F;
     min-width: 100%;
     border: 1px solid #414141;
 }
 
-#userBoard {
+.settingsContainer #userBoard {
     height: 35vh;
     position: relative;
 }
 
-#userDetails{
+.settingsContainer #userBoard .div1{
+    display: flex;
+    gap: 0.1vw;
+    margin-left: 3vw;
+}
+
+.settingsContainer .div2{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  
+}
+
+.settingsContainer #userDetails{
     min-height: 50vh;
     
 }
 
-#avatar{
-    position: relative;
-    left: 5%;
-    top: -19%;
-    height:12vh;
-    width:12vh;
+.settingsContainer #avatar{
+    height: 10vw;
+    width: 10vw;
+    max-width: 180px;
+    max-height: 180px;
+    top: -5vw;
     border: "2px solid blue";
-    margin: 0;
-    padding: 0;
+    
 }
 
-.username{
+
+
+.settingsContainer .username{
 
     color: white !important;
     font-family: 'Roboto'!important;
@@ -48,16 +62,10 @@
     line-height: 28px !important;
 }
 
-.usernameHeader{
-    position: absolute;
-    top: 52%;
-    left: 14%;
-}
 
-.bio{
-    position: absolute;
-    top: 70%;
-    left: 15.5%;
+
+.settingsContainer .bio{
+ 
 
     font-family: 'Roboto';
     font-style: normal;
@@ -67,9 +75,9 @@
 
     color: #787878;
 
-}
+} 
 
-.info{
+.settingsContainer .info{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -77,12 +85,12 @@
     gap: 6vh;
 }
 
-.row{
+.settingsContainer .row{
     display: flex;
     justify-content: space-between;
 }
 
-.label{
+.settingsContainer .label{
 
         font-family: 'Questrial' !important;
         font-style: normal !important;
@@ -95,7 +103,7 @@
 
 }
 
-.values{
+.settingsContainer  .values{
 
         font-family: 'Questrial'!important;
         font-style: normal !important;
@@ -107,11 +115,11 @@
 
 
 }
-.signoutDiv{
+.settingsContainer  .signoutDiv{
     display: flex;
     justify-content: flex-end;
 }
-.signout{
+.settingsContainer  .signout{
     font-family: 'Roboto' !important;
     font-weight: 700 !important;
     font-size: 16px !important;
@@ -120,19 +128,77 @@
 
 }
 
-.socialMediaDrop{
+.settingsContainer  .socialMediaDrop{
     display: flex;
     flex-direction: column;
     gap: 3vh;
     padding: 2vh 0 3vh 5vw;
 }
 
-.dataDrop{
+.settingsContainer .dataDrop{
     display: flex;
     flex-direction: row;
     gap: 2vh;
-
+    
 }
+
+/*******************************************************/
+
+@media screen and (max-width:768px){
+    .settingsContainer .dataDrop{
+        display: grid;
+        grid-template-columns: [first] 50% [second] 50%;
+        justify-self: center ;
+        align-self: center;
+
+    }
+}
+
+@media screen and (max-width:375px) {
+    .settingsContainer #userBoard, #userDetails {
+        background-color: rgba(35, 36, 38, 1);
+        border: none;
+        box-shadow: none;
+    }
+
+    .settingsContainer #userBoard .img{
+        visibility: hidden;
+    }
+
+    .settingsContainer #avatar{
+        top: 0;
+        height: 100px;
+        width: 100px;
+    }
+
+    .settingsContainer .div1{
+        position: absolute;
+        top: 10vh;
+        align-items: center;
+        
+    }
+    
+    .settingsContainer{
+        margin:0 !important;
+        width:100vw;
+        gap: 0;
+    }
+
+    .settingsContainer #userBoard, #userDetails{
+        width: 100%;
+    }
+
+    .settingsContainer #userBoard{
+        height: 30vh ;
+    }
+
+    .settingsContainer .dataDrop{
+        display: flex;
+        flex-direction: column;
+        gap: 3vh;
+    }
+}
+
 
 
 

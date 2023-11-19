@@ -68,7 +68,14 @@
     font-size: 22.346px;
     line-height: 26px;
     letter-spacing:0.05em;
+    padding-top: 10px;
 
+
+}
+
+#card  .titleCard{
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 #card .cardContent .upvote {
@@ -77,4 +84,14 @@
     position: relative;
     bottom: -2px;
     color: #626262;
+}
+
+#card .cardContent .description{
+    font-family: 'Roboto';
+                font-weight: 300;
+                font-size: 14.878px;
+                line-height: 20px;
+                letter-spacing: 0.05em;
+                color: white;
+
 }

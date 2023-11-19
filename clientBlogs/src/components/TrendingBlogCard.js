@@ -91,28 +91,18 @@ export default function BlogCard({
             </p>
           </div>
         </Box>
-        <CardContent style={{paddingTop:'0px', paddingBottom:'0px'}}>
+        <CardContent className="titleCard">
           <Typography
-            paddingY="10px"
-            sx={{ fontSize: "18px", color: "#F74D79" }}
             variant="h6"
-            color="text.secondary"
+            className="title"
           >
-            <p className="title">{title}</p>
+          {title}
           </Typography>
         </CardContent>
-        <CardContent style={{ paddingTop: "0px", paddingBottom: "0px" }}>
+        <CardContent className="titleCard">
          
-          <Typography variant="body2" color="white" fontSize={"15px"}>
-            <p style={{
-                fontFamily: 'Roboto',
-                fontWeight: "300",
-                fontSize: "14.8978px",
-                lineHeight: "20px",
-                letterSpacing: "0.05em",
-                color: "#FFFFFF",
-
-            }}>{description}</p>
+          <Typography variant="body2" className="description">
+          {description}
           </Typography>
         </CardContent>
         <CardActions

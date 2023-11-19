@@ -13,7 +13,7 @@ const SettingsCard =(props)=>{
     return(
         <div>
             <Card className="settingsCard">
-                
+                    
                     <Typography className="cardHeading">
                         {props.heading}
                     </Typography>
@@ -25,7 +25,7 @@ const SettingsCard =(props)=>{
                     <Button className="button">
                         {props.button}
                     </Button>
-               
+                    
             </Card>
         </div>
     );
