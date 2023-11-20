@@ -55,7 +55,7 @@ const Login = () => {
     }
 
     try {
-      const { data } = await axios.post(
+      const response = await axios.post(
         "http://localhost:5000/ecommerce/login",
         {
           name: inputs.name,
@@ -67,11 +67,20 @@ const Login = () => {
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
           },
-        }
+        },
+        {
+          xhrFields:
+          { withCredentials: true }
+        },
+        { withCredentials: true },
       );
+      const {data} = response;
+      console.log(response)
+      const setCookieHeader = response.headers.get('set-cookie');
+      console.log('Set-Cookie Header:', setCookieHeader);
 
       if (data.message === "Login successful") {
-        // toast.success("User login Successfully");
+        // toast.success("User login Successsfully");
         dispatch(authActions.login());
         navigate("/");
         Store.addNotification({
@@ -138,19 +147,19 @@ const Login = () => {
     },
   });
 
-  useEffect(() => {
-    const getVerification = async () => {
-      try {
-        const { data } = await axios.get(
-          "http://localhost:5000/ecommerce/verify"
-        );
-        console.log(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getVerification();
-  }, []);
+  // useEffect(() => {
+  //   const getVerification = async () => {
+  //     try {
+  //       const { data } = await axios.get(
+  //         "http://localhost:5000/ecommerce/verify"
+  //       );
+  //       console.log(data);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   getVerification();
+  // }, []);
 
   return (
     <div className="loginpage">

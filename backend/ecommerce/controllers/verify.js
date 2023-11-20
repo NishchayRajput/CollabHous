@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const userInfo = require('../models/userInfo');
 
+
 async function tokenValidationMiddleware(req, res) {
     function extractTokenValue(tokenString) {
         if (tokenString && typeof tokenString === 'string') {
@@ -24,6 +25,8 @@ async function tokenValidationMiddleware(req, res) {
     }
 
     // Extract the token from the request's cookies
+    // console.log(req.session.user);
+    // console.log(db.session());
     const token = extractTokenValue(req.headers.cookie);
 
     if (!token) {
