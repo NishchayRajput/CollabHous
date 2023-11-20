@@ -238,3 +238,201 @@ color: #FFFFFF;
     line-height: 30px !important;
     letter-spacing: 0.05em !important;
 }
+
+@media only screen and (min-width: 375px) and (max-width:767px){
+
+    .whoAreWeContainer {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+    
+    .whoAreWeContainer .contentPanel {
+        width: 80%;
+        height: 50vh;
+    }
+    
+    .whoAreWeContainer .contentPanel>h2 {
+     
+        margin-bottom: 20px;
+        font-weight: 400;
+        font-size: 30px;
+      }
+    
+    .whoAreWeContainer .contentPanel>detail {
+  
+            font-size: 18px;
+            line-height: 28px;
+    
+    }
+    
+    .whoAreWeContainer .imagePanel {
+        width: 100%;
+     
+    }
+    
+    .whoAreWeContainer .imagePanel>img {
+        object-fit: cover;
+        width: 100%;
+           height: 50vh;
+    }
+
+    .welcomeSection {
+
+        width: 80%;
+    }
+    
+    .welcomeSection>h2 {
+
+    font-weight: 300;
+    font-size: 45px;
+    line-height: 50px;
+    
+    }
+    
+    .welcomeSection>detail {
+    font-weight: 400;
+    font-size: 18px; 
+    }
+
+    .heroLandingImage {
+        /* object-fit: cover;
+        width: 100vw; */
+        height: fit-content;
+    
+    
+    }
+
+    .carouselDisplayText {
+        padding: 20px 0px;
+        width: 100%;
+        font-size: 25px;
+        font-weight: 400;
+        line-height: 36px;
+    }
+
+.blogsBox{
+    display: flex;
+    flex-direction: column;
+     height: 100vh;
+}
+
+.trendingBlog{
+    width: 100%;
+    height: fit-content;
+}
+
+.horzBlogsOuter{
+    width: 100%;
+    height: 50vh;
+}
+
+
+#card {
+    height: 50vh;
+}
+
+.carouselSection {
+    min-height: 100vh;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+ .carouselContentContainer {
+    width: 100%;
+
+    gap: 5px;
+}
+
+.carouselSection .carouselContentBtn {
+    border-radius: 30px;
+    text-transform: none;
+    font-size: 15px;
+    min-width: 40px;
+    height: 43.73px;
+    border: 0.83px solid rgba(71, 71, 71, 1);
+
+
+    
+
+    font-family: 'Roboto';
+    font-style: normal;
+    
+    font-size: 23.1px;
+    line-height: 27px;
+    color: #FFFFFF;
+
+    &:hover {
+        background-color: #5f5f5f;
+        
+    }
+}
+
+ .carouselDisplayText {
+    /* padding: 20px 0px; */
+    color: rgba(177, 177, 177, 1);
+    width: 100%;
+    /* height: 30vh; */
+    /* margin: 0px auto; */
+    font-size: 20px;
+    gap: 10px;
+
+
+   
+
+    font-family: 'Questrial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 36px;
+    /* or 150% */
+    letter-spacing: 0.05em;
+
+    color: #B1B1B1;
+
+    
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+
+
+
+}
+
+    
+@media only screen and (min-width: 768px) and (max-width:1024px){
+
+    .heroLandingImage{
+        height: fit-content;
+    }
+
+
+    .welcomeSection {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 20px;
+    }
+    
+    .welcomeSection>h2 {
+  
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 59px;
+ }
+    
+    .welcomeSection>detail {
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 50px;
+     letter-spacing: 0.06em;
+     margin-top: 10px;
+   }
+}
+
+
+
