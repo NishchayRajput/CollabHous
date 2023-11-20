@@ -282,17 +282,26 @@ color: #FFFFFF;
         height: fit-content
      
     }
+    .imagePanel{
+        width: 80vh;
+        height: 40vh;
+    }
     
     .whoAreWeContainer .imagePanel>img {
         object-fit: cover;
         width: 100%;
            height: 50vh;
+           margin-bottom: 35px;
     }
 
     .welcomeSection {
 
         width: 100%;
-        min-height: 50vh;
+        /* min-height: 50vh; */
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+   
     }
     
     .welcomeSection>h2 {
@@ -304,10 +313,11 @@ color: #FFFFFF;
     }
     
     .welcomeSection>detail {
-        width: 80%;
+        width: 70%;
     font-weight: 400;
-    font-size: 16px; 
-    margin-left: 20px;
+    font-size: 18px; 
+    gap: 25px;
+
     }
 
     .heroLandingImage {
@@ -480,6 +490,7 @@ color: #FFFFFF;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
 }
+
 }
 
 
