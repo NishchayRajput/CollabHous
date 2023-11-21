@@ -104,4 +104,8 @@
         align-items: center;
         gap: 6px;
     }
+
+    #card{
+        height: 300px;
+    }
 }
