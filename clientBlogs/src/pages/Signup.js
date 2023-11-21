@@ -177,7 +177,7 @@ const Register = () => {
             Create an account
           </Typography>
           <Button
-            onClick={() => navigate("/register")}
+            onClick={() => navigate("/login")}
             className="newUser"
           >
           <span>Already have an account? &nbsp;</span>Sign in

@@ -110,9 +110,10 @@
         font-weight: 400 !important;
         font-size: 20px !important;
         line-height: 16px !important;
-
+        text-transform: none;
+        text-decoration: none;
         color: #787878 !important;
-
+        padding-right: 0;
 
 }
 .settingsContainer  .signoutDiv{

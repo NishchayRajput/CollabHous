@@ -76,7 +76,7 @@ color: #F74D79 !important;
 @media screen and (max-width:1024px){
     .settingsCard{
         width: 11vw !important;
-        height: 15vw !important;
+        height: 16vw !important;
     }
 
     .settingsCard .cardHeading{
@@ -91,11 +91,15 @@ color: #F74D79 !important;
         font-size: 9px !important;
         line-height: 14px !important;
     }
+
+    .button{
+        height: 2.5vw !important;
+    }
 }
 
 @media screen and (max-width:768px){
     .settingsCard{
-        width: 100% ;
+        width: 100% !important;
     }
 }
 
@@ -112,7 +116,7 @@ color: #F74D79 !important;
         font-size: 10px !important;
     }
     .button{
-        height: 3vh;
+        height: 5vw !important;
     }
 }
 

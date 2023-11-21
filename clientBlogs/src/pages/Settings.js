@@ -42,7 +42,7 @@ const Settings = ()=> {
         <div style={{ minHeight: "100vh", backgroundColor: "rgba(35, 36, 38, 1)" }}>
             <div className="settingsContainer">
                 <Card id="userBoard">
-                    <CardMedia className="img" component="img" height="55%" image={image} alt="Paella dish" style={{backgroundColor:'pink'}} />
+                    <CardMedia className="img" component="img" height="55%" image={image} alt="user board" />
                     <div className="div1">
                     <Avatar id="avatar" sx={{ border: "2px solid rgba(35, 36, 38, 1)",boxShadow: 20}}></Avatar>
                     <div className="div2">
@@ -74,7 +74,7 @@ const Settings = ()=> {
                             </div>
                             <div className="row">
                             <Typography className="label">CV</Typography>
-                            <Typography className="values">View Upload</Typography>                 
+                            <Typography className="values"><Button className="values">View</Button><Button className="values">Upload</Button> </Typography>                 
                             </div>
                             <div className="row">
                             <Typography className="label">Social Media </Typography>
