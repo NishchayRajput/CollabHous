@@ -27,7 +27,8 @@ async function like(req, res) {
             await Blog.findByIdAndUpdate(bId, { $inc: { like: -1 } });
             
             res.status(200).json({ message: 'Interaction deleted successfully.' });
-        } else {
+        } 
+        if(it=='like') {
             // Create a new Interaction document
             const newInteraction = new Interaction({
                 user_id: uId,

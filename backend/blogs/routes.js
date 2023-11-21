@@ -7,10 +7,13 @@ const blog_card = require('./controllers/blogs');
 const blog_hero = require('./controllers/blog_hero');
 const auth = require('./middleware/auth');
 const headers = require('./controllers/headers');
+const setting = require('./controllers/setting');
 
-router.use(['/like*', '/comment*', '/reply*', '/headers*'], auth);
+
+router.use(['/like*', '/comment*', '/reply*', '/headers*', '/setting*'], auth);
 router.get('/like', like);
-router.get('/headers', headers );
+router.get('/headers', headers ); 
+router.get('/setting', setting );
 router.post('/comment', comment);
 router.get('/', blog_card);
 router.get('/hero', blog_hero);
