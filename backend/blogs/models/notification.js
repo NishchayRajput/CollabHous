@@ -23,6 +23,10 @@ const notifications = new mongoose.Schema({
     content : {
         type : String,
     },
+    status : {
+        type : String,
+        default : 'unread',
+    },
 });
 
 module.exports = mongoose.model('notifications', notifications, 'notifications');
