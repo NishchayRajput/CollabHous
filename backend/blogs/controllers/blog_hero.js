@@ -6,9 +6,15 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const Interaction = require('../models/interaction');
 const userInfo = require('../../ecommerce/models/userInfo');
+// const session = require('express-session');
+// const MongoStore = require('connect-mongo')(session);
+
 
 async function blog_hero(req, res) {
     try {
+        // console.log(req.cookies.token);
+        console.log(req.cookie);
+        // console.log(req.session);
         // Function to extract the token value from a cookie string
         function extractTokenValue(tokenString) {
             if (tokenString && typeof tokenString === 'string') {
