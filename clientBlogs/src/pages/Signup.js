@@ -184,6 +184,7 @@ const Register = () => {
           </Button>
 
           <TextField
+            className="registerUsername"
             placeholder="Username"
             value={inputs.name}
             onChange={handleChange}
@@ -198,6 +199,7 @@ const Register = () => {
             }}
           />
           <TextField
+            className="registerEmail"
             placeholder="Email"
             value={inputs.email}
             name="email"
@@ -212,6 +214,7 @@ const Register = () => {
             }}
           />
           <TextField
+            className="registerPassword"
             placeholder="Password"
             value={inputs.password}
             name="password"
@@ -241,7 +244,7 @@ const Register = () => {
             type="submit"
             className="continue"
           >
-            Next
+            Register
           </Button>
           <div className="or"><div></div>&nbsp;Or&nbsp; <div></div></div>
           <div className="submit">

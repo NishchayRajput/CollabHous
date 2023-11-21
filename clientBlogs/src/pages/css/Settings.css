@@ -1,0 +1,205 @@
+.settingsContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+    align-items: center;
+    /* background-color: pink; */
+    height: 100%;
+    width: 60vw;
+    margin: 6vh 20vw 0 20vw;
+    padding-bottom: 10vh;
+
+}
+
+.settingsContainer #userBoard, #userDetails {
+    border-radius: 10px;
+    background-color: #2F2F2F;
+    min-width: 100%;
+    border: 1px solid #414141;
+}
+
+.settingsContainer #userBoard {
+    height: 35vh;
+    position: relative;
+}
+
+.settingsContainer #userBoard .div1{
+    display: flex;
+    gap: 0.1vw;
+    margin-left: 3vw;
+}
+
+.settingsContainer .div2{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  
+}
+
+.settingsContainer #userDetails{
+    min-height: 50vh;
+    
+}
+
+.settingsContainer #avatar{
+    height: 10vw;
+    width: 10vw;
+    max-width: 180px;
+    max-height: 180px;
+    top: -5vw;
+    border: "2px solid blue";
+    
+}
+
+
+
+.settingsContainer .username{
+
+    color: white !important;
+    font-family: 'Roboto'!important;
+    font-weight: 700 !important;
+    font-size: 26px !important;
+    line-height: 28px !important;
+}
+
+
+
+.settingsContainer .bio{
+ 
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 19px;
+
+    color: #787878;
+
+} 
+
+.settingsContainer .info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4% 13%;
+    gap: 6vh;
+}
+
+.settingsContainer .row{
+    display: flex;
+    justify-content: space-between;
+}
+
+.settingsContainer .label{
+
+        font-family: 'Questrial' !important;
+        font-style: normal !important;
+        font-weight: 400 !important;
+        font-size: 20px !important;
+        line-height: 16px !important;
+
+        color: #FFFFFF !important;
+
+
+}
+
+.settingsContainer  .values{
+
+        font-family: 'Questrial'!important;
+        font-style: normal !important;
+        font-weight: 400 !important;
+        font-size: 20px !important;
+        line-height: 16px !important;
+
+        color: #787878 !important;
+
+
+}
+.settingsContainer  .signoutDiv{
+    display: flex;
+    justify-content: flex-end;
+}
+.settingsContainer  .signout{
+    font-family: 'Roboto' !important;
+    font-weight: 700 !important;
+    font-size: 16px !important;
+    line-height: 19px !important;
+    color: #545454 !important;
+
+}
+
+.settingsContainer  .socialMediaDrop{
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+    padding: 2vh 0 3vh 5vw;
+}
+
+.settingsContainer .dataDrop{
+    display: flex;
+    flex-direction: row;
+    gap: 2vh;
+    
+}
+
+/*******************************************************/
+
+@media screen and (max-width:768px){
+    .settingsContainer .dataDrop{
+        display: grid;
+        grid-template-columns: [first] 50% [second] 50%;
+        justify-self: center ;
+        align-self: center;
+
+    }
+}
+
+@media screen and (max-width:375px) {
+    .settingsContainer #userBoard, #userDetails {
+        background-color: rgba(35, 36, 38, 1);
+        border: none;
+        box-shadow: none;
+    }
+
+    .settingsContainer #userBoard .img{
+        visibility: hidden;
+    }
+
+    .settingsContainer #avatar{
+        top: 0;
+        height: 100px;
+        width: 100px;
+    }
+
+    .settingsContainer .div1{
+        position: absolute;
+        top: 10vh;
+        align-items: center;
+        
+    }
+    
+    .settingsContainer{
+        margin:0 !important;
+        width:100vw;
+        gap: 0;
+    }
+
+    .settingsContainer #userBoard, #userDetails{
+        width: 100%;
+    }
+
+    .settingsContainer #userBoard{
+        height: 30vh ;
+    }
+
+    .settingsContainer .dataDrop{
+        display: flex;
+        flex-direction: column;
+        gap: 3vh;
+    }
+}
+
+
+
+
+

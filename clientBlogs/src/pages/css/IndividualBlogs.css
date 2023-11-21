@@ -27,20 +27,27 @@
     color: #F74D79;
     font-weight: 500;
 }
+.heroBanner .container .usernameContainer {
 
-.heroBanner .container>.X {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    justify-content: flex-start;
+}
+.heroBanner .container .usernameContainer>.X {
     font-size: 36px;
     font-weight: 900;
     color: grey;
 }
 
-.heroBanner .container>.username {
+.heroBanner .container .usernameContainer>.username {
     font-size: 23px;
     color: white;
     font-weight: 500;
 }
 
-.heroBanner .container>img {
+.heroBanner .container .usernameContainer>img {
     width: "36px";
     height: "36px";
     border-radius: "50%";
@@ -65,7 +72,14 @@
     color: #F74D79;
     font-weight: 500;
 }
+.blogBanner .container .usernameContainer {
 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    justify-content: flex-start;
+}
 .blogBanner .container .X {
     font-size: 36px;
     font-weight: 900;
@@ -78,7 +92,7 @@
     font-weight: 500;
 }
 
-.blogBanner .container>img {
+.blogBanner .container>i .usernameContainermg {
     width: "36px";
     height: "36px";
     border-radius: "50%";
@@ -201,4 +215,70 @@
     margin: 3rem 2rem;
     height: 420px;
     flex-wrap: wrap;
+}
+
+
+@media only screen and (max-width:430px) {
+    .heroBanner {
+        height: 0px;
+    }
+
+    .heroBanner .container {
+        flex-direction: column;
+        width: 100%;
+        padding: 10vw;
+        top: -334px;
+    }
+
+    .heroBanner .container .usernameContainer {
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+        justify-content: flex-start;
+    }
+
+    .blogBanner .container {
+        flex-direction: column;
+        width: 100%;
+        padding: 10vw;
+    }
+
+    .blogBanner .container .usernameContainer {
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+        justify-content: flex-start;
+    }
+
+    .blogDetail .container>div .readT {
+        font-size: 16px;
+        color: white;
+        padding: 4px;
+    }
+
+    .dot {
+        height: 6px;
+        width: 6px;
+        background-color: #4B4B4B;
+        border-radius: 50%;
+    }
+
+    .blogDetail .container>div .date {
+        font-size: 16px;
+        color: white;
+        padding: 4px;
+    }
+
+    .blogDetail .container>div .tag {
+        font-size: 16px;
+        color: #F74D79;
+        background-color: rgba(255, 106, 145, 0.12);
+        border-radius: 5px;
+        padding: 4px;
+        padding: 0px 8px;
+    }
 }

@@ -148,8 +148,7 @@ const Blogs = () => {
         </Tabs>
       </Box>
 
-      <Box paddingX={"12%"}>
-        <Box></Box>
+      <Box className="blogCardContainer">
         <Box display={"flex"} flexWrap={"wrap"}>
           {blogs &&
             blogs.map((blog, index) => (
@@ -163,37 +162,49 @@ const Blogs = () => {
                   position: "relative",
                 }}
               >
-                {index < 4 ? (
-                  <TrendingBlogCard
-                    id={blog._id}
-                    // isUser={
-                    //   localStorage.getItem("userId") === blog.user?._id
-                    // }
-                    tag={blog.tag}
-                    title={blog.title}
-                    description={blog.content}
-                    image="https://picsum.photos/id/11/300/200"
-                    // image={blog.image}
-                    username={blog.user != null ? blog.user.name : "Username"}
-                    time={formatDate(blog.time)}
-                    like={blog.like}
-                  />
-                ) : (
+                {window.innerWidth < 800 ? (
                   <BlogCard
                     id={blog._id}
-                    // isUser={
-                    //   localStorage.getItem("userId") === blog.user?._id
-                    // }
                     tag={blog.tag}
                     title={blog.title}
                     description={blog.content}
                     image="https://picsum.photos/id/11/300/200"
-                    // image={blog.image}
                     username={blog.user != null ? blog.user.name : "Username"}
                     time={formatDate(blog.time)}
                     like={blog.like}
                     read_time={blog.read_time}
                   />
+                ) : (
+                  <div>
+                    {index < 4 ? (
+                      <TrendingBlogCard
+                        id={blog._id}
+                        tag={blog.tag}
+                        title={blog.title}
+                        description={blog.content}
+                        image="https://picsum.photos/id/11/300/200"
+                        username={
+                          blog.user != null ? blog.user.name : "Username"
+                        }
+                        time={formatDate(blog.time)}
+                        like={blog.like}
+                      />
+                    ) : (
+                      <BlogCard
+                        id={blog._id}
+                        tag={blog.tag}
+                        title={blog.title}
+                        description={blog.content}
+                        image="https://picsum.photos/id/11/300/200"
+                        username={
+                          blog.user != null ? blog.user.name : "Username"
+                        }
+                        time={formatDate(blog.time)}
+                        like={blog.like}
+                        read_time={blog.read_time}
+                      />
+                    )}
+                  </div>
                 )}
                 <Link
                   to={`/blogs/${blog._id}`}

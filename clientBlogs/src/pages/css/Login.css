@@ -67,11 +67,11 @@ color: #FFFFFF;
     color: #FF2E64;
 }
 
-
-.signinBox .password{
+/* 
+ .signinBox .password{
     display: flex;
-    align-items: center;
-}
+   
+}  */
 
 .requirements{
     font-size: 9px;
@@ -159,4 +159,68 @@ text-transform: none;
     width: auto;
 }
 
+.signinBox .email ::placeholder,.signinBox .password ::placeholder {
+    text-align: left;
+}
 
+.signupBox .registerUsername ::placeholder, .signupBox .registerEmail ::placeholder, .signupBox .registerPassword ::placeholder{
+    text-align: left;
+}
+
+
+
+/*****************************************************************************/
+
+@media screen and (max-width:1024px) {
+    .signinBox .newUser, .signupBox .newUser{
+        font-size: 12px;
+    }
+
+    .signinBox, .signupBox{
+        width: 37vw;
+    }
+    
+    .loginpage img {
+        height: 20vw;
+    }
+
+    .signinBox .submit .loginWith, .signupBox .submit .loginWith{
+        justify-content: center !important;
+    }
+}
+
+@media screen and (max-width:768px) {
+
+    .signinBox, .signupBox{
+        width: 45vw;
+    }
+    .signinBox .submit .loginWith, .signupBox .submit .loginWith{
+        justify-content: center;
+        width: 27vw;
+    }
+ 
+    .loginpage img{
+        height: 24vw;
+    }
+}
+
+@media screen and (max-width:375px) {
+    
+    .loginpage{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .signinBox, .signupBox{
+        width: 80vw;
+    }
+
+    .signinBox .submit .loginWith, .signupBox .submit .loginWith{
+        justify-content:center;
+        width: 60vw;
+    }
+
+    
+}

@@ -1,14 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+
+
 .appbar {
     width: 68% !important;
     margin-left: auto;
     margin-right: auto;
     top: 10px !important;
     border-radius: 16px;
+    max-width: 1500px;
 }
 
-.appbar .tab{
+
+.appbar .tab {
     text-transform: none;
-    font-size:14px;
+    font-size: 14px;
     margin-left: 16px;
     margin-right: 16px;
+    opacity: 1;
+    font-family: 'Questrial', sans-serif;
+}
+
+.appbar #avatarContainer {
+    height: 24px;
+    width: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+@media only screen and (max-width: 1025px) {
+    .appbar {
+        width: 75% !important;
+
+    }
+
+    .appbar .tab {
+        margin-left: 6px;
+        margin-right: 6px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .appbar {
+        background-color: rgba(72, 72, 72, 0) !important;
+        border: none !important;
+        box-shadow: none !important;
+        top: 20px !important;
+
+        width: 90% !important;
+    }
+
+    .appbar .tab {
+        display: none;
+    }
+
+    #avatarContainer {
+        display: none !important;
+    }
 }

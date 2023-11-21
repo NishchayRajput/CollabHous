@@ -23,6 +23,9 @@ export default function AvatarDropdown() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const handleSettings=()=>{
+    navigate("/settings");
+  };
   const handleLogin = () => {
     navigate("/login");
   };
@@ -89,6 +92,13 @@ export default function AvatarDropdown() {
           <Avatar /> Profile
         </MenuItem>
 
+        <MenuItem onClick={handleSettings}>
+          <ListItemIcon>
+            <Logout fontSize="small" />
+          </ListItemIcon>
+          Settings
+        </MenuItem>
+
         <Divider />
 
         <MenuItem onClick={handleLogin}>
@@ -97,12 +107,15 @@ export default function AvatarDropdown() {
           </ListItemIcon>
           Login
         </MenuItem>
+
         <MenuItem onClick={handleLogOut}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>
           Logout
         </MenuItem>
+
+        
       </Menu>
     </React.Fragment>
   );

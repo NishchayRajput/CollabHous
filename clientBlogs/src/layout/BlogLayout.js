@@ -1,38 +1,28 @@
 import React from "react";
-import { Box, Tab, Tabs, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { Link, Outlet } from "react-router-dom";
-import "../pages/css/Blogs.css";
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
-</style>
+import "./BlogLayout.css";
+
 const BlogLayout = () => {
   return (
     <>
-      <Box mt={"20px"}>
-        <Typography
-          padding={"10px"}
-          marginTop={'50px'}
-          style={{ textAlign: "center", color: "white" }}
-        >
-          {" "}
-       <img src="images/OurBlogs.png" width='28%' />
+      <Box id="layoutContainer">
+        <Typography className="ourBlogContainer">
+          <div className="fontContainer1">
+            <Typography className="font1">Our Blogs</Typography>
+          </div>
+
+          <div className="fontContainer2">
+            <Typography className="font2">Our Blogs</Typography>
+          </div>
         </Typography>
-        <Typography 
-        className="blogIntro"
-          // fontSize={"15px"}
-          // width={"60%"}
-          // mx={"auto"}
-          // padding={"10px"}
-          // style={{
-            
-          //   textAlign: "center",
-          //   paddingBottom: "100px",
-          //   color: "#ABABAB",
-          // }}
-        >
-          <Box>Welcome to the digital library of personal luxury.</Box>
-          <Box> Written & directed by: The new age of India’s fashion commune</Box>
-         
+        <Typography className="blogIntroContainer">
+          <Box className="blogIntro">
+            Welcome to the digital library of personal luxury.
+          </Box>
+          <Box className="blogIntro">
+            Written & directed by: The new age of India’s fashion commune
+          </Box>
         </Typography>
       </Box>
       <Outlet />

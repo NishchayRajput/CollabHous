@@ -2,6 +2,7 @@
     padding-top: 3rem;
     padding-left: 7rem;
     border-top: 3px solid white;
+    display: none !important;
 }
 
 .footerContainer .row2 {
@@ -44,4 +45,49 @@
     font-weight: 500;
     color: #7F7F7F;
     margin-bottom: 10px;
+}
+
+.footerContainer .logo {
+    font-size: 40px !important;
+    color: white !important;
+    font-family: "Roboto" !important;
+
+}
+
+.footerContainer .logo .commune {
+    font-family: "blah";
+    font-style: italic;
+}
+
+.footerContainer .contentOuter {
+    width: 30%;
+}
+
+.footerContainer .contentPartOne {
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 142.4%;
+    color: #FFFFFF;
+}
+
+.footerContainer .contentPartTwo {
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 142.4%;
+    color: #FFFFFF;
+}
+
+.footerContainer .pages {
+    width: 10%;
+}
+
+.footerContainer .socialmedia {
+    width: 30%;
+}
+
+.footerContainer .contact {
+    width: 40%;
 }

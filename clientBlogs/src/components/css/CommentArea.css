@@ -54,8 +54,9 @@
     margin-top: 10px;
     color: #A0A0A0;
 }
+
 .typeBox #textBox {
-    height: 56px;
+    height: auto;
     margin-left: 11px;
     color: #A0A0A0;
     border: none;
@@ -64,9 +65,12 @@
     width: 90%;
     font-size: 15px;
     font-family: 'Questrial', sans-serif;
-    white-space: pre-wrap; /* Allow wrapping */
-    overflow-wrap: break-word; /* This property allows long words to be broken and wrap to the next line */
-    word-wrap: break-word; /* Additional property for compatibility */
+    white-space: pre-wrap;
+    /* Allow wrapping */
+    overflow-wrap: break-word;
+    /* This property allows long words to be broken and wrap to the next line */
+    word-wrap: break-word;
+    /* Additional property for compatibility */
 }
 
 
