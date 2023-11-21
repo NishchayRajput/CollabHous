@@ -33,6 +33,13 @@
     justify-content: center;
 }
 
+.appbar #loginBtnContainer .loginBtn{
+    /* display: none; */
+    color: #F74D79;
+    border:1px solid #F74D79;
+    background-color: rgba(0, 0, 0, 0.081);
+}
+
 
 @media only screen and (max-width: 1025px) {
     .appbar {

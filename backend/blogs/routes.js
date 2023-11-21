@@ -11,13 +11,19 @@ const setting = require('./controllers/setting');
 
 
 router.use(['/like*', '/comment*', '/reply*', '/headers*', '/setting*'], auth);
+router.get('/', blog_card);
+router.get('/hero', blog_hero);
+router.get('/:id', blogs);
+router.use((req,res,next)=>{
+    console.log('hello world');
+    next();
+})
+router.use(auth);
 router.get('/like', like);
 router.get('/headers', headers ); 
 router.get('/setting', setting );
 router.post('/comment', comment);
-router.get('/', blog_card);
-router.get('/hero', blog_hero);
 router.post('/reply', reply);
-router.get('/:id', blogs);
+
 
 module.exports = router; 

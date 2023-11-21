@@ -22,12 +22,13 @@ import "./css/TrendingBlogCard.css";
 import Dot from "./Dot";
 
 export default function BlogCard({
+  uId,
   title,
   description,
   image,
   username,
   time,
-  id,
+  bId,
   isUser,
   tag,
   upVoteC,
@@ -37,22 +38,58 @@ export default function BlogCard({
   let isLogin = useSelector((state) => state.isLogin);
   isLogin = isLogin || localStorage.getItem("userId");
   const navigate = useNavigate();
-
+  const [likeInputs, setLikeInputs] = useState({
+    bId: "",
+    iId: "",
+    type: "like",
+    pId: "",
+  });
   const [upVoteCount, setUpVoteCount] = useState(0);
-  const handleUpVote = () => {
-    if (!isLogin) {
-      navigate("/login");
-    } else {
-      // You can implement the upvote logic here, for example, send a request to your backend to record the upvote.
-      // For this example, I'll simply increase the count by 1.
-      // setUpvoteCount(upvoteCount + 1);
-      console.log("clicked the liked button");
+  // const handleUpVote = () => {
+  //   if (!isLogin) {
+  //     navigate("/login");
+  //   } else {
+  //     // You can implement the upvote logic here, for example, send a request to your backend to record the upvote.
+  //     // For this example, I'll simply increase the count by 1.
+  //     // setUpvoteCount(upvoteCount + 1);
+  //     console.log("clicked the liked button");
+  //   }
+  // };
+
+  const [showSharingBox, setShowSharingBox] = useState(false); // State to control the sharing box visibility
+
+  const handleUpVote = async (e) => {
+    // if (e) {
+    //   e.preventDefault();
+    // }
+    // if (!isLogin) {
+    //   navigate("/login");
+    // } else {
+      try {
+        const response = await axios.get(
+          "http://localhost:5000/blogs/like",
+          {
+            bId: bId,
+            iId: bId,
+            it: "like",
+            pId: uId,
+          },
+          {
+            withCredentials: true,
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+          }
+        );
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+      // }
     }
   };
 
-  const [showSharingBox, setShowSharingBox] = useState(false); // State to control the sharing box visibility
   React.useEffect(() => {
-    setUpVoteCount(upVoteC);
+    // console.log(uId);
   }, []);
 
   return (

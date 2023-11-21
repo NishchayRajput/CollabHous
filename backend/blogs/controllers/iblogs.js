@@ -4,22 +4,21 @@ const Blog = require("../models/blogs");
 const Interaction = require("../models/interaction");
 const extractTokenValue = require("../../token");
 
-
 // Define the controller function for getting a blog by ID
 async function getBlogById(req, res) {
-
   try {
     // Function to extract the token value from a cookie string
     function extractTokenValue(tokenString) {
-      if (tokenString && typeof tokenString === 'string') {
-        const tokenIndex = tokenString.indexOf('token=');
+      if (tokenString && typeof tokenString === "string") {
+        const tokenIndex = tokenString.indexOf("token=");
 
         if (tokenIndex !== -1) {
           const tokenStartIndex = tokenIndex + 6;
-          const tokenEndIndex = tokenString.indexOf(';', tokenStartIndex);
-          const tokenValue = tokenEndIndex !== -1
-            ? tokenString.substring(tokenStartIndex, tokenEndIndex)
-            : tokenString.substring(tokenStartIndex);
+          const tokenEndIndex = tokenString.indexOf(";", tokenStartIndex);
+          const tokenValue =
+            tokenEndIndex !== -1
+              ? tokenString.substring(tokenStartIndex, tokenEndIndex)
+              : tokenString.substring(tokenStartIndex);
 
           return tokenValue;
         } else {
@@ -37,23 +36,23 @@ async function getBlogById(req, res) {
       jwt.verify(token, process.env.secret, async (err, user) => {
         if (err) {
           // If the token is invalid or expired, return a 401 (Unauthorized) response
-          return res.status(401).json({ message: 'Unauthorized: Invalid token' });
+          return res
+            .status(401)
+            .json({ message: "Unauthorized: Invalid token" });
         }
         // console.log(user);
         const existuser = userInfo.findById(user.userId);
 
         if (existuser) {
-          console.log('Token verified');
-        }
-        else {
-          console.log('Token not verified');
+          console.log("Token verified");
+        } else {
+          console.log("Token not verified");
         }
         id = user.userId;
         // next();
       });
       // console.log(id);
     }
-
 
     // Extract the blog ID from the request parameters
     const blogId = req.params.id;
@@ -63,12 +62,16 @@ async function getBlogById(req, res) {
       .populate({
         path: "user_id",
         model: "userInfo",
-        select: "name email", // Specify the fields you want to populate
+        select: "_id name email", // Specify the fields you want to populate
       })
       .exec();
 
     const interaction = await Interaction.find({ blog_id: blogId }).exec();
-    const iu = await Interaction.find({ blog_id: blogId, user_id: id, it: 'like' }).exec();
+    const iu = await Interaction.find({
+      blog_id: blogId,
+      user_id: id,
+      it: "like",
+    }).exec();
     const likeStatus = !!iu.length;
 
     const blogF = {
@@ -87,7 +90,7 @@ async function getBlogById(req, res) {
     // If an error occurs, return a 500 error response with the error message
     return res
       .status(500)
-      .json({ message: "An error occurred", error: error.message });
+      .json({ message: "An error occurred nifghhg", error: error.message });
   }
 }
 

@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Box, AppBar, Toolbar, Typography, Tabs, Tab } from "@mui/material";
+import {
+  Box,
+  AppBar,
+  Toolbar,
+  Typography,
+  Tabs,
+  Tab,
+  Button,
+} from "@mui/material";
 import AvatarDropdown from "./AvatarDropdown";
 import Notification from "./Notification";
 import { Link } from "react-router-dom";
@@ -10,16 +18,16 @@ import toast from "react-hot-toast";
 import { Link as ScrollLink } from "react-scroll";
 import "./css/Header.css";
 import Hamburger from "./Hamburger";
+import axios from "axios";
 
 const Header = () => {
-  // global state
-  let isLogin = useSelector((state) => state.isLogin);
-  isLogin = isLogin || localStorage.getItem("userId");
+  // isLogin = isLogin || localStorage.getItem("userId");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   //state
   const [value, setValue] = useState(0);
   const [scrollValue, setScrollValue] = useState(0);
+  // const [isLogin, setIsLogin] = useState();
   const scrollToPercentage = (percentage) => {
     const scrollToY =
       (percentage / 100) * (document.body.scrollHeight - window.innerHeight);
@@ -41,6 +49,19 @@ const Header = () => {
   if (value === 1 && scrollValue < 30) setValue(0);
   // console.log(scrollValue);
   // console.log("Tab: "+value);
+
+  // const verify = async () => {
+  //   try {
+  //     const { data } = await axios.get("http://localhost:5000//");
+  //     setIsLogin();
+  //     console.log(data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+  // useEffect(() => {
+  //   verify();
+  // }, []);
 
   return (
     <>
@@ -70,7 +91,6 @@ const Header = () => {
                 style: {
                   backgroundColor: true ? "#F74D79" : "rgba(35, 36, 38, 1)", // Colored underline for selected tab
                 },
-                
               }}
             >
               <Tab
@@ -123,7 +143,12 @@ const Header = () => {
             {" "}
             <AvatarDropdown />
           </div>
-
+          <div id="loginBtnContainer">
+            {" "}
+            <Button variant="outlined" className="loginBtn">
+              Login
+            </Button>
+          </div>
           <Hamburger />
         </Toolbar>
       </AppBar>

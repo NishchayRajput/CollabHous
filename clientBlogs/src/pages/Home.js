@@ -32,7 +32,8 @@ const Home = () => {
         setHeroData(data.heroData);
         setRecentBlog(data.latestBlogs);
         setDisplayText(data.heroData[0].value);
-        // console.log(data.mostLikedBlog);
+
+        console.log(data.mostLikedBlog);
       } catch (error) {
         console.log(error);
       }
@@ -183,11 +184,14 @@ const Home = () => {
                 <Box className="blogsBox">
                   <Box className="trendingBlog">
                     <TrendingBlogCard
-                      id={mostLikedBlog?.id}
+                      bId={mostLikedBlog?.id}
                       // key={blog?.user_id}
                       // isUser={
                       //   localStorage.getItem("userId") === blog?.user?.user_id
                       // }
+                      uId={
+                        mostLikedBlog.user != null ? mostLikedBlog.user.id : ""
+                      }
                       title={mostLikedBlog.title}
                       description={mostLikedBlog.content}
                       image="images/carouselSample.png"
