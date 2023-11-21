@@ -1,12 +1,12 @@
-const mongoose = require('mongoose');
 const Interaction = require('../models/interaction');
 const Notifications = require('../models/notification');
 const Blog = require('../models/blogs');
 
 async function like(req, res) {
     try {
+        
         const { uId, bId, iId, it, pId } = req.body;
-
+        
         if (it == 'unlike') {
             // Delete the interaction with specific details
             await Interaction.deleteOne({
@@ -15,17 +15,17 @@ async function like(req, res) {
                 interaction_id: iId,
                 interaction_type: 'like',
             });
-
+            
             await Notifications.deleteOne({
                 parent_id: pId,
                 blog_id: bId,
                 user_id: uId,
                 type : 'like',
             });
-
+            
             // Decrease the 'like' count of the blog by 1
             await Blog.findByIdAndUpdate(bId, { $inc: { like: -1 } });
-
+            
             res.status(200).json({ message: 'Interaction deleted successfully.' });
         } else {
             // Create a new Interaction document
@@ -35,13 +35,13 @@ async function like(req, res) {
                 interaction_id: iId,
                 interaction_type: it,
             });
-
+            
             // Save the new interaction to the database
             const savedInteraction = await newInteraction.save();
-
+            
             // Increase the 'like' count of the blog by 1
             await Blog.findByIdAndUpdate(bId, { $inc: { like: 1 } });
-
+            
             // Create a new Notifications document
             const newNotification = new Notifications({
                 parent_id: pId,
@@ -49,10 +49,10 @@ async function like(req, res) {
                 blog_id: bId,
                 type: it,
             });
-
+            
             // Save the new notification to the database
             const savedNotification = await newNotification.save();
-
+            
             res.status(200).json({savedInteraction, newNotification});
         }
     } catch (error) {
@@ -64,7 +64,8 @@ async function like(req, res) {
 async function comment(req, res) {
     try {
         const { uId, bId, iId, it, content, pId } = req.body;
-
+        
+        
         if(it == 'comment')
         {
             // Create a new Interaction document
@@ -75,10 +76,10 @@ async function comment(req, res) {
                 interaction_type: it,  // Assuming 'it' is the interaction type
                 interaction_content: content,  // Assuming 'content' is the interaction content
             });
-    
+            
             // Save the new interaction to the database
             const savedInteraction = await newInteraction.save();
-    
+            
             // Create a new Notifications document
             const newNotification = new Notifications({
                 parent_id: pId, // Assuming 'uId' is the parent user ID
@@ -90,9 +91,9 @@ async function comment(req, res) {
     
             // Save the new notification to the database
             const saveNotification = await newNotification.save();
-    
+            
             res.status(200).json(savedInteraction);
-
+            
         }
         else if(it == 'deletecomment')
         {
@@ -103,14 +104,14 @@ async function comment(req, res) {
                 interaction_id: iId,
                 interaction_type: 'comment',
             });
-
+            
             await Notifications.deleteOne({
                 parent_id: pId,
                 blog_id: bId,
                 user_id: uId,
                 type : 'comment',
             });
-
+            
             res.status(200).json({ message: 'Interaction deleted successfully.' });
         }else if(it == 'editcomment')
         {
@@ -121,14 +122,14 @@ async function comment(req, res) {
                 interaction_id: iId,
                 interaction_type: 'comment',
             });
-
+            
             await Notifications.deleteOne({
                 parent_id: pId,
                 blog_id: bId,
                 user_id: uId,
                 type : 'comment',
             });
-
+            
             // Create a new Interaction document
             const newInteraction = new Interaction({
                 user_id: uId,            // Assuming 'uId' is the user ID
@@ -137,10 +138,10 @@ async function comment(req, res) {
                 interaction_type: 'comment',  // Assuming 'it' is the interaction type
                 interaction_content: content,  // Assuming 'content' is the interaction content
             });
-    
+            
             // Save the new interaction to the database
             const savedInteraction = await newInteraction.save();
-    
+            
             // Create a new Notifications document
             const newNotification = new Notifications({
                 parent_id: pId, // Assuming 'uId' is the parent user ID
@@ -152,10 +153,10 @@ async function comment(req, res) {
     
             // Save the new notification to the database
             const savedNotification = await newNotification.save();
-    
+            
             res.status(200).json(savedInteraction);
         }
-
+        
     } catch (error) {
         res.status(500).json({ error: 'Error saving interaction: ' + error.message });
     }
@@ -163,7 +164,8 @@ async function comment(req, res) {
 async function reply(req, res) {
     try {
         const { uId, bId, iId, it, content, pId } = req.body;
-
+        
+        
         // Create a new Interaction document
         const newInteraction = new Interaction({
             user_id: uId,            // Assuming 'uId' is the user ID

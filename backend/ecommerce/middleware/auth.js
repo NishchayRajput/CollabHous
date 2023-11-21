@@ -36,6 +36,7 @@ function authenticateMiddleware(req, res, next) {
 
     if(existuser){
       console.log('Token verified');
+      res.redirect('/')
     }
     else{
       console.log('Token not verified');

@@ -37,18 +37,10 @@ const Home = () => {
         console.log(error);
       }
     }
-    // async function getLike() {
-    //   try {
-    //     const { data } = await axios.get("http://localhost:5000/blogs/like");
-    //     console.log(data);
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // }
-    // getLike();
     getBlog();
   }, []);
 
+  // console.log("hi");
   const cImages = [
     { link: "images/carouselSample.png" },
     { link: "images/carouselSample.png" },
@@ -60,7 +52,7 @@ const Home = () => {
   };
 
   // console.log(recentBlog);
-  
+
   return (
     <div>
       <Fullpage>
@@ -76,13 +68,13 @@ const Home = () => {
           </FullpageSection>
           <FullpageSection>
             <Box
-            //keeping the inline css, other boxes which are of class section but dont have paddingtop and flexdirection
+              //keeping the inline css, other boxes which are of class section but dont have paddingtop and flexdirection
               className="section"
               flexDirection={"column"}
               paddingTop={"3rem"}
-            >  
+            >
               <Box className="carouselSection">
-                <Box >
+                <Box>
                   <ControlledCarousel image={cImages} />
                 </Box>
                 <Box className="carouselContentContainer">
@@ -176,7 +168,7 @@ const Home = () => {
             </Box>
           </FullpageSection>
           <FullpageSection>
-            <Box className="blogSection" >
+            <Box className="blogSection">
               <Box className="blogSectionInner">
                 <Box className="blogHeadings">
                   <Typography className="trendingBlogsText">
@@ -185,17 +177,13 @@ const Home = () => {
 
                   <Link to="/blogs" style={{ textDecoration: "none" }}>
                     {" "}
-                    <Typography
-                      className="moreText"
-                    >
-                      More
-                    </Typography>
+                    <Typography className="moreText">More</Typography>
                   </Link>
                 </Box>
                 <Box className="blogsBox">
                   <Box className="trendingBlog">
                     <TrendingBlogCard
-                      id={mostLikedBlog?._id}
+                      id={mostLikedBlog?.id}
                       // key={blog?.user_id}
                       // isUser={
                       //   localStorage.getItem("userId") === blog?.user?.user_id
@@ -214,7 +202,7 @@ const Home = () => {
                       read_time={mostLikedBlog.read_time}
                     />
                     <Link
-                      to={`/blogs/${mostLikedBlog._id}`}
+                      to={`/blogs/${mostLikedBlog.id}`}
                       style={{
                         textDecoration: "none",
                         display: "block",
@@ -224,17 +212,13 @@ const Home = () => {
                         top: "-531px",
                         left: 0,
                       }}
-                    >
-                      {/* Content inside the Link component (if any) */}
-                    </Link>
+                    ></Link>
                   </Box>
-                  <Box className="horzBlogsOuter" >
-                    <Box
-                      className="horzBlogsInner"
-                    >
+                  <Box className="horzBlogsOuter">
+                    <Box className="horzBlogsInner">
                       <div style={{ height: "100%" }}>
                         <HorzBlogCard
-                          id={recentBlog[0]?._id}
+                          id={recentBlog[0]?.id}
                           // key={blog?.user_id}
                           // isUser={
                           //   localStorage.getItem("userId") === blog?.user?.user_id
@@ -252,7 +236,9 @@ const Home = () => {
                               ? formatDate(recentBlog[0].time)
                               : ""
                           }
-                          likeCount={recentBlog[0] != null ? recentBlog[0].like : "0"}
+                          likeCount={
+                            recentBlog[0] != null ? recentBlog[0].like : "0"
+                          }
                           read_time={
                             recentBlog[0] != null
                               ? recentBlog[0].read_time
@@ -261,7 +247,7 @@ const Home = () => {
                         />
                       </div>
                       <HorzBlogCard
-                        id={recentBlog[1]?._id}
+                        id={recentBlog[1]?.id}
                         // key={blog?.user_id}
                         // isUser={
                         //   localStorage.getItem("userId") === blog?.user?.user_id
@@ -277,13 +263,15 @@ const Home = () => {
                             : ""
                         }
                         tag={recentBlog[1] != null ? recentBlog[1].tag : ""}
-                        likeCount={recentBlog[1] != null ? recentBlog[1].like : "0"}
+                        likeCount={
+                          recentBlog[1] != null ? recentBlog[1].like : "0"
+                        }
                         read_time={
                           recentBlog[1] != null ? recentBlog[1].read_time : "5"
                         }
                       />
                       <HorzBlogCard
-                        id={recentBlog[2]?._id}
+                        id={recentBlog[2]?.id}
                         // key={blog?.user_id}
                         // isUser={
                         //   localStorage.getItem("userId") === blog?.user?.user_id
@@ -299,7 +287,9 @@ const Home = () => {
                             : ""
                         }
                         tag={recentBlog[2] != null ? recentBlog[2].tag : ""}
-                        likeCount={recentBlog[2] != null ? recentBlog[2].like : ""}
+                        likeCount={
+                          recentBlog[2] != null ? recentBlog[2].like : ""
+                        }
                         read_time={
                           recentBlog[2] != null ? recentBlog[1].read_time : "5"
                         }

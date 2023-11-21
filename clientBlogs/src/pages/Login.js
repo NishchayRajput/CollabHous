@@ -13,6 +13,7 @@ import { Icon } from "react-icons-kit";
 import { eyeOff } from "react-icons-kit/feather/eyeOff";
 import { eye } from "react-icons-kit/feather/eye";
 import "./css/Login.css";
+// axios.defaults.withCredentials = true;
 
 const Login = () => {
   const navigate = useNavigate();
@@ -24,6 +25,25 @@ const Login = () => {
     password: "",
     g_id: "",
   });
+  useEffect(() => {
+    const getVerification = async () => {
+      try {
+        const { data } = await axios.get(
+          "http://localhost:5000/ecommerce/verify",
+          {
+            withCredentials: true,
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+          }
+        );
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getVerification();
+  }, []);
 
   //eye icon near password
   const [password, setPassword] = useState("");
@@ -53,9 +73,8 @@ const Login = () => {
     if (e) {
       e.preventDefault();
     }
-
     try {
-      const { data } = await axios.post(
+      const response = await axios.post(
         "http://localhost:5000/ecommerce/login",
         {
           name: inputs.name,
@@ -64,14 +83,19 @@ const Login = () => {
           g_id: inputs.g_id,
         },
         {
+          withCredentials: true,
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
           },
         }
       );
+      const { data } = response;
+      console.log(response);
+      const setCookieHeader = response.headers.get("set-cookie");
+      console.log("Set-Cookie Header:", setCookieHeader);
 
       if (data.message === "Login successful") {
-        // toast.success("User login Successfully");
+        // toast.success("User login Successsfully");
         dispatch(authActions.login());
         navigate("/");
         Store.addNotification({
@@ -137,20 +161,6 @@ const Login = () => {
       console.log("Login Failed");
     },
   });
-
-  useEffect(() => {
-    const getVerification = async () => {
-      try {
-        const { data } = await axios.get(
-          "http://localhost:5000/ecommerce/verify"
-        );
-        console.log(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getVerification();
-  }, []);
 
   return (
     <div className="loginpage">
@@ -245,3 +255,44 @@ const Login = () => {
 };
 
 export default Login;
+
+// import React, { useState } from 'react';
+
+// const SignupForm = () => {
+//   const [username, setUsername] = useState('');
+//   const [password, setPassword] = useState('');
+
+//   const handleSignup = async () => {
+//     try {
+//       const response = await fetch('http://localhost:5000/login', {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//         credentials: 'include', // Include credentials (cookies) in the request
+//         body: JSON.stringify({ username, password }),
+//       });
+
+//       if (response.ok) {
+//         // Signup successful
+//         // You can redirect or perform other actions here
+//       } else {
+//         // Handle signup failure
+//         console.error('Signup failed');
+//       }
+//     } catch (error) {
+//       console.error('Error during signup:', error);
+//     }
+//   };
+
+//   return (
+//     <div>
+//       <h2>Signup</h2>
+//       <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
+//       <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+//       <button onClick={handleSignup}>Signup</button>
+//     </div>
+//   );
+// };
+
+// export default SignupForm;

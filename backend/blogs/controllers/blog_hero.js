@@ -6,6 +6,9 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const Interaction = require('../models/interaction');
 const userInfo = require('../../ecommerce/models/userInfo');
+// const session = require('express-session');
+// const MongoStore = require('connect-mongo')(session);
+
 
 async function blog_hero(req, res) {
     try {

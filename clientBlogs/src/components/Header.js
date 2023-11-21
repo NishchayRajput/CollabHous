@@ -70,6 +70,7 @@ const Header = () => {
                 style: {
                   backgroundColor: true ? "#F74D79" : "rgba(35, 36, 38, 1)", // Colored underline for selected tab
                 },
+                
               }}
             >
               <Tab

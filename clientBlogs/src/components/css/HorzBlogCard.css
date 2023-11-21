@@ -92,3 +92,43 @@
     bottom: -2px;
     color: #626262;
 }
+
+@media only screen and (min-width: 375px) and (max-width:767px){
+
+    #cardContainer .blogDetails>div {
+        padding-left: 16px;
+        display: flex;
+        flex-direction: column;
+    
+    
+    }
+    #cardContainer .title {
+        font-size: 15px;
+
+}
+
+#cardContainer .blogDetails>div .readT {
+    padding: 0px;
+    line-height:10px;
+}
+
+#cardContainer .blogDetails>div .tag {
+ 
+    padding: 0px;
+   }
+
+}
+
+@media only screen and (min-width: 768px) and (max-width:1023px){
+
+    #cardContainer .blogDetails>div {
+    padding: 4px;
+    }
+    #cardContainer .blogDetails>div .readT {
+        padding: 4px;
+    }
+
+    #cardContainer .blogDetails>div .date {
+    margin-bottom: 15px;
+    }
+}
