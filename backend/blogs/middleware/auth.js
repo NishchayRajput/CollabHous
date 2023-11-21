@@ -36,31 +36,14 @@ function authenticateMiddleware(req, res, next) {
 
     if(existuser){
       console.log('Token verified');
+      req.body.uId=  user.userId;
     }
     else{
       console.log('Token not verified');
     }
     // console.log(user.id);
-    req.body.uId=  user.userId;
     next();
   });
 }
 
 module.exports = authenticateMiddleware;
-
-
-
-// const jwt = require('jsonwebtoken');
-// require('dotenv').config(); 
-
-// async function authenticateMiddleware(req, res, next) {
-//   try {
-//     console.log('hello i am  in the middleware');
-//     next();
-
-//   } catch (error) {
-//     console.log('hello i am in the error in middleware');
-//   }
-// }
-
-// module.exports = authenticateMiddleware;
