@@ -26,7 +26,7 @@ app.post("/login", (req, res) => {
     const { email, password } = req.body;
   
     // Set a cookie with the provided email and password (for demonstration purposes only)
-    res.cookie('user', JSON.stringify({ email, password }), { httpOnly: true });
+    res.cookie('user', "hello", { httpOnly: true });
   
     // Return the user's email and password in the response (for demonstration purposes only)
     res.json({ email, password });

@@ -4,12 +4,9 @@ const cors = require("cors");
 const ecommerce = require("./ecommerce/routes");
 const blogs = require("./blogs/routes");
 const cookieParser = require("cookie-parser");
-const passport = require("passport");
-const session = require("express-session");
-const mongoStore = require("connect-mongo");
-// const auth = require('./routes/auth');
-// const wishlist = require('./routes/wishlist');
-// const auth = require('./blogs/middleware/auth');
+// const passport = require("passport");
+// const session = require("express-session");
+// const mongoStore = require("connect-mongo");
 
 const app = express();
 app.use(cors({

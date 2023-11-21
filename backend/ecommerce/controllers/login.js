@@ -64,7 +64,7 @@ console.log(req.body);
                         httpOnly: true,
                         maxAge: 60 * 60 * 1000, // Cookie expires in 1 hour
                         sameSite : 'none',
-                        secure : false,
+                        secure : true,
                     });
                     // console.log(res.getHeaders());
                     return res.status(201).json({ message: "Login successful" });

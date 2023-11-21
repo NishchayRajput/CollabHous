@@ -13,7 +13,8 @@ const userInfo = require('../../ecommerce/models/userInfo');
 async function blog_hero(req, res) {
     try {
         // console.log(req.cookies.token);
-        console.log(req.session);
+        console.log(req.cookie);
+        // console.log(req.session);
         // Function to extract the token value from a cookie string
         function extractTokenValue(tokenString) {
             if (tokenString && typeof tokenString === 'string') {
