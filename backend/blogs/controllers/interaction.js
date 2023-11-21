@@ -6,10 +6,7 @@ async function like(req, res) {
     try {
         
         const { uId, bId, iId, it, pId } = req.body;
-        if(!uId)
-        {
-            res.json({message : 'Please login first'});
-        }
+        
         if (it == 'unlike') {
             // Delete the interaction with specific details
             await Interaction.deleteOne({
@@ -30,7 +27,8 @@ async function like(req, res) {
             await Blog.findByIdAndUpdate(bId, { $inc: { like: -1 } });
             
             res.status(200).json({ message: 'Interaction deleted successfully.' });
-        } else {
+        } 
+        if(it=='like') {
             // Create a new Interaction document
             const newInteraction = new Interaction({
                 user_id: uId,
@@ -67,10 +65,7 @@ async function like(req, res) {
 async function comment(req, res) {
     try {
         const { uId, bId, iId, it, content, pId } = req.body;
-        if(!uId)
-        {
-            res.json({message : 'Please login first'});
-        }
+        
         
         if(it == 'comment')
         {
@@ -170,10 +165,7 @@ async function comment(req, res) {
 async function reply(req, res) {
     try {
         const { uId, bId, iId, it, content, pId } = req.body;
-        if(!uId)
-        {
-            res.json({message : 'Please login first'});
-        }
+        
         
         // Create a new Interaction document
         const newInteraction = new Interaction({
