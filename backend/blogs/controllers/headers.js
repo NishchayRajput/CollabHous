@@ -7,7 +7,7 @@ module.exports = async (req, res) => {
         // Destructuring uId from req.body if req.body is an object
         const { uId } = req.body;
 
-        if (!uId) {
+        if (!uId) { 
             // Sending a JSON response when uId is not provided
             res.json({ message: 'Please login first' });
         }

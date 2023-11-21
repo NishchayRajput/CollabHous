@@ -34,9 +34,6 @@ export default function BlogCard({
   upVoteC,
   read_time,
 }) {
-  // global state
-  let isLogin = useSelector((state) => state.isLogin);
-  isLogin = isLogin || localStorage.getItem("userId");
   const navigate = useNavigate();
   const [likeInputs, setLikeInputs] = useState({
     bId: "",
@@ -56,8 +53,6 @@ export default function BlogCard({
   //   }
   // };
 
-  const [showSharingBox, setShowSharingBox] = useState(false); // State to control the sharing box visibility
-
   const handleUpVote = async (e) => {
     // if (e) {
     //   e.preventDefault();
@@ -65,25 +60,29 @@ export default function BlogCard({
     // if (!isLogin) {
     //   navigate("/login");
     // } else {
-      try {
-        const response = await axios.get(
-          "http://localhost:5000/blogs/like",
-          {
-            bId: bId,
-            iId: bId,
-            it: "like",
-            pId: uId,
+    try {
+      const { data } = await axios.get(
+        "http://localhost:5000/blogs/like",
+        {
+          bId: bId,
+          iId: bId,
+          it: "like",
+          pId: uId,
+        },
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
           },
-          {
-            withCredentials: true,
-            headers: {
-              "Content-Type": "application/x-www-form-urlencoded",
-            },
-          }
-        );
-        console.log(response);
-      } catch (error) {
-        console.log(error);
+        }
+      );
+      if (data.message === "Please login first") {
+        navigate("/login");
+      } else {
+        setUpVoteCount(upVoteCount + 1);
+      }
+    } catch (error) {
+      console.log(error);
       // }
     }
   };
@@ -135,11 +134,7 @@ export default function BlogCard({
             {description}
           </Typography>
         </CardContent>
-        <CardActions
-          disableSpacing
-          onMouseLeave={() => setShowSharingBox(false)}
-          style={{ zIndex: "8" }}
-        >
+        <CardActions disableSpacing style={{ zIndex: "8" }}>
           <IconButton aria-label="add to favorites" onClick={handleUpVote}>
             <ThumbUpOffAltIcon style={{ color: "#626262" }} />
             <span className="upvote">{upVoteCount ? upVoteCount : "0"}</span>

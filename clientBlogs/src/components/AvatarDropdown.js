@@ -10,6 +10,7 @@ import Logout from "@mui/icons-material/Logout";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { authActions } from "../redux/store";
+import axios from "axios";
 
 export default function AvatarDropdown() {
   const navigate = useNavigate();
@@ -23,21 +24,28 @@ export default function AvatarDropdown() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const handleSettings=()=>{
+  const handleSettings = () => {
     navigate("/settings");
   };
   const handleLogin = () => {
     navigate("/login");
   };
   const handleLogOut = () => {
-    try {
-      dispatch(authActions.logout());
-      // toast.success("Logout Successfully");
-      navigate("/login");
-      // localStorage.clear();
-    } catch (error) {
-      console.log(error);
+    async function logout() {
+      try {
+        const { data } = await axios.get("http://localhost:5000/blogs/logout", {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        });
+        console.log(data);
+        if (data.message === "logout successfull") navigate("/home");
+      } catch (error) {
+        console.log(error);
+      }
     }
+    logout();
   };
   return (
     <React.Fragment>
@@ -101,12 +109,12 @@ export default function AvatarDropdown() {
 
         <Divider />
 
-        <MenuItem onClick={handleLogin}>
+        {/* <MenuItem onClick={handleLogin}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>
           Login
-        </MenuItem>
+        </MenuItem> */}
 
         <MenuItem onClick={handleLogOut}>
           <ListItemIcon>
@@ -114,8 +122,6 @@ export default function AvatarDropdown() {
           </ListItemIcon>
           Logout
         </MenuItem>
-
-        
       </Menu>
     </React.Fragment>
   );

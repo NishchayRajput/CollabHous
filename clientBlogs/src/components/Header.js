@@ -21,13 +21,12 @@ import Hamburger from "./Hamburger";
 import axios from "axios";
 
 const Header = () => {
-  // isLogin = isLogin || localStorage.getItem("userId");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   //state
   const [value, setValue] = useState(0);
   const [scrollValue, setScrollValue] = useState(0);
-  // const [isLogin, setIsLogin] = useState();
+  const [isLogin, setIsLogin] = useState();
   const scrollToPercentage = (percentage) => {
     const scrollToY =
       (percentage / 100) * (document.body.scrollHeight - window.innerHeight);
@@ -50,18 +49,30 @@ const Header = () => {
   // console.log(scrollValue);
   // console.log("Tab: "+value);
 
-  // const verify = async () => {
-  //   try {
-  //     const { data } = await axios.get("http://localhost:5000//");
-  //     setIsLogin();
-  //     console.log(data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-  // useEffect(() => {
-  //   verify();
-  // }, []);
+  useEffect(() => {
+    async function verify() {
+      try {
+        const { data } = await axios.get(
+          "http://localhost:5000/blogs/headers",
+          {
+            withCredentials: true,
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+          }
+        );
+        if (data.message == "Please login first") setIsLogin(true);
+        else setIsLogin(false);
+        // if ((data.message = "Please login first")) {
+        //   navigate("/login");
+        // }
+      } catch (error) {
+        console.log(error);
+        // }
+      }
+    }
+    verify();
+  }, []);
 
   return (
     <>
@@ -139,16 +150,21 @@ const Header = () => {
             </Tabs>
           </Box>
           <Notification />
-          <div id="avatarContainer">
-            {" "}
-            <AvatarDropdown />
-          </div>
-          <div id="loginBtnContainer">
-            {" "}
-            <Button variant="outlined" className="loginBtn">
-              Login
-            </Button>
-          </div>
+          {!isLogin && (
+            <div id="avatarContainer">
+              {" "}
+              <AvatarDropdown />
+            </div>
+          )}
+          {isLogin && (
+            <div id="loginBtnContainer">
+              {" "}
+              <Button variant="outlined" className="loginBtn"
+               href="/login">
+                Login
+              </Button>
+            </div>
+          )}
           <Hamburger />
         </Toolbar>
       </AppBar>

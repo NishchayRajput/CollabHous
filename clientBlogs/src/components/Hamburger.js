@@ -28,6 +28,14 @@ const Hamburger = () => {
           <a id="connect" className="menu-item" href="/connect">
             Connect
           </a>
+          <div className="break-line" />
+          <a id="settings" className="menu-item" href="/settings">
+            Settings
+          </a>
+          <div className="break-line" />
+          <a id="connect" className="menu-item" href="/connect">
+            LogOut
+          </a>
         </main>
       </Menu>
     </div>

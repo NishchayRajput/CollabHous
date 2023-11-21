@@ -24,37 +24,73 @@ import "./css/HorzBlogCard.css";
 import Dot from "./Dot";
 
 export default function BlogCard({
+  uId,
   title,
   description,
   image,
   username,
   time,
-  id,
+  bId,
   isUser,
   tag,
   upVoteC,
   read_time,
 }) {
-  // global state
-  let isLogin = useSelector((state) => state.isLogin);
-  isLogin = isLogin || localStorage.getItem("userId");
-
   const navigate = useNavigate();
+  const [likeInputs, setLikeInputs] = useState({
+    bId: "",
+    iId: "",
+    type: "like",
+    pId: "",
+  });
   const [upVoteCount, setUpVoteCount] = useState(0);
 
-  const handleUpVote = () => {
-    if (!isLogin) {
-      navigate("/login");
-    } else {
-      // You can implement the upvote logic here, for example, send a request to your backend to record the upvote.
-      // For this example, I'll simply increase the count by 1.
-      // setUpvoteCount(upvoteCount + 1);
-      console.log("clicked the liked button");
-      // setUpvoteCount(upvoteCount + 1);
+  // const handleUpVote = () => {
+  //   if (!isLogin) {
+  //     navigate("/login");
+  //   } else {
+  //     // You can implement the upvote logic here, for example, send a request to your backend to record the upvote.
+  //     // For this example, I'll simply increase the count by 1.
+  //     // setUpvoteCount(upvoteCount + 1);
+  //     console.log("clicked the liked button");
+  //     // setUpvoteCount(upvoteCount + 1);
+  //   }
+  // };
+
+  const handleUpVote = async (e) => {
+    // if (e) {
+    //   e.preventDefault();
+    // }
+    // if (!isLogin) {
+    //   navigate("/login");
+    // } else {
+    try {
+      const { data } = await axios.get(
+        "http://localhost:5000/blogs/like",
+        {
+          bId: bId,
+          iId: bId,
+          it: "like",
+          pId: uId,
+        },
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      );
+      if (data.message === "Please login first") {
+        navigate("/login");
+      } else {
+        setUpVoteCount(upVoteCount + 1);
+      }
+    } catch (error) {
+      console.log(error);
+      // }
     }
   };
 
-  const [showSharingBox, setShowSharingBox] = useState(false); // State to control the sharing box visibility
   React.useEffect(() => {
     setUpVoteCount(upVoteC);
   }, []);
@@ -63,7 +99,7 @@ export default function BlogCard({
     <Card id="cardContainer">
       <Box display={"flex"}>
         <div style={{ display: "block", width: "50%" }}>
-          <Link to={`/blogs/${id}`}>
+          <Link to={`/blogs/${bId}`}>
             <CardMedia
               component="img"
               image={image}
@@ -111,14 +147,10 @@ export default function BlogCard({
               <p className="tag">{tag}</p>
             </div>
           </Box>
-          <CardActions
-            disableSpacing
-            onMouseLeave={() => setShowSharingBox(false)}
-            className="cardActions"
-          >
+          <CardActions disableSpacing className="cardActions">
             <IconButton aria-label="add to favorites" onClick={handleUpVote}>
               <ThumbUpAltIcon style={{ color: "#626262" }} />
-              <span className="upvote">{upVoteCount ? upVoteCount : "0"}</span>
+              <span className="upvote">{upVoteCount}</span>
             </IconButton>
           </CardActions>
         </Box>

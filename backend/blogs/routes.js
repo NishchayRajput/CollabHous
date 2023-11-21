@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 const app = express();
 const {like, comment , reply} = require('./controllers/interaction');
@@ -25,5 +25,4 @@ router.get('/setting', setting );
 router.post('/comment', comment);
 router.post('/reply', reply);
 
-
-module.exports = router; 
+module.exports = router;
