@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, Typography, TextField, Button } from "@mui/material";
 import toast from "react-hot-toast";
@@ -7,9 +7,9 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import { ReactNotifications, Store } from "react-notifications-component";
-import {Icon} from 'react-icons-kit';
-import {eyeOff} from 'react-icons-kit/feather/eyeOff';
-import {eye} from 'react-icons-kit/feather/eye';
+import { Icon } from "react-icons-kit";
+import { eyeOff } from "react-icons-kit/feather/eyeOff";
+import { eye } from "react-icons-kit/feather/eye";
 import "./css/Login.css";
 
 const Register = () => {
@@ -30,23 +30,57 @@ const Register = () => {
     }));
   };
 
-
   //eye icon near password
   const [password, setPassword] = useState("");
-  const [type, setType] = useState('password');
+  const [type, setType] = useState("password");
   const [icon, setIcon] = useState(eyeOff);
 
   const handleToggle = () => {
-  
-    if (type==='password'){
-       setIcon(eye);
-       setType('text')
+    if (type === "password") {
+      setIcon(eye);
+      setType("text");
     } else {
-       setIcon(eyeOff)
-       setType('password')
+      setIcon(eyeOff);
+      setType("password");
     }
-  }
+  };
 
+  useEffect(() => {
+    const getVerification = async () => {
+      try {
+        const { data } = await axios.get(
+          "http://localhost:5000/ecommerce/verify",
+          {
+            withCredentials: true,
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+          }
+        );
+        if (data.message === "Ok") {
+          Store.addNotification({
+            title: "You are already logged in",
+            message: "",
+            type: "success",
+            insert: "top",
+            container: "bottom-center",
+            animationIn: ["animate__animated", "animate__fadeIn"],
+            animationOut: ["animate__animated", "animate__fadeOut"],
+            dismiss: {
+              duration: 2000,
+              onScreen: true,
+            },
+          });
+          navigate(-1);
+        }
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getVerification();
+  }, []);
 
   //form handle
   const handleSubmit = async (e) => {
@@ -135,11 +169,9 @@ const Register = () => {
     }
   };
 
-
-
   const login = useGoogleLogin({
     //onSuccess: tokenResponse => console.log(tokenResponse),
-    onSuccess:(credentialResponse) => {
+    onSuccess: (credentialResponse) => {
       const details = jwtDecode(credentialResponse.credential);
       console.log(credentialResponse);
       console.log(details.sub);
@@ -148,16 +180,15 @@ const Register = () => {
       inputs.email = details.email;
       handleSubmit();
     },
-    onError:() => {
+    onError: () => {
       console.log("Login Failed");
-    }
+    },
   });
 
-
   return (
-    <div className="loginpage" >
-    <img src="images/logo.png" />
-      <form onSubmit={handleSubmit}  className="signupBox">
+    <div className="loginpage">
+      <img src="images/logo.png" />
+      <form onSubmit={handleSubmit} className="signupBox">
         <Box
           maxWidth={450}
           display="flex"
@@ -170,17 +201,9 @@ const Register = () => {
           padding={3}
           borderRadius={5}
         >
-
-          <Typography
-            className="signInText"
-          >
-            Create an account
-          </Typography>
-          <Button
-            onClick={() => navigate("/register")}
-            className="newUser"
-          >
-          <span>Already have an account? &nbsp;</span>Sign in
+          <Typography className="signInText">Create an account</Typography>
+          <Button onClick={() => navigate("/register")} className="newUser">
+            <span>Already have an account? &nbsp;</span>Sign in
           </Button>
 
           <TextField
@@ -193,9 +216,15 @@ const Register = () => {
             type={"text"}
             required
             variant="standard"
-            sx={{'& .MuiInput-underline:before': {
-                borderBottomColor: 'white'},
-                input: {color: "white", fontFamily: "Montserrat", fontSize: "15px"}, 
+            sx={{
+              "& .MuiInput-underline:before": {
+                borderBottomColor: "white",
+              },
+              input: {
+                color: "white",
+                fontFamily: "Montserrat",
+                fontSize: "15px",
+              },
             }}
           />
           <TextField
@@ -208,9 +237,15 @@ const Register = () => {
             required
             onChange={handleChange}
             variant="standard"
-            sx={{'& .MuiInput-underline:before': {
-                borderBottomColor: 'white'},
-                input: {color: "white", fontFamily: "Montserrat", fontSize: "15px"}, 
+            sx={{
+              "& .MuiInput-underline:before": {
+                borderBottomColor: "white",
+              },
+              input: {
+                color: "white",
+                fontFamily: "Montserrat",
+                fontSize: "15px",
+              },
             }}
           />
           <TextField
@@ -223,33 +258,39 @@ const Register = () => {
             required
             onChange={handleChange}
             variant="standard"
-            sx={{'& .MuiInput-underline:before': {
-                borderBottomColor: 'white'},
-                input: {color: "white", fontFamily: "Montserrat", fontSize: "15px"}, 
+            sx={{
+              "& .MuiInput-underline:before": {
+                borderBottomColor: "white",
+              },
+              input: {
+                color: "white",
+                fontFamily: "Montserrat",
+                fontSize: "15px",
+              },
             }}
             InputProps={{
               endAdornment: (
-              <React.Fragment>
-                <span onClick={handleToggle} style={{ cursor: 'pointer' }}>
-                  <Icon icon={icon} size={12} style={{ color: '#FFFFFF' }} />
-                </span>
-              </React.Fragment>
-            ),
+                <React.Fragment>
+                  <span onClick={handleToggle} style={{ cursor: "pointer" }}>
+                    <Icon icon={icon} size={12} style={{ color: "#FFFFFF" }} />
+                  </span>
+                </React.Fragment>
+              ),
             }}
           />
           <p className="requirements">
-            Must be of atleast 8 characters and contain atleast one uppercase, one lowercase, and one number
+            Must be of atleast 8 characters and contain atleast one uppercase,
+            one lowercase, and one number
           </p>
-          <Button
-            type="submit"
-            className="continue"
-          >
+          <Button type="submit" className="continue">
             Register
           </Button>
-          <div className="or"><div></div>&nbsp;Or&nbsp; <div></div></div>
+          <div className="or">
+            <div></div>&nbsp;Or&nbsp; <div></div>
+          </div>
           <div className="submit">
             <Button className="loginWith" onClick={() => login()}>
-                      Continue with Google
+              Continue with Google
             </Button>
             <Button className="loginWith">Continue with Facebook</Button>
           </div>

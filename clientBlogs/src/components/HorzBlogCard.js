@@ -32,7 +32,7 @@ export default function BlogCard({
   id,
   isUser,
   tag,
-  likeCount,
+  upVoteC,
   read_time,
 }) {
   // global state
@@ -40,24 +40,25 @@ export default function BlogCard({
   isLogin = isLogin || localStorage.getItem("userId");
 
   const navigate = useNavigate();
+  const [upVoteCount, setUpVoteCount] = useState(0);
 
-  const [upvoteCount, setUpvoteCount] = useState(0);
-
-  const handleUpvote = () => {
+  const handleUpVote = () => {
     if (!isLogin) {
       navigate("/login");
     } else {
       // You can implement the upvote logic here, for example, send a request to your backend to record the upvote.
       // For this example, I'll simply increase the count by 1.
-      setUpvoteCount(upvoteCount + 1);
+      // setUpvoteCount(upvoteCount + 1);
+      console.log("clicked the liked button");
       // setUpvoteCount(upvoteCount + 1);
     }
   };
 
   const [showSharingBox, setShowSharingBox] = useState(false); // State to control the sharing box visibility
   React.useEffect(() => {
-    setUpvoteCount(likeCount);
+    setUpVoteCount(upVoteC);
   }, []);
+
   return (
     <Card id="cardContainer">
       <Box display={"flex"}>
@@ -98,28 +99,16 @@ export default function BlogCard({
           </Box>
 
           <Typography className="title" variant="h6" color="text.secondary">
-              {title}
+            {title}
           </Typography>
 
           <Box className="blogDetails">
             <div>
-              <p
-                className="readT"
-              >
-                {read_time} min read
-              </p>
+              <p className="readT">{read_time} min read</p>
               <Dot />
-              <p
-                className="date"
-              >
-                {time}
-              </p>
+              <p className="date">{time}</p>
               <Dot />
-              <p
-                className="tag"
-              >
-                {tag}
-              </p>
+              <p className="tag">{tag}</p>
             </div>
           </Box>
           <CardActions
@@ -127,9 +116,9 @@ export default function BlogCard({
             onMouseLeave={() => setShowSharingBox(false)}
             className="cardActions"
           >
-            <IconButton aria-label="add to favorites" onClick={handleUpvote}>
+            <IconButton aria-label="add to favorites" onClick={handleUpVote}>
               <ThumbUpAltIcon style={{ color: "#626262" }} />
-              <span className="upvote">{upvoteCount ? upvoteCount : "0"}</span>
+              <span className="upvote">{upVoteCount ? upVoteCount : "0"}</span>
             </IconButton>
           </CardActions>
         </Box>

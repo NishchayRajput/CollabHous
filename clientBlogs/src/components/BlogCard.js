@@ -30,7 +30,7 @@ export default function BlogCard({
   time,
   id,
   isUser,
-  like,
+  upVoteC,
   read_time,
 }) {
   // global state
@@ -41,7 +41,7 @@ export default function BlogCard({
   const handleEdit = () => {
     navigate(`/blog-details/${id}`);
   };
-  const [upvoteCount, setUpvoteCount] = useState(0);
+  const [upVoteCount, setUpVoteCount] = useState(0);
   const handleDelete = async () => {
     try {
       const { data } = await axios.delete(`/api/v1/blog/delete-blog/${id}`);
@@ -54,18 +54,19 @@ export default function BlogCard({
     }
   };
 
-  const handleUpvote = () => {
+  const handleUpVote = () => {
     if (!isLogin) {
       navigate("/login");
     } else {
       // You can implement the upvote logic here, for example, send a request to your backend to record the upvote.
       // For this example, I'll simply increase the count by 1.
-      setUpvoteCount(upvoteCount + 1);
       // setUpvoteCount(upvoteCount + 1);
+      // setUpvoteCount(upvoteCount + 1);
+      console.log("clicked the liked button");
     }
   };
   React.useEffect(() => {
-    setUpvoteCount(like);
+    setUpVoteCount(upVoteC);
   }, []);
   return (
     <div className="card">
@@ -120,9 +121,9 @@ export default function BlogCard({
           </div>
         </Box>
         <CardActions disableSpacing style={{ paddingTop: "0px", zIndex: "8" }}>
-          <IconButton arqia-label="add to favorites" onClick={handleUpvote}>
+          <IconButton arqia-label="add to favorites" onClick={handleUpVote}>
             <ThumbUpOffAltIcon style={{ color: "#626262" }} />
-            <span className="upvote">{upvoteCount ? upvoteCount : "0"}</span>
+            <span className="upvote">{upVoteCount ? upVoteCount : "0"}</span>
           </IconButton>
         </CardActions>
       </Box>
