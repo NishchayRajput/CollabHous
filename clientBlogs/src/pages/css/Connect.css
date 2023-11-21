@@ -79,6 +79,13 @@
     /* height: 125vh; */
 }
 
+.upper_box1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .ch {
     width: 250.453px;
     height: 142.67px;
@@ -407,6 +414,16 @@
     gap: 48.6px;
 }
 
+.h1,
+.h2,
+.h3 {
+    display: flex;
+    gap: 12.6px;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 95%;
+
+}
 .text1 {
     width: 424px;
     height: 43px;
@@ -479,16 +496,6 @@
     letter-spacing: 0.9px;
 }
 
-.h1,
-.h2,
-.h3 {
-    display: flex;
-    gap: 12.6px;
-    flex-direction: row;
-    align-items: flex-start;
-    width: 95%;
-
-}
 
 .sidepart2 {
     width: 40vw;
@@ -502,7 +509,7 @@
     margin-left: -10px;
 }
 
-@media only screen and (min-width: 375px) and (max-width:767px) {
+@media only screen and (min-width: 375px) and (max-width:1023px) {
 
     .buttons_top {
         flex-direction: column;
@@ -548,7 +555,7 @@
         width: 300px;
     }
 
-    .container {
+    .connect_container {
 
         margin-left: 40px;
         margin-top: 30px;
@@ -600,13 +607,11 @@
     .box1 {
         width: 100%;
         height: max-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         /* margin-top: ; */
-    }
-
-
-    .box2 {
-        width: 100%;
-        /* display: none; */
     }
 
     .frame65 {
@@ -640,7 +645,7 @@
         margin-left: -20px;
         height: 14px;
         margin-top: 25px;
-        width: 40hw;
+        width: 100vw;
 
     }
     
@@ -655,11 +660,391 @@
  
     }
 
+.frame71 {
+
+    gap: 10px;
+    width: fit-content;
+    margin-left: 30px;
+}
+
+.frame69 {
+    width: 40vw;
+    height: 40px;
+    padding: 5px 50.8px 5.8px 40px;
+    margin-left: -5px;
+}
+
+.google_logo {
+    width: 15.2px;
+    height: 15.2px;
+    margin-left: -10px;
+}
+
+.frame70 {
+    width: 40vw;
+    padding: 5px 50.8px 5.8px 60px;
+}
+.insta_logo {
+    width: 15px;
+    height: 15px;
+    margin-left: -50px;
+
+}
+
+
+.box2 {
+    /* padding: 190px 107.52px 205.56px 107.55px; */
+    flex-direction: column;
+    gap: 451.9px;
+    background: #383838;
+    width: 100vw;
+    margin-top: 100px;
+    padding: 0;
+}
+
+.sidepart {
+    width: 80%;
+    flex-wrap: wrap;
+}
+
+
+
+.h1,
+.h2,
+.h3 {
+    /* display: flex; */
+    gap: 10px;
+    flex-direction: row;
+    /* align-items: flex-start; */
+    /* width: 40vw; */
+    max-width: 80vw;
+    word-wrap: break-word;
+
+}
+.logo1 ,.logo2 ,.logo3{
+width: 28px;
+height: 28px;
+}
+
+.side_text{
+    display: flex;
+    flex-direction: column;
+
+    width:80%;
+    gap:15px;
+}
+.text1 ,.text3,.text5 {
+    font-size: 20px;
+    font-weight: 500;
+    width:auto;
+    /* display: none; */
+    /* width: 10px; */
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    /* word-wrap: break-word; */
+    /* width: 1; */
+
+}
+
+.text2,.text4,.text6{
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 0.9px;
+    width: auto;
+    /* width: 10px; */
+    /* display: none; */
+
+    /* width: 10vw; */
+    word-wrap: break-word;
+}
+
+
+.sidepart2{
+    display: none;
+}
+
+
 
 
     .lastpart {
         display: none;
     }
+
+
+
+}
+
+
+@media only screen and (min-width: 768px) and (max-width:1023px) {
+
+    .connect_container {
+
+        margin-left: 0px;
+        margin-top: 30px;
+        width: 445px;
+        height: 372px;
+        border-radius: 8.36px;
+        border: 1.045px solid #414141;
+        background: #2F2F2F;
+        color: #FFF;
+    
+    }
+
+
+.item {
+    position: relative;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 1px;
+    width: 445px;
+    height: 62px;
+    padding: 20px 211px 0px 35px;
+    /* margin-left: 35px; */
+
+}
+
+.addline {
+    width: 445.01px;
+    height: 0.25px;
+    background: #C6C6C6;
+    /* z-index: -1; */
+}
+
+.cont {
+
+    margin-left: 0px;
+    margin-top: 20px;
+    display: flex;
+    width: 445px;
+    height: 61px;
+    padding: 10px 0px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background: #2F2F2F;
+    color: #FFF;
+    text-align: justify;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 1px;
+
+}
+
+.pink {
+    color: #F74D79;
+    font-family: Roboto;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 1.6px;
+    margin-left: 0px;
+    margin-top: 5px;
+    width: fit-content;
+
+}
+
+.connect {
+    color: #F74D79;
+    font-family: Roboto;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 1.6px;
+    height: 38px;
+    margin-left: 0px;
+
+}
+
+
+.frame65 {
+    display: flex;
+    width: 445px;
+    padding: 18px 26px 24px 26px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8.36px;
+    border: 1.045px solid #414141;
+    background: #2F2F2F;
+    margin-left: 0px;
+    margin-top: 15px;
+}
+
+.text {
+    width: 393px;
+    height: 64px;
+    color: #A0A0A0;
+    text-align: justify;
+    font-family: Questrial;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0.96px;
+
+}
+
+.frame67 input {
+    display: flex;
+    width: 445px;
+    height: 61px;
+
+    padding: 10px 0px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background: #2F2F2F;
+    margin-left: 0px;
+    margin-top: 20px;
+
+    color: #6B6B6B;
+    border: 1.045px solid #414141;
+    text-align: justify;
+    border-radius: 8px;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+::placeholder {
+    text-align: center;
+}
+
+.frame66 {
+    display: flex;
+    width: 445px;
+    height: 61px;
+    padding: 10px 0px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background: #F74D79;
+    margin-left: 0px;
+    margin-top: 20px;
+
+    color: #FFF;
+    text-align: justify;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 1px;
+}
+
+
+.frame68 {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin-left: 0px;
+    width: 418px;
+    height: 16px;
+    margin-top: 25px;
+}
+
+.line {
+    width: 147.014px;
+    height: 0.5px;
+    background: #9F9F9F;
+}
+
+.or_continue {
+    color: #9F9F9F;
+    text-align: justify;
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.7px;
+    margin-left: 0px;
+}
+
+.frame71 {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 18px;
+    width: 446px;
+    height: 40px;
+    margin-left: 0px;
+    margin-top: 25px;
+}
+
+.frame69 {
+    display: flex;
+    gap: 12px;
+    width: 214px;
+    height: 40px;
+    padding: 10px 67.8px 10.8px 59px;
+    align-items: center;
+    border-radius: 8.36px;
+    border: 1.045px solid #414141;
+    background: #2F2F2F;
+
+    color: #6B6B6B;
+    text-align: justify;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    letter-spacing: 0.8px;
+    margin-left: 0px;
+
+}
+
+.google_logo {
+    width: 19.2px;
+    height: 19.2px;
+}
+
+
+
+.frame70 {
+    display: flex;
+    width: 214px;
+    height: 40px;
+    gap: 12px;
+    padding: 10.5px 49px 10.5px 89px;
+    align-items: center;
+    background-color: #F74D79;
+    border-radius: 8.36px;
+    border: 1.045px solid #414141;
+
+    color: #FFF;
+    text-align: justify;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    letter-spacing: 0.8px;
+    align-items: center;
+
+}
+
+.insta_logo {
+    width: 20px;
+    height: 20px;
+    margin-left: -50px;
+
+}
+
+
+
 
 
 
