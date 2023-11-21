@@ -37,7 +37,7 @@ function authenticateMiddleware(req, res, next) {
   // next();
   if (!token) {
     // If no token is provided, return a 401 (Unauthorized) response
-    return res.status(401).json({ message: 'Please login first' });
+    return res.status(200).json({ message: 'Please login first' });
   }
 
   // Verify the token using your secret key
@@ -56,7 +56,7 @@ function authenticateMiddleware(req, res, next) {
       console.log('Token not verified');
     }
     req.body.uId = user.userId;
-    console.log(user.id);
+
     next();
   });
 }
