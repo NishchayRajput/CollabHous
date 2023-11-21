@@ -31,13 +31,13 @@ const Login = () => {
         const { data } = await axios.get(
           "http://localhost:5000/ecommerce/verify",
           {
-            withCredentials: true, 
+            withCredentials: true,
             headers: {
               "Content-Type": "application/x-www-form-urlencoded",
             },
           }
         );
-        // console.log(data);
+        console.log(data);
       } catch (error) {
         console.log(error);
       }
@@ -83,16 +83,16 @@ const Login = () => {
           g_id: inputs.g_id,
         },
         {
-          withCredentials: true, 
+          withCredentials: true,
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
           },
         }
       );
-      const {data} = response;
-      console.log(response)
-      const setCookieHeader = response.headers.get('set-cookie');
-      console.log('Set-Cookie Header:', setCookieHeader);
+      const { data } = response;
+      console.log(response);
+      const setCookieHeader = response.headers.get("set-cookie");
+      console.log("Set-Cookie Header:", setCookieHeader);
 
       if (data.message === "Login successful") {
         // toast.success("User login Successsfully");
@@ -161,7 +161,6 @@ const Login = () => {
       console.log("Login Failed");
     },
   });
-
 
   return (
     <div className="loginpage">
@@ -256,8 +255,6 @@ const Login = () => {
 };
 
 export default Login;
-
-
 
 // import React, { useState } from 'react';
 

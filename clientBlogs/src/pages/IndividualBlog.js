@@ -156,48 +156,40 @@ export default function IndividualBlog({}) {
               </Box>
             </Box>
           </Box>
-
-          <Box
-            className="blogContent"
-            display={"flex"}
-            style={{ flexWrap: "wrap" }}
-          >
+          <Box className="blogContainer">
             <Typography className="subtitle">Fashion</Typography>
-            <Typography className="content">
-              Lorem ipsum dolor sit amet consectetur. Habitant diam mi semper in
-              ultricies ipsum sed ac. Consectetur nascetur sit pharetra donec
-              augue netus eget phasellus scelerisque. Laoreet elementum bibendum
-              penatibus vitae arcu arcu lectus tincidunt. Volutpat nibh netus
-              vitae arcu mattis orci. Lorem faucibus nunc sit at faucibus.
-              Pellentesque turpis habitasse urna id. Dignissim vitae enim congue
-              est ut odio mauris rutrum dictum. Turpis sagittis arcu amet nec
-              adipiscing mattis. Neque viverra sed quis convallis. Non aliquam
-              elit vivamus varius eleifend purus. Massa mattis quam amet tortor
-              arcu nisl. Eros elementum cras orci at proin ut sem dignissim
-              pharetra. Fermentum aliquet in mattis lacus. Cras facilisis nec
-              sem scelerisque vulputate. Enim tellus ut condimentum tortor sit
-              lectus purus. Aliquet eget dui faucibus dui bibendum consequat.
-            </Typography>
-            <Box
-              className="blogContent"
-              display={"flex"}
-              style={{ flexWrap: "wrap" }}
-            >
-              {
-                //change this on fetching the image data form database
-                blog.image == null ? (
-                  <Box
-                    display={"flex"}
-                    justifyContent={"center"}
-                    width={"38%"}
-                    paddingRight={"2%"}
-                  >
-                    <img src="https://picsum.photos/300/300" alt="" />
-                  </Box>
-                ) : (
-                  ""
-                )
-              }
+            <Box className="blogContent">
+              <Typography className="content">
+                Lorem ipsum dolor sit amet consectetur. Habitant diam mi semper
+                in ultricies ipsum sed ac. Consectetur nascetur sit pharetra
+                donec augue netus eget phasellus scelerisque. Laoreet elementum
+                bibendum penatibus vitae arcu arcu lectus tincidunt. Volutpat
+                nibh netus vitae arcu mattis orci. Lorem faucibus nunc sit at
+                faucibus. Pellentesque turpis habitasse urna id. Dignissim vitae
+                enim congue est ut odio mauris rutrum dictum. Turpis sagittis
+                arcu amet nec adipiscing mattis. Neque viverra sed quis
+                convallis. Non aliquam elit vivamus varius eleifend purus. Massa
+                mattis quam amet tortor arcu nisl. Eros elementum cras orci at
+                proin ut sem dignissim pharetra. Fermentum aliquet in mattis
+                lacus. Cras facilisis nec sem scelerisque vulputate. Enim tellus
+                ut condimentum tortor sit lectus purus. Aliquet eget dui
+                faucibus dui bibendum consequat.
+              </Typography>
+            </Box>
+            <Box className="blogContent">
+              {blog.image == null ? (
+                <Box
+                  display={"flex"}
+                  justifyContent={"center"}
+                  width={"38%"}
+                  paddingRight={"2%"}
+                  className="image"
+                >
+                  <img src="https://picsum.photos/300/300" alt="" />
+                </Box>
+              ) : (
+                ""
+              )}
 
               <Typography className="content" width={"60"}>
                 Lorem ipsum dolor sit amet consectetur. Habitant diam mi semper
@@ -231,11 +223,7 @@ export default function IndividualBlog({}) {
               sem scelerisque vulputate. Enim tellus ut condimentum tortor sit
               lectus purus. Aliquet eget dui faucibus dui bibendum consequat.
             </Typography>
-            <Box
-              className="blogContent"
-              display={"flex"}
-              style={{ flexWrap: "wrap" }}
-            >
+            <Box className="blogContent">
               <Typography className="content" width={"60"}>
                 Lorem ipsum dolor sit amet consectetur. Habitant diam mi semper
                 in ultricies ipsum sed ac. Consectetur nascetur sit pharetra
@@ -261,6 +249,7 @@ export default function IndividualBlog({}) {
                     justifyContent={"center"}
                     width={"38%"}
                     paddingLeft={"2%"}
+                    className="image"
                   >
                     <img src="https://picsum.photos/300/300" alt="" />
                   </Box>
@@ -311,23 +300,23 @@ export default function IndividualBlog({}) {
               {showSharingBox && (
                 <Box className="sharingBox">
                   <TwitterShareButton
-                    url={"https://www.example.com"}
-                    quote={"Dummy text!"}
-                    hashtag="#muo"
+                    url={`http://localhost:3000/blogs/${blogId}`} 
+                    // quote={"Dummy text!"}
+                    // hashtag="#muo"
                   >
                     <TwitterIcon size={32} round />
                   </TwitterShareButton>
                   <EmailShareButton
-                    url={"https://www.example.com"}
-                    quote={"Dummy text!"}
-                    hashtag="#muo"
+                    url={`http://localhost:3000/blogs/${blogId}`}
+                    // quote={"Dummy text!"}
+                    // hashtag="#muo"
                   >
                     <EmailIcon size={32} round />
                   </EmailShareButton>
                   <WhatsappShareButton
-                    url={"https://www.example.com"}
-                    quote={"Dummy text!"}
-                    hashtag="#muo"
+                    url={`http://localhost:3000/blogs/${blogId}`}
+                    // quote={"Dummy text!"}
+                    // hashtag="#muo"
                   >
                     <WhatsappIcon size={32} round />
                   </WhatsappShareButton>
