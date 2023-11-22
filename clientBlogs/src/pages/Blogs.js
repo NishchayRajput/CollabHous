@@ -23,7 +23,7 @@ const Blogs = () => {
       const { data } = await axios.get("http://localhost:5000/blogs/");
       setAllBlogs(data);
       setBlogs(data);
-      // console.log(data);
+      console.log(data);
     } catch (error) {
       console.log(error);
     }

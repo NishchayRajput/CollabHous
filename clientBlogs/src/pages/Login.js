@@ -32,6 +32,7 @@ const Login = () => {
             },
           }
         );
+        console.log(data.message);
         if (data.message === "Ok") {
           Store.addNotification({
             title: "You are already logged in",

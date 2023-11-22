@@ -29,19 +29,13 @@ export default function BlogCard({
   username,
   time,
   bId,
-  isUser,
   tag,
   upVoteC,
   read_time,
 }) {
   const navigate = useNavigate();
 
-  const [likeInputs, setLikeInputs] = useState({
-    bId: "",
-    iId: "",
-    type: "like",
-    pId: "",
-  });
+  const [likeStatus, setLikeStatus] = useState(false);
   const [upVoteCount, setUpVoteCount] = useState(0);
 
   // const handleUpVote = () => {
@@ -57,14 +51,13 @@ export default function BlogCard({
   // };
 
   const handleUpVote = async (e) => {
-   
     try {
       const { data } = await axios.get(
         "http://localhost:5000/blogs/like",
         {
           bId: bId,
           iId: bId,
-          it: "like",
+          it: likeStatus,
           pId: uId,
         },
         {
@@ -74,20 +67,26 @@ export default function BlogCard({
           },
         }
       );
+
       if (data.message === "Please login first") {
         navigate("/login");
+        console.log("navigating");
       } else {
-        setUpVoteCount(upVoteCount + 1);
+        console.log("increasing");
+        setLikeStatus(!likeStatus);
+        if (likeStatus === true) setUpVoteCount(upVoteCount + 1);
+        else setUpVoteCount(upVoteCount - 1);
       }
     } catch (error) {
       console.log(error);
-      // }
     }
   };
 
   React.useEffect(() => {
     setUpVoteCount(upVoteC);
+    setLikeStatus(true);
   }, []);
+
   return (
     <div className="card">
       <CardMedia
@@ -142,7 +141,8 @@ export default function BlogCard({
         </Box>
         <CardActions disableSpacing style={{ paddingTop: "0px", zIndex: "8" }}>
           <IconButton arqia-label="add to favorites" onClick={handleUpVote}>
-            <ThumbUpOffAltIcon style={{ color: "#626262" }} />
+            {!likeStatus && <ThumbUpOffAltIcon style={{ color: "#626262" }} />}
+            {likeStatus && <ThumbUpAltIcon style={{ color: "#F74D79" }} />}
             <span className="upvote">{upVoteCount}</span>
           </IconButton>
         </CardActions>

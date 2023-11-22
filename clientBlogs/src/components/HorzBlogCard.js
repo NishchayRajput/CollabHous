@@ -31,18 +31,13 @@ export default function BlogCard({
   username,
   time,
   bId,
-  isUser,
   tag,
   upVoteC,
   read_time,
 }) {
   const navigate = useNavigate();
-  const [likeInputs, setLikeInputs] = useState({
-    bId: "",
-    iId: "",
-    type: "like",
-    pId: "",
-  });
+
+  const [likeStatus, setLikeStatus] = useState(false);
   const [upVoteCount, setUpVoteCount] = useState(0);
 
   // const handleUpVote = () => {
@@ -58,19 +53,13 @@ export default function BlogCard({
   // };
 
   const handleUpVote = async (e) => {
-    // if (e) {
-    //   e.preventDefault();
-    // }
-    // if (!isLogin) {
-    //   navigate("/login");
-    // } else {
     try {
       const { data } = await axios.get(
         "http://localhost:5000/blogs/like",
         {
           bId: bId,
           iId: bId,
-          it: "like",
+          it: likeStatus,
           pId: uId,
         },
         {
@@ -82,8 +71,12 @@ export default function BlogCard({
       );
       if (data.message === "Please login first") {
         navigate("/login");
+        console.log("navigating");
       } else {
-        setUpVoteCount(upVoteCount + 1);
+        console.log("increasing");
+        setLikeStatus(!likeStatus);
+        if (likeStatus === true) setUpVoteCount(upVoteCount + 1);
+        else setUpVoteCount(upVoteCount - 1);
       }
     } catch (error) {
       console.log(error);
@@ -93,6 +86,7 @@ export default function BlogCard({
 
   React.useEffect(() => {
     setUpVoteCount(upVoteC);
+    setLikeStatus(true);
   }, []);
 
   return (
@@ -148,8 +142,11 @@ export default function BlogCard({
             </div>
           </Box>
           <CardActions disableSpacing className="cardActions">
-            <IconButton aria-label="add to favorites" onClick={handleUpVote}>
-              <ThumbUpAltIcon style={{ color: "#626262" }} />
+            <IconButton arqia-label="add to favorites" onClick={handleUpVote}>
+              {!likeStatus && (
+                <ThumbUpOffAltIcon style={{ color: "#626262" }} />
+              )}
+              {likeStatus && <ThumbUpAltIcon style={{ color: "#F74D79" }} />}
               <span className="upvote">{upVoteCount}</span>
             </IconButton>
           </CardActions>
