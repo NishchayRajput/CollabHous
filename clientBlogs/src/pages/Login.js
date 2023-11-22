@@ -32,7 +32,6 @@ const Login = () => {
             },
           }
         );
-        console.log(data.message);
         if (data.message === "Ok") {
           Store.addNotification({
             title: "You are already logged in",
@@ -47,7 +46,7 @@ const Login = () => {
               onScreen: true,
             },
           });
-          navigate(-1);
+          navigate("/home");
         }
         // console.log(data);
       } catch (error) {

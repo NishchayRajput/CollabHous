@@ -214,7 +214,7 @@
 
 .relatedBlogsSection .title {
     font-size: 39px;
-    color: white;
+    color: rgb(255, 255, 255);
 }
 
 .relatedBlogsSection .more {
@@ -222,12 +222,12 @@
     color: white;
 }
 
-.relatedBlogsSection .card {
+.relatedBlogCard {
     max-width: 350px;
     width: 350px;
     margin: 3rem 2rem;
     height: 420px;
-    flex-wrap: wrap;
+    position: relative;
 }
 
 

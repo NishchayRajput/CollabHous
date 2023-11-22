@@ -41,6 +41,7 @@ export default function AvatarDropdown() {
         });
         console.log(data);
         if (data.message === "logout successfull") navigate("/home");
+        window.location.reload();
       } catch (error) {
         console.log(error);
       }

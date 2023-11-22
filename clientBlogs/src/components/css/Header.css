@@ -8,6 +8,7 @@
     top: 10px !important;
     border-radius: 16px;
     max-width: 1500px;
+    backdrop-filter: blur(8px);
     /* min-height: 43px; */
 }
 
