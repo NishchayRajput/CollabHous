@@ -76,6 +76,9 @@
 
 .box1 {
     width: 50%;
+    align-items: center;
+    justify-content: center;
+    /* text-align: center; */
     /* height: 125vh; */
 }
 
@@ -90,7 +93,8 @@
     width: 250.453px;
     height: 142.67px;
     flex-shrink: 0;
-    margin-left: 209px;
+    /* align-items: center;*/
+    text-align: center; 
     margin-top: 50px;
     font-family: Questrial;
     color: #FFF;
@@ -121,14 +125,14 @@
     font-weight: 600;
     line-height: normal;
     letter-spacing: 1.6px;
-    margin-left: 138px;
+    /* margin-left: 138px; */
     margin-top: 5px;
 }
 
 .connect_container {
     display: flex;
     flex-direction: column;
-    margin-left: 78px;
+    /* margin-left: 78px; */
     margin-top: 30px;
     width: 445px;
     height: 372px;
@@ -163,7 +167,7 @@
 
 .cont {
 
-    margin-left: 78px;
+    /* margin-left: 78px; */
     margin-top: 20px;
     display: flex;
     width: 445px;
@@ -185,11 +189,30 @@
 
 }
 
+.lowerbox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* text-align: center; */
+}
+
+.lowerbox2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* transform: translateX(100px); */
+}
+
 .ch2 {
     width: 250.453px;
     height: 142.67px;
     flex-shrink: 0;
-    margin-left: 209px;
+    align-items: center;
+    text-align: center;
+
     margin-top: 250px;
     font-family: Questrial;
     color: #FFF;
@@ -210,7 +233,7 @@
     line-height: normal;
     letter-spacing: 1.6px;
     height: 38px;
-    margin-left: 151px;
+    /* margin-left: 151px; */
 
 }
 
@@ -223,7 +246,7 @@
     border-radius: 8.36px;
     border: 1.045px solid #414141;
     background: #2F2F2F;
-    margin-left: 91px;
+    /* margin-left: 91px; */
     margin-top: 15px;
 }
 
@@ -251,7 +274,7 @@
     align-items: center;
     gap: 10px;
     background: #2F2F2F;
-    margin-left: 91px;
+    /* margin-left: 91px; */
     margin-top: 20px;
 
     color: #6B6B6B;
@@ -280,7 +303,7 @@
     gap: 10px;
     border-radius: 8px;
     background: #F74D79;
-    margin-left: 91px;
+    /* margin-left: 91px; */
     margin-top: 20px;
 
     color: #FFF;
@@ -294,12 +317,13 @@
 }
 
 
+
 .frame68 {
     display: inline-flex;
     justify-content: center;
     align-items: center;
     gap: 6px;
-    margin-left: 108px;
+    /* margin-left: 108px; */
     width: 418px;
     height: 16px;
     margin-top: 25px;
@@ -329,7 +353,7 @@
     gap: 18px;
     width: 446px;
     height: 40px;
-    margin-left: 91px;
+    /* margin-left: 91px; */
     margin-top: 25px;
 }
 
@@ -529,10 +553,15 @@
         /* height: 240vh; */
     }
 
+    .upper_box1{
+        align-items: center;
+        justify-content: center;
+        /* text-align: center; */
+    }
     .ch {
         width: 17hw;
         height: 12vh;
-        margin-left: 130px;
+        /* margin-left: 130px; */
         margin-top: 50px;
         font-family: Questrial;
         color: #FFF;
@@ -557,11 +586,12 @@
 
     .connect_container {
 
-        margin-left: 40px;
+        margin-left: 0px;
         margin-top: 30px;
         width: 300px;
         height: 300px;
         justify-content: center;
+        /* padding: 10px; */
 
     }
 
@@ -583,22 +613,26 @@
 
     .cont {
 
-        margin-left: 40px;
+        /* margin-left: 40px; */
         width: 300px;
         height: 50px;
+    }
+
+    .lowerbox2{
+        width: 80%;
     }
 
     .ch2 {
         width: 17hw;
         height: 12vh;
-        margin-left: 130px;
+        /* margin-left: 130px; */
         margin-top: 200px;
     }
 
     .connect {
         font-size: 30px;
         height: 38px;
-        margin-left: 80px;
+        /* margin-left: 80px; */
         width: 300px;
         margin-top: 15px;
 
@@ -618,7 +652,7 @@
 
         width: 320px;
         padding: 10px 20px 20px 20px;
-        margin-left: 28px;
+        /* margin-left: 28px; */
     }
 
     .text {
@@ -630,7 +664,7 @@
         display: flex;
         width: 320px;
         height: 45px;
-        margin-left: 30px;
+        /* margin-left: 30px; */
     }
 
     .frame66 {
@@ -664,7 +698,7 @@
 
     gap: 10px;
     width: fit-content;
-    margin-left: 30px;
+    /* margin-left: 30px; */
 }
 
 .frame69 {

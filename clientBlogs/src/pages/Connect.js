@@ -46,10 +46,14 @@ const Connect = () => {
 
             </div>
 
+
+      <div className="lowerbox">
             <div className="ch2">
               <p ><span className="c">C</span><span className="h"> H</span></p>
             </div>
             <div className="connect">Connect with us </div>
+
+            <div className="lowerbox2">
             <div className="frame65">
               <div className="text">By connecting, I agree that i have read the privacy policy and that I may receive updates from cH Commune for industry updates and opportunities.</div>
             </div>
@@ -60,10 +64,14 @@ const Connect = () => {
             <div >
               <button className="frame66"> Connect</button>
             </div>
+            {/* <div className="lowerbox3"> */}
+            
 
             <div className="frame68">
               <span className="line"></span>
+            
               <div className="or_continue">or continue with</div>
+
               <span className="line"></span>
             </div>
             <div className="frame71">
@@ -101,8 +109,13 @@ const Connect = () => {
                   </div>
                   <div> Instagram</div>
                   </button>
+                  </div>
               </div>
+              {/* </div> */}
 
+
+
+            </div>
             </div>
           </div>
           <div className="box2">
