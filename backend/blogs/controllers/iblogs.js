@@ -85,7 +85,7 @@ async function getBlogById(req, res) {
     }
 
     // Send the blog data to the frontend as a JSON response
-    res.status(200).json(blog);
+    res.status(200).json({blogF, interaction});
   } catch (error) {
     // If an error occurs, return a 500 error response with the error message
     return res

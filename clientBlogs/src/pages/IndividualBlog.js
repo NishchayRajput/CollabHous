@@ -37,12 +37,13 @@ export default function IndividualBlog({}) {
   let isLogin = useSelector((state) => state.isLogin);
   isLogin = isLogin || localStorage.getItem("userId");
   const navigate = useNavigate();
-
+  const [userId, setUserId] = useState();
   let { blogId } = useParams();
   const [showSharingBox, setShowSharingBox] = useState(false); // State to control the sharing box
   const [showCommentBox, setShowCommentBox] = useState(true); // State to control the sharing box
   const [allBlogs, setAllBlogs] = useState([]);
   const [blog, setBlog] = useState([]);
+  const [interaction, setInteraction] = useState([]);
   const [relatedBlog, setRelatedBlog] = useState([]);
   const formatDate = (isoDate) => {
     const date = new Date(isoDate);
@@ -70,7 +71,7 @@ export default function IndividualBlog({}) {
           check = e.tag === category;
           return check;
         });
-        console.log(updateBlogs);
+        // console.log(updateBlogs);
         setRelatedBlog(updateBlogs);
       };
       filterBlogs("Community");
@@ -100,7 +101,10 @@ export default function IndividualBlog({}) {
         const { data } = await axios.get(
           `http://localhost:5000/blogs/${blogId}`
         );
-        setBlog(data);
+        console.log(data);
+        setBlog(data.blogF);
+        setInteraction(data.interaction);
+        setUserId(data.blogF.user_id._id);
       } catch (error) {
         console.log(error);
       }
@@ -108,6 +112,7 @@ export default function IndividualBlog({}) {
     getBlog();
     getAllBlogs();
   }, []);
+  // console.log(blog);
   const handleUpvote = () => {
     if (!isLogin) {
       navigate("/login");
@@ -345,7 +350,7 @@ export default function IndividualBlog({}) {
           </Box>
           {showCommentBox && (
             <div className="commentBox">
-              <CommentArea />
+              <CommentArea bId={blogId} uId={userId} interactionArray={interaction}/>
             </div>
           )}
         </section>

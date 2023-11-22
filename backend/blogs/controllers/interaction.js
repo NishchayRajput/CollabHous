@@ -68,9 +68,9 @@ async function like(req, res) {
 async function comment(req, res) {
     try {
         const { uId, bId, iId, it, content, pId } = req.body;
+        console.log(pId);
         
-        
-        if(it == 'comment')
+        if(it == "comment")
         {
             // Create a new Interaction document
             const newInteraction = new Interaction({
