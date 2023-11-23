@@ -12,6 +12,35 @@ import { Button } from "@mui/material";
 
 const Settings = ()=> {
 
+    // const [name,setName] = useState("");
+    // const [image, setImage] = useState("");
+    // const [bio, setBio] = useState("");
+    // const [email, setEmail] = useState("");
+    // const [mobile, setMobile] = useState("");
+
+
+    // useEffect(() => {
+    //     async function getInfo() {
+    //       try {
+    //         const { data } = await axios.get("http://localhost:5000/blogs/hero");
+            
+    //         setName(data.name);
+    //         setEmail(data.email);
+            
+            
+    //         // setMostLikedBlog(data.mostLikedBlog);
+    //         // setHeroData(data.heroData);
+    //         // setRecentBlog(data.latestBlogs);
+    //         // setDisplayText(data.heroData[0].value);
+    //         // console.log(data.mostLikedBlog);
+    //       } catch (error) {
+    //         console.log(error);
+    //       }
+    //     }
+    //     getBlog();
+    //   }, []);
+
+
     const image="";
     const username="Username";
     const bio="Bio";
@@ -42,7 +71,7 @@ const Settings = ()=> {
         <div style={{ minHeight: "100vh", backgroundColor: "rgba(35, 36, 38, 1)" }}>
             <div className="settingsContainer">
                 <Card id="userBoard">
-                    <CardMedia className="img" component="img" height="55%" image={image} alt="Paella dish" style={{backgroundColor:'pink'}} />
+                    <CardMedia className="img" component="img" height="55%" image={image} alt="user board" />
                     <div className="div1">
                     <Avatar id="avatar" sx={{ border: "2px solid rgba(35, 36, 38, 1)",boxShadow: 20}}></Avatar>
                     <div className="div2">
@@ -74,7 +103,7 @@ const Settings = ()=> {
                             </div>
                             <div className="row">
                             <Typography className="label">CV</Typography>
-                            <Typography className="values">View CV</Typography>                 
+                            <Typography className="values"><Button className="values">View</Button><Button className="values">Upload</Button> </Typography>                 
                             </div>
                             <div className="row">
                             <Typography className="label">Social Media </Typography>

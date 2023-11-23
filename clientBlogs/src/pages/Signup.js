@@ -201,9 +201,17 @@ const Register = () => {
           padding={3}
           borderRadius={5}
         >
-          <Typography className="signInText">Create an account</Typography>
-          <Button onClick={() => navigate("/login")} className="newUser">
-            <span>Already have an account? &nbsp;</span>Sign in
+
+          <Typography
+            className="signInText"
+          >
+            Create an account
+          </Typography>
+          <Button
+            onClick={() => navigate("/login")}
+            className="newUser"
+          >
+          <span>Already have an account? &nbsp;</span>Sign in
           </Button>
 
           <TextField
