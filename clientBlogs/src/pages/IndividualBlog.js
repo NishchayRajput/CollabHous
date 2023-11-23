@@ -37,12 +37,13 @@ export default function IndividualBlog({}) {
   let isLogin = useSelector((state) => state.isLogin);
   isLogin = isLogin || localStorage.getItem("userId");
   const navigate = useNavigate();
-
+  const [userId, setUserId] = useState();
   let { blogId } = useParams();
   const [showSharingBox, setShowSharingBox] = useState(false); // State to control the sharing box
   const [showCommentBox, setShowCommentBox] = useState(true); // State to control the sharing box
   const [allBlogs, setAllBlogs] = useState([]);
   const [blog, setBlog] = useState([]);
+  const [interaction, setInteraction] = useState([]);
   const [relatedBlog, setRelatedBlog] = useState([]);
   const formatDate = (isoDate) => {
     const date = new Date(isoDate);
@@ -50,27 +51,48 @@ export default function IndividualBlog({}) {
     return date.toLocaleDateString(undefined, options);
   };
   const [upvoteCount, setUpvoteCount] = useState(0);
+  const scrollToPercentage = (percentage) => {
+    const scrollToY =
+      (percentage / 100) * (document.body.scrollHeight - window.innerHeight);
+    window.scrollTo({ top: scrollToY, behavior: "instant" });
+  };
   const getAllBlogs = async () => {
     try {
       const { data } = await axios.get("http://localhost:5000/blogs/");
       setAllBlogs(data);
+      console.log();
+      const filterBlogs = (category) => {
+        const updateBlogs = data.filter((e) => {
+          // let l = e.tag.split(",").length;
+          let check = false;
+          // for (let i = 0; i < l - 1; i++) {
+          // check = check || e.tag.split(",")[i] === category;
+          // }
+          check = e.tag === category;
+          return check;
+        });
+        // console.log(updateBlogs);
+        setRelatedBlog(updateBlogs);
+      };
+      filterBlogs("Community");
     } catch (error) {
       console.log(error);
     }
   };
 
   // console.log(allBlogs);
-  const filterBlogs = (category) => {
-    const updateBlogs = allBlogs.filter((e) => {
-      let l = e.tag.split(",").length;
-      let check = false;
-      for (let i = 0; i < l - 1; i++) {
-        check = check || e.tag.split(",")[i] === category;
-      }
-      return check;
-    });
-    setRelatedBlog(updateBlogs);
-  };
+  // const filterBlogs = (category) => {
+  //   const updateBlogs = allBlogs.filter((e) => {
+  //     let l = e.tag.split(",").length;
+  //     let check = false;
+  //     for (let i = 0; i < l - 1; i++) {
+  //       check = check || e.tag.split(",")[i] === category;
+  //     }
+  //     return check;
+  //   });
+  //   setRelatedBlog(updateBlogs);
+  // };
+
   // Get the blogId from the URL using useParams
 
   useEffect(() => {
@@ -79,16 +101,18 @@ export default function IndividualBlog({}) {
         const { data } = await axios.get(
           `http://localhost:5000/blogs/${blogId}`
         );
-        setBlog(data);
+        console.log(data);
+        setBlog(data.blogF);
+        setInteraction(data.interaction);
+        setUserId(data.blogF.user_id._id);
       } catch (error) {
         console.log(error);
       }
     }
     getBlog();
     getAllBlogs();
-    filterBlogs("testing");
   }, []);
-
+  // console.log(blog);
   const handleUpvote = () => {
     if (!isLogin) {
       navigate("/login");
@@ -103,7 +127,7 @@ export default function IndividualBlog({}) {
     setShowCommentBox(!showCommentBox);
   };
   // You can use this ID to fetch the specific blog content
-  console.log(relatedBlog);
+  // console.log(relatedBlog);
   return (
     <div style={{ marginTop: "-68px" }}>
       <Box>
@@ -300,7 +324,7 @@ export default function IndividualBlog({}) {
               {showSharingBox && (
                 <Box className="sharingBox">
                   <TwitterShareButton
-                    url={`http://localhost:3000/blogs/${blogId}`} 
+                    url={`http://localhost:3000/blogs/${blogId}`}
                     // quote={"Dummy text!"}
                     // hashtag="#muo"
                   >
@@ -326,7 +350,7 @@ export default function IndividualBlog({}) {
           </Box>
           {showCommentBox && (
             <div className="commentBox">
-              <CommentArea />
+              <CommentArea bId={blogId} uId={userId} interactionArray={interaction}/>
             </div>
           )}
         </section>
@@ -341,19 +365,35 @@ export default function IndividualBlog({}) {
             <Box display={"flex"} flexWrap={"wrap"}>
               {relatedBlog &&
                 relatedBlog.map((blog) => (
-                  <Box key={blog._id} className="card">
+                  <Box key={blog._id} className="relatedBlogCard">
                     <BlogCard
                       id={blog._id}
-                      // isUser={
-                      //   localStorage.getItem("userId") === blog.user?.user_id
-                      // }
+                      tag={blog.tag}
                       title={blog.title}
                       description={blog.content}
-                      image="https://picsum.photos/300/300"
-                      // image={blog.image}
+                      image="https://picsum.photos/id/11/300/200"
                       username={blog.user != null ? blog.user.name : "Username"}
                       time={formatDate(blog.time)}
+                      upVoteC={blog.like}
+                      read_time={blog.read_time}
                     />
+                    <Link
+                      to={`/blogs/${blog._id}`}
+                      onClick={() => {
+                        scrollToPercentage(0);
+                        // window.location.reload();
+                      }}
+                      style={{
+                        textDecoration: "none",
+                        height: "84%",
+                        width: "100%",
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                      }}
+                    >
+                      {/* Content inside the Link component (if any) */}
+                    </Link>
                   </Box>
                 ))}
             </Box>

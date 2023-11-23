@@ -23,6 +23,7 @@ const Blogs = () => {
       const { data } = await axios.get("http://localhost:5000/blogs/");
       setAllBlogs(data);
       setBlogs(data);
+      console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -164,21 +165,31 @@ const Blogs = () => {
               >
                 {window.innerWidth < 800 ? (
                   <BlogCard
-                    id={blog._id}
+                    bId={blog?._id}
+                    // key={blog?.user_id}
+                    // isUser={
+                    //   localStorage.getItem("userId") === blog?.user?.user_id
+                    // }
+                    uId={blog.user != null ? blog.user.id : ""}
                     tag={blog.tag}
                     title={blog.title}
                     description={blog.content}
                     image="https://picsum.photos/id/11/300/200"
                     username={blog.user != null ? blog.user.name : "Username"}
                     time={formatDate(blog.time)}
-                    like={blog.like}
+                    upVoteC={blog.like}
                     read_time={blog.read_time}
                   />
                 ) : (
                   <div>
                     {index < 4 ? (
                       <TrendingBlogCard
-                        id={blog._id}
+                        bId={blog?._id}
+                        // key={blog?.user_id}
+                        // isUser={
+                        //   localStorage.getItem("userId") === blog?.user?.user_id
+                        // }
+                        uId={blog.user != null ? blog.user.id : ""}
                         tag={blog.tag}
                         title={blog.title}
                         description={blog.content}
@@ -187,11 +198,17 @@ const Blogs = () => {
                           blog.user != null ? blog.user.name : "Username"
                         }
                         time={formatDate(blog.time)}
-                        like={blog.like}
+                        upVoteC={blog.like}
+                        read_time={blog.read_time}
                       />
                     ) : (
                       <BlogCard
-                        id={blog._id}
+                        bId={blog?._id}
+                        // key={blog?.user_id}
+                        // isUser={
+                        //   localStorage.getItem("userId") === blog?.user?.user_id
+                        // }
+                        uId={blog.user != null ? blog.user.id : ""}
                         tag={blog.tag}
                         title={blog.title}
                         description={blog.content}
@@ -200,7 +217,7 @@ const Blogs = () => {
                           blog.user != null ? blog.user.name : "Username"
                         }
                         time={formatDate(blog.time)}
-                        like={blog.like}
+                        upVoteC={blog.like}
                         read_time={blog.read_time}
                       />
                     )}

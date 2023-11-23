@@ -32,15 +32,16 @@ const Home = () => {
         setHeroData(data.heroData);
         setRecentBlog(data.latestBlogs);
         setDisplayText(data.heroData[0].value);
-        // console.log(data.mostLikedBlog);
+
+        // console.log(data);
       } catch (error) {
         console.log(error);
       }
     }
     getBlog();
   }, []);
+  // console.log(mostLikedBlog.like);
 
-  // console.log("hi");
   const cImages = [
     { link: "images/carouselSample.png" },
     { link: "images/carouselSample.png" },
@@ -183,11 +184,14 @@ const Home = () => {
                 <Box className="blogsBox">
                   <Box className="trendingBlog">
                     <TrendingBlogCard
-                      id={mostLikedBlog?.id}
+                      bId={mostLikedBlog?.id}
                       // key={blog?.user_id}
                       // isUser={
                       //   localStorage.getItem("userId") === blog?.user?.user_id
                       // }
+                      uId={
+                        mostLikedBlog.user != null ? mostLikedBlog.user.id : ""
+                      }
                       title={mostLikedBlog.title}
                       description={mostLikedBlog.content}
                       image="images/carouselSample.png"
@@ -198,7 +202,7 @@ const Home = () => {
                       }
                       time={formatDate(mostLikedBlog.time)}
                       tag={mostLikedBlog.tag}
-                      likeCount={mostLikedBlog.like}
+                      upVoteC={mostLikedBlog ? mostLikedBlog.like : "0"}
                       read_time={mostLikedBlog.read_time}
                     />
                     <Link
@@ -218,7 +222,8 @@ const Home = () => {
                     <Box className="horzBlogsInner">
                       <div style={{ height: "100%" }}>
                         <HorzBlogCard
-                          id={recentBlog[0]?.id}
+                          bId={recentBlog[0]?.id}
+                          uId={recentBlog[0]?.user.id}
                           // key={blog?.user_id}
                           // isUser={
                           //   localStorage.getItem("userId") === blog?.user?.user_id
@@ -236,7 +241,7 @@ const Home = () => {
                               ? formatDate(recentBlog[0].time)
                               : ""
                           }
-                          likeCount={
+                          upVoteC={
                             recentBlog[0] != null ? recentBlog[0].like : "0"
                           }
                           read_time={
@@ -247,7 +252,8 @@ const Home = () => {
                         />
                       </div>
                       <HorzBlogCard
-                        id={recentBlog[1]?.id}
+                        bId={recentBlog[1]?.id}
+                        uId={recentBlog[1]?.user.id}
                         // key={blog?.user_id}
                         // isUser={
                         //   localStorage.getItem("userId") === blog?.user?.user_id
@@ -263,7 +269,7 @@ const Home = () => {
                             : ""
                         }
                         tag={recentBlog[1] != null ? recentBlog[1].tag : ""}
-                        likeCount={
+                        upVoteC={
                           recentBlog[1] != null ? recentBlog[1].like : "0"
                         }
                         read_time={
@@ -271,7 +277,8 @@ const Home = () => {
                         }
                       />
                       <HorzBlogCard
-                        id={recentBlog[2]?.id}
+                        bId={recentBlog[2]?.id}
+                        uId={recentBlog[2]?.user.id}
                         // key={blog?.user_id}
                         // isUser={
                         //   localStorage.getItem("userId") === blog?.user?.user_id
@@ -287,11 +294,11 @@ const Home = () => {
                             : ""
                         }
                         tag={recentBlog[2] != null ? recentBlog[2].tag : ""}
-                        likeCount={
-                          recentBlog[2] != null ? recentBlog[2].like : ""
+                        upVoteC={
+                          recentBlog[2] != null ? recentBlog[2].like : "0"
                         }
                         read_time={
-                          recentBlog[2] != null ? recentBlog[1].read_time : "5"
+                          recentBlog[2] != null ? recentBlog[2].read_time : "5"
                         }
                       />
                     </Box>

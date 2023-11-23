@@ -40,7 +40,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   height: 100%;
   width: 100% !important;
   top: 0px;
-   backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 
 /* General sidebar styles */
@@ -48,7 +48,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   background: rgba(0, 0, 0, 0.468);
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
- 
+
 }
 
 /* Morph shape necessary with bubble or elastic */
@@ -60,7 +60,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 .bm-item-list {
   color: #b8b7ad;
   padding: 0.8em;
-
+  margin-top: 6rem;
 }
 
 /* Individual item */
@@ -69,7 +69,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 90%;
+  height: 75%;
   text-transform: uppercase;
   text-shadow: 0px 0px 2px aliceblue;
 }
@@ -82,7 +82,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   color: white;
   text-decoration: none;
   font-family: 'Questrial', sans-serif;
-font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 /* Styling of overlay */
@@ -90,9 +90,9 @@ font-size: 1.5rem;
   background: none !important;
 }
 
-.break-line{
-  height:2px;
-  width:30%;
+.break-line {
+  height: 2px;
+  width: 30%;
   border: 1px solid white;
 }
 

@@ -63,7 +63,7 @@ async function blog_hero(req, res) {
             .populate({
                 path: 'user_id',
                 model: userInfo,
-                select: 'name email',
+                select: '_id name email',
             })
             .exec();
 
@@ -73,7 +73,7 @@ async function blog_hero(req, res) {
             .populate({
                 path: 'user_id',
                 model: userInfo,
-                select: 'name email',
+                select: '_id name email',
             })
             .exec();
 
@@ -96,6 +96,7 @@ async function blog_hero(req, res) {
                     title: blog.title,
                     content: blog.content,
                     user: {
+                        id  : blog.user_id._id,
                         name: blog.user_id.name,
                         email: blog.user_id.email,
                     },
@@ -131,6 +132,7 @@ async function blog_hero(req, res) {
                 title: mostLikedBlog.title,
                 content: mostLikedBlog.content,
                 user: {
+                    id : mostLikedBlog.user_id._id,
                     name: mostLikedBlog.user_id.name,
                     email: mostLikedBlog.user_id.email,
                 },

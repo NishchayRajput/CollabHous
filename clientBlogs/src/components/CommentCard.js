@@ -4,7 +4,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ChatRoundedIcon from "@mui/icons-material/ChatRounded";
 import ReplyCard from "./ReplyCard";
 
-const CommentCard = () => {
+const CommentCard = ({ content }) => {
   const [showReplies, setShowReplies] = useState(false);
   const [reply, setReply] = useState(false);
 
@@ -26,12 +26,7 @@ const CommentCard = () => {
             <div className="username">CollabHous</div>
           </div>
         </div>
-        <div className="textArea">
-          This blog is simply good with good and good also simply good and
-          excellent marvelous mind-blowing tremendous. This blog is simply good
-          with good and good also simply good and excellent marvelous mind-
-          blowing tremendous.
-        </div>
+        <div className="textArea">{content}</div>
         <div className="buttonArea">
           <div className="replyBtnContainer">
             <div className="reply" onClick={handleViewReply}>

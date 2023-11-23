@@ -33,7 +33,7 @@ async function blog_card(req, res){
           .populate({
             path: 'user_id',
             model: userInfo,
-            select: 'name email',
+            select: '_id name email',
           })
           .exec();
           
@@ -46,6 +46,7 @@ async function blog_card(req, res){
           title: blog.title,
           content: blog.content,
           user: {
+            id : blog.user_id._id,
             name: blog.user_id.name,
             email: blog.user_id.email,
           },

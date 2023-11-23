@@ -22,36 +22,70 @@ import "./css/TrendingBlogCard.css";
 import Dot from "./Dot";
 
 export default function BlogCard({
+  uId,
   title,
   description,
   image,
   username,
   time,
-  id,
-  isUser,
+  bId,
   tag,
-  likeCount,
+  upVoteC,
   read_time,
 }) {
-  // global state
-  let isLogin = useSelector((state) => state.isLogin);
-  isLogin = isLogin || localStorage.getItem("userId");
   const navigate = useNavigate();
 
-  const [upvoteCount, setUpvoteCount] = useState(0);
-  const handleUpvote = () => {
-    if (!isLogin) {
-      navigate("/login");
-    } else {
-      // You can implement the upvote logic here, for example, send a request to your backend to record the upvote.
-      // For this example, I'll simply increase the count by 1.
-      setUpvoteCount(upvoteCount + 1);
+  const [likeStatus, setLikeStatus] = useState(false);
+  const [upVoteCount, setUpVoteCount] = useState(0);
+  // const handleUpVote = () => {
+  //   if (!isLogin) {
+  //     navigate("/login");
+  //   } else {
+  //     // You can implement the upvote logic here, for example, send a request to your backend to record the upvote.
+  //     // For this example, I'll simply increase the count by 1.
+  //     // setUpvoteCount(upvoteCount + 1);
+  //     console.log("clicked the liked button");
+  //   }
+  // };
+
+  const handleUpVote = async (e) => {
+    try {
+      const { data } = await axios.post(
+        "http://localhost:5000/blogs/like",
+        {
+          bId: bId,
+          iId: bId,
+          it: likeStatus,
+          pId: uId,
+        },
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      );
+      
+
+      if (data.message === "Please login first") {
+        // navigate("/login");
+        // console.log("navigating");
+      } else {
+        console.log("increasing");
+        setLikeStatus(!likeStatus);
+        if (likeStatus === true) setUpVoteCount(upVoteCount - 1);
+        else setUpVoteCount(upVoteCount + 1);
+      }
+    } catch (error) {
+      console.log(error);
+      // }
     }
   };
 
-  const [showSharingBox, setShowSharingBox] = useState(false); // State to control the sharing box visibility
   React.useEffect(() => {
-    setUpvoteCount(likeCount);
+    setUpVoteCount(upVoteC);
+    setLikeStatus(false);
+    console.log(upVoteC);
   }, []);
 
   return (
@@ -65,54 +99,43 @@ export default function BlogCard({
                 N
               </Avatar>
             }
-            title=<p style={{
-                  fontFamily: 'Roboto',
-                  fontWeight: "700",
-                  fontSize:"14.8978px",
-                  lineHeight: "17px",
-                  letterSpacing: "0.05em",
-                  color: "white",
-            }}>{username}</p>
-            
+            title=<p
+              style={{
+                fontFamily: "Roboto",
+                fontWeight: "700",
+                fontSize: "14.8978px",
+                lineHeight: "17px",
+                letterSpacing: "0.05em",
+                color: "white",
+              }}
+            >
+              {username}
+            </p>
             className="cardHeader"
-    
           />
-          <div className="blogDetails" >
-            <p className="readT">
-              {read_time} min read 
-            </p>
+          <div className="blogDetails">
+            <p className="readT">{read_time} min read</p>
             <Dot />
-            <p className="date">
-              {time}
-            </p>
+            <p className="date">{time}</p>
             <Dot />
-            <p className="tag">
-              {tag}
-            </p>
+            <p className="tag">{tag}</p>
           </div>
         </Box>
         <CardContent className="titleCard">
-          <Typography
-            variant="h6"
-            className="title"
-          >
-          {title}
+          <Typography variant="h6" className="title">
+            {title}
           </Typography>
         </CardContent>
         <CardContent className="titleCard">
-         
           <Typography variant="body2" className="description">
-          {description}
+            {description}
           </Typography>
         </CardContent>
-        <CardActions
-          disableSpacing
-          onMouseLeave={() => setShowSharingBox(false)}
-          style={{ zIndex: "8" }}
-        >
-          <IconButton aria-label="add to favorites" onClick={handleUpvote}>
-            <ThumbUpOffAltIcon style={{ color: "#626262" }} />
-            <span className="upvote">{upvoteCount ? upvoteCount : "0"}</span>
+        <CardActions disableSpacing style={{ zIndex: "8" }}>
+          <IconButton arqia-label="add to favorites" onClick={handleUpVote}>
+            {!likeStatus && <ThumbUpOffAltIcon style={{ color: "#626262" }} />}
+            {likeStatus && <ThumbUpAltIcon style={{ color: "#F74D79" }} />}
+            <span className="upvote">{upVoteCount}</span>
           </IconButton>
         </CardActions>
       </Box>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import { Box, Typography, TextField, Button } from "@mui/material";
 import axios from "axios";
 import { useDispatch } from "react-redux";
@@ -19,12 +20,6 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   //state
-  const [inputs, setInputs] = useState({
-    name: "",
-    email: "",
-    password: "",
-    g_id: "",
-  });
   useEffect(() => {
     const getVerification = async () => {
       try {
@@ -37,13 +32,36 @@ const Login = () => {
             },
           }
         );
-        console.log(data);
+        if (data.message === "Ok") {
+          Store.addNotification({
+            title: "You are already logged in",
+            message: "",
+            type: "success",
+            insert: "top",
+            container: "bottom-center",
+            animationIn: ["animate__animated", "animate__fadeIn"],
+            animationOut: ["animate__animated", "animate__fadeOut"],
+            dismiss: {
+              duration: 2000,
+              onScreen: true,
+            },
+          });
+          navigate("/home");
+        }
+        // console.log(data);
       } catch (error) {
         console.log(error);
       }
     };
+
     getVerification();
   }, []);
+  const [inputs, setInputs] = useState({
+    name: "",
+    email: "",
+    password: "",
+    g_id: "",
+  });
 
   //eye icon near password
   const [password, setPassword] = useState("");

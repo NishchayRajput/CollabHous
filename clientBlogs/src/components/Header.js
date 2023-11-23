@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Box, AppBar, Toolbar, Typography, Tabs, Tab } from "@mui/material";
+import {
+  Box,
+  AppBar,
+  Toolbar,
+  Typography,
+  Tabs,
+  Tab,
+  Button,
+} from "@mui/material";
 import AvatarDropdown from "./AvatarDropdown";
 import Notification from "./Notification";
 import { Link } from "react-router-dom";
@@ -10,16 +18,15 @@ import toast from "react-hot-toast";
 import { Link as ScrollLink } from "react-scroll";
 import "./css/Header.css";
 import Hamburger from "./Hamburger";
+import axios from "axios";
 
 const Header = () => {
-  // global state
-  let isLogin = useSelector((state) => state.isLogin);
-  isLogin = isLogin || localStorage.getItem("userId");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   //state
   const [value, setValue] = useState(0);
   const [scrollValue, setScrollValue] = useState(0);
+  const [isLogin, setIsLogin] = useState();
   const scrollToPercentage = (percentage) => {
     const scrollToY =
       (percentage / 100) * (document.body.scrollHeight - window.innerHeight);
@@ -41,6 +48,31 @@ const Header = () => {
   if (value === 1 && scrollValue < 30) setValue(0);
   // console.log(scrollValue);
   // console.log("Tab: "+value);
+
+  useEffect(() => {
+    async function verify() {
+      try {
+        const { data } = await axios.get(
+          "http://localhost:5000/blogs/headers",
+          {
+            withCredentials: true,
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+          }
+        );
+        if (data.message == "Please login first") setIsLogin(true);
+        else setIsLogin(false);
+        // if ((data.message = "Please login first")) {
+        //   navigate("/login");
+        // }
+      } catch (error) {
+        console.log(error);
+        // }
+      }
+    }
+    verify();
+  }, []);
 
   return (
     <>
@@ -70,7 +102,6 @@ const Header = () => {
                 style: {
                   backgroundColor: true ? "#F74D79" : "rgba(35, 36, 38, 1)", // Colored underline for selected tab
                 },
-                
               }}
             >
               <Tab
@@ -119,11 +150,21 @@ const Header = () => {
             </Tabs>
           </Box>
           <Notification />
-          <div id="avatarContainer">
-            {" "}
-            <AvatarDropdown />
-          </div>
-
+          {!isLogin && (
+            <div id="avatarContainer">
+              {" "}
+              <AvatarDropdown />
+            </div>
+          )}
+          {isLogin && (
+            <div id="loginBtnContainer">
+              {" "}
+              <Button variant="outlined" className="loginBtn"
+               href="/login">
+                Login
+              </Button>
+            </div>
+          )}
           <Hamburger />
         </Toolbar>
       </AppBar>

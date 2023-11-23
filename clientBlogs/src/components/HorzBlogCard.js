@@ -24,45 +24,77 @@ import "./css/HorzBlogCard.css";
 import Dot from "./Dot";
 
 export default function BlogCard({
+  uId,
   title,
   description,
   image,
   username,
   time,
-  id,
-  isUser,
+  bId,
   tag,
-  likeCount,
+  upVoteC,
   read_time,
 }) {
-  // global state
-  let isLogin = useSelector((state) => state.isLogin);
-  isLogin = isLogin || localStorage.getItem("userId");
-
   const navigate = useNavigate();
 
-  const [upvoteCount, setUpvoteCount] = useState(0);
+  const [likeStatus, setLikeStatus] = useState(false);
+  const [upVoteCount, setUpVoteCount] = useState(0);
 
-  const handleUpvote = () => {
-    if (!isLogin) {
-      navigate("/login");
-    } else {
-      // You can implement the upvote logic here, for example, send a request to your backend to record the upvote.
-      // For this example, I'll simply increase the count by 1.
-      setUpvoteCount(upvoteCount + 1);
-      // setUpvoteCount(upvoteCount + 1);
+  // const handleUpVote = () => {
+  //   if (!isLogin) {
+  //     navigate("/login");
+  //   } else {
+  //     // You can implement the upvote logic here, for example, send a request to your backend to record the upvote.
+  //     // For this example, I'll simply increase the count by 1.
+  //     // setUpvoteCount(upvoteCount + 1);
+  //     console.log("clicked the liked button");
+  //     // setUpvoteCount(upvoteCount + 1);
+  //   }
+  // };
+
+  const handleUpVote = async (e) => {
+    try {
+      const { data } = await axios.post(
+        "http://localhost:5000/blogs/like",
+        {
+          bId: bId,
+          iId: bId,
+          it: likeStatus,
+          pId: uId,
+        },
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      );
+
+      if (data.message === "Please login first") {
+        // navigate("/login");
+        // console.log("navigating");
+      } else {
+        console.log("increasing");
+        setLikeStatus(!likeStatus);
+        if (likeStatus === true) setUpVoteCount(upVoteCount - 1);
+        else setUpVoteCount(upVoteCount + 1);
+      }
+    } catch (error) {
+      console.log(error);
+      // }
     }
   };
 
-  const [showSharingBox, setShowSharingBox] = useState(false); // State to control the sharing box visibility
   React.useEffect(() => {
-    setUpvoteCount(likeCount);
+    setUpVoteCount(upVoteC);
+    setLikeStatus(false);
   }, []);
+
   return (
     <Card id="cardContainer">
       <Box display={"flex"}>
         <div style={{ display: "block", width: "50%" }}>
-          <Link to={`/blogs/${id}`}>
+          <Link to={`/blogs/${bId}`}>
             <CardMedia
               component="img"
               image={image}
@@ -98,38 +130,25 @@ export default function BlogCard({
           </Box>
 
           <Typography className="title" variant="h6" color="text.secondary">
-              {title}
+            {title}
           </Typography>
 
           <Box className="blogDetails">
             <div>
-              <p
-                className="readT"
-              >
-                {read_time} min read
-              </p>
+              <p className="readT">{read_time} min read</p>
               <Dot />
-              <p
-                className="date"
-              >
-                {time}
-              </p>
+              <p className="date">{time}</p>
               <Dot />
-              <p
-                className="tag"
-              >
-                {tag}
-              </p>
+              <p className="tag">{tag}</p>
             </div>
           </Box>
-          <CardActions
-            disableSpacing
-            onMouseLeave={() => setShowSharingBox(false)}
-            className="cardActions"
-          >
-            <IconButton aria-label="add to favorites" onClick={handleUpvote}>
-              <ThumbUpAltIcon style={{ color: "#626262" }} />
-              <span className="upvote">{upvoteCount ? upvoteCount : "0"}</span>
+          <CardActions disableSpacing className="cardActions">
+            <IconButton arqia-label="add to favorites" onClick={handleUpVote}>
+              {!likeStatus && (
+                <ThumbUpOffAltIcon style={{ color: "#626262" }} />
+              )}
+              {likeStatus && <ThumbUpAltIcon style={{ color: "#F74D79" }} />}
+              <span className="upvote">{upVoteCount}</span>
             </IconButton>
           </CardActions>
         </Box>

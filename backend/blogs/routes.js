@@ -8,10 +8,15 @@ const blog_hero = require('./controllers/blog_hero');
 const auth = require('./middleware/auth');
 const headers = require('./controllers/headers');
 const setting = require('./controllers/setting');
+const logout = require('./controllers/logout');
 
-
+// router.use((req,res,next)=>{
+//     console.log(req);
+//     next();
+// })
 router.use(['/like*', '/comment*', '/reply*', '/headers*', '/setting*'], auth);
-router.get('/like', like);
+router.post('/like', like);
+router.get('/logout', logout);
 router.get('/headers', headers ); 
 router.get('/setting', setting );
 router.post('/comment', comment);
@@ -20,4 +25,4 @@ router.get('/hero', blog_hero);
 router.post('/reply', reply);
 router.get('/:id', blogs);
 
-module.exports = router; 
+module.exports = router;

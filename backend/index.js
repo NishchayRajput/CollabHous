@@ -53,6 +53,7 @@ dbConnection();
 //   }
 // });
 app.use("/ecommerce", ecommerce);
+
 app.use("/blogs", blogs);
 // app.use('/api', wishlist);
 

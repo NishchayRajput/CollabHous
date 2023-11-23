@@ -22,51 +22,72 @@ import "./css/BlogCard.css";
 import Dot from "./Dot";
 
 export default function BlogCard({
+  uId,
   title,
-  tag,
   description,
   image,
   username,
   time,
-  id,
-  isUser,
-  like,
+  bId,
+  tag,
+  upVoteC,
   read_time,
 }) {
-  // global state
-  let isLogin = useSelector((state) => state.isLogin);
-  isLogin = isLogin || localStorage.getItem("userId");
   const navigate = useNavigate();
 
-  const handleEdit = () => {
-    navigate(`/blog-details/${id}`);
-  };
-  const [upvoteCount, setUpvoteCount] = useState(0);
-  const handleDelete = async () => {
+  const [likeStatus, setLikeStatus] = useState(false);
+  const [upVoteCount, setUpVoteCount] = useState(0);
+
+  // const handleUpVote = () => {
+  //   if (!isLogin) {
+  //     navigate("/login");
+  //   } else {
+  //     // You can implement the upvote logic here, for example, send a request to your backend to record the upvote.
+  //     // For this example, I'll simply increase the count by 1.
+  //     // setUpvoteCount(upvoteCount + 1);
+  //     // setUpvoteCount(upvoteCount + 1);
+  //     console.log("clicked the liked button");
+  //   }
+  // };
+
+  const handleUpVote = async (e) => {
     try {
-      const { data } = await axios.delete(`/api/v1/blog/delete-blog/${id}`);
-      if (data?.success) {
-        alert("Blog Deleted");
-        window.location.reload();
+      const { data } = await axios.post(
+        "http://localhost:5000/blogs/like",
+        {
+          bId: bId,
+          iId: bId,
+          it: likeStatus,
+          pId: uId,
+        },
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      );
+
+      if (data.message === "Please login first") {
+        // navigate("/login");
+        // console.log("navigating");
+      } else {
+        console.log("increasing");
+        setLikeStatus(!likeStatus);
+        if (likeStatus === true) setUpVoteCount(upVoteCount - 1);
+        else setUpVoteCount(upVoteCount + 1);
       }
     } catch (error) {
       console.log(error);
+      // }
     }
   };
 
-  const handleUpvote = () => {
-    if (!isLogin) {
-      navigate("/login");
-    } else {
-      // You can implement the upvote logic here, for example, send a request to your backend to record the upvote.
-      // For this example, I'll simply increase the count by 1.
-      setUpvoteCount(upvoteCount + 1);
-      // setUpvoteCount(upvoteCount + 1);
-    }
-  };
   React.useEffect(() => {
-    setUpvoteCount(like);
+    setUpVoteCount(upVoteC);
+    setLikeStatus(false);
   }, []);
+
   return (
     <div className="card">
       <CardMedia
@@ -120,9 +141,10 @@ export default function BlogCard({
           </div>
         </Box>
         <CardActions disableSpacing style={{ paddingTop: "0px", zIndex: "8" }}>
-          <IconButton arqia-label="add to favorites" onClick={handleUpvote}>
-            <ThumbUpOffAltIcon style={{ color: "#626262" }} />
-            <span className="upvote">{upvoteCount ? upvoteCount : "0"}</span>
+          <IconButton arqia-label="add to favorites" onClick={handleUpVote}>
+            {!likeStatus && <ThumbUpOffAltIcon style={{ color: "#626262" }} />}
+            {likeStatus && <ThumbUpAltIcon style={{ color: "#F74D79" }} />}
+            <span className="upvote">{upVoteCount}</span>
           </IconButton>
         </CardActions>
       </Box>
