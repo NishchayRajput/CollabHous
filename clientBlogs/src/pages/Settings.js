@@ -12,11 +12,41 @@ import { Button } from "@mui/material";
 
 const Settings = ()=> {
 
+    // const [name,setName] = useState("");
+    // const [image, setImage] = useState("");
+    // const [bio, setBio] = useState("");
+    // const [email, setEmail] = useState("");
+    // const [mobile, setMobile] = useState("");
+
+
+    // useEffect(() => {
+    //     async function getInfo() {
+    //       try {
+    //         const { data } = await axios.get("http://localhost:5000/blogs/hero");
+            
+    //         setName(data.name);
+    //         setEmail(data.email);
+            
+            
+    //         // setMostLikedBlog(data.mostLikedBlog);
+    //         // setHeroData(data.heroData);
+    //         // setRecentBlog(data.latestBlogs);
+    //         // setDisplayText(data.heroData[0].value);
+    //         // console.log(data.mostLikedBlog);
+    //       } catch (error) {
+    //         console.log(error);
+    //       }
+    //     }
+    //     getBlog();
+    //   }, []);
+
+
     const image="";
-    const username="Username";
-    const bio="Bio";
-    const email="blah";
-    const mobile="5454";
+    const username="";
+    const bio="";
+    const email="";
+    const mobile="";
+
 
 
     const [socialMediaArrow, setSocialMediaArrow] = useState(0);
