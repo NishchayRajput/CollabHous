@@ -15,8 +15,8 @@ const Settings = ()=> {
     const image="";
     const username="Username";
     const bio="Bio";
-    const email="blah";
-    const mobile="5454";
+    const email="user@gmail.com";
+    const mobile="+91-93434 93434";
 
 
     const [socialMediaArrow, setSocialMediaArrow] = useState(0);
@@ -74,7 +74,7 @@ const Settings = ()=> {
                             </div>
                             <div className="row">
                             <Typography className="label">CV</Typography>
-                            <Typography className="values">View Upload</Typography>                 
+                            <Typography className="values">View CV</Typography>                 
                             </div>
                             <div className="row">
                             <Typography className="label">Social Media </Typography>

@@ -71,7 +71,7 @@ const Register = () => {
               onScreen: true,
             },
           });
-          navigate(-1);
+          navigate("/home");
         }
         console.log(data);
       } catch (error) {
@@ -202,7 +202,7 @@ const Register = () => {
           borderRadius={5}
         >
           <Typography className="signInText">Create an account</Typography>
-          <Button onClick={() => navigate("/register")} className="newUser">
+          <Button onClick={() => navigate("/login")} className="newUser">
             <span>Already have an account? &nbsp;</span>Sign in
           </Button>
 
