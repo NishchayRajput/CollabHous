@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import "./css/CommentArea.css";
 import CommentCard from "./CommentCard";
 import axios from "axios";
-
+import { Link, useNavigate, useParams } from "react-router-dom";
 const CommentArea = ({ bId, uId, interactionArray }) => {
   const [comment, setComment] = useState({ comment: "" });
-
+  const navigate = useNavigate();
   //handle input change
   const handleChange = (e) => {
     setComment((prevState) => ({
@@ -34,9 +34,12 @@ const CommentArea = ({ bId, uId, interactionArray }) => {
           },
         }
       );
-      window.location.reload();
-      console.log(response);
-      // console.log("Submitted:", comment.comment);
+      if (response.data.message === "Please login first") {
+        navigate("/login");
+      } else {
+        window.location.reload();
+        console.log(response);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -70,7 +73,13 @@ const CommentArea = ({ bId, uId, interactionArray }) => {
       {interactionArray.map(
         (i) =>
           i.interaction_type === "comment" && (
-            <CommentCard content={i.interaction_content} />
+            <CommentCard
+              content={i.interaction_content}
+              cId={i._id}
+              bId={bId}
+              uId={i.user_id}
+              repliesArray={i.replies}
+            />
           )
       )}
     </div>

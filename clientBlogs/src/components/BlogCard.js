@@ -38,8 +38,8 @@ export default function BlogCard({
 
   const [likeStatus, setLikeStatus] = useState(likeStat);
   const [upVoteCount, setUpVoteCount] = useState(0);
-  console.log(title);
-  console.log(likeStat);
+  // console.log(title);
+  // console.log(likeStat);
 
 
   const handleUpVote = async (e) => {

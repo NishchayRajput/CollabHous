@@ -102,7 +102,7 @@ export default function IndividualBlog({}) {
         const { data } = await axios.get(
           `http://localhost:5000/blogs/${blogId}`
         );
-        console.log(data);
+        // console.log(data);
         setBlog(data.blogF);
         setInteraction(data.interaction);
         setUserId(data.blogF.user_id._id);

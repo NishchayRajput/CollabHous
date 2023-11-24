@@ -3,7 +3,7 @@ import "./css/ReplyCard.css";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ChatRoundedIcon from "@mui/icons-material/ChatRounded";
 
-const CommentCard = () => {
+const CommentCard = ({ content }) => {
   return (
     <div className="replyCard">
       <div className="userDetail">
@@ -18,12 +18,7 @@ const CommentCard = () => {
           <p className="likeCount">400</p>
         </div> */}
       </div>
-      <div className="textArea">
-        This blog is simply good wih good and good also simply good and
-        excellent marvellous mind blowing tremendous.This blog is simply good
-        wih good and good also simply good and excellent marvellous mind blowing
-        tremendous.
-      </div>
+      <div className="textArea">{content}</div>
       {/* <div className="buttonArea">
         <div className="replyBtnContainer">
           <div className="reply">

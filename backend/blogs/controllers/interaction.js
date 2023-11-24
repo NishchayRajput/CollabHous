@@ -163,37 +163,42 @@ async function comment(req, res) {
 }
 async function reply(req, res) {
   try {
-    const { uId, bId, iId, it, content, pId } = req.body;
+      const { uId, bId, iId, it, content, pId } = req.body;
 
-    // Create a new Interaction document
-    const newInteraction = new Interaction({
-      user_id: uId, // Assuming 'uId' is the user ID
-      blog_id: bId, // Assuming 'bId' is the blog ID
-      interaction_id: iId, // Assuming 'iId' is the interaction ID
-      interaction_type: it, // Assuming 'it' is the interaction type
-      interaction_content: content, // Assuming 'content' is the interaction content
-    });
+      // Assuming 'iId' is the interaction ID to which the reply belongs
+      const parentInteraction = await Interaction.findById(iId);
 
-    // Save the new interaction to the database
-    const savedInteraction = await newInteraction.save();
+      if (!parentInteraction) {
+          return res.status(404).json({ error: 'Parent interaction not found.' });
+      }
 
-    // Create a new Notifications document
-    const newNotification = new Notifications({
-      parent_id: pId, // Assuming 'uId' is the parent user ID
-      user_id: uId,
-      blog_id: bId,
-      type: it, // You can specify the type for interactions
-      content: content, // Customize the content as needed
-    });
+      // Create a new Reply
+      const newReply = {
+          user_id: uId,
+          reply_content: content,
+      };
 
-    // Save the new notification to the database
-    const savedNotification = await newNotification.save();
+      // Add the new reply to the parent interaction's replies array
+      parentInteraction.replies.push(newReply);
 
-    res.status(200).json(savedInteraction);
+      // Save the updated parent interaction with the new reply
+      const savedParentInteraction = await parentInteraction.save();
+
+      // Create a new Notifications document for the reply
+      const newNotification = new Notifications({
+          parent_id: pId,
+          user_id: uId,
+          blog_id: bId,
+          type: it,
+          content: content,
+      });
+
+      // Save the new notification to the database
+      const savedNotification = await newNotification.save();
+
+      res.status(200).json(savedParentInteraction);
   } catch (error) {
-    res
-      .status(500)
-      .json({ error: "Error saving interaction: " + error.message });
+      res.status(500).json({ error: 'Error saving reply: ' + error.message });
   }
 }
 

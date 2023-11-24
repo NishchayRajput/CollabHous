@@ -66,12 +66,12 @@
 }
 
 .replyCard .textArea {
-    height: 56px;
+    /* height: 56px; */
     width: 90%;
     margin: 7px auto;
     margin-bottom: 0px;
     translate: 4px;
-    line-height:16px;
+    line-height: 16px;
     color: #A0A0A0;
     font-size: 12px;
     letter-spacing: 1px;

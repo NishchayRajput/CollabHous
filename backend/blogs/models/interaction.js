@@ -1,6 +1,20 @@
 const mongoose = require('mongoose');
+const moment = require('moment-timezone');
 const blogs = require('./blogs');
 const userInfo = require('../../ecommerce/models/userInfo');
+
+const replySchema = new mongoose.Schema({
+    user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'userInfo', required: true },
+    reply_content: { type: String, required: true },
+    time: {
+        type: Date,
+        default: function () {
+            const moment = require('moment-timezone');
+            moment.tz.setDefault('Asia/Kolkata');
+            return moment();
+        },
+    }
+});
 
 const interaction = new mongoose.Schema({
     blog_id: { type: mongoose.Schema.Types.ObjectId, ref: 'blogs' },
@@ -11,12 +25,12 @@ const interaction = new mongoose.Schema({
     time: {
         type: Date,
         default: function () {
-            // Set the default value to the current time in IST
             const moment = require('moment-timezone');
-            moment.tz.setDefault('Asia/Kolkata'); // IST timezone
+            moment.tz.setDefault('Asia/Kolkata');
             return moment();
         },
-    }
+    },
+    replies: [replySchema], // Array to store replies
 });
 
 module.exports = mongoose.model('interaction', interaction);
