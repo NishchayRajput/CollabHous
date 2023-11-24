@@ -115,7 +115,7 @@ export default function AvatarDropdown() {
           Settings
         </MenuItem>
 
-        <Divider style={{backgroundColor:" rgba(134, 127, 127, 0.43)", height:"2px"}}/>
+        <Divider  className="divider"/>
 
         {/* <MenuItem onClick={handleLogin}>
           <ListItemIcon>

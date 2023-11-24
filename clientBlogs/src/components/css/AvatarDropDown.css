@@ -4,3 +4,8 @@
     font-family: "Questrial";
   
 }
+
+.divider{
+    background-color: rgba(134, 127, 127, 0.43);
+    height: 2px;
+}

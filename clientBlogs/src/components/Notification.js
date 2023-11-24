@@ -5,6 +5,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+import "./css/AvatarDropDown.css"
 export default function Notification() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -47,6 +48,10 @@ export default function Notification() {
         PaperProps={{
           elevation: 0,
           sx: {
+            backgroundColor:"rgba(72, 72, 72, 0)",
+            boxShadow:"0px 4px 4px rgba(0, 0, 0, 0.25)",
+            border:"2px solid rgba(134, 127, 127, 0.43)",
+            borderRadius:"10px",
             overflow: "visible",
             filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
             mt: 1.5,
@@ -64,7 +69,8 @@ export default function Notification() {
               right: 14,
               width: 10,
               height: 10,
-              bgcolor: "background.paper",
+              bgcolor: "rgba(134, 127, 127)",
+              border:"2px solid rgba(134, 127, 127, 0.43)",
               transform: "translateY(-50%) rotate(45deg)",
               zIndex: 0,
             },
@@ -73,11 +79,11 @@ export default function Notification() {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem onClick={handleClose}>Notification 1</MenuItem>
-        <Divider />
-        <MenuItem onClick={handleClose}>Notification 2</MenuItem>
-        <Divider />
-        <MenuItem onClick={handleClose}>Notification 3</MenuItem>
+        <MenuItem onClick={handleClose} className="dropAvatar">Notification 1</MenuItem>
+        <Divider className="divider"/>
+        <MenuItem onClick={handleClose} className="dropAvatar">Notification 2</MenuItem>
+        <Divider className="divider"/>
+        <MenuItem onClick={handleClose} className="dropAvatar">Notification 3</MenuItem>
       </Menu>
     </React.Fragment>
   );
