@@ -106,8 +106,8 @@ const Register = () => {
       console.log(data);
 
       if (data.message === "Signup successful") {
-        // toast.success("User Register Successfully");
         navigate("/login");
+
         console.log("Registered successfully");
         Store.addNotification({
           title: "Registered successfully",
@@ -143,11 +143,11 @@ const Register = () => {
     } catch (error) {
       if (error.response) {
         // The server responded with a status code other than 2xx
-        console.error(error.response.data); // Error response from the server
+        console.error(error.response.data.message); // Error response from the server
         Store.addNotification({
-          title: "Registered Successfully",
+          title: error.response.data.message,
           message: "",
-          type: "success",
+          type: "danger",
           insert: "top",
           container: "bottom-center",
           animationIn: ["animate__animated", "animate__fadeIn"],
@@ -169,21 +169,22 @@ const Register = () => {
     }
   };
 
-  const login = useGoogleLogin({
-    //onSuccess: tokenResponse => console.log(tokenResponse),
-    onSuccess: (credentialResponse) => {
-      const details = jwtDecode(credentialResponse.credential);
-      console.log(credentialResponse);
-      console.log(details.sub);
-      inputs.g_id = details.sub;
-      inputs.name = details.name;
-      inputs.email = details.email;
-      handleSubmit();
-    },
-    onError: () => {
-      console.log("Login Failed");
-    },
-  });
+  // const login = useGoogleLogin({
+  //   //onSuccess: tokenResponse => console.log(tokenResponse),
+
+  //   onSuccess: (credentialResponse) => {
+  //     const details = jwtDecode(credentialResponse.credential);
+  //     console.log(credentialResponse);
+  //     console.log(details.sub);
+  //     inputs.g_id = details.sub;
+  //     inputs.name = details.name;
+  //     inputs.email = details.email;
+  //     handleSubmit();
+  //   },
+  //   onError: () => {
+  //     console.log("Login Failed");
+  //   },
+  // });
 
   return (
     <div className="loginpage">
@@ -201,17 +202,9 @@ const Register = () => {
           padding={3}
           borderRadius={5}
         >
-
-          <Typography
-            className="signInText"
-          >
-            Create an account
-          </Typography>
-          <Button
-            onClick={() => navigate("/login")}
-            className="newUser"
-          >
-          <span>Already have an account? &nbsp;</span>Sign in
+          <Typography className="signInText">Create an account</Typography>
+          <Button onClick={() => navigate("/login")} className="newUser">
+            <span>Already have an account? &nbsp;</span>Sign in
           </Button>
 
           <TextField
@@ -297,8 +290,26 @@ const Register = () => {
             <div></div>&nbsp;Or&nbsp; <div></div>
           </div>
           <div className="submit">
-            <Button className="loginWith" onClick={() => login()}>
-              Continue with Google
+            <Button>
+              <GoogleOAuthProvider
+                className="loginWith"
+                clientId="673293732147-5pde4aq555gdp0b3m8gv3f6s84peico5.apps.googleusercontent.com"
+              >
+                <GoogleLogin
+                  onSuccess={(credentialResponse) => {
+                    const details = jwtDecode(credentialResponse.credential);
+                    console.log(credentialResponse.clientId);
+                    console.log(details);
+                    inputs.g_id = details.sub;
+                    inputs.name = details.name;
+                    inputs.email = details.email;
+                    handleSubmit();
+                  }}
+                  onError={() => {
+                    console.log("Login Failed");
+                  }}
+                />
+              </GoogleOAuthProvider>
             </Button>
             <Button className="loginWith">Continue with Facebook</Button>
           </div>

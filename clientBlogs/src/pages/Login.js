@@ -36,7 +36,7 @@ const Login = () => {
           Store.addNotification({
             title: "You are already logged in",
             message: "",
-            type: "success",
+            type: "warning",
             insert: "top",
             container: "bottom-center",
             animationIn: ["animate__animated", "animate__fadeIn"],
@@ -152,7 +152,20 @@ const Login = () => {
     } catch (error) {
       if (error.response) {
         // The server responded with a status code other than 2xx
-        console.error(error.response.data); // Error response from the server
+        console.error(error.response.data.message); // Error response from the server
+        Store.addNotification({
+          title: error.response.data.message,
+          message: "",
+          type: "warning",
+          insert: "top",
+          container: "bottom-center",
+          animationIn: ["animate__animated", "animate__fadeIn"],
+          animationOut: ["animate__animated", "animate__fadeOut"],
+          dismiss: {
+            duration: 2000,
+            onScreen: true,
+          },
+        });
         console.error(error.response.status); // HTTP status code
         console.error(error.response.headers); // Response headers
       } else if (error.request) {
@@ -164,21 +177,21 @@ const Login = () => {
       }
     }
   };
-  const login = useGoogleLogin({
-    //onSuccess: tokenResponse => console.log(tokenResponse),
-    onSuccess: (credentialResponse) => {
-      const details = jwtDecode(credentialResponse.credential);
-      console.log(credentialResponse);
-      console.log(details.sub);
-      inputs.g_id = details.sub;
-      inputs.name = details.name;
-      inputs.email = details.email;
-      handleSubmit();
-    },
-    onError: () => {
-      console.log("Login Failed");
-    },
-  });
+  // const login = useGoogleLogin({
+  //   //onSuccess: tokenResponse => console.log(tokenResponse),
+  //   onSuccess: (credentialResponse) => {
+  //     const details = jwtDecode(credentialResponse.credential);
+  //     console.log(credentialResponse);
+  //     console.log(details.sub);
+  //     inputs.g_id = details.sub;
+  //     inputs.name = details.name;
+  //     inputs.email = details.email;
+  //     handleSubmit();
+  //   },
+  //   onError: () => {
+  //     console.log("Login Failed");
+  //   },
+  // });
 
   return (
     <div className="loginpage">
@@ -261,9 +274,26 @@ const Login = () => {
             <div></div>&nbsp;Or&nbsp; <div></div>
           </div>
           <div className="submit">
-            <Button className="loginWith" onClick={() => login()}>
-              Continue with Google
-            </Button>
+            <GoogleOAuthProvider
+              clientId="673293732147-5pde4aq555gdp0b3m8gv3f6s84peico5.apps.googleusercontent.com"
+              className="loginWith"
+            >
+              <GoogleLogin
+                onSuccess={(credentialResponse) => {
+                  const details = jwtDecode(credentialResponse.credential);
+                  console.log(credentialResponse);
+                  console.log(details.sub);
+                  inputs.g_id = details.sub;
+                  inputs.name = details.name;
+                  inputs.email = details.email;
+                  handleSubmit();
+                }}
+                onError={() => {
+                  console.log("Login Failed");
+                }}
+              />
+            </GoogleOAuthProvider>
+
             <Button className="loginWith">Continue with Facebook</Button>
           </div>
         </Box>

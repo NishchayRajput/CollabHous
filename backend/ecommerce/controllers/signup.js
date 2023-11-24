@@ -2,6 +2,7 @@
 const mongoose = require('mongoose');
 const userInfo = require('../models/userInfo');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 // Define the signup function
 async function signup(req, res) {
