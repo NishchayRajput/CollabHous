@@ -212,7 +212,14 @@ const Login = () => {
             onChange={handleChange}
             variant="standard"
             sx={{
+
               "& .MuiInput-underline:before": {
+                borderBottomColor: "white",
+              },
+              "& .MuiInput-underline:hover:before":{
+                borderBottomColor: "white",
+              },
+              "& .MuiInput-underline:after":{
                 borderBottomColor: "white",
               },
               input: {
@@ -220,6 +227,8 @@ const Login = () => {
                 fontFamily: "Montserrat",
                 fontSize: "15px",
               },
+
+             
             }}
           />
 
@@ -235,6 +244,12 @@ const Login = () => {
             variant="standard"
             sx={{
               "& .MuiInput-underline:before": {
+                borderBottomColor: "white",
+              },
+              "& .MuiInput-underline:hover:before":{
+                borderBottomColor: "white",
+              },
+              "& .MuiInput-underline:after":{
                 borderBottomColor: "white",
               },
               input: {

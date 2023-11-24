@@ -228,6 +228,12 @@ const Register = () => {
               "& .MuiInput-underline:before": {
                 borderBottomColor: "white",
               },
+              "& .MuiInput-underline:hover:before":{
+                borderBottomColor: "white",
+              },
+              "& .MuiInput-underline:after":{
+                borderBottomColor: "white",
+              },
               input: {
                 color: "white",
                 fontFamily: "Montserrat",
@@ -249,6 +255,12 @@ const Register = () => {
               "& .MuiInput-underline:before": {
                 borderBottomColor: "white",
               },
+              "& .MuiInput-underline:hover:before":{
+                borderBottomColor: "white",
+              },
+              "& .MuiInput-underline:after":{
+                borderBottomColor: "white",
+              },
               input: {
                 color: "white",
                 fontFamily: "Montserrat",
@@ -268,6 +280,12 @@ const Register = () => {
             variant="standard"
             sx={{
               "& .MuiInput-underline:before": {
+                borderBottomColor: "white",
+              },
+              "& .MuiInput-underline:hover:before":{
+                borderBottomColor: "white",
+              },
+              "& .MuiInput-underline:after":{
                 borderBottomColor: "white",
               },
               input: {
