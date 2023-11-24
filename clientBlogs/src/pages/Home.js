@@ -204,6 +204,7 @@ const Home = () => {
                       tag={mostLikedBlog.tag}
                       upVoteC={mostLikedBlog ? mostLikedBlog.like : "0"}
                       read_time={mostLikedBlog.read_time}
+                      likeStat={mostLikedBlog?.like_status}
                     />
                     <Link
                       to={`/blogs/${mostLikedBlog.id}`}
@@ -249,6 +250,9 @@ const Home = () => {
                               ? recentBlog[0].read_time
                               : "5"
                           }
+                          likeStat={
+                            recentBlog[0] != null?.recentBlog[0].like_status
+                          }
                         />
                       </div>
                       <HorzBlogCard
@@ -275,6 +279,9 @@ const Home = () => {
                         read_time={
                           recentBlog[1] != null ? recentBlog[1].read_time : "5"
                         }
+                        likeStat={
+                          recentBlog[1] != null?.recentBlog[1].like_status
+                        }
                       />
                       <HorzBlogCard
                         bId={recentBlog[2]?.id}
@@ -299,6 +306,9 @@ const Home = () => {
                         }
                         read_time={
                           recentBlog[2] != null ? recentBlog[2].read_time : "5"
+                        }
+                        likeStat={
+                          recentBlog[2] != null?.recentBlog[2].like_status
                         }
                       />
                     </Box>

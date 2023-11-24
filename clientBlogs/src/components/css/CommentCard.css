@@ -186,7 +186,7 @@
 }
 
 .replyBox #textBox {
-    height: 56px;
+    /* height: 56px; */
     margin-left: 11px;
     color: #A0A0A0;
     border: none;

@@ -26,20 +26,20 @@ console.log(req.body);
                 });
                 const savedUser = await newUser.save();
                 const token = jwt.sign({ userId: savedUser._id }, process.env.secret);
-                req.session.user = { id: user._id, username: user.username };
-                // res.cookie('token', token, {
-                //     httpOnly: true,
-                //     maxAge: 60 * 60 * 1000, // Cookie expires in 1 hour
-                // });
+                // req.session.user = { id: user._id, username: user.username };
+                res.cookie('token', token, {
+                    httpOnly: true,
+                    maxAge: 60 * 60 * 1000, // Cookie expires in 1 hour
+                });
                 console.log('Google login with signup successful');
                 return res.status(201).json({ message: "Google login successful" });
             } else {
                 const token = jwt.sign({ userId: user._id }, process.env.secret);
-                req.session.user = { id: user._id, username: user.username };
-                // res.cookie('token', token, {
-                //     httpOnly: true,
-                //     maxAge: 60 * 60 * 1000, // Cookie expires in 1 hour
-                // });
+                // req.session.user = { id: user._id, username: user.username };
+                res.cookie('token', token, {
+                    httpOnly: true,
+                    maxAge: 60 * 60 * 1000, // Cookie expires in 1 hour
+                });
                 return res.status(201).json({ message: "Google login successful" });
             }
         } else {

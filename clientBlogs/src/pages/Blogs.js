@@ -23,7 +23,7 @@ const Blogs = () => {
       const { data } = await axios.get("http://localhost:5000/blogs/");
       setAllBlogs(data);
       setBlogs(data);
-      console.log(data);
+      // console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -179,6 +179,7 @@ const Blogs = () => {
                     time={formatDate(blog.time)}
                     upVoteC={blog.like}
                     read_time={blog.read_time}
+                    likeStat={blog.like_status}
                   />
                 ) : (
                   <div>
@@ -200,6 +201,7 @@ const Blogs = () => {
                         time={formatDate(blog.time)}
                         upVoteC={blog.like}
                         read_time={blog.read_time}
+                        likeStat={blog.like_status}
                       />
                     ) : (
                       <BlogCard
@@ -219,6 +221,7 @@ const Blogs = () => {
                         time={formatDate(blog.time)}
                         upVoteC={blog.like}
                         read_time={blog.read_time}
+                        likeStat={blog.like_status}
                       />
                     )}
                   </div>

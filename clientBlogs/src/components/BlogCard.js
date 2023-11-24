@@ -32,23 +32,15 @@ export default function BlogCard({
   tag,
   upVoteC,
   read_time,
+  likeStat,
 }) {
   const navigate = useNavigate();
 
-  const [likeStatus, setLikeStatus] = useState(false);
+  const [likeStatus, setLikeStatus] = useState(likeStat);
   const [upVoteCount, setUpVoteCount] = useState(0);
+  // console.log(title);
+  // console.log(likeStat);
 
-  // const handleUpVote = () => {
-  //   if (!isLogin) {
-  //     navigate("/login");
-  //   } else {
-  //     // You can implement the upvote logic here, for example, send a request to your backend to record the upvote.
-  //     // For this example, I'll simply increase the count by 1.
-  //     // setUpvoteCount(upvoteCount + 1);
-  //     // setUpvoteCount(upvoteCount + 1);
-  //     console.log("clicked the liked button");
-  //   }
-  // };
 
   const handleUpVote = async (e) => {
     try {
@@ -57,7 +49,7 @@ export default function BlogCard({
         {
           bId: bId,
           iId: bId,
-          it: likeStatus,
+          it: likeStatus ? "like" : "unlike",
           pId: uId,
         },
         {
@@ -69,8 +61,8 @@ export default function BlogCard({
       );
 
       if (data.message === "Please login first") {
-        // navigate("/login");
-        // console.log("navigating");
+        navigate("/login");
+        console.log("navigating");
       } else {
         console.log("increasing");
         setLikeStatus(!likeStatus);

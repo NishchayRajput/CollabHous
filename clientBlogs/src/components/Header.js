@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   Box,
   AppBar,
@@ -19,35 +19,44 @@ import { Link as ScrollLink } from "react-scroll";
 import "./css/Header.css";
 import Hamburger from "./Hamburger";
 import axios from "axios";
-
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  //state
+  const location = useLocation();
+
   const [value, setValue] = useState(0);
   const [scrollValue, setScrollValue] = useState(0);
   const [isLogin, setIsLogin] = useState();
+
+  const storeSelectedTab = (index) => {
+    localStorage.setItem("selectedTabIndex", index);
+  };
+
+  const getStoredSelectedTab = () => {
+    const storedIndex = localStorage.getItem("selectedTabIndex");
+    return storedIndex ? parseInt(storedIndex, 10) : 0;
+  };
+
   const scrollToPercentage = (percentage) => {
     const scrollToY =
       (percentage / 100) * (document.body.scrollHeight - window.innerHeight);
     window.scrollTo({ top: scrollToY, behavior: "instant" });
   };
+
   window.addEventListener("scroll", () => {
     const scrollPercentage =
       (window.scrollY / (document.body.scrollHeight - window.innerHeight)) *
       100;
     setScrollValue(scrollPercentage);
   });
-  // useEffect(() => {
-  //   async function scrollP() {
-  //   }
-  //   scrollP();
-  // }, []);
 
-  if (value === 0 && scrollValue > 30) setValue(1);
-  if (value === 1 && scrollValue < 30) setValue(0);
-  // console.log(scrollValue);
-  // console.log("Tab: "+value);
+  useEffect(() => {
+    setValue(getStoredSelectedTab());
+  }, []);
+
+  useEffect(() => {
+    storeSelectedTab(value);
+  }, [value]);
 
   useEffect(() => {
     async function verify() {
@@ -68,11 +77,20 @@ const Header = () => {
         // }
       } catch (error) {
         console.log(error);
-        // }
       }
     }
     verify();
   }, []);
+
+  useEffect(() => {
+    const path = location.pathname;
+    if (path === "/") setValue(0);
+    // else if (path === "/whoarewe") setValue(1);
+    else if (path === "/blogs") setValue(2);
+    else if (path === "/connect") setValue(3);
+  }, [location.pathname]);
+  if (value === 0 && scrollValue > 30) setValue(1);
+  if (value === 1 && scrollValue < 30) setValue(0);
 
   return (
     <>
@@ -159,8 +177,7 @@ const Header = () => {
           {isLogin && (
             <div id="loginBtnContainer">
               {" "}
-              <Button variant="outlined" className="loginBtn"
-               href="/login">
+              <Button variant="outlined" className="loginBtn" href="/login">
                 Login
               </Button>
             </div>

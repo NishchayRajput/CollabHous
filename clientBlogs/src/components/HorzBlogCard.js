@@ -34,10 +34,11 @@ export default function BlogCard({
   tag,
   upVoteC,
   read_time,
+  likeStat,
 }) {
   const navigate = useNavigate();
 
-  const [likeStatus, setLikeStatus] = useState(false);
+  const [likeStatus, setLikeStatus] = useState(likeStat);
   const [upVoteCount, setUpVoteCount] = useState(0);
 
   // const handleUpVote = () => {
@@ -59,7 +60,7 @@ export default function BlogCard({
         {
           bId: bId,
           iId: bId,
-          it: likeStatus,
+          it: likeStatus ? "like" : "unlike",
           pId: uId,
         },
         {
@@ -71,8 +72,8 @@ export default function BlogCard({
       );
 
       if (data.message === "Please login first") {
-        // navigate("/login");
-        // console.log("navigating");
+        navigate("/login");
+        console.log("navigating");
       } else {
         console.log("increasing");
         setLikeStatus(!likeStatus);

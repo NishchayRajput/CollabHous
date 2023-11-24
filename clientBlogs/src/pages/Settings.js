@@ -42,11 +42,10 @@ const Settings = ()=> {
 
 
     const image="";
-    const username="";
-    const bio="";
-    const email="";
-    const mobile="";
-
+    const username="Username";
+    const bio="Bio";
+    const email="user@gmail.com";
+    const mobile="+91-93434 93434";
 
 
     const [socialMediaArrow, setSocialMediaArrow] = useState(0);

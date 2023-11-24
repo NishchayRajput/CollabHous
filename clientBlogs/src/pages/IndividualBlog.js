@@ -50,7 +50,8 @@ export default function IndividualBlog({}) {
     const options = { year: "numeric", month: "short", day: "numeric" };
     return date.toLocaleDateString(undefined, options);
   };
-  const [upvoteCount, setUpvoteCount] = useState(0);
+  const [likeStatus, setLikeStatus] = useState();
+  const [upVoteCount, setUpVoteCount] = useState(0);
   const scrollToPercentage = (percentage) => {
     const scrollToY =
       (percentage / 100) * (document.body.scrollHeight - window.innerHeight);
@@ -101,7 +102,7 @@ export default function IndividualBlog({}) {
         const { data } = await axios.get(
           `http://localhost:5000/blogs/${blogId}`
         );
-        console.log(data);
+        // console.log(data);
         setBlog(data.blogF);
         setInteraction(data.interaction);
         setUserId(data.blogF.user_id._id);
@@ -113,14 +114,36 @@ export default function IndividualBlog({}) {
     getAllBlogs();
   }, []);
   // console.log(blog);
-  const handleUpvote = () => {
-    if (!isLogin) {
-      navigate("/login");
-    } else {
-      // You can implement the upvote logic here, for example, send a request to your backend to record the upvote.
-      // For this example, I'll simply increase the count by 1.
-      setUpvoteCount(upvoteCount + 1);
-      // setUpvoteCount(upvoteCount + 1);
+  const handleUpVote = async (e) => {
+    try {
+      const { data } = await axios.post(
+        "http://localhost:5000/blogs/like",
+        {
+          bId: blogId,
+          iId: blogId,
+          it: likeStatus ? "like" : "unlike",
+          pId: userId,
+        },
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      );
+
+      if (data.message === "Please login first") {
+        navigate("/login");
+        console.log("navigating");
+      } else {
+        console.log("increasing");
+        setLikeStatus(!likeStatus);
+        if (likeStatus === true) setUpVoteCount(upVoteCount - 1);
+        else setUpVoteCount(upVoteCount + 1);
+      }
+    } catch (error) {
+      console.log(error);
+      // }
     }
   };
   const handleComment = () => {
@@ -306,9 +329,12 @@ export default function IndividualBlog({}) {
               onMouseLeave={() => setShowSharingBox(false)}
               sx={{ padding: "0px", paddingLeft: "10px" }}
             >
-              <IconButton aria-label="add to favorites" onClick={handleUpvote}>
-                <ThumbUpAltIcon style={{ color: "#F74D79" }} />
-                <span className="upvote">{upvoteCount}</span>
+              <IconButton arqia-label="add to favorites" onClick={handleUpVote}>
+                {!likeStatus && (
+                  <ThumbUpOffAltIcon style={{ color: "#626262" }} />
+                )}
+                {likeStatus && <ThumbUpAltIcon style={{ color: "#F74D79" }} />}
+                <span className="upvote">{upVoteCount}</span>
               </IconButton>
               <IconButton aria-label="add to favorites" onClick={handleComment}>
                 {/* <MapsUgcRoundedIcon style={{ color: "#FFFFFF" }} /> */}
@@ -350,7 +376,11 @@ export default function IndividualBlog({}) {
           </Box>
           {showCommentBox && (
             <div className="commentBox">
-              <CommentArea bId={blogId} uId={userId} interactionArray={interaction}/>
+              <CommentArea
+                bId={blogId}
+                uId={userId}
+                interactionArray={interaction}
+              />
             </div>
           )}
         </section>

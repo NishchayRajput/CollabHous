@@ -30,7 +30,7 @@ async function tokenValidationMiddleware(req, res) {
 
     // If the token is not found, return a 401 (Unauthorized) response
     if (!token) {
-        return res.status(401).json({ message: 'Unauthorized: Token not found' });
+        return res.status(200).json({ message: 'User not logged in' });
     }
 
     // Verify the JWT token
