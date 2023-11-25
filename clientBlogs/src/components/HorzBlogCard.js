@@ -37,8 +37,6 @@ export default function BlogCard({
   likeStat,
 }) {
   const navigate = useNavigate();
-  console.log("likeStat ", likeStat);
-  console.log("up vote count ", upVoteC);
   const [likeStatus, setLikeStatus] = useState(0);
   const [upVoteCount, setUpVoteCount] = useState(0);
 

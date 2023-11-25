@@ -16,6 +16,7 @@ export default function Notification({ notificationArray }) {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  console.log(notificationArray);
   return (
     <React.Fragment>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
@@ -80,7 +81,7 @@ export default function Notification({ notificationArray }) {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        {notificationArray != null ? (
+        {notificationArray && notificationArray.length > 0 ? (
           notificationArray.map((notification) => {
             return (
               <div>
