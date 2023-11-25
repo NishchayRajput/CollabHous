@@ -23,7 +23,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-
+  const [notification, setNotification] = useState([]);
   const [value, setValue] = useState(0);
   const [scrollValue, setScrollValue] = useState(0);
   const [isLogin, setIsLogin] = useState();
@@ -70,6 +70,8 @@ const Header = () => {
             },
           }
         );
+        console.log(data.notifications);
+        setNotification(data.notifications);
         if (data.message == "Please login first") setIsLogin(true);
         else setIsLogin(false);
         // if ((data.message = "Please login first")) {
@@ -167,7 +169,7 @@ const Header = () => {
               />
             </Tabs>
           </Box>
-          <Notification />
+          <Notification notificationArray={notification} />
           {!isLogin && (
             <div id="avatarContainer">
               {" "}
