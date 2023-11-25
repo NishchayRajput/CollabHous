@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const moment = require('moment-timezone');
 const blogs = require('./blogs');
 const userInfo = require('../../ecommerce/models/userInfo');
+const moment = require('moment-timezone');
 
 const replySchema = new mongoose.Schema({
     user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'userInfo', required: true },
@@ -30,7 +30,7 @@ const interaction = new mongoose.Schema({
             return moment();
         },
     },
-    replies: [replySchema], // Array to store replies
+    replies: [replySchema],         // Array to store replies
 });
 
 module.exports = mongoose.model('interaction', interaction);

@@ -11,6 +11,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { authActions } from "../redux/store";
 import axios from "axios";
+import "./css/AvatarDropDown.css";
 
 export default function AvatarDropdown() {
   const navigate = useNavigate();
@@ -62,7 +63,7 @@ export default function AvatarDropdown() {
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
         >
-          <Avatar sx={{ width: 24, height: 24 }}></Avatar>
+          <Avatar sx={{ width: 29, height: 29 }}></Avatar>
         </IconButton>
       </Box>
       <Menu
@@ -74,6 +75,11 @@ export default function AvatarDropdown() {
         PaperProps={{
           elevation: 0,
           sx: {
+            
+            backgroundColor:"rgba(72, 72, 72, 0)",
+            boxShadow:"0px 4px 4px rgba(0, 0, 0, 0.25)",
+            border:"2px solid rgba(134, 127, 127, 0.43)",
+            borderRadius:"10px",
             overflow: "visible",
             filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
             mt: 1.5,
@@ -91,7 +97,8 @@ export default function AvatarDropdown() {
               right: 14,
               width: 10,
               height: 10,
-              bgcolor: "background.paper",
+              bgcolor: "rgba(134, 127, 127)",
+              border:"2px solid rgba(134, 127, 127, 0.43)",
               transform: "translateY(-50%) rotate(45deg)",
               zIndex: 0,
             },
@@ -100,18 +107,18 @@ export default function AvatarDropdown() {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem onClick={handleProfile}>
-          <Avatar /> Profile
+        <MenuItem onClick={handleClose} className="dropAvatar">
+          <Avatar style={{height:"30px", width:"30px",}}/>&nbsp;Profile
         </MenuItem>
 
-        <MenuItem onClick={handleSettings}>
+        <MenuItem onClick={handleSettings} className="dropAvatar" >
           <ListItemIcon>
-            <Logout fontSize="small" />
+            <Logout fontSize="small" className="dropAvatar"/>
           </ListItemIcon>
           Settings
         </MenuItem>
 
-        <Divider />
+        <Divider  className="divider"/>
 
         {/* <MenuItem onClick={handleLogin}>
           <ListItemIcon>
@@ -120,9 +127,9 @@ export default function AvatarDropdown() {
           Login
         </MenuItem> */}
 
-        <MenuItem onClick={handleLogOut}>
+        <MenuItem onClick={handleLogOut} className="dropAvatar">
           <ListItemIcon>
-            <Logout fontSize="small" />
+            <Logout fontSize="small" className="dropAvatar" />
           </ListItemIcon>
           Logout
         </MenuItem>
