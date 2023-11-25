@@ -1,0 +1,179 @@
+.qsection {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.section1 {
+
+    gap: 30px;
+}
+
+.qsection .circle {
+    height: 105px;
+    width: 105px;
+    border-radius: 50%;
+    background-color: #2F2F2F;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+    justify-content: center;
+}
+
+.qsection .circle .type {
+    font-size: 22px;
+    color: white;
+}
+
+.qsection .titleContainer {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 20px;
+}
+
+.qsection .titleContainer .title {
+    font-size: 48px;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+}
+
+.qsection .titleContainer .subtitle {
+    font-size: 20px;
+    font-weight: 300;
+    color: #B0B0B0;
+    text-align: center;
+}
+
+.qsection .letsGoBtn {
+    height: 50px;
+    width: 150px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #F74D79;
+    border: none;
+    padding: 20px 20px;
+    border-radius: 10px;
+    color: aliceblue;
+    font-weight: 700;
+}
+
+.qsection .nextBtn {
+    height: 50px;
+    width: 150px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #F74D79;
+    border: none;
+    padding: 20px 20px;
+    border-radius: 10px;
+    color: aliceblue;
+    font-weight: 700;
+    margin-top: 15px;
+}
+
+.qsection .title {
+    font-size: 28px;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.section2>div {
+    width: 50%;
+}
+
+.section2 .form {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.section2 .inputBox {
+    height: 50px;
+    margin: 15px 0px;
+    background-color: #343434;
+    border: 1px solid #5E5E5E;
+    border-radius: 8px;
+}
+
+.section3 .subtitle {
+    font-size: 18px;
+    color: #A7A7A7;
+    margin-bottom: 15px;
+}
+
+.section3 .inputBox {
+    height: auto;
+    min-height: 206px;
+    min-width: 746px;
+    margin: 15px 0px;
+    background-color: #343434;
+    border: 1px solid #5E5E5E;
+    border-radius: 8px;
+    font-size: 18px;
+}
+
+.section4>div {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    gap: 20px;
+}
+
+.section4 .fileupload {
+    height: 67px;
+    width: 763px;
+}
+
+.section5 {
+    padding: 0px 10%;
+    gap: 30px;
+}
+
+.section5>.titleC {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* gap: 20px; */
+}
+
+.section5 .subtitle {
+    font-size: 18px;
+    color: #A7A7A7;
+    margin-bottom: 15px;
+    padding: 0px 20%;
+    text-align: center;
+}
+
+.section5 .form {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.section5 .inputBox {
+    background-color: #2F2F2F;
+    border: 1px solid #414141;
+    font-size: 20px;
+    color: #939393;
+    height: 62px;
+    width: 29%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.section5 .btn {
+    width: 220px;
+}

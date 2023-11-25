@@ -4,8 +4,10 @@ import "./css/Connect.css";
 import { contactus_hero } from "../assets";
 import { Box, Button, Tab, Tabs, Typography } from "@mui/material";
 import Footer from "../components/Footer";
+import { useNavigate } from "react-router-dom";
 
 const Connect = () => {
+  const navigate = useNavigate();
   return (
     <div>
       <div style={{ backgroundColor: "rgba(35, 36, 38, 1)"}}>
@@ -18,8 +20,8 @@ const Connect = () => {
             className="background"
           />
           <div className="buttons_top">
-            <button className="btn1">Connect</button>
-            <button className="btn2"> Job Openings</button>
+            <button className="btn1" onClick={()=>{navigate('/commune')}}>Connect</button>
+            <button className="btn2" onClick={()=>{navigate('')}}> Job Openings</button>
 
           </div>
 

@@ -1,0 +1,12 @@
+.custom{
+    background-color: #2F2F2F;
+    border: 1px solid #414141;
+    font-size: 20px;
+    color:#939393;
+    height:67px;
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}

@@ -1,0 +1,128 @@
+.settingCotainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 94vh;
+}
+
+.settingCotainer .greyBox {
+    background-color: #2F2F2F;
+    border-radius: 10px;
+    border: 1px solid #414141;
+    width: 60%;
+    height: auto;
+    min-height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding:0px 10%;
+    margin-top: 50px;
+}
+
+.settingCotainer .greyBox .imageContainer {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    display: flex;
+    position: relative;
+    top: -70px;
+}
+
+.settingCotainer .greyBox .imageContainer .image {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 5px solid #2F2F2F;
+    background-color: #2F2F2F;
+
+}
+
+.settingCotainer .greyBox .imageContainer .name {
+    color: white;
+    font-size: 20px;
+}
+
+.settingCotainer .greyBox .imageContainer .email {
+    color: #676767;
+    font-size: 15px;
+}
+
+.settingCotainer .greyBox .detailsContainer {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.settingCotainer .greyBox .detailsContainer .top {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin:20px 0px;
+    gap:20px;
+}
+
+.settingCotainer .greyBox .detailsContainer .top .title {
+    color: white;
+    font-size: 36px;
+}
+
+.settingCotainer .greyBox .detailsContainer .top .subtitle {
+    color: #898989;
+    font-size: 15px;
+}
+
+.settingCotainer .greyBox .detailsContainer .mid {
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 100px;
+    margin:20px 0px;
+    gap:20px;
+}
+
+.settingCotainer .greyBox .detailsContainer .mid .btn1 {
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #F74D79;
+    border: none;
+    padding: 20px 20px;
+    border-radius: 10px;
+    color: aliceblue;
+}
+
+.settingCotainer .greyBox .detailsContainer .mid .btn2 {
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #F74D79;
+    border: none;
+    padding: 20px 20px;
+    border-radius: 10px;
+    color: aliceblue;
+}
+
+.settingCotainer .greyBox .detailsContainer .bottom {
+    height: auto;
+    text-align: center;
+    margin:20px 0px;
+    font-size: 15px;
+    color: #FFFFFF;
+}

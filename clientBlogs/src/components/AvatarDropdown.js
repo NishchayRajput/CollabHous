@@ -25,6 +25,9 @@ export default function AvatarDropdown() {
     setAnchorEl(null);
   };
   const handleSettings = () => {
+    navigate("/setting");
+  };
+  const handleProfile = () => {
     navigate("/settings");
   };
   const handleLogin = () => {
@@ -97,7 +100,7 @@ export default function AvatarDropdown() {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleProfile}>
           <Avatar /> Profile
         </MenuItem>
 
