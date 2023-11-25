@@ -80,7 +80,7 @@ export default function Notification({ notificationArray }) {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        {notificationArray.length != 0 ? (
+        {notificationArray != null ? (
           notificationArray.map((notification) => {
             return (
               <div>

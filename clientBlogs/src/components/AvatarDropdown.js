@@ -107,7 +107,7 @@ export default function AvatarDropdown() {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem onClick={handleClose} className="dropAvatar">
+        <MenuItem onClick={handleProfile} className="dropAvatar">
           <Avatar style={{height:"30px", width:"30px",}}/>&nbsp;Profile
         </MenuItem>
 
