@@ -37,8 +37,9 @@ export default function BlogCard({
   likeStat,
 }) {
   const navigate = useNavigate();
-
-  const [likeStatus, setLikeStatus] = useState(likeStat);
+  console.log("likeStat ", likeStat);
+  console.log("up vote count ", upVoteC);
+  const [likeStatus, setLikeStatus] = useState(0);
   const [upVoteCount, setUpVoteCount] = useState(0);
 
   // const handleUpVote = () => {
@@ -89,7 +90,8 @@ export default function BlogCard({
   React.useEffect(() => {
     setUpVoteCount(upVoteC);
     setLikeStatus(false);
-  }, []);
+  }, [upVoteC]);
+
 
   return (
     <Card id="cardContainer">
