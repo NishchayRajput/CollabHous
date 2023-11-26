@@ -2,9 +2,53 @@ import React, { useState } from "react";
 import "./css/Questions.css";
 
 import FileUpload from "../components/FileUpload";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Questions = () => {
+  const navigate = useNavigate();
   const [selectedFile, setSelectedFile] = useState(null);
+  const [inputs, setInputs] = useState({
+    name: "",
+    email: "",
+    firstName: "",
+    lastName: "",
+    mobile: "",
+    pitch: "",
+    company: "",
+  });
+  //handle input change
+  const handleChange = (e) => {
+    setInputs((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+  const handleSubmit = async (e) => {
+    console.log(inputs);
+    if (e) {
+      e.preventDefault();
+    }
+    try {
+      // const response = await axios.post(
+      //   "http://localhost:5000/ecommerce/login",
+      //   {
+      //     name: inputs.name,
+      //     email: inputs.email,
+      //     password: inputs.password,
+      //     g_id: inputs.g_id,
+      //   },
+      //   {
+      //     withCredentials: true,
+      //     headers: {
+      //       "Content-Type": "application/x-www-form-urlencoded",
+      //     },
+      //   }
+      // );
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div>
       <div className="qsection section1">
@@ -20,21 +64,54 @@ const Questions = () => {
             questions at any time
           </div>
         </div>
-        <div className="letsGoBtn">Let’s go</div>
-      </div>
-      <div className="qsection section2">
-        <div>
-          <div className="title">Any basic details to share?</div>
-          <form action="" className="form">
-            <input type="text" placeholder="First name" className="inputBox" />
-            <input type="text" placeholder="Last name" className="inputBox" />
-
-            <input type="text" placeholder="Mobile" className="inputBox" />
-          </form>
-          <div className="nextBtn">Next</div>
+        <div
+          className="letsGoBtn"
+          onClick={() => document.getElementById("section2").scrollIntoView()}
+        >
+          Let’s go
         </div>
       </div>
-      <div className="qsection section3">
+      <div id="section2" className="qsection section2">
+        <div>
+          <div className="title">Any basic details to share?</div>
+          <form action="" className="form" onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="First name"
+              className="inputBox"
+              value={inputs.firstName}
+              name="firstName"
+              onChange={handleChange}
+            />
+            <input
+              type="text"
+              placeholder="Last name"
+              className="inputBox"
+              value={inputs.lastName}
+              name="lastName"
+              onChange={handleChange}
+            />
+
+            <input
+              type="text"
+              placeholder="Mobile"
+              className="inputBox"
+              value={inputs.mobile}
+              name="mobile"
+              onChange={handleChange}
+            />
+          </form>
+            <button
+              className="nextBtn"
+              onClick={() =>
+                document.getElementById("section3").scrollIntoView()
+              }
+            >
+              Next
+            </button>
+        </div>
+      </div>
+      <div id="section3" className="qsection section3">
         <div>
           <div className="title">Pitch yourself</div>
           <div className="subtitle">
@@ -45,12 +122,22 @@ const Questions = () => {
               type="text"
               placeholder="Write your pitch..."
               className="inputBox"
+              value={inputs.pitch}
+              name="pitch"
+              onChange={handleChange}
             />
           </form>
-          <div className="nextBtn">Next</div>
+            <div
+              className="nextBtn"
+              onClick={() =>
+                document.getElementById("section4").scrollIntoView()
+              }
+            >
+              Next
+            </div>
         </div>
       </div>
-      <div className="qsection section4">
+      <div id="section4" className="qsection section4">
         <div>
           <div className="title">My CV</div>
           <div className="fileupload">
@@ -59,10 +146,15 @@ const Questions = () => {
               onFileSelectError={({ error }) => alert(error)}
             />
           </div>
-          <div className="nextBtn">Next</div>
+          <div
+            className="nextBtn"
+            onClick={() => document.getElementById("section5").scrollIntoView()}
+          >
+            Next
+          </div>
         </div>
       </div>
-      <div className="qsection section5">
+      <div id="section5" className="qsection section5">
         <div className="titleC">
           <div className="title">Who can recommend you?</div>
           <div className="subtitle">
@@ -72,11 +164,34 @@ const Questions = () => {
           </div>
         </div>
         <form action="" className="form">
-          <input type="text" placeholder="Email" className="inputBox" />
-          <input type="text" placeholder="Name" className="inputBox" />
-          <input type="text" placeholder="Company/Title" className="inputBox" />
+          <input
+            type="text"
+            placeholder="Email"
+            className="inputBox"
+            value={inputs.email}
+            name="email"
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            placeholder="Name"
+            className="inputBox"
+            value={inputs.name}
+            name="name"
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            placeholder="Company/Title"
+            className="inputBox"
+            value={inputs.company}
+            name="company"
+            onChange={handleChange}
+          />
         </form>
-        <div className="nextBtn btn">Add recommendation</div>
+        <button className="nextBtn btn" onClick={handleSubmit}>
+          Add recommendation
+        </button>
       </div>
     </div>
   );

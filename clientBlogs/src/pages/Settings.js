@@ -12,33 +12,28 @@ import Typography from "@mui/material/Typography";
 import "../pages/css/Settings.css";
 import { Button } from "@mui/material";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Settings = () => {
-  // const [name,setName] = useState("");
-  // const [image, setImage] = useState("");
-  // const [bio, setBio] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [mobile, setMobile] = useState("");
-
-  // useEffect(() => {
-  //     async function getInfo() {
-  //       try {
-  //         const { data } = await axios.get("http://localhost:5000/blogs/hero");
-
-  //         setName(data.name);
-  //         setEmail(data.email);
-
-  //         // setMostLikedBlog(data.mostLikedBlog);
-  //         // setHeroData(data.heroData);
-  //         // setRecentBlog(data.latestBlogs);
-  //         // setDisplayText(data.heroData[0].value);
-  //         // console.log(data.mostLikedBlog);
-  //       } catch (error) {
-  //         console.log(error);
-  //       }
-  //     }
-  //     getBlog();
-  //   }, []);
+  const navigate = useNavigate();
+  const handleLogOut = () => {
+    async function logout() {
+      try {
+        const { data } = await axios.get("http://localhost:5000/blogs/logout", {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        });
+        console.log(data);
+        if (data.message === "logout successfull") navigate("/home");
+        window.location.reload();
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    logout();
+  };
   const [userInfo, setUserInfo] = useState();
 
   const [socialMediaArrow, setSocialMediaArrow] = useState(0);
@@ -214,7 +209,7 @@ const Settings = () => {
               ""
             )}
             <div className="signoutDiv">
-              <Button className="signout">
+              <Button className="signout" onClick={handleLogOut}>
                 <img src="images/VectorSignOut.png" alt="" />
 
                 <span>&nbsp;Signout</span>

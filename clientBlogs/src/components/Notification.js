@@ -52,7 +52,7 @@ export default function Notification({ notificationArray }) {
         PaperProps={{
           elevation: 0,
           sx: {
-            backgroundColor: "rgba(72, 72, 72, 0)",
+            backgroundColor: "#00000024",
             boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
             border: "2px solid rgba(134, 127, 127, 0.43)",
             borderRadius: "10px",

@@ -71,15 +71,14 @@ export default function AvatarDropdown() {
         id="account-menu"
         open={open}
         onClose={handleClose}
-        // onClick={handleClose}
+        onClick={handleClose}
         PaperProps={{
           elevation: 0,
           sx: {
-            
-            backgroundColor:"rgba(72, 72, 72, 0)",
-            boxShadow:"0px 4px 4px rgba(0, 0, 0, 0.25)",
-            border:"2px solid rgba(134, 127, 127, 0.43)",
-            borderRadius:"10px",
+            backgroundColor: "#00000024",
+            boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+            border: "2px solid rgba(134, 127, 127, 0.43)",
+            borderRadius: "10px",
             overflow: "visible",
             filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
             mt: 1.5,
@@ -98,7 +97,7 @@ export default function AvatarDropdown() {
               width: 10,
               height: 10,
               bgcolor: "rgba(134, 127, 127)",
-              border:"2px solid rgba(134, 127, 127, 0.43)",
+              border: "2px solid rgba(134, 127, 127, 0.43)",
               transform: "translateY(-50%) rotate(45deg)",
               zIndex: 0,
             },
@@ -108,17 +107,18 @@ export default function AvatarDropdown() {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <MenuItem onClick={handleProfile} className="dropAvatar">
-          <Avatar style={{height:"30px", width:"30px",}}/>&nbsp;Profile
+          <Avatar style={{ height: "30px", width: "30px" }} />
+          &nbsp;Profile
         </MenuItem>
 
-        <MenuItem onClick={handleSettings} className="dropAvatar" >
+        <MenuItem onClick={handleSettings} className="dropAvatar">
           <ListItemIcon>
-            <Logout fontSize="small" className="dropAvatar"/>
+            <Logout fontSize="small" className="dropAvatar" />
           </ListItemIcon>
           Settings
         </MenuItem>
 
-        <Divider  className="divider"/>
+        <Divider className="divider" />
 
         {/* <MenuItem onClick={handleLogin}>
           <ListItemIcon>
