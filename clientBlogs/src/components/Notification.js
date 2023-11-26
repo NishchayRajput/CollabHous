@@ -88,7 +88,7 @@ export default function Notification({ notificationArray }) {
             return (
               <div>
                 <MenuItem onClick={handleClose} className="dropAvatar">
-                  {notification}
+                  {`Blog ${notification.blog_id} is  ${notification.type}`}
                 </MenuItem>
                 <Divider className="divider" />
               </div>

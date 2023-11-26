@@ -350,7 +350,9 @@ const Setting = () => {
               </div>
             </div>
             <div className="container">
-              <div className="save">Save</div>
+              <div className="save" onClick={() => navigate("/home")}>
+                Save
+              </div>
             </div>
           </div>
         </div>
