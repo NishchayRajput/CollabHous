@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const Blog = require("../models/blogs");
 const Interaction = require("../models/interaction");
 const extractTokenValue = require("../../token");
+const userInfo = require("../../ecommerce/models/userInfo");
+const jwt = require("jsonwebtoken");
 
 // Define the controller function for getting a blog by ID
 async function getBlogById(req, res) {
@@ -79,13 +81,15 @@ async function getBlogById(req, res) {
       like_status: likeStatus,
     };
 
+
     // If the blog is not found, return a 404 error response
     if (!blog) {
       return res.status(404).json({ message: "Blog not found" });
     }
+    const ud  = await userInfo.find({_id : id}, "name email").exec();
 
     // Send the blog data to the frontend as a JSON response
-    res.status(200).json({blogF, interaction});
+    res.status(200).json({blogF, interaction, ud});
   } catch (error) {
     // If an error occurs, return a 500 error response with the error message
     return res

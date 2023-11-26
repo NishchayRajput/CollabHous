@@ -12,6 +12,7 @@ const userInfo = require('../../ecommerce/models/userInfo');
 
 async function blog_hero(req, res) {
     try {
+
         // Function to extract the token value from a cookie string
         function extractTokenValue(tokenString) {
             if (tokenString && typeof tokenString === 'string') {
@@ -113,7 +114,7 @@ async function blog_hero(req, res) {
 
         // Now, formattedLatestBlogs will have an additional property like_status for each blog
         //Fetching hero section data for blogs
-        const heroData = await Hero.find({}).exec();
+        const heroData = await Hero.find({page : req.body.page}).exec();
 
         // Format the data for the most liked blog
         // Format the data for the most liked blog
