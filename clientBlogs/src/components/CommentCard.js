@@ -1,3 +1,5 @@
+//CommentCard
+
 import React, { useState } from "react";
 import "./css/CommentCard.css";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
@@ -21,7 +23,6 @@ const CommentCard = ({ content, cId, bId, uId, repliesArray }) => {
   const handleReply = () => {
     setReply((prevReply) => !prevReply);
   };
-  console.log(repliesArray);
   //handle input change
   const handleChange = (e) => {
     setReplyText((prevState) => ({
@@ -39,7 +40,6 @@ const CommentCard = ({ content, cId, bId, uId, repliesArray }) => {
         {
           bId: bId,
           iId: cId,
-          // it: "reply",
           content: replyText.replyText,
           pId: uId,
         },

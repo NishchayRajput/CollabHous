@@ -1,3 +1,5 @@
+//Individual
+
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
@@ -102,7 +104,7 @@ export default function IndividualBlog({}) {
         const { data } = await axios.get(
           `http://localhost:5000/blogs/${blogId}`
         );
-        // console.log(data);
+        console.log(data);
         setBlog(data.blogF);
         setInteraction(data.interaction);
         setUserId(data.blogF.user_id._id);
@@ -112,7 +114,8 @@ export default function IndividualBlog({}) {
     }
     getBlog();
     getAllBlogs();
-  }, []);
+    setUpVoteCount(blog.like);
+  }, [blog.like]);
   // console.log(blog);
   const handleUpVote = async (e) => {
     try {
@@ -170,7 +173,9 @@ export default function IndividualBlog({}) {
               <Typography className="title">{blog.title}</Typography>
               <div className="usernameContainer">
                 <Typography className="X">X</Typography>
-                <Typography className="username">Username</Typography>
+                <Typography className="username">
+                  {blog.user_id?.name}
+                </Typography>
                 <img src="" />{" "}
               </div>
             </Box>
@@ -182,7 +187,9 @@ export default function IndividualBlog({}) {
               <Typography className="title">{blog.title}</Typography>
               <div className="usernameContainer">
                 <Typography className="X">X</Typography>
-                <Typography className="username">Username</Typography>
+                <Typography className="username">
+                  {blog.user_id?.name}
+                </Typography>
                 <img src="" />{" "}
               </div>
             </Box>
@@ -351,22 +358,16 @@ export default function IndividualBlog({}) {
                 <Box className="sharingBox">
                   <TwitterShareButton
                     url={`http://localhost:3000/blogs/${blogId}`}
-                    // quote={"Dummy text!"}
-                    // hashtag="#muo"
                   >
                     <TwitterIcon size={32} round />
                   </TwitterShareButton>
                   <EmailShareButton
                     url={`http://localhost:3000/blogs/${blogId}`}
-                    // quote={"Dummy text!"}
-                    // hashtag="#muo"
                   >
                     <EmailIcon size={32} round />
                   </EmailShareButton>
                   <WhatsappShareButton
                     url={`http://localhost:3000/blogs/${blogId}`}
-                    // quote={"Dummy text!"}
-                    // hashtag="#muo"
                   >
                     <WhatsappIcon size={32} round />
                   </WhatsappShareButton>
@@ -378,7 +379,7 @@ export default function IndividualBlog({}) {
             <div className="commentBox">
               <CommentArea
                 bId={blogId}
-                uId={userId}
+                bloguId={userId}
                 interactionArray={interaction}
               />
             </div>
@@ -397,7 +398,8 @@ export default function IndividualBlog({}) {
                 relatedBlog.map((blog) => (
                   <Box key={blog._id} className="relatedBlogCard">
                     <BlogCard
-                      id={blog._id}
+                      bId={blog?._id}
+                      uId={blog.user != null ? blog.user.id : ""}
                       tag={blog.tag}
                       title={blog.title}
                       description={blog.content}
@@ -406,6 +408,7 @@ export default function IndividualBlog({}) {
                       time={formatDate(blog.time)}
                       upVoteC={blog.like}
                       read_time={blog.read_time}
+                      likeStat={blog.like_status}
                     />
                     <Link
                       to={`/blogs/${blog._id}`}

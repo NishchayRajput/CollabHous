@@ -1,9 +1,11 @@
+//CommentArea
+
 import React, { useState } from "react";
 import "./css/CommentArea.css";
 import CommentCard from "./CommentCard";
 import axios from "axios";
 import { Link, useNavigate, useParams } from "react-router-dom";
-const CommentArea = ({ bId, uId, interactionArray }) => {
+const CommentArea = ({ bId, bloguId, interactionArray }) => {
   const [comment, setComment] = useState({ comment: "" });
   const navigate = useNavigate();
   //handle input change
@@ -25,7 +27,7 @@ const CommentArea = ({ bId, uId, interactionArray }) => {
           iId: bId,
           it: "comment",
           content: comment.comment,
-          pId: uId,
+          pId: bloguId,
         },
         {
           withCredentials: true,

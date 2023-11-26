@@ -1,3 +1,5 @@
+//Header
+
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
@@ -70,7 +72,7 @@ const Header = () => {
             },
           }
         );
-        console.log(data.notifications);
+        console.log("Headers Page: ",data.notifications);
         setNotification(data.notifications);
         if (data.message == "Please login first") setIsLogin(true);
         else setIsLogin(false);

@@ -1,3 +1,5 @@
+//BlogCard
+
 import * as React from "react";
 import { useState } from "react";
 import Card from "@mui/material/Card";
@@ -39,8 +41,7 @@ export default function BlogCard({
   const [likeStatus, setLikeStatus] = useState(likeStat);
   const [upVoteCount, setUpVoteCount] = useState(0);
   // console.log(title);
-  // console.log(likeStat);
-
+  console.log("Likestatus", likeStat);
 
   const handleUpVote = async (e) => {
     try {
