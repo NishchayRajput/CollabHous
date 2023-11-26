@@ -51,20 +51,20 @@ const Connect = () => {
             <div className="ch2">
               <p ><span className="c">C</span><span className="h"> H</span></p>
             </div>
-            <div className="connect">Connect with us </div>
+            <div className="connect">Partnership Program</div>
 
             <div className="lowerbox2">
             <div className="frame65">
               <div className="text">By connecting, I agree that i have read the privacy policy and that I may receive updates from cH Commune for industry updates and opportunities.</div>
             </div>
-            <div className="frame67">
+            {/* <div className="frame67">
               <input type="email" name="email" placeholder="Enter Email"></input>
-            </div>
+            </div> */}
 
             <div >
-              <button className="frame66"> Connect</button>
+              <button className="frame66"> Read more about the program</button>
             </div>
-            {/* <div className="lowerbox3"> */}
+            
             
 
             <div className="frame68">
@@ -111,7 +111,7 @@ const Connect = () => {
                   </button>
                   </div>
               </div>
-              {/* </div> */}
+            
 
 
 

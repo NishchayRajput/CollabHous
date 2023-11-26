@@ -10,6 +10,7 @@
 .allboxes{
     display: flex;
     flex-direction: column;
+    margin-top: 40px;
     gap: 20px;
     align-items: center;
     justify-content: center;
@@ -80,7 +81,7 @@ border-radius: 4.5px;
 background: #3A3A3A;
 
 position: relative;
-top: 50px; 
+top: 500px; 
 
 }
 

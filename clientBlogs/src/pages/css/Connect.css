@@ -68,17 +68,21 @@
 
 .middlepart {
     display: flex;
-    flex-direction: Z;
+    /* flex-direction: Z; */
     margin: 0;
     height: max-content;
 
 }
 
 .box1 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     width: 50%;
     align-items: center;
     justify-content: center;
-    /* text-align: center; */
+    
+    
     /* height: 125vh; */
 }
 
@@ -87,6 +91,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 40vh;
 }
 
 .ch {
@@ -194,6 +199,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 40px;
+    /* height: 40vh; */
+    /* transform: translateY(50px); */
     /* text-align: center; */
 }
 
@@ -203,7 +211,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    /* transform: translateX(100px); */
+    
 }
 
 .ch2 {
@@ -418,23 +426,25 @@
 }
 
 .box2 {
-    display: inline-flex;
+
     padding: 190px 107.52px 205.56px 107.55px;
     flex-direction: column;
     align-items: center;
-    gap: 451.9px;
+    gap: 500.9px;
     background: #383838;
     width: 50%;
+
 
 }
 
 .sidepart {
     width: 40vw;
-    height: 60vh;
+    height: 50vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     gap: 48.6px;
 }
 
@@ -523,7 +533,7 @@
 
 .sidepart2 {
     width: 40vw;
-    height: 60vh;
+    height: 50vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
