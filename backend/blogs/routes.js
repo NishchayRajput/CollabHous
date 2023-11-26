@@ -21,8 +21,12 @@ router.get('/headers', headers );
 router.get('/setting', setting );
 router.post('/comment', comment);
 router.get('/', blog_card);
-router.get('/hero', blog_hero);
+router.post('/hero', blog_hero);
 router.post('/reply', reply);
 router.get('/:id', blogs);
+router.post('/image', (req,res)=>{
+    console.log(req);
+    res.send('ok');
+})
 
 module.exports = router;
