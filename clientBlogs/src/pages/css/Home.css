@@ -239,11 +239,11 @@ color: #FFFFFF;
     letter-spacing: 0.05em !important;
 }
 
-@media only screen and (min-width: 375px) and (max-width:767px){
+/* @media only screen and (min-width: 375px) and (max-width:767px){
 
     .heroLandingImage {
-        /* object-fit: cover;
-        width: 100vw; */
+         object-fit: cover;
+        width: 100vw; 
         height: fit-content;
     
     
@@ -307,7 +307,7 @@ color: #FFFFFF;
             width: 70%;
             height: fit-content;
             margin-left: 20px;
-            /* padding-top: 50px; */
+             padding-top: 50px; 
   
             font-size: 18px;
             line-height: 25px;
@@ -334,7 +334,7 @@ color: #FFFFFF;
     .welcomeSection {
 
         width: 100%;
-        /* min-height: 50vh; */
+        
         justify-content: center;
         align-items: center;
         text-align: center;
@@ -378,7 +378,7 @@ color: #FFFFFF;
 .horzBlogsOuter{
     width: 100%;
     height: fit-content;
-    /* display: none; */
+
 }
 
 
@@ -428,14 +428,12 @@ color: #FFFFFF;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* transform: translateY(30px); */
 }
 
  .carouselContentContainer {
     display: flex;
     width: 100%;
     margin-left: auto ;
-    /* transform: translatex(10px); */
     gap: 7px;
 }
 
@@ -478,7 +476,6 @@ color: #FFFFFF;
     font-weight: 400;
     font-size: 24px;
     line-height: 36px;
-    /* or 150% */
     letter-spacing: 0.05em;
 
     color: #B1B1B1;
@@ -488,4 +485,4 @@ color: #FFFFFF;
 
 }
 
-}
+} */

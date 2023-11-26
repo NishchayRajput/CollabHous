@@ -11,10 +11,12 @@ import BlogCard from "./components/BlogCard";
 import IndividualBlog from "./pages/IndividualBlog";
 import Connect from "./pages/Connect";
 import Settings from "./pages/Settings";
+
 import CommuneWelcome from "./pages/CommuneWelcome";
 import ExploreCommune from "./pages/ExploreCommune";
 import Questions from "./pages/Questions";
 import Setting from "./pages/Setting";
+import FAQ from "./pages/FAQ";
 
 function App() {
   return (
@@ -30,10 +32,14 @@ function App() {
           <Route path="/blogs/:blogId" element={<IndividualBlog />} />
           <Route path="/connect" element={<Connect />} />
           <Route path="/settings" element={<Settings />} />
+
           <Route path="/commune" element={<CommuneWelcome />} />
           <Route path="/exploreConnect" element={<ExploreCommune />} />
           <Route path="/questions" element={<Questions />} />
           <Route path="/setting" element={<Setting />} />
+
+          <Route path="/FAQ" element={<FAQ />} />
+
         </Route>
           <Route path="/register" element={<Signup />} />
           <Route path="/login" element={<Login />} />
