@@ -47,7 +47,7 @@
 }
 
 #exploreconnect .options .nTitle {
-    height: 200px;
+    height: 50px;
     font-weight: 700;
     font-size: 26px;
     color: white;
@@ -56,6 +56,12 @@
 #exploreconnect .options .follow {
     height: 200px;
 
+}
+
+#exploreconnect .options .iconBox {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
 }
 
 #exploreconnect .options .title {

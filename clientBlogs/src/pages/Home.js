@@ -27,7 +27,19 @@ const Home = () => {
   useEffect(() => {
     async function getBlog() {
       try {
-        const { data } = await axios.get("http://localhost:5000/blogs/hero");
+        const { data } = await axios.post(
+          "http://localhost:5000/blogs/hero",
+          {
+            page: "home",
+          },
+          {
+            withCredentials: true,
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+          }
+        );
+
         setMostLikedBlog(data.mostLikedBlog);
         setHeroData(data.heroData);
         setRecentBlog(data.latestBlogs);

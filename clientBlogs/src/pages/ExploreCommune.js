@@ -11,7 +11,17 @@ const ExploreCommune = () => {
         <div className="options">
           <div className="follow box">
             <div className="nTitle">Follow us</div>
-            <div className="iconBox"></div>
+            <div className="iconBox">
+              <div>
+                <img src="images/bi_instagram.png" alt="" />
+              </div>
+              <div>
+                <img src="images/pajamas_twitter.png" alt="" />
+              </div>
+              <div>
+                <img src="images/uil_facebook.png" alt="" />
+              </div>
+            </div>
           </div>
           <div
             className="question box"

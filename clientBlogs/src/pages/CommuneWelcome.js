@@ -3,6 +3,7 @@ import "./css/CommuneWelcome.css";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 
+
 const CommuneWelcome = () => {
   const navigate = useNavigate();
   return (

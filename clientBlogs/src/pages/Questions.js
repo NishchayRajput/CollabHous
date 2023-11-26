@@ -45,6 +45,7 @@ const Questions = () => {
       //     },
       //   }
       // );
+      navigate("/home");
     } catch (error) {
       console.log(error);
     }
@@ -101,14 +102,12 @@ const Questions = () => {
               onChange={handleChange}
             />
           </form>
-            <button
-              className="nextBtn"
-              onClick={() =>
-                document.getElementById("section3").scrollIntoView()
-              }
-            >
-              Next
-            </button>
+          <button
+            className="nextBtn"
+            onClick={() => document.getElementById("section3").scrollIntoView()}
+          >
+            Next
+          </button>
         </div>
       </div>
       <div id="section3" className="qsection section3">
@@ -127,14 +126,12 @@ const Questions = () => {
               onChange={handleChange}
             />
           </form>
-            <div
-              className="nextBtn"
-              onClick={() =>
-                document.getElementById("section4").scrollIntoView()
-              }
-            >
-              Next
-            </div>
+          <div
+            className="nextBtn"
+            onClick={() => document.getElementById("section4").scrollIntoView()}
+          >
+            Next
+          </div>
         </div>
       </div>
       <div id="section4" className="qsection section4">
