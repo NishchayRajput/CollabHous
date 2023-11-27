@@ -8,7 +8,7 @@ const SettingsSchema = new mongoose.Schema({
     number: { type: String, required: true, maxLength: 10 },
     primary_role: { type: String, default: '' }, // Provide default values as needed
     job_notification_status: { type: String, default: '' },
-    job_notification_type: { type: String, default: '' },
+    job_notification_type: { type: [String], default: [] }, // Define an array of strings with a default value of an empty array
     image: { type: Buffer },
 });
 

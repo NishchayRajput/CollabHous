@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./css/CommuneWelcome.css";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
@@ -6,6 +6,7 @@ import { Button } from "@mui/material";
 
 const CommuneWelcome = () => {
   const navigate = useNavigate();
+
   return (
     <div className="settingCotainer">
       <div className="greyBox">

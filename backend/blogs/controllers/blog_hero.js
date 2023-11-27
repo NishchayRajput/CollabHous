@@ -144,11 +144,13 @@ async function blog_hero(req, res) {
                 like_status: likeStatusMostLikedBlog,
             };
         }
+        const ud  = await userInfo.find({_id : id}, "name email").exec();
 
         res.status(200).json({
             latestBlogs: formattedLatestBlogs,
             mostLikedBlog: formattedMostLikedBlog,
             heroData: heroData,
+            ud : ud,
         });
     } catch (error) {
         console.error('Error fetching and formatting blogs:', error);

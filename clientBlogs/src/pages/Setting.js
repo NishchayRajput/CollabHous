@@ -1,6 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./css/Setting.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { alpha, styled } from "@mui/material/styles";
+import { pink } from "@mui/material/colors";
+import Switch from "@mui/material/Switch";
+
+const PinkSwitch = styled(Switch)(({ theme }) => ({
+  "& .MuiSwitch-switchBase.Mui-checked": {
+    color: pink[600],
+    "&:hover": {
+      backgroundColor: alpha(pink[600], theme.palette.action.hoverOpacity),
+    },
+  },
+  "& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track": {
+    backgroundColor: pink[600],
+  },
+}));
 
 const Setting = () => {
   const navigate = useNavigate();
@@ -10,16 +26,24 @@ const Setting = () => {
     firstName: "",
     lastName: "",
     mobile: "",
-    department: "",
+
+    primaryRole: "",
+
     job: "",
+    jobCheck: "",
+
+    anotherCheckbox: "",
+    customerService: "",
+    Buying: "",
   });
   const [selectedFile, setSelectedFile] = useState(null);
-
+  const [jobCheck, setJobCheck] = useState(false);
   const handleFileChange = (event) => {
     // Access the selected file from the input
     const file = event.target.files[0];
     setSelectedFile(file);
   };
+  const [deptSubscription, setDeptSubscription] = useState([]);
   //handle input change
   const handleChange = (e) => {
     setInputs((prevState) => ({
@@ -28,18 +52,26 @@ const Setting = () => {
     }));
   };
   const handleSubmit = async (e) => {
-    console.log(inputs);
+    setDeptSubscription([
+      inputs?.Buying,
+      inputs?.anotherCheckbox,
+      inputs?.customerService,
+    ]);
     if (e) {
       e.preventDefault();
     }
+
     try {
       // const response = await axios.post(
-      //   "http://localhost:5000/ecommerce/login",
+      //   "http://localhost:5000/blogs/setting",
       //   {
-      //     name: inputs.name,
+      //     fname: inputs.firstName,
+      //     lname: inputs.lastName,
       //     email: inputs.email,
-      //     password: inputs.password,
-      //     g_id: inputs.g_id,
+      //     number: inputs.mobile,
+      //     primary_role: inputs.primaryRole,
+      //     job_notification_status: inputs.job,
+      //     job_notification_type: deptSubscription,
       //   },
       //   {
       //     withCredentials: true,
@@ -48,7 +80,9 @@ const Setting = () => {
       //     },
       //   }
       // );
-      navigate("/home");
+      // navigate("/home");
+      console.log(inputs);
+      console.log(deptSubscription);
     } catch (error) {
       console.log(error);
     }
@@ -64,7 +98,9 @@ const Setting = () => {
       console.error("No file selected");
     }
   };
-
+  useEffect(() => {
+    setJobCheck(false);
+  }, []);
   return (
     <div>
       <div className="ssection section1">
@@ -136,7 +172,7 @@ const Setting = () => {
               className="radio-input"
               type="radio"
               id="buying"
-              name="department"
+              name="primaryRole"
               value="buying"
               onChange={handleChange}
             />
@@ -149,7 +185,7 @@ const Setting = () => {
               className="radio-input"
               type="radio"
               id="content"
-              name="department"
+              name="primaryRole"
               value="content"
               onChange={handleChange}
             />
@@ -162,7 +198,7 @@ const Setting = () => {
               className="radio-input"
               type="radio"
               id="customerCare"
-              name="department"
+              name="primaryRole"
               value="customerCare"
               onChange={handleChange}
             />
@@ -175,7 +211,7 @@ const Setting = () => {
               className="radio-input"
               type="radio"
               id="ecom"
-              name="department"
+              name="primaryRole"
               value="ecom"
               onChange={handleChange}
             />
@@ -188,7 +224,7 @@ const Setting = () => {
               className="radio-input"
               type="radio"
               id="finance"
-              name="department"
+              name="primaryRole"
               value="finance"
               onChange={handleChange}
             />
@@ -208,104 +244,102 @@ const Setting = () => {
         </div>
         <form action="" className="form_radio">
           <div className="input_radio">
-            <input
-              className="radio-input"
-              type="radio"
-              id="Audi"
-              name="job"
+            <PinkSwitch
+              className="radio-inputs"
+              type="checkbox"
+              id="jobCheck"
+              name="jobCheck"
               value="Notify about new jobs"
-              onChange={handleChange}
+              onChange={(event) => {
+                handleChange(event);
+                setJobCheck(!jobCheck);
+              }}
             />
-            <label className="label" for="Audi">
+            <label className="label" htmlFor="Audi">
               Notify about new jobs
             </label>
           </div>
-          <div className="input_radio">
-            <input
-              className="radio-input"
-              type="radio"
-              id="Audi"
-              name="job"
-              value="Every time a job is added"
-              onChange={handleChange}
-            />
-            <label className="label" for="Audi">
-              Every time a job is added
-            </label>
-          </div>
-          <div className="input_radio">
-            <input
-              className="radio-input"
-              type="radio"
-              name="job"
-              value="Once per week"
-              onChange={handleChange}
-            />
-            <label className="label" for="Audi">
-              Once per week
-            </label>
-          </div>
-          <div className="input_radio">
-            <input
-              className="radio-input"
-              type="radio"
-              name="job"
-              value="Once per month"
-              onChange={handleChange}
-            />
-            <label className="label" for="Audi">
-              Once per month{" "}
-            </label>
-          </div>
+          {jobCheck && (
+            <div>
+              <div className="input_radio">
+                <input
+                  className="radio-input"
+                  type="radio"
+                  name="job"
+                  value="Every time a job is added"
+                  onChange={handleChange}
+                />
+                <label className="label" htmlFor="Audi">
+                  Every time a job is added
+                </label>
+              </div>
+              <div className="input_radio">
+                <input
+                  className="radio-input"
+                  type="radio"
+                  name="job"
+                  value="Once per week"
+                  onChange={handleChange}
+                />
+                <label className="label" htmlFor="Audi">
+                  Once per week
+                </label>
+              </div>
+              <div className="input_radio">
+                <input
+                  className="radio-input"
+                  type="radio"
+                  name="job"
+                  value="Once per month"
+                  onChange={handleChange}
+                />
+                <label className="label" htmlFor="Audi">
+                  Once per month{" "}
+                </label>
+              </div>
+            </div>
+          )}
         </form>
         <form action="" className="form_radio">
-          <div className="input_radio">
-            <input
-              className="radio-input"
-              type="checkbox"
-              name="job"
-              value="All Department and roles"
-              onChange={handleChange}
-            />
-            <label className="label" for="Audi">
-              All Department and roles
-            </label>
-          </div>
-          <div className="input_radio">
-            <input
-              className="radio-input"
-              type="checkbox"
-              name="Buying"
-              value="true"
-              onChange={handleChange}
-            />
-            <label className="label" for="Audi">
-              Buying
-            </label>
-          </div>
-          <div className="input_radio">
-            <input
-              className="radio-input"
-              type="checkbox"
-              id="Audi"
-              name="brand"
-              value="Audi"
-            />
-            <label className="label" for="Audi">
-              Customer Service
-            </label>
-          </div>
-          <div className="input_radio">
-            <input
-              className="radio-input"
-              type="checkbox"
-              id="Audi"
-              name="brand"
-              value="Audi"
-            />
-            <label className="label" for="Audi">
-              Ecom
-            </label>
+          <div>
+            <div>
+              <div className="input_radio">
+                <input
+                  className="radio-input"
+                  type="checkbox"
+                  name="Buying"
+                  value="Buying"
+                  onChange={handleChange}
+                />
+                <label className="label" htmlFor="Audi">
+                  Buying
+                </label>
+              </div>
+              <div className="input_radio">
+                <input
+                  className="radio-input"
+                  type="checkbox"
+                  name="customerService"
+                  value="CustomerService"
+                  onChange={handleChange}
+                />
+                <label className="label" htmlFor="Audi">
+                  Customer Service
+                </label>
+              </div>
+              <div className="input_radio">
+                <input
+                  className="radio-input"
+                  type="checkbox"
+                  name="anotherCheckbox"
+                  value="AnotherCheckbox"
+                  onChange={handleChange}
+                />
+                <label className="label" htmlFor="Audi">
+                  Another Checkbox
+                </label>
+              </div>
+            </div>
           </div>
         </form>
       </div>
@@ -350,7 +384,7 @@ const Setting = () => {
               </div>
             </div>
             <div className="container">
-              <div className="save" onClick={() => navigate("/home")}>
+              <div className="save" onClick={handleSubmit}>
                 Save
               </div>
             </div>

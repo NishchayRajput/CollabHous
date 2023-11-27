@@ -58,7 +58,7 @@ const Settings = () => {
     async function getInfo() {
       try {
         const { data } = await axios.get(
-          "http://localhost:5000/blogs/setting",
+          "http://localhost:5000/blogs/profile",
           {
             withCredentials: true,
             headers: {

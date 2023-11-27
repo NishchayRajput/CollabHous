@@ -72,7 +72,7 @@ const Header = () => {
             },
           }
         );
-        console.log("Headers Page: ",data.notifications);
+        // console.log("Headers Page: ",data.notifications);
         setNotification(data.notifications);
         if (data.message == "Please login first") setIsLogin(true);
         else setIsLogin(false);

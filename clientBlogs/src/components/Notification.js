@@ -18,7 +18,7 @@ export default function Notification({ notificationArray }) {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  console.log("Notifications Page: ",notificationArray);
+  // console.log("Notifications Page: ",notificationArray);
   return (
     <React.Fragment>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>

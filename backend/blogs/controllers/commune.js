@@ -54,19 +54,19 @@ async function settings(req, res) {
 
     if (user && user.settings) {
       // If user and user.settings exist, update them with the latest values
-      const { fname, lname, email, number, primary_role, job_notification_status, job_notification_type } = req.body;
+      // const { fname, lname, email, number, primary_role, job_notification_status, job_notification_type } = req.body;
 
-      user.settings.fname = fname;
-      user.settings.lname = lname;
-      user.settings.email = email;
-      user.settings.number = number;
-      user.settings.primary_role = primary_role;
-      user.settings.job_notification_status = job_notification_status;
-      user.settings.job_notification_type = job_notification_type;
+      // user.settings.fname = fname;
+      // user.settings.lname = lname;
+      // user.settings.email = email;
+      // user.settings.number = number;
+      // user.settings.primary_role = primary_role;
+      // user.settings.job_notification_status = job_notification_status;
+      // user.settings.job_notification_type = job_notification_type;
 
-      await user.save();
+      // await user.save();
 
-      res.status(200).json({ message: 'User settings updated', user: user });
+      res.status(200).json({ message: 'User settings updated', user: user.settings });
     } else {
       const { fname, lname, email, number, primary_role, job_notification_status, job_notification_type } = req.body;
 
@@ -174,3 +174,4 @@ async function questions(req, res) {
 async function editsettings(req, res) {
 
 }
+module.exports = { settings, questions, editsettings };

@@ -30,22 +30,22 @@ const Questions = () => {
       e.preventDefault();
     }
     try {
-      // const response = await axios.post(
-      //   "http://localhost:5000/ecommerce/login",
-      //   {
-      //     name: inputs.name,
-      //     email: inputs.email,
-      //     password: inputs.password,
-      //     g_id: inputs.g_id,
-      //   },
-      //   {
-      //     withCredentials: true,
-      //     headers: {
-      //       "Content-Type": "application/x-www-form-urlencoded",
-      //     },
-      //   }
-      // );
-      navigate("/home");
+      const response = await axios.post(
+        "http://localhost:5000/blogs/questions",
+        {
+          fname: inputs.firstName,
+          lname: inputs.lastName,
+          number: inputs.mobile,
+          pitch: inputs.pitch,
+        },
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      );
+      // navigate("/home");
     } catch (error) {
       console.log(error);
     }
