@@ -16,7 +16,7 @@ const {settings, questions, get_settings} = require('./controllers/commune');
 //     console.log(req);
 //     next();
 // })
-router.use(['/like*', '/comment*', '/reply*', '/headers*', '/profile*', '/settings*', '/questions*'], auth);
+router.use(['/like*', '/comment*', '/reply*', '/headers*', '/profile*', '/settings*', '/questions*', '/get_settings*'], auth);
 router.post('/like', like);
 router.get('/logout', logout);
 router.get('/headers', headers ); 
