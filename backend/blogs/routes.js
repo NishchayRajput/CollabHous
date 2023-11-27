@@ -9,7 +9,8 @@ const auth = require('./middleware/auth');
 const headers = require('./controllers/headers');
 const profile = require('./controllers/profile');
 const logout = require('./controllers/logout');
-const {settings, questions} = require('./controllers/commune')
+const {settings, questions, get_settings} = require('./controllers/commune');
+
 
 // router.use((req,res,next)=>{
 //     console.log(req);
@@ -27,5 +28,6 @@ router.post('/reply', reply);
 router.get('/:id', blogs);
 router.post('/settings', settings);
 router.post('/questions', questions);
+router.get('/get_settings', get_settings);
 
 module.exports = router;
