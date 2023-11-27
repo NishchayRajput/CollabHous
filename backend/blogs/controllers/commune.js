@@ -2,32 +2,24 @@ const mongoose = require('mongoose');
 const commune = require('../models/commune');
 const userInfo = require('../../ecommerce/models/userInfo');
 
+async function get_settings(req, res){
+  try{
+    const data = commune.findById(req.body.uId);
+    if(data){
+      res.status(200).json({message : "data found", data : data});
+    }else{
+      res.status(200).json({message : 'data not found'});
+    }
+  }
+  catch(error){
+    res.status(500).json({message : "getting error in fetching data", error : error});
+  }
+}
+
 async function settings(req, res) {
   try {
-    function extractTokenValue(tokenString) {
-      if (tokenString && typeof tokenString === "string") {
-        const tokenIndex = tokenString.indexOf("token=");
-
-        if (tokenIndex !== -1) {
-          const tokenStartIndex = tokenIndex + 6;
-          const tokenEndIndex = tokenString.indexOf(";", tokenStartIndex);
-          const tokenValue =
-            tokenEndIndex !== -1
-              ? tokenString.substring(tokenStartIndex, tokenEndIndex)
-              : tokenString.substring(tokenStartIndex);
-
-          return tokenValue;
-        } else {
-          return null; // 'token=' not found in the string
-        }
-      } else {
-        return null; // Handle the case where tokenString is undefined or not a string
-      }
-    }
-
-    // Extract the token from the request's cookies
-    const token = extractTokenValue(req.headers.cookie);
-    let id;
+    
+    let id = req.body.uId;
     if (token) {
       jwt.verify(token, process.env.secret, async (err, user) => {
         if (err) {
@@ -66,7 +58,7 @@ async function settings(req, res) {
 
       // await user.save();
 
-      res.status(200).json({ message: 'User settings updated', user: user.settings });
+      res.status(200).json({ message: 'User details already exist', user : user});
     } else {
       const { fname, lname, email, number, primary_role, job_notification_status, job_notification_type } = req.body;
 
@@ -171,7 +163,6 @@ async function questions(req, res) {
   }
 }
 
-async function editsettings(req, res) {
 
-}
-module.exports = { settings, questions, editsettings };
+
+module.exports = {settings, questions, get_settings};
