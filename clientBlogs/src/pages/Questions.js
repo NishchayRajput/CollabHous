@@ -37,6 +37,9 @@ const Questions = () => {
           lname: inputs.lastName,
           number: inputs.mobile,
           pitch: inputs.pitch,
+          rname: inputs.name,
+          remail: inputs.email,
+          rtitle: inputs.company,
         },
         {
           withCredentials: true,
@@ -45,7 +48,10 @@ const Questions = () => {
           },
         }
       );
-      // navigate("/home");
+
+      {
+        response.data?.(navigate("/home"));
+      }
     } catch (error) {
       console.log(error);
     }

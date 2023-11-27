@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Header from "../components/Header";
 import "./css/Connect.css";
-import { contactus_hero } from "../assets";
 import { Box, Button, Tab, Tabs, Typography } from "@mui/material";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
@@ -9,25 +8,8 @@ import axios from "axios";
 
 const Connect = () => {
   const navigate = useNavigate();
-  useEffect(() => {
-    async function connect() {
-      try {
-        const response = await axios.post(
-          "http://localhost:5000/blogs/connect",
-          {
-            withCredentials: true,
-            headers: {
-              "Content-Type": "application/x-www-form-urlencoded",
-            },
-          }
-        );
-        console.log(response);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    connect();
-  }, []);
+
+
   return (
     <div>
       <div style={{ backgroundColor: "rgba(35, 36, 38, 1)" }}>

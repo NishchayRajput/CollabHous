@@ -62,27 +62,28 @@ const Setting = () => {
     }
 
     try {
-      // const response = await axios.post(
-      //   "http://localhost:5000/blogs/setting",
-      //   {
-      //     fname: inputs.firstName,
-      //     lname: inputs.lastName,
-      //     email: inputs.email,
-      //     number: inputs.mobile,
-      //     primary_role: inputs.primaryRole,
-      //     job_notification_status: inputs.job,
-      //     job_notification_type: deptSubscription,
-      //   },
-      //   {
-      //     withCredentials: true,
-      //     headers: {
-      //       "Content-Type": "application/x-www-form-urlencoded",
-      //     },
-      //   }
-      // );
-      // navigate("/home");
-      console.log(inputs);
-      console.log(deptSubscription);
+      const response = await axios.post(
+        "http://localhost:5000/blogs/settings",
+        {
+          fname: inputs.firstName,
+          lname: inputs.lastName,
+          email: inputs.email,
+          number: inputs.mobile,
+          primary_role: inputs.primaryRole,
+          job_notification_status: inputs.job,
+          job_notification_type: deptSubscription,
+        },
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      );
+      console.log(response);
+      response.data.message?.(navigate("/home"));
+      // console.log(inputs);
+      // console.log(deptSubscription);
     } catch (error) {
       console.log(error);
     }
