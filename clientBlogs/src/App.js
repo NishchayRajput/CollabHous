@@ -38,7 +38,7 @@ function App() {
           <Route path="/questions" element={<Questions />} />
           <Route path="/setting" element={<Setting />} />
 
-          <Route path="/FAQ" element={<FAQ />} />
+          <Route path="/faq" element={<FAQ />} />
 
         </Route>
           <Route path="/register" element={<Signup />} />

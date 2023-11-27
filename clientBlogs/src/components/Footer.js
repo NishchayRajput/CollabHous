@@ -42,7 +42,7 @@ const Footer = () => {
               Connect
             </Typography>
           </Link>
-          <Link to="/faqs" style={{ textDecoration: "none" }}>
+          <Link to="/faq" style={{ textDecoration: "none" }}>
             <Typography
               className="pageLinks"
             >
