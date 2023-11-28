@@ -3,13 +3,13 @@ import "./css/ReplyCard.css";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ChatRoundedIcon from "@mui/icons-material/ChatRounded";
 
-const CommentCard = ({ content }) => {
+const CommentCard = ({ content, replyUsername }) => {
   return (
     <div className="replyCard">
       <div className="userDetail">
         <div className="logoUsernameContainer">
           <div className="logo">Ch</div>
-          <div className="username">CollabHous</div>
+          <div className="username">{replyUsername}</div>
         </div>
         {/* <div className="likeCard">
           <div className="like">

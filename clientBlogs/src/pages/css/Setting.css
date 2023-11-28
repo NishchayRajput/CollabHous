@@ -56,7 +56,15 @@
   /* align-items: center; */
   /* justify-content: center; */
 }
-
+.section1 .editBanner{
+  display: flex;
+  justify-content:space-between;
+  /* border: 1px solid white; */
+}
+.section1 .editBanner .edit{
+ color: white;
+ margin: auto 0px;
+}
 .section1 .right_form {
   display: flex;
   flex-direction: column;

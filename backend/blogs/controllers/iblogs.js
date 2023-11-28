@@ -33,6 +33,7 @@ async function getBlogById(req, res) {
 
     // Extract the token from the request's cookies
     const token = extractTokenValue(req.headers.cookie);
+
     let id;
     if (token) {
       jwt.verify(token, process.env.secret, async (err, user) => {
@@ -68,7 +69,7 @@ async function getBlogById(req, res) {
       })
       .exec();
 
-    const interaction = await Interaction.find({ blog_id: blogId }).exec();
+    const interaction = await Interaction.find({ blog_id: blogId }).populate({path : 'user_id replies.user_id', model : "userInfo", select : "_id name email"}).exec();
     const iu = await Interaction.find({
       blog_id: blogId,
       user_id: id,
@@ -86,12 +87,13 @@ async function getBlogById(req, res) {
     if (!blog) {
       return res.status(404).json({ message: "Blog not found" });
     }
-    const ud  = await userInfo.find({_id : id}, "name email").exec();
-
+    const ud = await userInfo.findById(id).populate("name email").exec();
     // Send the blog data to the frontend as a JSON response
-    res.status(200).json({blogF, interaction, ud});
+    res.status(200).json({ blogF, interaction, ud });
   } catch (error) {
     // If an error occurs, return a 500 error response with the error message
+
+    console.log(error);
     return res
       .status(500)
       .json({ message: "An error occurred nifghhg", error: error.message });

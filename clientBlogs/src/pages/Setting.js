@@ -5,7 +5,7 @@ import axios from "axios";
 import { alpha, styled } from "@mui/material/styles";
 import { pink } from "@mui/material/colors";
 import Switch from "@mui/material/Switch";
-
+import EditNoteIcon from "@mui/icons-material/EditNote";
 const PinkSwitch = styled(Switch)(({ theme }) => ({
   "& .MuiSwitch-switchBase.Mui-checked": {
     color: pink[600],
@@ -20,6 +20,10 @@ const PinkSwitch = styled(Switch)(({ theme }) => ({
 
 const Setting = () => {
   const navigate = useNavigate();
+  const [isDisabled, setIsDisabled] = useState(true);
+  const handleEdit = () => {
+    setIsDisabled(!isDisabled);
+  };
   const [inputs, setInputs] = useState({
     name: "",
     email: "",
@@ -36,6 +40,24 @@ const Setting = () => {
     customerService: "",
     Buying: "",
   });
+
+  const [placeholder, setPlaceholder] = useState({
+    name: "",
+    email: "Email",
+    firstName: "First Name",
+    lastName: "Last Name",
+    mobile: "Mobile",
+
+    primaryRole: "",
+
+    job: "",
+    jobCheck: "",
+
+    anotherCheckbox: "",
+    customerService: "",
+    Buying: "",
+  });
+
   const [selectedFile, setSelectedFile] = useState(null);
   const [jobCheck, setJobCheck] = useState(false);
   const handleFileChange = (event) => {
@@ -81,7 +103,45 @@ const Setting = () => {
         }
       );
       console.log(response);
-      response.data.message?.(navigate("/home"));
+      // response.data.message?.(navigate("/home"));
+      // console.log(inputs);
+      // console.log(deptSubscription);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const checkSettings = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:5000/blogs/get_settings",
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      );
+      console.log("check Responce", response);
+      if (response.data.message === "data found") {
+        const data = response.data.data.data.settings;
+        console.log(data);
+        setPlaceholder({
+          ...placeholder,
+          email: data.email,
+          firstName: data.fname,
+          lastName: data.lname,
+          mobile: data.number,
+
+          primaryRole: data.primary_role,
+
+          job:"Once per week",
+
+          Buying: data.job_notification_type[0],
+          customerService: data.job_notification_type[1],
+          anotherCheckbox: data.job_notification_type[2],
+        });
+      }
+      // response.data.message?.(navigate("/home"));
       // console.log(inputs);
       // console.log(deptSubscription);
     } catch (error) {
@@ -101,13 +161,19 @@ const Setting = () => {
   };
   useEffect(() => {
     setJobCheck(false);
+    checkSettings();
   }, []);
   return (
     <div>
       <div className="ssection section1">
         <div className="titleContainer">
           <div className="title1"> Settings</div>
-          <div className="title">Account</div>
+          <div className="editBanner">
+            <div className="title">Account</div>
+            <a className="edit">
+              <EditNoteIcon fontSize="large" onClick={handleEdit} />
+            </a>
+          </div>
           <div className="subtitle">
             Your basic information is submitted with every application at
             CollabHous
@@ -126,35 +192,39 @@ const Setting = () => {
           <div className="right_form">
             <input
               type="text"
-              placeholder="First Name"
+              placeholder={placeholder.firstName}
               className="inputBox"
               value={inputs.firstName}
               name="firstName"
               onChange={handleChange}
+              disabled={isDisabled}
             />
             <input
               type="text"
-              placeholder="Last Name"
+              placeholder={placeholder.lastName}
               className="inputBox"
               value={inputs.lastName}
               name="lastName"
               onChange={handleChange}
+              disabled={isDisabled}
             />
             <input
               type="text"
-              placeholder="Email"
+              placeholder={placeholder.email}
               className="inputBox"
               value={inputs.email}
               name="email"
               onChange={handleChange}
+              disabled={isDisabled}
             />
             <input
               type="text"
-              placeholder="Mobile"
+              placeholder={placeholder.mobile}
               className="inputBox"
               value={inputs.mobile}
               name="mobile"
               onChange={handleChange}
+              disabled={isDisabled}
             />
           </div>
         </form>
@@ -175,7 +245,11 @@ const Setting = () => {
               id="buying"
               name="primaryRole"
               value="buying"
+              checked={
+                isDisabled ? placeholder.primaryrole === "buying" : undefined
+              } // Set checked to true
               onChange={handleChange}
+              disabled={isDisabled}
             />
             <label className="label" htmlFor="buying">
               Buying
@@ -187,8 +261,12 @@ const Setting = () => {
               type="radio"
               id="content"
               name="primaryRole"
+              checked={
+                isDisabled ? placeholder.primaryrole === "content" : undefined
+              } // Set checked to true
               value="content"
               onChange={handleChange}
+              disabled={isDisabled}
             />
             <label className="label" htmlFor="content">
               Content and Activation
@@ -201,7 +279,13 @@ const Setting = () => {
               id="customerCare"
               name="primaryRole"
               value="customerCare"
+              checked={
+                isDisabled
+                  ? placeholder.primaryrole === "customerCare"
+                  : undefined
+              } // Set checked to true
               onChange={handleChange}
+              disabled={isDisabled}
             />
             <label className="label" htmlFor="customerCare">
               Customer care & Service
@@ -214,7 +298,11 @@ const Setting = () => {
               id="ecom"
               name="primaryRole"
               value="ecom"
+              checked={
+                isDisabled ? placeholder.primaryrole === "ecom" : undefined
+              } // Set checked to true
               onChange={handleChange}
+              disabled={isDisabled}
             />
             <label className="label" htmlFor="ecom">
               Ecom
@@ -227,7 +315,11 @@ const Setting = () => {
               id="finance"
               name="primaryRole"
               value="finance"
+              checked={
+                isDisabled ? placeholder.primaryrole === "finance" : undefined
+              } // Set checked to true
               onChange={handleChange}
+              disabled={isDisabled}
             />
             <label className="label" htmlFor="finance">
               Finance
@@ -255,6 +347,8 @@ const Setting = () => {
                 handleChange(event);
                 setJobCheck(!jobCheck);
               }}
+              checked={isDisabled ? placeholder.job : undefined} // Set checked to true only when isDisabled is true
+              disabled={isDisabled}
             />
             <label className="label" htmlFor="Audi">
               Notify about new jobs
@@ -269,6 +363,12 @@ const Setting = () => {
                   name="job"
                   value="Every time a job is added"
                   onChange={handleChange}
+                  disabled={isDisabled}
+                  checked={
+                    isDisabled
+                      ? placeholder.job === "Every time a job is added"
+                      : undefined
+                  } // Set checked to true
                 />
                 <label className="label" htmlFor="Audi">
                   Every time a job is added
@@ -281,6 +381,10 @@ const Setting = () => {
                   name="job"
                   value="Once per week"
                   onChange={handleChange}
+                  disabled={isDisabled}
+                  checked={
+                    isDisabled ? placeholder.job === "Once per week" : undefined
+                  } // Set checked to true
                 />
                 <label className="label" htmlFor="Audi">
                   Once per week
@@ -293,6 +397,12 @@ const Setting = () => {
                   name="job"
                   value="Once per month"
                   onChange={handleChange}
+                  disabled={isDisabled}
+                  checked={
+                    isDisabled
+                      ? placeholder.job === "Once per month"
+                      : undefined
+                  } // Set checked to true
                 />
                 <label className="label" htmlFor="Audi">
                   Once per month{" "}
@@ -311,6 +421,8 @@ const Setting = () => {
                   name="Buying"
                   value="Buying"
                   onChange={handleChange}
+                  disabled={isDisabled}
+                  checked={isDisabled ? placeholder.Buying : undefined} // Set checked to true
                 />
                 <label className="label" htmlFor="Audi">
                   Buying
@@ -323,6 +435,8 @@ const Setting = () => {
                   name="customerService"
                   value="CustomerService"
                   onChange={handleChange}
+                  disabled={isDisabled}
+                  checked={isDisabled ? placeholder.customerService : undefined} // Set checked to true
                 />
                 <label className="label" htmlFor="Audi">
                   Customer Service
@@ -335,6 +449,8 @@ const Setting = () => {
                   name="anotherCheckbox"
                   value="AnotherCheckbox"
                   onChange={handleChange}
+                  disabled={isDisabled}
+                  checked={isDisabled ? placeholder.anotherCheckbox : undefined} // Set checked to true
                 />
                 <label className="label" htmlFor="Audi">
                   Another Checkbox
@@ -385,7 +501,13 @@ const Setting = () => {
               </div>
             </div>
             <div className="container">
-              <div className="save" onClick={handleSubmit}>
+              <div
+                className="save"
+                onClick={() => {
+                  if (!isDisabled) handleSubmit();
+                  else alert("Not in Edit mode");
+                }}
+              >
                 Save
               </div>
             </div>

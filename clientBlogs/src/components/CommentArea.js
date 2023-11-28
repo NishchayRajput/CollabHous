@@ -1,13 +1,14 @@
 //CommentArea
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./css/CommentArea.css";
 import CommentCard from "./CommentCard";
 import axios from "axios";
 import { Link, useNavigate, useParams } from "react-router-dom";
-const CommentArea = ({ bId, bloguId, interactionArray }) => {
+const CommentArea = ({ bId, bloguId, interactionArray, isLogin, username }) => {
   const [comment, setComment] = useState({ comment: "" });
   const navigate = useNavigate();
+  const [loginStatus, setloginStatus] = useState();
   //handle input change
   const handleChange = (e) => {
     setComment((prevState) => ({
@@ -46,37 +47,43 @@ const CommentArea = ({ bId, bloguId, interactionArray }) => {
       console.log(error);
     }
   };
-  // console.log(bId);
+  useEffect(() => {
+    setloginStatus(isLogin);
+  }, [isLogin]);
+  // console.log(loginStatus);
   return (
     <div className="containerCommentArea">
-      <form onSubmit={handleSubmit} className="typeBox">
-        <div className="userDetail">
-          <div className="logoUsernameContainer">
-            <div className="logo">Ch</div>
-            <div className="username">CollabHous_Admin</div>
+      {loginStatus && (
+        <form onSubmit={handleSubmit} className="typeBox">
+          <div className="userDetail">
+            <div className="logoUsernameContainer">
+              <div className="logo">Ch</div>
+              <div className="username">{username}</div>
+            </div>
           </div>
-        </div>
-        <div className="textArea">
-          <input
-            type="text"
-            id="textBox"
-            name="comment"
-            value={comment.comment}
-            onChange={handleChange}
-            placeholder="Comment here..."
-          />
-        </div>
-        <div className="buttonArea">
-          <button id="respondBtn" type="submit">
-            Respond
-          </button>
-        </div>
-      </form>
+          <div className="textArea">
+            <input
+              type="text"
+              id="textBox"
+              name="comment"
+              value={comment.comment}
+              onChange={handleChange}
+              placeholder="Comment here..."
+            />
+          </div>
+          <div className="buttonArea">
+            <button id="respondBtn" type="submit">
+              Respond
+            </button>
+          </div>
+        </form>
+      )}
       {interactionArray.map(
         (i) =>
           i.interaction_type === "comment" && (
             <CommentCard
               content={i.interaction_content}
+              commentUserName={i.user_id.name}
               cId={i._id}
               bId={bId}
               uId={i.user_id}

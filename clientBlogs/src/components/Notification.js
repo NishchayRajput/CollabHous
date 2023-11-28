@@ -18,7 +18,7 @@ export default function Notification({ notificationArray }) {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  // console.log("Notifications Page: ",notificationArray);
+  // console.log("Notifications Page: ", notificationArray);
   return (
     <React.Fragment>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
@@ -88,7 +88,7 @@ export default function Notification({ notificationArray }) {
             return (
               <div>
                 <MenuItem onClick={handleClose} className="dropAvatar">
-                  {`Blog ${notification.blog_id} is  ${notification.type}`}
+                  {`Blog ${notification.blog_id.title} is  ${notification.type}d`}
                 </MenuItem>
                 <Divider className="divider" />
               </div>

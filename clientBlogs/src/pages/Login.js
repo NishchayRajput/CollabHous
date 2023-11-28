@@ -309,7 +309,7 @@ const Login = () => {
               />
             </GoogleOAuthProvider>
 
-            <Button className="loginWith">Continue with Facebook</Button>
+            {/* <Button className="loginWith">Continue with Facebook</Button> */}
           </div>
         </Box>
       </form>

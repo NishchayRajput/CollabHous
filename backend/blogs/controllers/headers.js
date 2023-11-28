@@ -14,7 +14,9 @@ module.exports = async (req, res) => {
 
         // Assuming uId is a valid user ID, find the user using userInfo.findById
         const user = await userInfo.findById(uId);
-        const notifications = await notification.find({ parent_id : uId });
+        const notifications = await notification.find({ parent_id : uId }).populate({
+            path : 'blog_id', model : 'blogs', select : '_id title'
+        });
 
         res.status(200).json({ user, notifications });
 

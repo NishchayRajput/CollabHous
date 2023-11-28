@@ -25,9 +25,9 @@ router.post('/comment', comment);
 router.get('/', blog_card);
 router.post('/hero', blog_hero);
 router.post('/reply', reply);
-router.get('/:id', blogs);
 router.post('/settings', settings);
 router.post('/questions', questions);
 router.get('/get_settings', get_settings);
+router.get('/:id', blogs);
 
 module.exports = router;

@@ -8,7 +8,14 @@ import ReplyCard from "./ReplyCard";
 import axios from "axios";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
-const CommentCard = ({ content, cId, bId, uId, repliesArray }) => {
+const CommentCard = ({
+  content,
+  cId,
+  bId,
+  uId,
+  commentUserName,
+  repliesArray,
+}) => {
   const [showReplies, setShowReplies] = useState(false);
   const [reply, setReply] = useState(false);
   const navigate = useNavigate();
@@ -50,6 +57,7 @@ const CommentCard = ({ content, cId, bId, uId, repliesArray }) => {
           },
         }
       );
+
       if (response.data.message === "Please login first") {
         navigate("/login");
       } else {
@@ -68,7 +76,7 @@ const CommentCard = ({ content, cId, bId, uId, repliesArray }) => {
         <div className="userDetail">
           <div className="logoUsernameContainer">
             <div className="logo">Ch</div>
-            <div className="username">CollabHous</div>
+            <div className="username">{commentUserName}</div>
           </div>
         </div>
         <div className="textArea">{content}</div>
@@ -116,7 +124,9 @@ const CommentCard = ({ content, cId, bId, uId, repliesArray }) => {
       )}
       {/* showing replies */}
       {showReplies &&
-        repliesArray.map((i) => <ReplyCard content={i.reply_content} />)}
+        repliesArray.map((i) => (
+          <ReplyCard content={i.reply_content} replyUsername={i.user_id.name} />
+        ))}
     </div>
   );
 };

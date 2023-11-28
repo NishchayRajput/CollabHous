@@ -4,8 +4,11 @@ const userInfo = require('../../ecommerce/models/userInfo');
 
 async function get_settings(req, res){
   try{
-    const udata = userInfo.findById(req.body.uId);
-    const data = commune.findById(req.body.uId);
+    console.log(req.body.uId);
+    const udata = await userInfo.findById(req.body.uId);
+    console.log(udata );
+    const data = await commune.findOne({user : req.body.uId});
+    console.log(data);
     if(data){
       res.status(200).json({message : "data found", data : {data , udata}});
     }else{
@@ -13,6 +16,7 @@ async function get_settings(req, res){
     }
   }
   catch(error){
+    console.log(error);
     res.status(500).json({message : "getting error in fetching data", error : error});
   }
 }

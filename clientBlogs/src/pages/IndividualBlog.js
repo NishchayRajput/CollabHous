@@ -36,8 +36,7 @@ import { useSelector } from "react-redux";
 
 export default function IndividualBlog({}) {
   //global stae
-  let isLogin = useSelector((state) => state.isLogin);
-  isLogin = isLogin || localStorage.getItem("userId");
+  const [isLogin, setIsLogin] = useState();
   const navigate = useNavigate();
   const [userId, setUserId] = useState();
   let { blogId } = useParams();
@@ -47,6 +46,7 @@ export default function IndividualBlog({}) {
   const [blog, setBlog] = useState([]);
   const [interaction, setInteraction] = useState([]);
   const [relatedBlog, setRelatedBlog] = useState([]);
+  const [loginUsername, setLoginUsername] = useState("");
   const formatDate = (isoDate) => {
     const date = new Date(isoDate);
     const options = { year: "numeric", month: "short", day: "numeric" };
@@ -61,7 +61,7 @@ export default function IndividualBlog({}) {
   };
   const getAllBlogs = async () => {
     try {
-      const { data } = await axios.get("http://localhost:5000/blogs/");
+      const { data } = await axios.get("http://localhost:5000/blogs/"); //sending without credentials as it was causing bugs
       setAllBlogs(data);
       console.log();
       const filterBlogs = (category) => {
@@ -102,12 +102,21 @@ export default function IndividualBlog({}) {
     async function getBlog() {
       try {
         const { data } = await axios.get(
-          `http://localhost:5000/blogs/${blogId}`
+          `http://localhost:5000/blogs/${blogId}`,
+          {
+            withCredentials: true,
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+          }
         );
-        console.log(data);
+        setLoginUsername(data.ud.name);
         setBlog(data.blogF);
         setInteraction(data.interaction);
         setUserId(data.blogF.user_id._id);
+
+        data.ud.length != 0 ? setIsLogin(true) : setIsLogin(false);
+        // console.log(data.interaction);
       } catch (error) {
         console.log(error);
       }
@@ -153,7 +162,6 @@ export default function IndividualBlog({}) {
     setShowCommentBox(!showCommentBox);
   };
   // You can use this ID to fetch the specific blog content
-  // console.log(relatedBlog);
   return (
     <div style={{ marginTop: "-68px" }}>
       <Box>
@@ -375,12 +383,15 @@ export default function IndividualBlog({}) {
               )}
             </CardActions>
           </Box>
+
           {showCommentBox && (
             <div className="commentBox">
               <CommentArea
                 bId={blogId}
                 bloguId={userId}
                 interactionArray={interaction}
+                isLogin={isLogin}
+                username={loginUsername}
               />
             </div>
           )}
