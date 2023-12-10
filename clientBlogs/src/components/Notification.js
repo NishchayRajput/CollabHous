@@ -18,7 +18,8 @@ export default function Notification({ notificationArray }) {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  // console.log("Notifications Page: ", notificationArray);
+  console.log("Notifications Page: ", notificationArray);
+
   return (
     <React.Fragment>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
@@ -52,8 +53,9 @@ export default function Notification({ notificationArray }) {
         PaperProps={{
           elevation: 0,
           sx: {
-            backgroundColor: "#00000024",
+            backgroundColor: "#26242442;",
             boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+            backdropFilter: "blur(10px)",
             border: "2px solid rgba(134, 127, 127, 0.43)",
             borderRadius: "10px",
             overflow: "visible",
@@ -84,16 +86,33 @@ export default function Notification({ notificationArray }) {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         {notificationArray && notificationArray.length > 0 ? (
-          notificationArray.map((notification) => {
-            return (
-              <div>
-                <MenuItem onClick={handleClose} className="dropAvatar">
-                  {`Blog ${notification.blog_id.title} is  ${notification.type}d`}
-                </MenuItem>
-                <Divider className="divider" />
-              </div>
-            );
-          })
+          <div className="notification-list">
+            {notificationArray.map((notification) => {
+              return (
+                <div>
+                  <MenuItem
+                    onClick={() => {
+                      handleClose();
+                      const handleNavigate = () => {
+                        window.location.href = `/blogs/${notification.blog_id._id}`;
+                      };
+                      handleNavigate();
+                    }}
+                    className="dropAvatar"
+                  >
+                    {notification.type === "like"
+                      ? `${notification.blog_id.title} is ${notification.type}d`
+                      : notification.type === "comment"
+                      ? `${notification.blog_id.title} has ${notification.type}s`
+                      : notification.type === "unlike"
+                      ? `${notification.blog_id.title} is ${notification.type}d`
+                      : null}
+                  </MenuItem>
+                  <Divider className="divider" />
+                </div>
+              );
+            })}
+          </div>
         ) : (
           <MenuItem className="dropAvatar">
             No Notifications to display
