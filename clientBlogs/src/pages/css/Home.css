@@ -1,13 +1,13 @@
 * {}
 
-.section{
+.section {
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.blogSection{
+.blogSection {
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -15,39 +15,39 @@
     padding: 5%;
 }
 
-.blogSectionInner{
+.blogSectionInner {
     display: flex;
     flex-direction: column;
     width: 80vw;
 }
 
-.blogHeadings{
+.blogHeadings {
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
 }
 
-.blogsBox{
+.blogsBox {
     display: flex;
     justify-content: center;
     height: 70vh;
 }
 
-.trendingBlog{
+.trendingBlog {
     width: 50%;
 }
 
-.horzBlogsOuter{
+.horzBlogsOuter {
     width: 50%;
 }
 
-.horzBlogsInner{
+.horzBlogsInner {
     display: flex;
     flex-direction: column;
     width: 90%;
     margin: 0 auto;
     margin-top: 8px;
-    gap:10px;
-    
+    gap: 10px;
+
 }
 
 .heroLandingImage {
@@ -71,7 +71,7 @@
     align-items: center;
 }
 
- .carouselContentContainer {
+.carouselContentContainer {
     display: flex;
     width: 95%;
     margin: 15px 0px;
@@ -87,30 +87,30 @@
     border: 0.83px solid rgba(71, 71, 71, 1);
 
 
-    
+
 
     font-family: 'Roboto';
     font-style: normal;
-    
+
     font-size: 23.1px;
     line-height: 27px;
     color: #FFFFFF;
 
     &:hover {
         background-color: #5f5f5f;
-        
+
     }
 }
 
- .carouselDisplayText {
+.carouselDisplayText {
     padding: 20px 0px;
     color: rgba(177, 177, 177, 1);
-    width: 100%;
+    width: 95%;
     margin: 0px auto;
     font-size: 24px;
 
 
-   
+
 
     font-family: 'Questrial';
     font-style: normal;
@@ -122,7 +122,7 @@
 
     color: #B1B1B1;
 
-    
+
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
 }
@@ -142,7 +142,7 @@
 }
 
 .whoAreWeContainer .contentPanel>h2 {
- 
+
     margin-bottom: 20px;
     width: 100%;
 
@@ -161,15 +161,15 @@
 
 .whoAreWeContainer .contentPanel>detail {
 
-        font-family: 'Questrial';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 20px;
-        line-height: 32px;
-      
-        letter-spacing: 0.05em;
+    font-family: 'Questrial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 32px;
 
-        color: #FFFFFF;
+    letter-spacing: 0.05em;
+
+    color: #FFFFFF;
 
 }
 
@@ -191,42 +191,42 @@
 }
 
 .welcomeSection>h2 {
-font-family: 'Montserrat';
-font-style: normal;
-font-weight: 200;
-font-size: 48px;
-line-height: 59px;
-text-align: center;
-letter-spacing: 0.05em;
-color: #F74D79;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 48px;
+    line-height: 59px;
+    text-align: center;
+    letter-spacing: 0.05em;
+    color: #F74D79;
 
 }
 
 .welcomeSection>detail {
-font-family: 'Questrial';
-font-style: normal;
-font-weight: 400;
-font-size: 20px;
-line-height: 32px;
-text-align: center;
-letter-spacing: 0.05em;
-color: #FFFFFF;
+    font-family: 'Questrial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 32px;
+    text-align: center;
+    letter-spacing: 0.05em;
+    color: #FFFFFF;
 
 
 }
 
 
-.trendingBlogsText{
-    color:rgba(247, 77, 121, 1) !important; 
-    font-size:41px !important;
-    font-family:"Questrial" !important;
+.trendingBlogsText {
+    color: rgba(247, 77, 121, 1) !important;
+    font-size: 41px !important;
+    font-family: "Questrial" !important;
     font-weight: 400 !important;
     line-height: 42px !important;
     letter-spacing: 0.05em !important;
-                    
+
 }
 
-.moreText{
+.moreText {
 
     color: white !important;
     font-size: 26px !important;
