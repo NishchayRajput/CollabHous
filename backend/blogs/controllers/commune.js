@@ -4,11 +4,11 @@ const userInfo = require('../../ecommerce/models/userInfo');
 
 async function get_settings(req, res){
   try{
-    console.log(req.body.uId);
+    // console.log(req.body.uId);
     const udata = await userInfo.findById(req.body.uId);
-    console.log(udata );
+    // console.log(udata );
     const data = await commune.findOne({user : req.body.uId});
-    console.log(data);
+    // console.log(data);
     if(data){
       res.status(200).json({message : "data found", data : {data , udata}});
     }else{
@@ -30,20 +30,9 @@ async function settings(req, res) {
     const user = await commune.findOne({ user: id });
 
     if (user && user.settings) {
-      // If user and user.settings exist, update them with the latest values
-      // const { fname, lname, email, number, primary_role, job_notification_status, job_notification_type } = req.body;
-
-      // user.settings.fname = fname;
-      // user.settings.lname = lname;
-      // user.settings.email = email;
-      // user.settings.number = number;
-      // user.settings.primary_role = primary_role;
-      // user.settings.job_notification_status = job_notification_status;
-      // user.settings.job_notification_type = job_notification_type;
-
-      // await user.save();
 
       res.status(200).json({ message: 'User details already exist', user : user});
+
     } else {
       const { fname, lname, email, number, primary_role, job_notification_status, job_notification_type } = req.body;
 
@@ -109,6 +98,44 @@ async function questions(req, res) {
   }
 }
 
+async function set_interest(req, res) {
+  try {
+    const userId = req.body.uId;
+    const user = await commune.findOne({ user: userId });
 
+    if (user) {
+      user.interest = req.body.interest;
+      await user.save();
+      res.status(200).json({ message: "Interest set", user: user });
+    } else {
+      const newCommuneUser = new commune({
+        user: userId,
+        interest: req.body.interest,
+      });
+      await newCommuneUser.save();
+      res.status(200).json({ message: "Interest set", user: newCommuneUser });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error in setting interest", error: error });
+  }
+}
 
-module.exports = {settings, questions, get_settings};
+async function get_interest(req, res) {
+  try {
+    const userId = req.body.uId; // Assuming the user ID is in the URL parameters
+    const user = await commune.findOne({ user: userId });
+
+    if (user) {
+      const interest = user.interest || [];
+      res.status(200).json({ message: "Interest retrieved", interest: interest });
+    } else {
+      res.status(404).json({ message: "User not found", interest: [] });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error in getting interest", error: error });
+  }
+}
+
+module.exports = {settings, questions, get_settings, set_interest, get_interest};

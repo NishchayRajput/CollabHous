@@ -9,15 +9,12 @@ const auth = require('./middleware/auth');
 const headers = require('./controllers/headers');
 const profile = require('./controllers/profile');
 const logout = require('./controllers/logout');
-const {settings, questions, get_settings} = require('./controllers/commune');
+const {settings, questions, get_settings, set_interest} = require('./controllers/commune');
 
 
-// router.use((req,res,next)=>{
-//     console.log(req);
-//     next();
-// })
-router.use(['/like*', '/comment*', '/reply*', '/headers*', '/profile*', '/settings*', '/questions*', '/get_settings*'], auth);
+router.use(['/like*', '/comment*', '/reply*', '/headers*', '/profile*', '/settings*', '/questions*', '/get_settings*','/set_interest*'], auth);
 router.post('/like', like);
+router.post('/set_interest', set_interest);
 router.get('/logout', logout);
 router.get('/headers', headers ); 
 router.get('/profile', profile );

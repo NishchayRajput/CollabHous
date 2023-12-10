@@ -24,6 +24,7 @@ const CommuneSchema = new mongoose.Schema({
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'userInfo' },
     settings: SettingsSchema,
     questions: [QuestionSchema],
+    interest: { type: [String] },
 });
 
 // Use the singular form 'Commune' for the model name
