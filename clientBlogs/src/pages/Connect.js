@@ -1,15 +1,75 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import Header from "../components/Header";
 import "./css/Connect.css";
 import { Box, Button, Tab, Tabs, Typography } from "@mui/material";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
+import { ReactNotifications, Store } from "react-notifications-component";
 import axios from "axios";
 
 const Connect = () => {
   const navigate = useNavigate();
+  const [selectedOption, setSelectedOption] = useState("");
 
+  // Function to handle option selection
+  const handleOptionSelect = (value) => {
+    setSelectedOption(value);
+    console.log("Selected option:", value); // For testing purposes, log the selected value
+  };
 
+  const handleConnectClick = () => {
+    console.log(selectedOption);
+    if (selectedOption === "") {
+      Store.addNotification({
+        title: "Please select your interest",
+        message: "",
+        type: "danger",
+        insert: "top",
+        container: "bottom-center",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+        dismiss: {
+          duration: 2000,
+          onScreen: true,
+        },
+      });
+    } else {
+      async function connect() {
+        try {
+          const response = await axios.post(
+            "http://localhost:5000/blogs/set_interest",
+            {
+              page: "Connect",
+            },
+            {
+              withCredentials: true,
+              headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+              },
+            }
+          );
+          if (response.data.message === "Interest set") {
+            Store.addNotification({
+              title: "Interest set",
+              message: "",
+              type: "success",
+              insert: "top",
+              container: "bottom-center",
+              animationIn: ["animate__animated", "animate__fadeIn"],
+              animationOut: ["animate__animated", "animate__fadeOut"],
+              dismiss: {
+                duration: 2000,
+                onScreen: true,
+              },
+            });
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      connect();
+    }
+  };
   return (
     <div>
       <div style={{ backgroundColor: "rgba(35, 36, 38, 1)" }}>
@@ -48,22 +108,84 @@ const Connect = () => {
                   <span className="h"> H</span>
                 </p>
               </div>
-              <p className="pink">What interests you? </p>
+              <p className="pink">What interests you?</p>
               <div className="connect_container">
-                <div className="item"> Digital Communities</div>
+                <div
+                  className="item"
+                  onClick={() => handleOptionSelect("Digital Communities")}
+                  style={{
+                    color:
+                      selectedOption === "Digital Communities"
+                        ? "#F74D79"
+                        : "#ffffff",
+                  }}
+                >
+                  Digital Communities
+                </div>
                 <span className="addline"></span>
-                <div className="item"> Fashion Blogging</div>
+                <div
+                  className="item"
+                  onClick={() => handleOptionSelect("Fashion Blogging")}
+                  style={{
+                    color:
+                      selectedOption === "Fashion Blogging"
+                        ? "#F74D79"
+                        : "#ffffff",
+                  }}
+                >
+                  Fashion Blogging
+                </div>
                 <span className="addline"></span>
-                <div className="item">Digital marketing</div>
+                <div
+                  className="item"
+                  onClick={() => handleOptionSelect("Digital marketing")}
+                  style={{
+                    color:
+                      selectedOption === "Digital marketing"
+                        ? "#F74D79"
+                        : "#ffffff",
+                  }}
+                >
+                  Digital marketing
+                </div>
                 <span className="addline"></span>
-                <div className="item">Collaborations</div>
+                <div
+                  className="item"
+                  onClick={() => handleOptionSelect("Collaborations")}
+                  style={{
+                    color:
+                      selectedOption === "Collaborations"
+                        ? "#F74D79"
+                        : "#ffffff",
+                  }}
+                >
+                  Collaborations
+                </div>
                 <span className="addline"></span>
-                <div className="item">Buying</div>
+                <div
+                  className="item"
+                  onClick={() => handleOptionSelect("Buying")}
+                  style={{
+                    color: selectedOption === "Buying" ? "#F74D79" : "#ffffff",
+                  }}
+                >
+                  Buying
+                </div>
                 <span className="addline"></span>
-                <div className="item">Buying</div>
+                <div
+                  className="item"
+                  onClick={() => handleOptionSelect("More")}
+                  style={{
+                    color: selectedOption === "More" ? "#F74D79" : "#ffffff",
+                  }}
+                >
+                  More
+                </div>
               </div>
 
-              <div className="cont">Continue</div>
+              <p className="cont" onClick={handleConnectClick}>
+                Connect
+              </p>
             </div>
 
             <div className="lowerbox">
