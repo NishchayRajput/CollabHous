@@ -5,6 +5,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { Box, Button, Tab, Tabs, Typography, IconButton } from "@mui/material";
 
+import Markdown from "react-markdown";
 import CardActions from "@mui/material/CardActions";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
@@ -13,6 +14,7 @@ import BlogCard from "../components/BlogCard";
 import "./css/IndividualBlogs.css";
 import MapsUgcRoundedIcon from "@mui/icons-material/MapsUgcRounded";
 import CommentArea from "../components/CommentArea";
+
 import {
   EmailShareButton,
   FacebookShareButton,
@@ -162,6 +164,7 @@ export default function IndividualBlog({}) {
     setShowCommentBox(!showCommentBox);
   };
   // You can use this ID to fetch the specific blog content
+  
   return (
     <div style={{ marginTop: "-68px" }}>
       <Box>
@@ -221,24 +224,9 @@ export default function IndividualBlog({}) {
           <Box className="blogContainer">
             <Typography className="subtitle">Fashion</Typography>
             <Box className="blogContent">
-              <Typography className="content">
-                Lorem ipsum dolor sit amet consectetur. Habitant diam mi semper
-                in ultricies ipsum sed ac. Consectetur nascetur sit pharetra
-                donec augue netus eget phasellus scelerisque. Laoreet elementum
-                bibendum penatibus vitae arcu arcu lectus tincidunt. Volutpat
-                nibh netus vitae arcu mattis orci. Lorem faucibus nunc sit at
-                faucibus. Pellentesque turpis habitasse urna id. Dignissim vitae
-                enim congue est ut odio mauris rutrum dictum. Turpis sagittis
-                arcu amet nec adipiscing mattis. Neque viverra sed quis
-                convallis. Non aliquam elit vivamus varius eleifend purus. Massa
-                mattis quam amet tortor arcu nisl. Eros elementum cras orci at
-                proin ut sem dignissim pharetra. Fermentum aliquet in mattis
-                lacus. Cras facilisis nec sem scelerisque vulputate. Enim tellus
-                ut condimentum tortor sit lectus purus. Aliquet eget dui
-                faucibus dui bibendum consequat.
-              </Typography>
+              <Markdown className="content">{blog.content}</Markdown>
             </Box>
-            <Box className="blogContent">
+            {/* <Box className="blogContent">
               {blog.image == null ? (
                 <Box
                   display={"flex"}
@@ -334,7 +322,7 @@ export default function IndividualBlog({}) {
               pharetra. Fermentum aliquet in mattis lacus. Cras facilisis nec
               sem scelerisque vulputate. Enim tellus ut condimentum tortor sit
               lectus purus. Aliquet eget dui faucibus dui bibendum consequat.
-            </Typography>
+            </Typography> */}
           </Box>
         </section>
         <section>
