@@ -20,7 +20,7 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-node_modules-${{ hashFiles('package-lock.json') }}
       - name: Change directory to clientBlogs
-        run: cd clientBlogs
+        run: ls
       - name: Verify working directory
         run: pwd
       - name: Install dependencies
