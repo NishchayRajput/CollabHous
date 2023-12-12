@@ -9,13 +9,14 @@ on:
       - 'clientBlogs/**'
   workflow_dispatch:   
 
-defaults:
- run:
-  working-directory: ./clientBlogs
+
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+     run:
+      working-directory: ./clientBlogs
     steps:
       - uses: actions/checkout@v3
       - name: Clear cache
