@@ -1,0 +1,44 @@
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - 'clientBlogs/**'
+  pull_request:
+    branches: [ master ]
+    paths:
+      - 'clientBlogs/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm install
+      - name: Build React application
+        run: npm run build
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifacts
+          path: clientBlogs/build
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: build-artifacts
+      - name: Connect to EC2 instance
+        run: |
+          echo "Connecting to EC2 instance..."
+          ssh -i "Collab_Hous.pem" ubuntu@ec2-13-232-242-124.ap-south-1.compute.amazonaws.com
+      - name: Transfer build artifacts
+        run: |
+          echo "Transferring build artifacts..."
+          scp -r clientBlogs/build/* ubuntu@ec2-13-232-242-124.ap-south-1.compute.amazonaws.com:/var/www/
+      - name: Deploy application and restart service
+        run: |
+          echo "Deploying application..."
+          ssh -i "Collab_Hous.pem" ubuntu@ec2-13-232-242-124.ap-south-1.compute.amazonaws.com "sudo systemctl restart your-service"
