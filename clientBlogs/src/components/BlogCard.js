@@ -98,18 +98,20 @@ export default function BlogCard({
               </Avatar>
             }
             className="cardHeader"
-            title=<p
-              style={{
-                fontFamily: "Roboto",
-                fontWeight: "700",
-                fontSize: "12px",
-                lineHeight: "14px",
-                letterSpacing: "0.05em",
-                color: "white",
-              }}
-            >
-              {username}
-            </p>
+            title={
+              <p
+                style={{
+                  fontFamily: "Roboto",
+                  fontWeight: "700",
+                  fontSize: "12px",
+                  lineHeight: "14px",
+                  letterSpacing: "0.05em",
+                  color: "white",
+                }}
+              >
+                {username}
+              </p>
+            }
           />
         </Box>
         <CardContent className="cardContent">

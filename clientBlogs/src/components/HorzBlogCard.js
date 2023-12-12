@@ -78,7 +78,6 @@ export default function BlogCard({
     setLikeStatus(likeStat);
   }, [upVoteC]);
 
-
   return (
     <Card id="cardContainer">
       <Box display={"flex"}>
@@ -102,18 +101,20 @@ export default function BlogCard({
                   N
                 </Avatar>
               }
-              title=<p
-                style={{
-                  fontFamily: "Roboto",
-                  fontWeight: "700",
-                  fontSize: "12px",
-                  lineHeight: "14px",
-                  letterSpacing: "0.05em",
-                  color: "white",
-                }}
-              >
-                {username}
-              </p>
+              title={
+                <p
+                  style={{
+                    fontFamily: "Roboto",
+                    fontWeight: "700",
+                    fontSize: "12px",
+                    lineHeight: "14px",
+                    letterSpacing: "0.05em",
+                    color: "white",
+                  }}
+                >
+                  {username}
+                </p>
+              }
               className="cardHeader"
             />
           </Box>
