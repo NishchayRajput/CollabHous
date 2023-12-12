@@ -44,7 +44,7 @@ jobs:
       - name: Connect to EC2 instance
         run: |
           echo "Connecting to EC2 instance..."
-          ssh -i ${{ secrets.EC2_SSH_KEY }} ubuntu@ec2-13-232-242-124.ap-south-1.compute.amazonaws.com
+          ssh -o StrictHostKeyChecking=no -i ${{ secrets.EC2_SSH_FINGERPRINT }} ubuntu@ec2-13-232-242-124.ap-south-1.compute.amazonaws.com
       - name: Transfer build artifacts
         run: |
           echo "Transferring build artifacts..."
@@ -52,4 +52,4 @@ jobs:
       - name: Deploy application and restart service
         run: |
           echo "Deploying application..."
-          ssh -i ${{ secrets.EC2_SSH_KEY }} ubuntu@ec2-13-232-242-124.ap-south-1.compute.amazonaws.com "sudo systemctl restart your-service"
+          ssh -o StrictHostKeyChecking=no -i ${{ secrets.EC2_SSH_FINGERPRINT }} ubuntu@ec2-13-232-242-124.ap-south-1.compute.amazonaws.com "sudo systemctl restart your-service"
