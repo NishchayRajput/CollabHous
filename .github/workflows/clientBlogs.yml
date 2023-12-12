@@ -7,12 +7,22 @@ on:
     branches: [ master ]
     paths:
       - 'clientBlogs/**'
+  workflow_dispatch:   
+
+defaults:
+ run:
+  working-directory: ./clientBlogs
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Clear cache
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('package-lock.json') }}      
       - name: Install dependencies
         run: npm install
       - name: Build React application
@@ -33,7 +43,7 @@ jobs:
       - name: Connect to EC2 instance
         run: |
           echo "Connecting to EC2 instance..."
-          ssh -i "Collab_Hous.pem" ubuntu@ec2-13-232-242-124.ap-south-1.compute.amazonaws.com
+          ssh -i ${{ secrets.EC2_SSH_KEY }} ubuntu@ec2-13-232-242-124.ap-south-1.compute.amazonaws.com
       - name: Transfer build artifacts
         run: |
           echo "Transferring build artifacts..."
@@ -41,4 +51,4 @@ jobs:
       - name: Deploy application and restart service
         run: |
           echo "Deploying application..."
-          ssh -i "Collab_Hous.pem" ubuntu@ec2-13-232-242-124.ap-south-1.compute.amazonaws.com "sudo systemctl restart your-service"
+          ssh -i ${{ secrets.EC2_SSH_KEY }} ubuntu@ec2-13-232-242-124.ap-south-1.compute.amazonaws.com "sudo systemctl restart your-service"
