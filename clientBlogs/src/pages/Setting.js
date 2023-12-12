@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./css/Setting.css";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { alpha, styled } from "@mui/material/styles";
 import { pink } from "@mui/material/colors";
@@ -19,7 +18,6 @@ const PinkSwitch = styled(Switch)(({ theme }) => ({
 }));
 
 const Setting = () => {
-  const navigate = useNavigate();
   const [isDisabled, setIsDisabled] = useState(true);
   const handleEdit = () => {
     setIsDisabled(!isDisabled);
@@ -58,7 +56,7 @@ const Setting = () => {
     Buying: "",
   });
 
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [ setSelectedFile] = useState(null);
   const [jobCheck, setJobCheck] = useState(false);
   const handleFileChange = (event) => {
     // Access the selected file from the input
@@ -148,21 +146,11 @@ const Setting = () => {
       console.log(error);
     }
   };
-  const handleSubmit2 = (event) => {
-    event.preventDefault();
-
-    // Use 'selectedFile' for further processing (e.g., uploading to a server)
-    if (selectedFile) {
-      console.log("Selected file:", selectedFile);
-      // You can add logic here to handle the file, such as uploading it to a server.
-    } else {
-      console.error("No file selected");
-    }
-  };
+  
   useEffect(() => {
     setJobCheck(false);
     checkSettings();
-  }, []);
+  }, [checkSettings]);
   return (
     <div>
       <div className="ssection section1">

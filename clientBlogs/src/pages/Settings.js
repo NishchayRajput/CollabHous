@@ -6,7 +6,6 @@ import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import "../pages/css/Settings.css";
@@ -40,7 +39,7 @@ const Settings = () => {
   const [dataArrow, setDataArrow] = useState(0);
 
   function handleButtonSocialClick() {
-    if (socialMediaArrow == 0) {
+    if (socialMediaArrow === 0) {
       setSocialMediaArrow(1);
     } else {
       setSocialMediaArrow(0);
@@ -48,7 +47,7 @@ const Settings = () => {
   }
 
   function handleButtonDataClick() {
-    if (dataArrow == 0) {
+    if (dataArrow === 0) {
       setDataArrow(1);
     } else {
       setDataArrow(0);

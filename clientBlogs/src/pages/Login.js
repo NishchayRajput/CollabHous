@@ -5,10 +5,10 @@ import { Box, Typography, TextField, Button } from "@mui/material";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { authActions } from "../redux/store";
-import { ReactNotifications, Store } from "react-notifications-component";
+import { Store } from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
+import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import { Icon } from "react-icons-kit";
 import { eyeOff } from "react-icons-kit/feather/eyeOff";
@@ -55,7 +55,7 @@ const Login = () => {
     };
 
     getVerification();
-  }, []);
+  }, [navigate]);
   const [inputs, setInputs] = useState({
     name: "",
     email: "",
@@ -64,7 +64,7 @@ const Login = () => {
   });
 
   //eye icon near password
-  const [password, setPassword] = useState("");
+  
   const [type, setType] = useState("password");
   const [icon, setIcon] = useState(eyeOff);
 
@@ -195,7 +195,7 @@ const Login = () => {
 
   return (
     <div className="loginpage">
-      <img src="images/logo.png" />
+      <img src="images/logo.png" alt="f"/>
       <form onSubmit={handleSubmit} className="signinBox">
         <Box
           maxWidth={450}

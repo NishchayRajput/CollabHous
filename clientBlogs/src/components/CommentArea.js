@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import "./css/CommentArea.css";
 import CommentCard from "./CommentCard";
 import axios from "axios";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const CommentArea = ({ bId, bloguId, interactionArray, isLogin, username }) => {
   const [comment, setComment] = useState({ comment: "" });
   const navigate = useNavigate();

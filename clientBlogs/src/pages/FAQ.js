@@ -1,11 +1,6 @@
 import * as React from 'react';
 import "./css/FAQ.css";
-import FAQ_box from "../components/FAQ_box";
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import FAQBox from "../components/FAQ_box";
 
 export default function BasicAccordion() {
   return (
@@ -16,12 +11,12 @@ export default function BasicAccordion() {
                       Frequently Asked Questions
                   </div>
                   <div className="allboxes">
-                  <FAQ_box/>
-                  <FAQ_box/>
-                  <FAQ_box/>
-                  <FAQ_box/>
-                  <FAQ_box/>
-                  <FAQ_box/>
+                  <FAQBox/>
+                  <FAQBox/>
+                  <FAQBox/>
+                  <FAQBox/>
+                  <FAQBox/>
+                  <FAQBox/>
                   </div>
    
       </div>

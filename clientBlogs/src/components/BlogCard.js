@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import { useState } from "react";
-import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
@@ -10,16 +9,11 @@ import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
-import ModeEditIcon from "@mui/icons-material/ModeEdit";
-import DeleteIcon from "@mui/icons-material/Delete";
 import { Box, IconButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import toast from "react-hot-toast";
 import axios from "axios";
-
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
-import { useSelector } from "react-redux";
 import "./css/BlogCard.css";
 import Dot from "./Dot";
 
@@ -79,7 +73,10 @@ export default function BlogCard({
   React.useEffect(() => {
     setUpVoteCount(upVoteC);
     setLikeStatus(likeStat);
-  }, [upVoteC, likeStat]);
+  }, [upVoteC,likeStat]);
+  React.useEffect(() => {
+    setLikeStatus(false);
+  }, [upVoteC]);
 
   return (
     <div className="card">
@@ -99,18 +96,18 @@ export default function BlogCard({
             }
             className="cardHeader"
             title={
-              <p
-                style={{
-                  fontFamily: "Roboto",
-                  fontWeight: "700",
-                  fontSize: "12px",
-                  lineHeight: "14px",
-                  letterSpacing: "0.05em",
-                  color: "white",
-                }}
-              >
-                {username}
-              </p>
+            <p
+              style={{
+                fontFamily: "Roboto",
+                fontWeight: "700",
+                fontSize: "12px",
+                lineHeight: "14px",
+                letterSpacing: "0.05em",
+                color: "white",
+              }}
+            >
+              {username}
+            </p>
             }
           />
         </Box>

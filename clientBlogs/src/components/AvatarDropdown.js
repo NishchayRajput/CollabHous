@@ -7,15 +7,13 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Logout from "@mui/icons-material/Logout";
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { authActions } from "../redux/store";
-import axios from "axios";
 import "./css/AvatarDropDown.css";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function AvatarDropdown() {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -31,9 +29,7 @@ export default function AvatarDropdown() {
   const handleProfile = () => {
     navigate("/settings");
   };
-  const handleLogin = () => {
-    navigate("/login");
-  };
+  
   const handleLogOut = () => {
     async function logout() {
       try {
@@ -123,12 +119,6 @@ export default function AvatarDropdown() {
 
         <Divider className="divider" />
 
-        {/* <MenuItem onClick={handleLogin}>
-          <ListItemIcon>
-            <Logout fontSize="small" />
-          </ListItemIcon>
-          Login
-        </MenuItem> */}
 
         <MenuItem onClick={handleLogOut} className="dropAvatar">
           <ListItemIcon>

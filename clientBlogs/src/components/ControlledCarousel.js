@@ -19,7 +19,7 @@ const MyCarousel = ({image}) => {
         
         {image.map((image) => (
           <div>
-            <img src={image.link} alt="Slide image" />
+            <img src={image.link} alt="Slide" />
           </div>
         ))}
       </Carousel>

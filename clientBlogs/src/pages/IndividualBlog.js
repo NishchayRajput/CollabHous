@@ -3,38 +3,27 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import { Box, Button, Tab, Tabs, Typography, IconButton } from "@mui/material";
+import { Box,Typography, IconButton } from "@mui/material";
 
 import Markdown from "react-markdown";
 import CardActions from "@mui/material/CardActions";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
-import SendIcon from "@mui/icons-material/Send";
 import BlogCard from "../components/BlogCard";
 import "./css/IndividualBlogs.css";
-import MapsUgcRoundedIcon from "@mui/icons-material/MapsUgcRounded";
 import CommentArea from "../components/CommentArea";
 
 import {
   EmailShareButton,
-  FacebookShareButton,
-  InstapaperShareButton,
-  LinkedinShareButton,
-  TelegramShareButton,
   TwitterShareButton,
   WhatsappShareButton,
 } from "react-share";
 import {
   EmailIcon,
-  FacebookIcon,
-  InstapaperIcon,
-  LinkedinIcon,
-  TelegramIcon,
   TwitterIcon,
   WhatsappIcon,
 } from "react-share";
 import Footer from "../components/Footer";
-import { useSelector } from "react-redux";
 
 export default function IndividualBlog({}) {
   //global stae
@@ -44,7 +33,7 @@ export default function IndividualBlog({}) {
   let { blogId } = useParams();
   const [showSharingBox, setShowSharingBox] = useState(false); // State to control the sharing box
   const [showCommentBox, setShowCommentBox] = useState(true); // State to control the sharing box
-  const [allBlogs, setAllBlogs] = useState([]);
+  const [setAllBlogs] = useState([]);
   const [blog, setBlog] = useState([]);
   const [interaction, setInteraction] = useState([]);
   const [relatedBlog, setRelatedBlog] = useState([]);
@@ -104,6 +93,7 @@ export default function IndividualBlog({}) {
   // Get the blogId from the URL using useParams
 
   useEffect(() => {
+    getAllBlogs();
     async function getBlog() {
       try {
         const { data } = await axios.get(
@@ -121,7 +111,7 @@ export default function IndividualBlog({}) {
         setUserId(data.blogF.user_id._id);
         setLikeStatus(data.blogF.like_status);
         console.log(data.blogF.like_status);
-        data.ud.length != 0 ? setIsLogin(true) : setIsLogin(false);
+        data.ud.length !== 0 ? setIsLogin(true) : setIsLogin(false);
         // console.log(data.interaction);
       } catch (error) {
         console.log(error);
@@ -130,7 +120,7 @@ export default function IndividualBlog({}) {
     getBlog();
     getAllBlogs();
     setUpVoteCount(blog.like);
-  }, [blog.like]);
+  }, [blog.like,blogId,getAllBlogs]);
 
   const handleUpVote = async (e) => {
     try {
@@ -190,7 +180,7 @@ export default function IndividualBlog({}) {
                 <Typography className="username">
                   {blog.user_id?.name}
                 </Typography>
-                <img src="" />{" "}
+                <img src="" alt="f" />{" "}
               </div>
             </Box>
           </Box>
@@ -204,7 +194,7 @@ export default function IndividualBlog({}) {
                 <Typography className="username">
                   {blog.user_id?.name}
                 </Typography>
-                <img src="" />{" "}
+                <img src="" alt="f"/>{" "}
               </div>
             </Box>
           </Box>
@@ -344,14 +334,14 @@ export default function IndividualBlog({}) {
               </IconButton>
               <IconButton aria-label="add to favorites" onClick={handleComment}>
                 {/* <MapsUgcRoundedIcon style={{ color: "#FFFFFF" }} /> */}
-                <img src="/images/commentIcon.svg" />
+                <img src="/images/commentIcon.svg " alt="f"/>
               </IconButton>
               <IconButton
                 aria-label="share"
                 onMouseEnter={() => setShowSharingBox(true)}
               >
                 {/* <SendIcon style={{ color: "#626262" }} /> */}
-                <img src="/images/shareIcon.svg" />
+                <img src="/images/shareIcon.svg" alt="f" />
               </IconButton>
               {showSharingBox && (
                 <Box className="sharingBox">

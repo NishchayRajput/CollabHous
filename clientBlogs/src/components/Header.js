@@ -1,7 +1,7 @@
 //Header
 
 import React, { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import {
   Box,
   AppBar,
@@ -14,16 +14,10 @@ import {
 import AvatarDropdown from "./AvatarDropdown";
 import Notification from "./Notification";
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { authActions } from "../redux/store";
-import toast from "react-hot-toast";
-import { Link as ScrollLink } from "react-scroll";
 import "./css/Header.css";
 import Hamburger from "./Hamburger";
 import axios from "axios";
 const Header = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   const location = useLocation();
   const [notification, setNotification] = useState([]);
   const [value, setValue] = useState(0);
@@ -74,7 +68,7 @@ const Header = () => {
         );
         // console.log("Headers Page: ",data.notifications);
         setNotification(data.notifications);
-        if (data.message == "Please login first") setIsLogin(true);
+        if (data.message === "Please login first") setIsLogin(true);
         else setIsLogin(false);
         // if ((data.message = "Please login first")) {
         //   navigate("/login");
@@ -144,7 +138,7 @@ const Header = () => {
                 style={{
                   color: value === 1 ? "#F74D79" : "white", // Text color for selected tab
                 }}
-                onClick={() => (value != 1 ? scrollToPercentage(42) : "")}
+                onClick={() => (value !==1 ? scrollToPercentage(42) : "")}
               >
                 Who are we
               </Tab>

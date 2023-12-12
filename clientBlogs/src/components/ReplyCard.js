@@ -1,7 +1,6 @@
 import React from "react";
 import "./css/ReplyCard.css";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import ChatRoundedIcon from "@mui/icons-material/ChatRounded";
+
 
 const CommentCard = ({ content, replyUsername }) => {
   return (

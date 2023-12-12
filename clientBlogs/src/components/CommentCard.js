@@ -2,11 +2,10 @@
 
 import React, { useState } from "react";
 import "./css/CommentCard.css";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ChatRoundedIcon from "@mui/icons-material/ChatRounded";
 import ReplyCard from "./ReplyCard";
 import axios from "axios";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 const CommentCard = ({
   content,

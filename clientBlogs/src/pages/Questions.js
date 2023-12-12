@@ -7,7 +7,7 @@ import axios from "axios";
 
 const Questions = () => {
   const navigate = useNavigate();
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [ setSelectedFile] = useState(null);
   const [inputs, setInputs] = useState({
     name: "",
     email: "",

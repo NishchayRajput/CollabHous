@@ -3,7 +3,7 @@ import axios from "axios";
 import BlogCard from "../components/BlogCard";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import { Box, Typography } from "@mui/material";
+import { Box} from "@mui/material";
 import { Link } from "react-router-dom";
 
 import TrendingBlogCard from "../components/TrendingBlogCard";

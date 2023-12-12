@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Box, Button, Tab, Tabs, Typography } from "@mui/material";
+
+import { Box, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import "./css/Footer.css";
 const Footer = () => {

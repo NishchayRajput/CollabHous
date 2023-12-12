@@ -35,7 +35,7 @@ const CommuneWelcome = () => {
       <div className="greyBox">
         <div className="imageContainer">
           <div className="image">
-            <img src="" alt="image" />
+            <img src="" alt="i" />
           </div>
           <div className="name">{userData?.name}</div>
           <div className="email">{userData?.email}</div>
