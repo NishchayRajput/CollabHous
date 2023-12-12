@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Blog = require("../models/blogs");
 const userInfo = require("../../ecommerce/models/userInfo");
 const Interaction = require("../models/interaction");
+const jwt = require('jsonwebtoken');
 // const moment = require('moment-timezone');
 async function blog_card(req, res){
     try {

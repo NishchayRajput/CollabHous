@@ -7,7 +7,7 @@ async function like(req, res) {
 
         const { uId, bId, iId, it, pId } = req.body;
         console.log(req.body);
-        if (!it) {
+        if (it=="unlike") {
             // Delete the interaction with specific details
             await Interaction.deleteOne({
                 user_id: uId,
@@ -28,7 +28,7 @@ async function like(req, res) {
             console.log('3');
             res.status(200).json({ message: 'Interaction deleted successfully.' });
         }
-        if (it) {
+        if (it=="like") {
             console.log('1');
             // Create a new Interaction document
             const newInteraction = new Interaction({

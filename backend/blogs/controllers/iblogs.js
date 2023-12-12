@@ -69,11 +69,17 @@ async function getBlogById(req, res) {
       })
       .exec();
 
-    const interaction = await Interaction.find({ blog_id: blogId }).populate({path : 'user_id replies.user_id', model : "userInfo", select : "_id name email"}).exec();
+    const interaction = await Interaction.find({ blog_id: blogId })
+      .populate({
+        path: "user_id replies.user_id",
+        model: "userInfo",
+        select: "_id name email",
+      })
+      .exec();
     const iu = await Interaction.find({
       blog_id: blogId,
       user_id: id,
-      it: "like",
+      interaction_type: "like",
     }).exec();
     const likeStatus = !!iu.length;
 
@@ -81,7 +87,6 @@ async function getBlogById(req, res) {
       ...blog.toObject(), // Convert the Mongoose document to a plain JavaScript object
       like_status: likeStatus,
     };
-
 
     // If the blog is not found, return a 404 error response
     if (!blog) {

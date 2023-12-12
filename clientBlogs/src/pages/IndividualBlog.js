@@ -116,7 +116,8 @@ export default function IndividualBlog({}) {
         setBlog(data.blogF);
         setInteraction(data.interaction);
         setUserId(data.blogF.user_id._id);
-
+        setLikeStatus(data.blogF.like_status);
+        console.log(data.blogF.like_status);
         data.ud.length != 0 ? setIsLogin(true) : setIsLogin(false);
         // console.log(data.interaction);
       } catch (error) {
@@ -127,15 +128,16 @@ export default function IndividualBlog({}) {
     getAllBlogs();
     setUpVoteCount(blog.like);
   }, [blog.like]);
-  // console.log(blog);
+
   const handleUpVote = async (e) => {
     try {
+      console.log("request ", !likeStatus);
       const { data } = await axios.post(
         "http://localhost:5000/blogs/like",
         {
           bId: blogId,
           iId: blogId,
-          it: likeStatus ? "like" : "unlike",
+          it: !likeStatus ? "like" : "unlike",
           pId: userId,
         },
         {
@@ -145,15 +147,13 @@ export default function IndividualBlog({}) {
           },
         }
       );
-
       if (data.message === "Please login first") {
         navigate("/login");
         console.log("navigating");
       } else {
-        console.log("increasing");
         setLikeStatus(!likeStatus);
-        if (likeStatus === true) setUpVoteCount(upVoteCount - 1);
-        else setUpVoteCount(upVoteCount + 1);
+        if (!likeStatus === true) setUpVoteCount(upVoteCount + 1);
+        else setUpVoteCount(upVoteCount - 1);
       }
     } catch (error) {
       console.log(error);
@@ -164,7 +164,7 @@ export default function IndividualBlog({}) {
     setShowCommentBox(!showCommentBox);
   };
   // You can use this ID to fetch the specific blog content
-  
+
   return (
     <div style={{ marginTop: "-68px" }}>
       <Box>

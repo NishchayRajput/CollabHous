@@ -45,12 +45,13 @@ export default function BlogCard({
 
   const handleUpVote = async (e) => {
     try {
+      console.log("request ", !likeStatus);
       const { data } = await axios.post(
         "http://localhost:5000/blogs/like",
         {
           bId: bId,
           iId: bId,
-          it: likeStatus ? "like" : "unlike",
+          it: !likeStatus ? "like" : "unlike",
           pId: uId,
         },
         {
@@ -65,10 +66,9 @@ export default function BlogCard({
         navigate("/login");
         console.log("navigating");
       } else {
-        console.log("increasing");
         setLikeStatus(!likeStatus);
-        if (likeStatus === true) setUpVoteCount(upVoteCount - 1);
-        else setUpVoteCount(upVoteCount + 1);
+        if (!likeStatus === true) setUpVoteCount(upVoteCount + 1);
+        else setUpVoteCount(upVoteCount - 1);
       }
     } catch (error) {
       console.log(error);
@@ -78,7 +78,7 @@ export default function BlogCard({
 
   React.useEffect(() => {
     setUpVoteCount(upVoteC);
-    setLikeStatus(false);
+    setLikeStatus(likeStat);
   }, []);
 
   return (
