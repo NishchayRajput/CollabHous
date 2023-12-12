@@ -49,9 +49,9 @@ const Questions = () => {
         }
       );
 
-      {
+      
         response.data?.(navigate("/home"));
-      }
+      
     } catch (error) {
       console.log(error);
     }

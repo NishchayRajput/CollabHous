@@ -56,7 +56,7 @@ const Setting = () => {
     Buying: "",
   });
 
-  const [ setSelectedFile] = useState(null);
+  const [setSelectedFile] = useState(null);
   const [jobCheck, setJobCheck] = useState(false);
   const handleFileChange = (event) => {
     // Access the selected file from the input
@@ -108,49 +108,50 @@ const Setting = () => {
       console.log(error);
     }
   };
-  const checkSettings = async () => {
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_BACKEND_URL}/blogs/get_settings`,
-        {
-          withCredentials: true,
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-        }
-      );
-      console.log("check Responce", response);
-      if (response.data.message === "data found") {
-        const data = response.data.data.data.settings;
-        console.log(data);
-        setPlaceholder({
-          ...placeholder,
-          email: data.email,
-          firstName: data.fname,
-          lastName: data.lname,
-          mobile: data.number,
 
-          primaryRole: data.primary_role,
 
-          job:"Once per week",
-
-          Buying: data.job_notification_type[0],
-          customerService: data.job_notification_type[1],
-          anotherCheckbox: data.job_notification_type[2],
-        });
-      }
-      // response.data.message?.(navigate("/home"));
-      // console.log(inputs);
-      // console.log(deptSubscription);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  
   useEffect(() => {
+    async function checkSettings() {
+      try {
+        const response = await axios.get(
+          `${process.env.REACT_APP_BACKEND_URL}/blogs/get_settings`,
+          {
+            withCredentials: true,
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+          }
+        );
+        // console.log("check Responce", response);
+        if (response.data.message === "data found") {
+          const data = response.data.data.data.settings;
+          // console.log(data);
+          setPlaceholder({
+            ...placeholder,
+            email: data.email,
+            firstName: data.fname,
+            lastName: data.lname,
+            mobile: data.number,
+
+            primaryRole: data.primary_role,
+
+            job: "Once per week",
+
+            Buying: data.job_notification_type[0],
+            customerService: data.job_notification_type[1],
+            anotherCheckbox: data.job_notification_type[2],
+          });
+        }
+        // response.data.message?.(navigate("/home"));
+        // console.log(inputs);
+        // console.log(deptSubscription);
+      } catch (error) {
+        console.log(error);
+      }
+    };
     setJobCheck(false);
     checkSettings();
-  }, [checkSettings]);
+  }, [placeholder]);
   return (
     <div>
       <div className="ssection section1">
@@ -158,9 +159,9 @@ const Setting = () => {
           <div className="title1"> Settings</div>
           <div className="editBanner">
             <div className="title">Account</div>
-            <a className="edit">
-              <EditNoteIcon fontSize="large" onClick={handleEdit} />
-            </a>
+            <button className="edit" onClick={handleEdit}>
+              <EditNoteIcon fontSize="large" />
+            </button>
           </div>
           <div className="subtitle">
             Your basic information is submitted with every application at

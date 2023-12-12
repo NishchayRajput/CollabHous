@@ -320,7 +320,7 @@ const Home = () => {
                           recentBlog[2] != null ? recentBlog[2].read_time : "5"
                         }
                         likeStat={
-                          recentBlog[2] !==null && recentBlog[2]!== undefined ?.recentBlog[2].like_status
+                          recentBlog[2] !== null && recentBlog[2] !== undefined ? recentBlog[2].like_status : ""
                         }
                       />
                     </Box>
