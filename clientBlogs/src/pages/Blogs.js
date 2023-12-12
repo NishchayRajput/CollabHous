@@ -20,7 +20,7 @@ const Blogs = () => {
   };
   const getAllBlogs = async () => {
     try {
-      const { data } = await axios.get("http://localhost:5000/blogs/");
+      const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/blogs/`);
       setAllBlogs(data);
       setBlogs(data);
       // console.log(data);

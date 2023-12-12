@@ -22,7 +22,7 @@ const CommentArea = ({ bId, bloguId, interactionArray, isLogin, username }) => {
     }
     try {
       const response = await axios.post(
-        "http://localhost:5000/blogs/comment",
+        `${process.env.REACT_APP_BACKEND_URL}/blogs/comment`,
         {
           bId: bId,
           iId: bId,

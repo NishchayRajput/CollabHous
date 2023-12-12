@@ -64,7 +64,7 @@ const Header = () => {
     async function verify() {
       try {
         const { data } = await axios.get(
-          "http://localhost:5000/blogs/headers",
+          `${process.env.REACT_APP_BACKEND_URL}/blogs/headers`,
           {
             withCredentials: true,
             headers: {

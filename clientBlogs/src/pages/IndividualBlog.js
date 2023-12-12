@@ -49,6 +49,7 @@ export default function IndividualBlog({}) {
   const [interaction, setInteraction] = useState([]);
   const [relatedBlog, setRelatedBlog] = useState([]);
   const [loginUsername, setLoginUsername] = useState("");
+  const frontendURL = process.env.REACT_APP_FRONTEND_URL;
   const formatDate = (isoDate) => {
     const date = new Date(isoDate);
     const options = { year: "numeric", month: "short", day: "numeric" };
@@ -63,7 +64,9 @@ export default function IndividualBlog({}) {
   };
   const getAllBlogs = async () => {
     try {
-      const { data } = await axios.get("http://localhost:5000/blogs/"); //sending without credentials as it was causing bugs
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/blogs/`
+      ); //sending without credentials as it was causing bugs
       setAllBlogs(data);
       console.log();
       const filterBlogs = (category) => {
@@ -104,7 +107,7 @@ export default function IndividualBlog({}) {
     async function getBlog() {
       try {
         const { data } = await axios.get(
-          `http://localhost:5000/blogs/${blogId}`,
+          `${process.env.REACT_APP_BACKEND_URL}/blogs/${blogId}`,
           {
             withCredentials: true,
             headers: {
@@ -133,7 +136,7 @@ export default function IndividualBlog({}) {
     try {
       console.log("request ", !likeStatus);
       const { data } = await axios.post(
-        "http://localhost:5000/blogs/like",
+        `${process.env.REACT_APP_BACKEND_URL}/blogs/like`,
         {
           bId: blogId,
           iId: blogId,
@@ -353,17 +356,17 @@ export default function IndividualBlog({}) {
               {showSharingBox && (
                 <Box className="sharingBox">
                   <TwitterShareButton
-                    url={`http://localhost:3000/blogs/${blogId}`}
+                    url={`${frontendURL}/blogs/${blogId}`}
                   >
                     <TwitterIcon size={32} round />
                   </TwitterShareButton>
                   <EmailShareButton
-                    url={`http://localhost:3000/blogs/${blogId}`}
+                    url={`${frontendURL}/blogs/${blogId}`}
                   >
                     <EmailIcon size={32} round />
                   </EmailShareButton>
                   <WhatsappShareButton
-                    url={`http://localhost:3000/blogs/${blogId}`}
+                    url={`${frontendURL}/blogs/${blogId}`}
                   >
                     <WhatsappIcon size={32} round />
                   </WhatsappShareButton>

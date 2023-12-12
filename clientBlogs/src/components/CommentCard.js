@@ -43,7 +43,7 @@ const CommentCard = ({
     }
     try {
       const response = await axios.post(
-        "http://localhost:5000/blogs/reply",
+        `${process.env.REACT_APP_BACKEND_URL}/blogs/reply`,
         {
           bId: bId,
           iId: cId,

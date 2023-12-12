@@ -31,7 +31,7 @@ const Questions = () => {
     }
     try {
       const response = await axios.post(
-        "http://localhost:5000/blogs/questions",
+        `${process.env.REACT_APP_BACKEND_URL}/blogs/questions`,
         {
           fname: inputs.firstName,
           lname: inputs.lastName,

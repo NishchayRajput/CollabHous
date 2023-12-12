@@ -37,12 +37,15 @@ export default function AvatarDropdown() {
   const handleLogOut = () => {
     async function logout() {
       try {
-        const { data } = await axios.get("http://localhost:5000/blogs/logout", {
-          withCredentials: true,
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-        });
+        const { data } = await axios.get(
+          `${process.env.REACT_APP_BACKEND_URL}/blogs/logout`,
+          {
+            withCredentials: true,
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+          }
+        );
         console.log(data);
         if (data.message === "logout successfull") navigate("/home");
         window.location.reload();

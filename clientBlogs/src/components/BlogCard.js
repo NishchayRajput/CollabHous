@@ -47,7 +47,7 @@ export default function BlogCard({
     try {
       console.log("request ", !likeStatus);
       const { data } = await axios.post(
-        "http://localhost:5000/blogs/like",
+        `${process.env.REACT_APP_BACKEND_URL}/blogs/like`,
         {
           bId: bId,
           iId: bId,

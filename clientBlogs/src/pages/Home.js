@@ -28,7 +28,7 @@ const Home = () => {
     async function getBlog() {
       try {
         const { data } = await axios.post(
-          "http://localhost:5000/blogs/hero",
+          `${process.env.REACT_APP_BACKEND_URL}/blogs/hero`,
           {
             page: "home",
           },

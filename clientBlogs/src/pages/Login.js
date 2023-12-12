@@ -24,7 +24,7 @@ const Login = () => {
     const getVerification = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:5000/ecommerce/verify",
+          `${process.env.REACT_APP_BACKEND_URL}/ecommerce/verify`,
           {
             withCredentials: true,
             headers: {
@@ -93,7 +93,7 @@ const Login = () => {
     }
     try {
       const response = await axios.post(
-        "http://localhost:5000/ecommerce/login",
+        `${process.env.REACT_APP_BACKEND_URL}/ecommerce/login`,
         {
           name: inputs.name,
           email: inputs.email,

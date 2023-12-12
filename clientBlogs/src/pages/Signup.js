@@ -49,7 +49,7 @@ const Register = () => {
     const getVerification = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:5000/ecommerce/verify",
+          `${process.env.REACT_APP_BACKEND_URL}/ecommerce/verify`,
           {
             withCredentials: true,
             headers: {
@@ -89,7 +89,7 @@ const Register = () => {
     }
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/ecommerce/signup",
+        `${process.env.REACT_APP_BACKEND_URL}/ecommerce/signup`,
         {
           name: inputs.name,
           email: inputs.email,

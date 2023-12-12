@@ -37,7 +37,7 @@ const Connect = () => {
       async function connect() {
         try {
           const response = await axios.post(
-            "http://localhost:5000/blogs/set_interest",
+            `${process.env.REACT_APP_BACKEND_URL}/blogs/set_interest`,
             {
               page: "Connect",
             },

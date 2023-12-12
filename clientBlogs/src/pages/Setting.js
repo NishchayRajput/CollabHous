@@ -85,7 +85,7 @@ const Setting = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/blogs/settings",
+        `${process.env.REACT_APP_BACKEND_URL}/blogs/settings`,
         {
           fname: inputs.firstName,
           lname: inputs.lastName,
@@ -113,7 +113,7 @@ const Setting = () => {
   const checkSettings = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/blogs/get_settings",
+        `${process.env.REACT_APP_BACKEND_URL}/blogs/get_settings`,
         {
           withCredentials: true,
           headers: {

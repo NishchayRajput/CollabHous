@@ -19,7 +19,7 @@ const Settings = () => {
   const handleLogOut = () => {
     async function logout() {
       try {
-        const { data } = await axios.get("http://localhost:5000/blogs/logout", {
+        const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/blogs/logout`, {
           withCredentials: true,
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -58,7 +58,7 @@ const Settings = () => {
     async function getInfo() {
       try {
         const { data } = await axios.get(
-          "http://localhost:5000/blogs/profile",
+          `${process.env.REACT_APP_BACKEND_URL}/blogs/profile`,
           {
             withCredentials: true,
             headers: {
