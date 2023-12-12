@@ -241,29 +241,29 @@ const Home = () => {
                           // isUser={
                           //   localStorage.getItem("userId") === blog?.user?.user_id
                           // }
-                          tag={recentBlog[0] !== null ? recentBlog[0].tag : ""}
+                          tag={recentBlog[0] != null ? recentBlog[0].tag : ""}
                           title={
-                            recentBlog[0] !==null ? recentBlog[0].title : ""
+                            recentBlog[0] !=null ? recentBlog[0].title : ""
                           }
                           image="images/carouselSample.png"
                           username={
                             recentBlog[0] != null ? recentBlog[0].user.name : ""
                           }
                           time={
-                            recentBlog[0] !== null
+                            recentBlog[0] != null
                               ? formatDate(recentBlog[0].time)
                               : ""
                           }
                           upVoteC={
-                            recentBlog[0] !== null ? recentBlog[0].like : "0"
+                            recentBlog[0] != null ? recentBlog[0].like : "0"
                           }
                           read_time={
-                            recentBlog[0] !==null
+                            recentBlog[0] !=null
                               ? recentBlog[0].read_time
                               : "5"
                           }
                           likeStat={
-                            recentBlog[0] !==null?.recentBlog[0].like_status
+                            recentBlog[0] !=null?.recentBlog[0].like_status
                           }
                         />
                       </div>
@@ -274,25 +274,25 @@ const Home = () => {
                         // isUser={
                         //   localStorage.getItem("userId") === blog?.user?.user_id
                         // }
-                        title={recentBlog[1] !== null ? recentBlog[1].title : ""}
+                        title={recentBlog[1] != null ? recentBlog[1].title : ""}
                         image="images/carouselSample.png"
                         username={
-                          recentBlog[1] !== null ? recentBlog[1].user.name : ""
+                          recentBlog[1] != null ? recentBlog[1].user.name : ""
                         }
                         time={
-                          recentBlog[1] !==null
+                          recentBlog[1] !=null
                             ? formatDate(recentBlog[1].time)
                             : ""
                         }
-                        tag={recentBlog[1] !== null ? recentBlog[1].tag : ""}
+                        tag={recentBlog[1] != null ? recentBlog[1].tag : ""}
                         upVoteC={
-                          recentBlog[1] !== null ? recentBlog[1].like : "0"
+                          recentBlog[1] != null ? recentBlog[1].like : "0"
                         }
                         read_time={
-                          recentBlog[1] !== null ? recentBlog[1].read_time : "5"
+                          recentBlog[1] != null ? recentBlog[1].read_time : "5"
                         }
                         likeStat={
-                          recentBlog[1] !== null?.recentBlog[1].like_status
+                          recentBlog[1] != null?.recentBlog[1].like_status
                         }
                       />
                       <HorzBlogCard
@@ -305,22 +305,22 @@ const Home = () => {
                         title={recentBlog[2] != null ? recentBlog[2].title : ""}
                         image="images/carouselSample.png"
                         username={
-                          recentBlog[2] !==null ? recentBlog[2].user.name : ""
+                          recentBlog[2] !=null ? recentBlog[2].user.name : ""
                         }
                         time={
-                          recentBlog[2] !== null
+                          recentBlog[2] != null
                             ? formatDate(recentBlog[2].time)
                             : ""
                         }
-                        tag={recentBlog[2] !== null ? recentBlog[2].tag : ""}
+                        tag={recentBlog[2] != null ? recentBlog[2].tag : ""}
                         upVoteC={
-                          recentBlog[2] !== null ? recentBlog[2].like : "0"
+                          recentBlog[2] != null ? recentBlog[2].like : "0"
                         }
                         read_time={
-                          recentBlog[2] !== null ? recentBlog[2].read_time : "5"
+                          recentBlog[2] != null ? recentBlog[2].read_time : "5"
                         }
                         likeStat={
-                          recentBlog[2] !==null?.recentBlog[2].like_status
+                          recentBlog[2] !=null?.recentBlog[2].like_status
                         }
                       />
                     </Box>

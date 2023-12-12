@@ -15,7 +15,7 @@
 .replyCard .userDetail {
     display: flex;
     justify-content: space-between;
-    align-items: end;
+    align-items: flex-end;
     height: 31px;
 
 }
@@ -89,12 +89,12 @@
     width: 120px;
     display: flex;
     justify-content: space-around;
-    align-items: end;
+    align-items: flex-end;
 }
 
 .replyCard .replyBtnContainer .reply {
     display: flex;
-    align-items: end;
+    align-items: flex-end;
 }
 
 .replyCard .replyBtnContainer .icon {
