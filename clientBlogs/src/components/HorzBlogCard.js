@@ -76,7 +76,7 @@ export default function BlogCard({
   React.useEffect(() => {
     setUpVoteCount(upVoteC);
     setLikeStatus(likeStat);
-  }, [upVoteC]);
+  }, [upVoteC, likeStat]);
 
   return (
     <Card id="cardContainer">
