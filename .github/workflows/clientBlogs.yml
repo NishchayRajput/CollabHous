@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Change directory to clientBlogs
-        run: cd clientBlogs
+        run: cd clientBlogs & ls             
       - name: Install dependencies
         run: npm install
       - name: Build React application
