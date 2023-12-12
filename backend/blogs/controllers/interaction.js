@@ -15,14 +15,14 @@ async function like(req, res) {
                 interaction_id: iId,
                 interaction_type: 'like',
             });
-            console.log('1');
+            // console.log('1');
             await Notifications.deleteOne({
                 parent_id: pId,
                 blog_id: bId,
                 user_id: uId,
                 type: 'like',
             });
-            console.log('2');
+            // console.log('2');
             // Decrease the 'like' count of the blog by 1
             await Blog.findByIdAndUpdate(bId, { $inc: { like: -1 } });
             console.log('3');
@@ -38,13 +38,13 @@ async function like(req, res) {
                 interaction_type: it,
             });
 
-            console.log('2');
+            // console.log('2');
             // Save the new interaction to the database
             const savedInteraction = await newInteraction.save();
-            console.log('3');
+            // console.log('3');
             // Increase the 'like' count of the blog by 1
             await Blog.findByIdAndUpdate(bId, { $inc: { like: 1 } });
-            console.log('4');
+            // console.log('4');
             // Create a new Notifications document
             const newNotification = new Notifications({
                 parent_id: pId,
@@ -52,7 +52,7 @@ async function like(req, res) {
                 blog_id: bId,
                 type: it,
             });
-            console.log('5');
+            // console.log('5');
             // Save the new notification to the database
             const savedNotification = await newNotification.save();
 
