@@ -80,6 +80,8 @@ export default function BlogCard({
     setUpVoteCount(upVoteC);
     setLikeStatus(likeStat);
   }, []);
+    setLikeStatus(false);
+  }, [upVoteC]);
 
   return (
     <div className="card">

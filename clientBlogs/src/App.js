@@ -1,4 +1,3 @@
-import Header from "./components/Header";
 import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -7,7 +6,6 @@ import { Toaster } from "react-hot-toast";
 import BlogHomeLayout from "./layout/BlogHomeLayout";
 import BlogLayout from "./layout/BlogLayout";
 import Home from "./pages/Home";
-import BlogCard from "./components/BlogCard";
 import IndividualBlog from "./pages/IndividualBlog";
 import Connect from "./pages/Connect";
 import Settings from "./pages/Settings";
