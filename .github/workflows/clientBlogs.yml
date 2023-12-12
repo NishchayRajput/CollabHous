@@ -14,6 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Change directory to clientBlogs
+        run: cd clientBlogs
       - name: Install dependencies
         run: npm install
       - name: Build React application
