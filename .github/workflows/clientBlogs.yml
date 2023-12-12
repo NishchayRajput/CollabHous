@@ -9,6 +9,10 @@ on:
       - 'clientBlogs/**'
   workflow_dispatch:   
 
+defaults:
+ run:
+  working-directory: ./clientBlogs
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,13 +22,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('package-lock.json') }}
-      - name: Change directory to clientBlogs
-        run: ls
-      - name: Verify working directory
-        run: pwd
-      - name: changing dir
-        run: cd /home/runner/work/CollabHous_Combined/CollabHous_Combined/clientBlogs/
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('package-lock.json') }}      
       - name: checking if moved or not
         run : ls & pwd
       - name: Install dependencies
