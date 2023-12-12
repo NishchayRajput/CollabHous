@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
+const { ObjectId } = require("mongoose");
 const Blog = require("../models/blogs");
 const userInfo = require("../../ecommerce/models/userInfo");
 const Interaction = require("../models/interaction");
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 // const moment = require('moment-timezone');
 async function blog_card(req, res){
     try {
@@ -29,7 +30,7 @@ async function blog_card(req, res){
 
     // Extract the token from the request's cookies
     const token = extractTokenValue(req.headers.cookie);
-    let id;
+    let id ;
     if (token) {
         jwt.verify(token, process.env.secret, async(err, user) => {
             if (err) {
@@ -73,51 +74,106 @@ async function blog_card(req, res){
     // // Save the sample data models to the database
     // await Blog.insertMany(sampleBlogs);
 
-    const blogs = await Blog.find({})
-      .sort({ time: -1 })
-      .limit(10)
-      .populate({
-        path: "user_id",
-        model: userInfo,
-        select: "_id name email",
-      })
-      .exec();
+    // const blogs = await Blog.find({})
+    //   .sort({ time: -1 })
+    //   .limit(10)
+    //   .populate({
+    //     path: "user_id",
+    //     model: userInfo,
+    //     select: "_id name email",
+    //   })
+    //   .exec();
+      const blogs = await Blog.find({})
+    // .sort({ time: -1 })
+    // .limit(10)
+    // .populate({
+    //     path: 'user_id',
+    //     model: 'userInfo',
+    //     select: 'name email', // Specify the fields you want to populate
+    // })
+    .exec();
+
+    // console.log(blogs[0]._id);
+
 
           // console.log(blogs);
     
-          const formattedBlogs = await Promise.all(
-            blogs.map(async (blog) => {
-                // Find the interaction with the specified blog_id and interaction_id
-                const likeInteraction = await Interaction.find({
-                    blog_id: blog._id,
-                    interaction_type: 'like',
-                    user_id: id
-                }).exec();
-        
-                const likeStatus = !!likeInteraction.length;
-        
-                // Create a new object with the required properties
-                const formattedBlog = {
-                    _id: blog._id,
-                    title: blog.title,
-                    content: blog.content,
-                    user: {
-                        id: blog.user_id._id,
-                        name: blog.user_id.name,
-                        email: blog.user_id.email,
-                    },
-                    tag: blog.tags,
-                    like: blog.like,
-                    time: blog.time,
-                    read_time: blog.read_time,
-                    like_status: likeStatus,
-                };
-        
-                return formattedBlog;
-            })
-        );
+          // const formattedBlogs = await Promise.all(
+          //   blogs.map(async (blog) => {
+          //     console.log(blog._id);
+          
+          //     // Convert blog._id to ObjectId
+          //     // const blogId =new  mongoose.Types.ObjectId(blog._id);
+          
+          //     // Find the interaction with the specified blog_id and user_id
+          //     const likeInteraction = await Interaction.find({
+          //       blog_id: blogId,
+          //       interaction_type: "like",
+          //       user_id: id,
+          //     }).exec();
+          
+          //     // console.log(likeInteraction);
+          //     const likeStatus = !!likeInteraction.length;
+          //     // console.log(likeStatus);
+          //     console.log(blog._id);
+          
+          //     // Create a new object with the required properties
+          //     const formattedBlog = {
+          //       _id: blog._id,
+          //       title: blog.title,
+          //       content: blog.content,
+          //       user: {
+          //         id: blog.user_id._id,
+          //         name: blog.user_id.name,
+          //         email: blog.user_id.email,
+          //       },
+          //       tag: blog.tags,
+          //       like: blog.like,
+          //       time: blog.time,
+          //       read_time: blog.read_time,
+          //       like_status: likeStatus,
+          //     };
+          
+          //     return formattedBlog;
+          //   })
+          // );
         
         // console.log(formattedBlogs);
+        const formattedBlogs = await Promise.all(
+          blogs.map(async (blog) => {
+              // Find the like interaction for the specified blog and user
+              console.log(blog._id.toString());
+              const likeInteraction = await Interaction.findOne({
+                  blog_id: blog._id.toString(),
+                  user_id: id,
+                  interaction_type: "like",
+              }).exec();
+              // console.log(likeInteraction);
+
+              // Determine the like status based on whether the like interaction exists
+              const likeStatus = likeInteraction ? true : false;
+
+              // Create a new object with the required properties
+              const formattedBlog = {
+                  _id: blog._id.toString(), // Convert ObjectId to string
+                  title: blog.title,
+                  content: blog.content,
+                  user: {
+                      id: blog.user_id._id.toString(), // Convert ObjectId to string
+                      name: blog.user_id.name,
+                      email: blog.user_id.email,
+                  },
+                  tag: blog.tags,
+                  like: blog.like,
+                  time: blog.time,
+                  read_time: blog.read_time,
+                  like_status: likeStatus,
+              };
+
+              return formattedBlog;
+          })
+      );
+
     
         res.status(200).json(formattedBlogs); // Respond with the formatted data
       } catch (error) {
