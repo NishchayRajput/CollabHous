@@ -263,7 +263,7 @@ const Home = () => {
                               : "5"
                           }
                           likeStat={
-                            recentBlog[0] !=null?.recentBlog[0].like_status
+                            recentBlog[0] !==null && recentBlog[0]!==undefined?.recentBlog[0].like_status
                           }
                         />
                       </div>
@@ -292,7 +292,7 @@ const Home = () => {
                           recentBlog[1] != null ? recentBlog[1].read_time : "5"
                         }
                         likeStat={
-                          recentBlog[1] != null?.recentBlog[1].like_status
+                          recentBlog[1] !== null && recentBlog[0]!==undefined?.recentBlog[1].like_status
                         }
                       />
                       <HorzBlogCard
@@ -320,7 +320,7 @@ const Home = () => {
                           recentBlog[2] != null ? recentBlog[2].read_time : "5"
                         }
                         likeStat={
-                          recentBlog[2] !=null?.recentBlog[2].like_status
+                          recentBlog[2] !==null && recentBlog[2]!== undefined ?.recentBlog[2].like_status
                         }
                       />
                     </Box>
