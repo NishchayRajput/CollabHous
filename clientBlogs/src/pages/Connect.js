@@ -1,7 +1,6 @@
 import React from "react";
 import "./css/Connect.css";
 import { Box} from "@mui/material";
-import Footer from "../components/Footer";
 
 const Connect = () => {
   return (
@@ -209,9 +208,9 @@ const Connect = () => {
 
         </div>
 
-        <div className="lastpart">
-          <Footer />
-        </div>
+        {/* <div className="lastpart"> */}
+          {/* <Footer /> */}
+        {/* </div> */}
 
 
       </div>

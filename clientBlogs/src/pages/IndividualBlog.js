@@ -23,7 +23,6 @@ import {
   TwitterIcon,
   WhatsappIcon,
 } from "react-share";
-import Footer from "../components/Footer";
 
 export default function IndividualBlog() {
   //global stae
@@ -425,7 +424,6 @@ export default function IndividualBlog() {
           </Box>
         </section>
       </Box>
-      <Footer />
     </div>
   );
 }

@@ -7,7 +7,6 @@ import { Box} from "@mui/material";
 import { Link } from "react-router-dom";
 
 import TrendingBlogCard from "../components/TrendingBlogCard";
-import Footer from "../components/Footer";
 import "./css/Blogs.css";
 
 const Blogs = () => {
@@ -243,7 +242,6 @@ const Blogs = () => {
             ))}
         </Box>
       </Box>
-      <Footer />
     </>
   );
 };
