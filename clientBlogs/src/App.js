@@ -3,7 +3,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Blogs from "./pages/Blogs";
 import HomePageLayout from "./layout/HomePageLayout";
-import BlogLayout from "./layout/BlogLayout";
+import BlogPageLayout from "./layout/BlogPageLayout";
 import Home from "./pages/Home";
 import IndividualBlog from "./pages/IndividualBlog";
 import Connect from "./pages/Connect";
@@ -22,20 +22,20 @@ function App() {
         <Route path="/" element={<HomePageLayout />}>
           <Route index element={<Home />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/blogs" element={<BlogLayout />}>
-            <Route index element={<Blogs />} />
-          </Route>
-          <Route path="/blogs/:blogId" element={<IndividualBlog />} />
-          <Route path="/connect" element={<Connect />} />
-          <Route path="/settings" element={<Settings />} />
-
-          <Route path="/commune" element={<CommuneWelcome />} />
-          <Route path="/exploreConnect" element={<ExploreCommune />} />
-          <Route path="/questions" element={<Questions />} />
-          <Route path="/setting" element={<Setting />} />
-
-          <Route path="/faq" element={<FAQ />} />
         </Route>
+        <Route path="/blogs" element={<BlogPageLayout />}>
+          <Route index element={<Blogs />} />
+        </Route>
+        <Route path="/blogs/:blogId" element={<IndividualBlog />} />
+        <Route path="/connect" element={<Connect />} />
+        <Route path="/settings" element={<Settings />} />
+
+        <Route path="/commune" element={<CommuneWelcome />} />
+        <Route path="/exploreConnect" element={<ExploreCommune />} />
+        <Route path="/questions" element={<Questions />} />
+        <Route path="/setting" element={<Setting />} />
+
+        <Route path="/faq" element={<FAQ />} />
         <Route path="/register" element={<Signup />} />
         <Route path="/login" element={<Login />} />
       </Routes>

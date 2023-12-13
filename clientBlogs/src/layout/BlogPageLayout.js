@@ -1,9 +1,9 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 import { Outlet } from "react-router-dom";
-import "./BlogLayout.css";
+import "./BlogPageLayout.css";
 
-const BlogLayout = () => {
+const BlogPageLayout = () => {
   return (
     <>
       <Box id="layoutContainer">
@@ -30,4 +30,4 @@ const BlogLayout = () => {
   );
 };
 
-export default BlogLayout;
+export default BlogPageLayout;
