@@ -120,7 +120,7 @@ export default function IndividualBlog() {
     getBlog();
     getAllBlogs();
     setUpVoteCount(blog.like);
-  }, [blog.like,blogId,getAllBlogs]);
+  }, [blog.like,blogId]);
 
   const handleUpVote = async (e) => {
     try {
