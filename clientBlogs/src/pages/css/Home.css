@@ -1,12 +1,13 @@
 .section {
-    min-height: 100vh;
+    max-height: 100vh;
+    max-width:100vw;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .blogSection {
-    min-height: 100vh;
+    /* min-height: 100vh; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,7 +28,7 @@
 .blogsBox {
     display: flex;
     justify-content: center;
-    height: 70vh;
+    height: max-content;
 }
 
 .trendingBlog {
@@ -124,7 +125,7 @@
 
 .whoAreWeContainer {
     display: flex;
-    min-height: 100vh;
+    max-height: 100vh;
 }
 
 .whoAreWeContainer .contentPanel {
@@ -276,7 +277,7 @@
     .whoAreWeContainer {
         display: flex;
         flex-direction: column;
-        min-height: 100vh;
+        max-height: 100vh;
         transform: translateY(40px);
         width: 100%;
     }
@@ -351,30 +352,27 @@
     gap: 25px;
 
     }
-
-   
-    /* .blogSectionInner{
-        transform: translateY(60px);
-    }
+.blogSection{
+    max-width: 100vw;
+}
 
 .blogsBox{
     display: flex;
     flex-direction: column;
-     height: 75vh;
-     transform: translateY(30px);
-} */
+     height: 75vh; 
+      /* transform: translateY(30px);  */
+} 
 
 .trendingBlog{
     width: 100%;
-    height: fit-content;
-    height: 40vh;
+    display: none;
 }
 
 .horzBlogsOuter{
     width: 100%;
-    height: fit-content;
+    /* height: fit-content; */
 
-}
+} 
 
 
 #card {
