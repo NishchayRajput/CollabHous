@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import { Box, Typography, IconButton } from "@mui/material";
+import { Box,Typography, IconButton } from "@mui/material";
 
 import Markdown from "react-markdown";
 import CardActions from "@mui/material/CardActions";
@@ -18,7 +18,11 @@ import {
   TwitterShareButton,
   WhatsappShareButton,
 } from "react-share";
-import { EmailIcon, TwitterIcon, WhatsappIcon } from "react-share";
+import {
+  EmailIcon,
+  TwitterIcon,
+  WhatsappIcon,
+} from "react-share";
 import Footer from "../components/Footer";
 
 export default function IndividualBlog() {
@@ -47,6 +51,31 @@ export default function IndividualBlog() {
       (percentage / 100) * (document.body.scrollHeight - window.innerHeight);
     window.scrollTo({ top: scrollToY, behavior: "instant" });
   };
+  const getAllBlogs = async () => {
+    try {
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/blogs/`
+      ); //sending without credentials as it was causing bugs
+      setAllBlogs(data);
+      console.log();
+      const filterBlogs = (category) => {
+        const updateBlogs = data.filter((e) => {
+          // let l = e.tag.split(",").length;
+          let check = false;
+          // for (let i = 0; i < l - 1; i++) {
+          // check = check || e.tag.split(",")[i] === category;
+          // }
+          check = e.tag === category;
+          return check;
+        });
+        // console.log(updateBlogs);
+        setRelatedBlog(updateBlogs);
+      };
+      filterBlogs("Community");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   // console.log(allBlogs);
   // const filterBlogs = (category) => {
@@ -64,31 +93,7 @@ export default function IndividualBlog() {
   // Get the blogId from the URL using useParams
 
   useEffect(() => {
-    async function getAllBlogs() {
-      try {
-        const { data } = await axios.get(
-          `${process.env.REACT_APP_BACKEND_URL}/blogs/`
-        ); //sending without credentials as it was causing bugs
-        setAllBlogs(data);
-        console.log();
-        const filterBlogs = (category) => {
-          const updateBlogs = data.filter((e) => {
-            // let l = e.tag.split(",").length;
-            let check = false;
-            // for (let i = 0; i < l - 1; i++) {
-            // check = check || e.tag.split(",")[i] === category;
-            // }
-            check = e.tag === category;
-            return check;
-          });
-          // console.log(updateBlogs);
-          setRelatedBlog(updateBlogs);
-        };
-        filterBlogs("Community");
-      } catch (error) {
-        console.log(error);
-      }
-    }
+  
     async function getBlog() {
       try {
         const { data } = await axios.get(
@@ -115,7 +120,7 @@ export default function IndividualBlog() {
     getBlog();
     getAllBlogs();
     setUpVoteCount(blog.like);
-  }, [blog.like, blogId,setAllBlogs]);
+  }, [blog.like,blogId,getAllBlogs]);
 
   const handleUpVote = async (e) => {
     try {
@@ -189,7 +194,7 @@ export default function IndividualBlog() {
                 <Typography className="username">
                   {blog.user_id?.name}
                 </Typography>
-                <img src="" alt="f" />{" "}
+                <img src="" alt="f"/>{" "}
               </div>
             </Box>
           </Box>
@@ -329,7 +334,7 @@ export default function IndividualBlog() {
               </IconButton>
               <IconButton aria-label="add to favorites" onClick={handleComment}>
                 {/* <MapsUgcRoundedIcon style={{ color: "#FFFFFF" }} /> */}
-                <img src="/images/commentIcon.svg " alt="f" />
+                <img src="/images/commentIcon.svg " alt="f"/>
               </IconButton>
               <IconButton
                 aria-label="share"
@@ -340,13 +345,19 @@ export default function IndividualBlog() {
               </IconButton>
               {showSharingBox && (
                 <Box className="sharingBox">
-                  <TwitterShareButton url={`${frontendURL}/blogs/${blogId}`}>
+                  <TwitterShareButton
+                    url={`${frontendURL}/blogs/${blogId}`}
+                  >
                     <TwitterIcon size={32} round />
                   </TwitterShareButton>
-                  <EmailShareButton url={`${frontendURL}/blogs/${blogId}`}>
+                  <EmailShareButton
+                    url={`${frontendURL}/blogs/${blogId}`}
+                  >
                     <EmailIcon size={32} round />
                   </EmailShareButton>
-                  <WhatsappShareButton url={`${frontendURL}/blogs/${blogId}`}>
+                  <WhatsappShareButton
+                    url={`${frontendURL}/blogs/${blogId}`}
+                  >
                     <WhatsappIcon size={32} round />
                   </WhatsappShareButton>
                 </Box>

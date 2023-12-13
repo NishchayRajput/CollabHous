@@ -46,7 +46,7 @@
 }
 
 
-@media only screen and (max-width: 1025px) {
+@media only screen and (min-width: 768px) and (max-width:1024px) {
     .appbar {
         width: 75% !important;
 
@@ -58,7 +58,7 @@
     }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (min-width: 375px) and (max-width:767px) {
     .appbar {
         background-color: rgba(72, 72, 72, 0) !important;
         border: none !important;
