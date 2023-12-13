@@ -49,8 +49,15 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
+    "eject": "react-scripts eject",
+    "start:dev": "cp .env.development .env && react-scripts start",
+    "start:prod": "cp .env.production .env && react-scripts start",
+    "build:dev": "cp .env.development .env && react-scripts build",
+    "build:prod": "cp .env.production .env && react-scripts build",
+    "test:dev": "cp .env.development .env && react-scripts test",
+    "test:prod": "cp .env.production .env && react-scripts test"
+  }
+  ,
   "eslintConfig": {
     "extends": [
       "react-app",
