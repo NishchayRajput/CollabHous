@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../components/Header";
 import { Outlet } from "react-router-dom";
 
-const BlogHomeLayout = () => {
+const HomePageLayout = () => {
   return (
     <div style={{ backgroundColor: "rgba(35, 36, 38, 1)", margin: 0 }}>
       <Header />
@@ -12,4 +12,4 @@ const BlogHomeLayout = () => {
   );
 };
 
-export default BlogHomeLayout;
+export default HomePageLayout;

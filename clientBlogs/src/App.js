@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Blogs from "./pages/Blogs";
-import BlogHomeLayout from "./layout/BlogHomeLayout";
+import HomePageLayout from "./layout/HomePageLayout";
 import BlogLayout from "./layout/BlogLayout";
 import Home from "./pages/Home";
 import IndividualBlog from "./pages/IndividualBlog";
@@ -19,8 +19,7 @@ function App() {
   return (
     <>
       <Routes>
-        {/* <Route index element={<BlogHomeLayout />} /> */}
-        <Route path="/" element={<BlogHomeLayout />}>
+        <Route path="/" element={<HomePageLayout />}>
           <Route index element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/blogs" element={<BlogLayout />}>
@@ -36,10 +35,9 @@ function App() {
           <Route path="/setting" element={<Setting />} />
 
           <Route path="/faq" element={<FAQ />} />
-
         </Route>
-          <Route path="/register" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </>
   );
