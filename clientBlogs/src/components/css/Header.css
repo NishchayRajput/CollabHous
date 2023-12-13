@@ -12,10 +12,11 @@
     /* min-height: 43px; */
 }
 
-.toolbar{
+.toolbar {
     min-height: 50px !important;
     height: 50px;
 }
+
 .appbar .tab {
     text-transform: none;
     font-size: 14px;
@@ -34,10 +35,10 @@
     justify-content: center;
 }
 
-.appbar #loginBtnContainer .loginBtn{
+.appbar #loginBtnContainer .loginBtn {
     /* display: none; */
     color: #F74D79;
-    border:1px solid #F74D79;
+    border: 1px solid #F74D79;
     background-color: rgba(255, 95, 95, 0.154);
 
     background-color: #ff6f6f26;
@@ -58,13 +59,13 @@
     }
 }
 
-@media only screen and (min-width: 375px) and (max-width:767px) {
+@media only screen and (min-width: 315px) and (max-width:767px) {
     .appbar {
         background-color: rgba(72, 72, 72, 0) !important;
         border: none !important;
         box-shadow: none !important;
         top: 20px !important;
-
+        backdrop-filter: blur(0px);
         width: 90% !important;
     }
 
