@@ -85,7 +85,7 @@ export default function BlogCard({
     setAvatarSrc("images/defaultAvatar.jpg");
   };
 
-  const limitedDescription = description.split(/\s+/).slice(0, 30).join(" ");
+  const limitedDescription = description?.split(/\s+/).slice(0, 30).join(" ");
   React.useEffect(() => {
     setUpVoteCount(upVoteC);
     setLikeStatus(likeStat);
