@@ -77,12 +77,18 @@ export default function BlogCard({
       // }
     }
   };
+  const [avatarSrc, setAvatarSrc] = React.useState(
+    "path/to/original-image.jpg"
+  );
 
+  const handleAvatarError = () => {
+    setAvatarSrc("images/defaultAvatar.jpg");
+  };
   React.useEffect(() => {
     setUpVoteCount(upVoteC);
     setLikeStatus(likeStat);
   }, [upVoteC, likeStat]);
-  console.log("like status", likeStat);
+  // console.log("like status", likeStat);
   return (
     <Card id="card">
       <CardMedia component="img" height="50%" image={image} alt="Paella dish" />
@@ -90,9 +96,12 @@ export default function BlogCard({
         <Box display={"flex"} justifyContent="space-between">
           <CardHeader
             avatar={
-              <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                N
-              </Avatar>
+              <Avatar
+                src={avatarSrc}
+                onError={handleAvatarError}
+                alt="Avatar"
+                sx={{ width: 29, height: 29 }}
+              />
             }
             title={
               <p

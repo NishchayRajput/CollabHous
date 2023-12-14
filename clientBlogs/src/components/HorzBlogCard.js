@@ -71,7 +71,13 @@ export default function BlogCard({
     setUpVoteCount(upVoteC);
     setLikeStatus(likeStat);
   }, [upVoteC, likeStat]);
+  const [avatarSrc, setAvatarSrc] = React.useState(
+    "path/to/original-image.jpg"
+  );
 
+  const handleAvatarError = () => {
+    setAvatarSrc("images/defaultAvatar.jpg");
+  };
   return (
     <Card id="cardContainer">
       <Box display={"flex"}>
@@ -91,9 +97,12 @@ export default function BlogCard({
           <Box display={"flex"} justifyContent="space-between" width={"100%"}>
             <CardHeader
               avatar={
-                <Avatar className="avatar" aria-label="recipe">
-                  N
-                </Avatar>
+                <Avatar
+                  src={avatarSrc}
+                  onError={handleAvatarError}
+                  alt="Avatar"
+                  sx={{ width: 29, height: 29 }}
+                />
               }
               title={
                 <p

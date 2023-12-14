@@ -69,11 +69,17 @@ export default function BlogCard({
       // }
     }
   };
+  const [avatarSrc, setAvatarSrc] = React.useState(
+    "path/to/original-image.jpg"
+  );
 
+  const handleAvatarError = () => {
+    setAvatarSrc("images/defaultAvatar.jpg");
+  };
   React.useEffect(() => {
     setUpVoteCount(upVoteC);
     setLikeStatus(likeStat);
-  }, [upVoteC,likeStat]);
+  }, [upVoteC, likeStat]);
   React.useEffect(() => {
     setLikeStatus(false);
   }, [upVoteC]);
@@ -90,24 +96,27 @@ export default function BlogCard({
         <Box display={"flex"} justifyContent="space-between">
           <CardHeader
             avatar={
-              <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                N
-              </Avatar>
+              <Avatar
+                src={avatarSrc}
+                onError={handleAvatarError}
+                alt="Avatar"
+                sx={{ width: 29, height: 29 }}
+              />
             }
             className="cardHeader"
             title={
-            <p
-              style={{
-                fontFamily: "Roboto",
-                fontWeight: "700",
-                fontSize: "12px",
-                lineHeight: "14px",
-                letterSpacing: "0.05em",
-                color: "white",
-              }}
-            >
-              {username}
-            </p>
+              <p
+                style={{
+                  fontFamily: "Roboto",
+                  fontWeight: "700",
+                  fontSize: "12px",
+                  lineHeight: "14px",
+                  letterSpacing: "0.05em",
+                  color: "white",
+                }}
+              >
+                {username}
+              </p>
             }
           />
         </Box>

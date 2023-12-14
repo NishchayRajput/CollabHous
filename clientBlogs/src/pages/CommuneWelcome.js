@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./css/CommuneWelcome.css";
 import { useNavigate } from "react-router-dom";
-import { Button } from "@mui/material";
+import { Avatar, Button } from "@mui/material";
 import axios from "axios";
 
 const CommuneWelcome = () => {
@@ -25,17 +25,29 @@ const CommuneWelcome = () => {
         console.log(response.data.ud[0]);
         setUserData(response.data?.ud[0]);
       } catch (error) {
-        console.log(error); 
+        console.log(error);
       }
     }
     connect();
   }, []);
+  const [avatarSrc, setAvatarSrc] = React.useState(
+    "path/to/original-image.jpg"
+  );
+
+  const handleAvatarError = () => {
+    setAvatarSrc("images/defaultAvatar.jpg");
+  };
   return (
     <div className="settingCotainer">
       <div className="greyBox">
         <div className="imageContainer">
           <div className="image">
-            <img src="" alt="i" />
+            <Avatar
+              src={avatarSrc}
+              onError={handleAvatarError}
+              alt="Avatar"
+              sx={{ width: "100%", height: "100%" }}
+            />
           </div>
           <div className="name">{userData?.name}</div>
           <div className="email">{userData?.email}</div>
