@@ -33,6 +33,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+   
   
 }
 
@@ -74,8 +75,13 @@
     line-height: 19px;
 
     color: #787878;
+    
 
 } 
+
+.settingsContainer .usernameHeader{
+    padding-bottom: 0px;
+}
 
 .settingsContainer .info{
     display: flex;
@@ -146,6 +152,7 @@
 /*******************************************************/
 
 @media screen and (max-width:768px){
+  
     .settingsContainer .dataDrop{
         display: grid;
         grid-template-columns: [first] 50% [second] 50%;
@@ -155,7 +162,7 @@
     }
 }
 
-@media screen and (max-width:375px) {
+@media screen and (max-width:425px) {
     .settingsContainer #userBoard, #userDetails {
         background-color: rgba(35, 36, 38, 1);
         border: none;

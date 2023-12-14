@@ -293,7 +293,10 @@ const Login = () => {
               clientId="673293732147-5pde4aq555gdp0b3m8gv3f6s84peico5.apps.googleusercontent.com"
               className="loginWith"
             >
+          
               <GoogleLogin
+
+                buttonText="Continue with Google"
                 onSuccess={(credentialResponse) => {
                   const details = jwtDecode(credentialResponse.credential);
                   console.log(credentialResponse);
@@ -306,7 +309,16 @@ const Login = () => {
                 onError={() => {
                   console.log("Login Failed");
                 }}
+
+                theme="filled_black"
+                shape="pill"
+                text="continue_with"
+             
+
+             
+               
               />
+            
             </GoogleOAuthProvider>
 
             {/* <Button className="loginWith">Continue with Facebook</Button> */}

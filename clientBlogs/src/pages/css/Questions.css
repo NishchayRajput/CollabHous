@@ -1,4 +1,4 @@
-.qsection {
+.questionsPage .qsection {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -6,12 +6,12 @@
     justify-content: center;
 }
 
-.section1 {
+.questionsPage .section1 {
 
     gap: 30px;
 }
 
-.qsection .circle {
+.questionsPage .qsection .circle {
     height: 105px;
     width: 105px;
     border-radius: 50%;
@@ -23,33 +23,33 @@
     justify-content: center;
 }
 
-.qsection .circle .type {
+.questionsPage .qsection .circle .type {
     font-size: 22px;
     color: white;
 }
 
-.qsection .titleContainer {
+.questionsPage .qsection .titleContainer {
     display: flex;
     flex-direction: column;
     width: 50%;
     gap: 20px;
 }
 
-.qsection .titleContainer .title {
+.questionsPage .qsection .titleContainer .title {
     font-size: 48px;
     font-weight: 700;
     color: white;
     text-align: center;
 }
 
-.qsection .titleContainer .subtitle {
+.questionsPage .qsection .titleContainer .subtitle {
     font-size: 20px;
     font-weight: 300;
     color: #B0B0B0;
     text-align: center;
 }
 
-.qsection .letsGoBtn {
+.questionsPage .qsection .letsGoBtn {
     height: 50px;
     width: 150px;
     display: flex;
@@ -65,7 +65,7 @@
     cursor:pointer;
 }
 
-.qsection .nextBtn {
+.questionsPage .qsection .nextBtn {
     height: 50px;
     width: 150px;
     display: flex;
@@ -82,23 +82,23 @@
     cursor:pointer;
 }
 
-.qsection .title {
+.questionsPage .qsection .title {
     font-size: 28px;
     color: white;
     margin-bottom: 15px;
 }
 
-.section2>div {
+.questionsPage .section2>div, .section3 > div, .section4 > div {
     width: 50%;
 }
 
-.section2 .form {
+.questionsPage .section2 .form {
     display: flex;
     flex-direction: column;
 }
 
 
-.section2 .inputBox {
+.questionsPage .section2 .inputBox {
     height: 50px;
     margin: 15px 0px;
     background-color: #343434;
@@ -106,16 +106,16 @@
     border-radius: 8px;
 }
 
-.section3 .subtitle {
+.questionsPage .section3 .subtitle {
     font-size: 18px;
     color: #A7A7A7;
     margin-bottom: 15px;
 }
 
-.section3 .inputBox {
+.questionsPage .section3 .input_Box {
     height: auto;
     min-height: 206px;
-    min-width: 746px;
+    width: 100%;
     margin: 15px 0px;
     background-color: #343434;
     border: 1px solid #5E5E5E;
@@ -123,7 +123,8 @@
     font-size: 18px;
 }
 
-.section4>div {
+.questionsPage .section4>div {
+ 
     display: flex;
     flex-direction: column;
     /* align-items: center; */
@@ -135,12 +136,13 @@
     width: 763px;
 }
 
-.section5 {
+
+.questionsPage .section5 {
     padding: 0px 10%;
     gap:30px;
 }
 
-.section5>.titleC {
+.questionsPage .section5>.titleC {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -148,7 +150,7 @@
     /* gap: 20px; */
 }
 
-.section5 .subtitle {
+.questionsPage .section5 .subtitle {
     font-size: 18px;
     color: #A7A7A7;
     margin-bottom: 15px;
@@ -156,14 +158,14 @@
     text-align: center;
 }
 
-.section5 .form {
+.questionsPage .section5 .form {
     width: 80%;
     display: flex;
     justify-content: space-between;
 
 }
 
-.section5 .inputBox {
+.questionsPage .section5 .inputBox {
     background-color: #2F2F2F;
     border: 1px solid #414141;
     font-size: 20px;
@@ -176,6 +178,38 @@
     border-radius: 8px;
 }
 
-.section5 .btn {
+.questionsPage .section5 .btn {
     width: 220px;
+}
+
+
+
+/**********************************************************************************************************/
+
+
+@media screen and (max-width:425px) {
+
+    .questionsPage .section1 .titleContainer, .questionsPage .section2>div, .questionsPage .section3>div, .questionsPage .section4 > div, .questionsPage .section5 > div{
+        width: 90vw;
+    }
+
+    .questionsPage .section5 .titleC .subtitle{
+       text-align: start;
+       padding: 0;
+    }
+
+    .questionsPage .section5 .form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 90vw;
+        gap: 10vw;
+
+    }
+
+    .questionsPage .section5 .form .inputBox{
+        width: 100%;
+
+    }
 }

@@ -57,7 +57,7 @@ const Questions = () => {
     }
   };
   return (
-    <div>
+    <div className="questionsPage">
       <div className="qsection section1">
         <div className="circle">
           <div className="type">4</div>
@@ -126,7 +126,7 @@ const Questions = () => {
             <input
               type="text"
               placeholder="Write your pitch..."
-              className="inputBox"
+              className="input_Box"
               value={inputs.pitch}
               name="pitch"
               onChange={handleChange}
@@ -143,7 +143,7 @@ const Questions = () => {
       <div id="section4" className="qsection section4">
         <div>
           <div className="title">My CV</div>
-          <div className="fileupload">
+          <div >
             <FileUpload
               onFileSelectSuccess={(file) => setSelectedFile(file)}
               onFileSelectError={({ error }) => alert(error)}
