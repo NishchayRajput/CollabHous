@@ -84,6 +84,8 @@ export default function BlogCard({
   const handleAvatarError = () => {
     setAvatarSrc("images/defaultAvatar.jpg");
   };
+
+  const limitedDescription = description.split(/\s+/).slice(0, 30).join(" ");
   React.useEffect(() => {
     setUpVoteCount(upVoteC);
     setLikeStatus(likeStat);
@@ -134,7 +136,7 @@ export default function BlogCard({
         </CardContent>
         <CardContent className="titleCard">
           <Typography variant="body2" className="description">
-            {description}
+            {limitedDescription}...
           </Typography>
         </CardContent>
         <CardActions disableSpacing style={{ zIndex: "8" }}>

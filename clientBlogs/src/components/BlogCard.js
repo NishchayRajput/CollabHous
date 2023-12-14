@@ -76,6 +76,7 @@ export default function BlogCard({
   const handleAvatarError = () => {
     setAvatarSrc("images/defaultAvatar.jpg");
   };
+  const limitedDescription = description.split(/\s+/).slice(0, 20).join(" ");
   React.useEffect(() => {
     setUpVoteCount(upVoteC);
     setLikeStatus(likeStat);
@@ -128,8 +129,9 @@ export default function BlogCard({
           >
             <p className="title">{title}</p>
           </Typography>
-          <Typography variant="body2">
-            <p className="description">{description}</p>
+
+          <Typography variant="body2" className="description">
+            {limitedDescription}...
           </Typography>
         </CardContent>
         <Box paddingLeft={"22px"}>
