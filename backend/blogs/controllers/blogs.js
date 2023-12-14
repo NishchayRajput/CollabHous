@@ -51,6 +51,7 @@ async function blog_card(req, res){
         });
         // console.log(id);
     }
+    console.log(id);
       // const sampleBlogs = [
       //   {
     //         user_id: new mongoose.Types.ObjectId('654ce535d56da75d299f01e7'), // Replace with a valid user ID from your 'userInfo' collection
@@ -84,13 +85,13 @@ async function blog_card(req, res){
     //   })
     //   .exec();
       const blogs = await Blog.find({})
-    // .sort({ time: -1 })
-    // .limit(10)
-    // .populate({
-    //     path: 'user_id',
-    //     model: 'userInfo',
-    //     select: 'name email', // Specify the fields you want to populate
-    // })
+    .sort({ time: -1 })
+    .limit(10)
+    .populate({
+        path: 'user_id',
+        model: 'userInfo',
+        select: 'name email', // Specify the fields you want to populate
+    })
     .exec();
 
     // console.log(blogs[0]._id);
