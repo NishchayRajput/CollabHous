@@ -28,7 +28,7 @@ export default function IndividualBlog() {
   let { blogId } = useParams();
   const [showSharingBox, setShowSharingBox] = useState(false); // State to control the sharing box
   const [showCommentBox, setShowCommentBox] = useState(true); // State to control the sharing box
-  const [setAllBlogs] = useState([]);
+  const [allBlogs, setAllBlogs] = useState([]);
   const [blog, setBlog] = useState([]);
   const [interaction, setInteraction] = useState([]);
   const [relatedBlog, setRelatedBlog] = useState([]);
@@ -104,7 +104,7 @@ export default function IndividualBlog() {
         setInteraction(data.interaction);
         setUserId(data.blogF.user_id._id);
         setLikeStatus(data.blogF.like_status);
-        console.log(data.blogF.like_status);
+        // console.log(data.blogF.like_status);
         data.ud.length !== 0 ? setIsLogin(true) : setIsLogin(false);
         // console.log(data.interaction);
       } catch (error) {
@@ -174,7 +174,6 @@ export default function IndividualBlog() {
                 <Typography className="username">
                   {blog.user_id?.name}
                 </Typography>
-                <img src="" alt="f" />{" "}
               </div>
             </Box>
           </Box>
@@ -188,7 +187,6 @@ export default function IndividualBlog() {
                 <Typography className="username">
                   {blog.user_id?.name}
                 </Typography>
-                <img src="" alt="f" />{" "}
               </div>
             </Box>
           </Box>
@@ -224,9 +222,15 @@ export default function IndividualBlog() {
             >
               <IconButton arqia-label="add to favorites" onClick={handleUpVote}>
                 {!likeStatus && (
-                  <ThumbUpOffAltIcon style={{ color: "#626262", width:'30px', height:'30px'}} />
+                  <ThumbUpOffAltIcon
+                    style={{ color: "#626262", width: "30px", height: "30px" }}
+                  />
                 )}
-                {likeStatus && <ThumbUpAltIcon style={{ color: "#F74D79", width:'30px', height:'30px'}} />}
+                {likeStatus && (
+                  <ThumbUpAltIcon
+                    style={{ color: "#F74D79", width: "30px", height: "30px" }}
+                  />
+                )}
                 <span className="upvote">{upVoteCount}</span>
               </IconButton>
               <IconButton aria-label="add to favorites" onClick={handleComment}>

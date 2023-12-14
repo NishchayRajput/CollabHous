@@ -65,6 +65,8 @@
 .section1 .editBanner .edit{
  color: white;
  margin: auto 0px;
+ background-color: #232426;
+ cursor:pointer
 }
 .section1 .right_form {
   display: flex;
