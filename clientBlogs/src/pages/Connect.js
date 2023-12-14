@@ -177,10 +177,11 @@ const Connect = () => {
                   More
                 </div>
               </div>
-
+              <div>
               <p className="cont" onClick={handleConnectClick}>
                 Connect
               </p>
+              </div>
             </div>
 
             <div className="lowerbox">
@@ -192,7 +193,7 @@ const Connect = () => {
               </div>
               <div className="connect">Partnership Program</div>
 
-              <div className="lowerbox2">
+              {/* <div className="lowerbox2"> */}
                 <div className="frame65">
                   <div className="text">
                     By connecting, I agree that i have read the privacy policy
@@ -200,9 +201,6 @@ const Connect = () => {
                     updates and opportunities.
                   </div>
                 </div>
-                {/* <div className="frame67">
-              <input type="email" name="email" placeholder="Enter Email"></input>
-            </div> */}
 
                 <div>
                   <button className="frame66">
@@ -281,7 +279,7 @@ const Connect = () => {
                     </button>
                   </div>
                 </div>
-              </div>
+              {/* </div> */}
             </div>
           </div>
           <div className="box2">
@@ -356,6 +354,7 @@ const Connect = () => {
                   </div>
                 </div>
               </div>
+
             </div>
 
             <div className="sidepart2">

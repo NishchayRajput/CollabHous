@@ -95,6 +95,10 @@
 
 @media only screen and (min-width: 375px) and (max-width:767px){
 
+    #cardContainer{
+        margin:0px;
+    }
+
     #cardContainer .blogDetails>div {
         padding-left: 16px;
         display: flex;
