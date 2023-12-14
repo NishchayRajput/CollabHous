@@ -109,7 +109,6 @@ const Setting = () => {
     }
   };
 
-
   useEffect(() => {
     async function checkSettings() {
       try {
@@ -148,7 +147,7 @@ const Setting = () => {
       } catch (error) {
         console.log(error);
       }
-    };
+    }
     setJobCheck(false);
     checkSettings();
   }, [placeholder]);
@@ -170,12 +169,16 @@ const Setting = () => {
         </div>
         <form action=" " className="form">
           <div className="left_form">
+            <label htmlFor="upload-file" className="custom-file-upload">
+              Upload
+            </label>
             <input
               type="file"
-              placeholder="Upload"
+              id="upload-file"
               className="inputBox_profile"
               name="profile"
               onChange={handleFileChange}
+              style={{ display: "none" }}
             />
           </div>
           <div className="right_form">
