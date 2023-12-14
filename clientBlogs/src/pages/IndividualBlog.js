@@ -28,7 +28,7 @@ export default function IndividualBlog() {
   let { blogId } = useParams();
   const [showSharingBox, setShowSharingBox] = useState(false); // State to control the sharing box
   const [showCommentBox, setShowCommentBox] = useState(true); // State to control the sharing box
-  const [setAllBlogs] = useState([]);
+  const [allBlogs, setAllBlogs] = useState([]);
   const [blog, setBlog] = useState([]);
   const [interaction, setInteraction] = useState([]);
   const [relatedBlog, setRelatedBlog] = useState([]);
@@ -104,7 +104,7 @@ export default function IndividualBlog() {
         setInteraction(data.interaction);
         setUserId(data.blogF.user_id._id);
         setLikeStatus(data.blogF.like_status);
-        console.log(data.blogF.like_status);
+        // console.log(data.blogF.like_status);
         data.ud.length !== 0 ? setIsLogin(true) : setIsLogin(false);
         // console.log(data.interaction);
       } catch (error) {
