@@ -100,7 +100,7 @@ const Settings = () => {
                 className="usernameHeader"
               />
               <CardContent>
-                <Typography className="bio">{bio}</Typography>
+                <Typography className="bio">{bio}lll</Typography>
               </CardContent>
             </div>
           </div>

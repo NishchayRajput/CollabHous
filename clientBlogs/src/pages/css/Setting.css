@@ -53,6 +53,7 @@
   width: 50vw;
   height: 55vh;
   padding: 30px;
+ 
   /* align-items: center; */
   /* justify-content: center; */
 }
@@ -71,20 +72,29 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  margin: 20px;
+  margin: 1vw 0;
 }
 
 .section1 .inputBox_profile {
   height: 150px;
   width: 150px;
-  margin: 15px 0px;
+  margin: 1.6vw 0;
   background-color: #3e3e3e;
   border: 1px solid #5e5e5e;
   border-radius: 50%;
   font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.inputBox_profile::placeholder {
+.inputBox_profile input{
+  opacity: 0;
+  cursor: pointer;
+}
+
+.inputBox_profile span {
   color: #f74d79;
   font-family: Roboto;
   font-size: 20.75px;
@@ -92,6 +102,7 @@
   font-weight: 900;
   line-height: normal;
   letter-spacing: 1.238px;
+  padding-top: 20%;
 }
 
 .section1 .inputBox {
@@ -121,6 +132,7 @@
   margin-top: 10px;
    /* align-items: center;  
    justify-content: center; */
+   
 
 }
 
@@ -132,7 +144,7 @@
   font-family: "Roboto";
   font-weight: "500";
   letter-spacing: 1.01;
-  width: 45vw;
+  width: 100%;
   height: 5vh;
   padding: 30px;
   margin-top: 10px;
@@ -243,8 +255,8 @@
   font-weight: 700;
   letter-spacing: 0/84;
   word-wrap: break-word;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  /* margin-top: 20px;
+  margin-bottom: 20px; */
 }
 
 .section3 .view {
@@ -260,7 +272,7 @@
   border-radius: 5px;
   color: aliceblue;
   font-weight: 700;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   color: #f74d79;
 }
 
@@ -334,3 +346,63 @@
   background-color: #ffffff;
   color: #f74d79;
 }
+
+
+/*****************************************************************************/
+
+@media screen and (max-width: 768px) {
+  .section3 .inner_box{
+    width: 50vw;
+    height: 35vh;
+  }
+}
+
+@media screen and (max-width: 425px) {   
+
+  .ssection .titleContainer, .section1 .form, .section2 .form_radio{
+    width: 85vw;
+  }
+
+  .section1 .form  {
+   display: flex;
+   flex-direction: column;
+    height: 63vh;
+  }
+
+  .section1 .form .left_form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .section1 .form .right_form .inputBox{
+    height: 5vh;
+  }
+
+
+  .section2 .form_radio .input_radio{
+    padding: 4%;
+    height: 10vh;
+  }
+
+  .section2 .form_radio .label{
+    width: 70%;
+  }
+
+
+  .section3 .left_boxes, .section3 .right_boxes{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+  }
+
+  .section3 .inner_box{
+    width: 100%;
+    height: 28vh;
+  }
+
+}
+
+

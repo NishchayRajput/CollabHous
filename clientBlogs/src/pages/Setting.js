@@ -170,13 +170,14 @@ const Setting = () => {
         </div>
         <form action=" " className="form">
           <div className="left_form">
-            <input
-              type="file"
-              placeholder="Upload"
-              className="inputBox_profile"
-              name="profile"
-              onChange={handleFileChange}
-            />
+            <label className="inputBox_profile">
+              <span>Upload</span>
+              <input
+                type="file"
+                name="profile"
+                onChange={handleFileChange}
+              />
+            </label>
           </div>
           <div className="right_form">
             <input
