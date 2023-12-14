@@ -111,6 +111,7 @@ export default function IndividualBlog() {
         console.log(error);
       }
     }
+    localStorage.setItem("selectedTabIndex", "2");
     getBlog();
     getAllBlogs();
     setUpVoteCount(blog.like);

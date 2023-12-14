@@ -1,56 +1,73 @@
-
 import { Box, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import "./css/Footer.css";
 const Footer = () => {
+  const scrollToPercentage = (percentage) => {
+    const scrollToY =
+      (percentage / 100) * (document.body.scrollHeight - window.innerHeight);
+    window.scrollTo({ top: scrollToY, behavior: "instant" });
+  };
   return (
     <Box className="footerContainer">
       <Box>
         <Typography className="logo">
-          <span>cH</span><span className="commune"> Commune</span> 
+          <span>cH</span>
+          <span className="commune"> Commune</span>
         </Typography>
       </Box>
       <Box className="row2">
         <Box className="contentOuter">
           <Typography>
-            <span 
-            className="contentPartOne">Read, react and share the original thoughts of creators and thinkers
-            on personal luxury.</span><span className="contentPartTwo"> Explore our content to delve into the minds
-            shaping these industries.</span>
+            <span className="contentPartOne">
+              Read, react and share the original thoughts of creators and
+              thinkers on personal luxury.
+            </span>
+            <span className="contentPartTwo">
+              {" "}
+              Explore our content to delve into the minds shaping these
+              industries.
+            </span>
           </Typography>
         </Box>
-        <Box className="pages" >
-          <Link to="/home" style={{ textDecoration: "none" }}>
-            <Typography
-              className="pageLinks"
-            >
-              Home
-            </Typography>
+        <Box className="pages">
+          <Link
+            to="/home"
+            style={{ textDecoration: "none" }}
+            onClick={() => {
+              scrollToPercentage(0);
+            }}
+          >
+            <Typography className="pageLinks">Home</Typography>
           </Link>
-          <Link to="/blogs" style={{ textDecoration: "none" }}>
-            <Typography
-
-              className="pageLinks"
-            >
-              Blogs
-            </Typography>
+          <Link
+            to="/blogs"
+            style={{ textDecoration: "none" }}
+            onClick={() => {
+              scrollToPercentage(0);
+            }}
+          >
+            <Typography className="pageLinks">Blogs</Typography>
           </Link>
-          <Link to="/connect" style={{ textDecoration: "none" }}>
-            <Typography
-              className="pageLinks"
-            >
-              Connect
-            </Typography>
+          <Link
+            to="/connect"
+            style={{ textDecoration: "none" }}
+            onClick={() => {
+              scrollToPercentage(0);
+            }}
+          >
+            <Typography className="pageLinks">Connect</Typography>
           </Link>
-          <Link to="/faq" style={{ textDecoration: "none" }}>
-            <Typography
-              className="pageLinks"
-            >
-              FAQs
-            </Typography>
+          <Link
+            to="/faq"
+            style={{ textDecoration: "none" }}
+            onClick={() => {
+              scrollToPercentage(0);
+            }}
+          >
+            <Typography className="pageLinks">FAQs</Typography>
           </Link>
         </Box>
-        
+
         <Box className="socialmedia">
           <Typography className="pageLinks">Social media</Typography>
           <a
@@ -59,10 +76,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             style={{ textDecoration: "none" }}
           >
-            <Typography
-              className="socialMedia"
-            >
-            
+            <Typography className="socialMedia">
               Instagram
               <img
                 src="images/Vector.png"
@@ -77,10 +91,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             style={{ textDecoration: "none" }}
           >
-            <Typography
- 
-              className="socialMedia"
-            >
+            <Typography className="socialMedia">
               Linked in
               <img
                 src="images/Vector.png"
@@ -95,10 +106,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             style={{ textDecoration: "none" }}
           >
-            <Typography
-       
-              className="socialMedia"
-            >
+            <Typography className="socialMedia">
               Twitter
               <img
                 src="images/Vector.png"
@@ -109,12 +117,7 @@ const Footer = () => {
           </a>
         </Box>
         <Box className="contact">
-          <Typography
-   
-            className="contactus"
-          >
-            Contact us
-          </Typography>
+          <Typography className="contactus">Contact us</Typography>
 
           <a
             href="https://www.chcommune.com"

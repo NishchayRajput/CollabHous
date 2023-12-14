@@ -32,7 +32,6 @@ const Header = () => {
     const storedIndex = localStorage.getItem("selectedTabIndex");
     return storedIndex ? parseInt(storedIndex, 10) : 0;
   };
-
   const scrollToPercentage = (percentage) => {
     const scrollToY =
       (percentage / 100) * (document.body.scrollHeight - window.innerHeight);
@@ -66,13 +65,10 @@ const Header = () => {
             },
           }
         );
-        // console.log("Headers Page: ",data.notifications);
         setNotification(data.notifications);
         if (data.message === "Please login first") setIsLogin(true);
         else setIsLogin(false);
-        // if ((data.message = "Please login first")) {
-        //   navigate("/login");
-        // }
+      
       } catch (error) {
         console.log(error);
       }

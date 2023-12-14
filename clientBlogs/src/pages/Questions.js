@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./css/Questions.css";
 
 import FileUpload from "../components/FileUpload";
@@ -7,7 +7,7 @@ import axios from "axios";
 
 const Questions = () => {
   const navigate = useNavigate();
-  const [ setSelectedFile] = useState(null);
+  const [setSelectedFile] = useState(null);
   const [inputs, setInputs] = useState({
     name: "",
     email: "",
@@ -49,13 +49,14 @@ const Questions = () => {
         }
       );
 
-      
-        response.data?.(navigate("/home"));
-      
+      response.data?.(navigate("/home"));
     } catch (error) {
       console.log(error);
     }
   };
+  useEffect(() => {
+    localStorage.setItem("selectedTabIndex", "3");
+  }, []);
   return (
     <div className="questionsPage">
       <div className="qsection section1">
@@ -143,7 +144,7 @@ const Questions = () => {
       <div id="section4" className="qsection section4">
         <div>
           <div className="title">My CV</div>
-          <div >
+          <div>
             <FileUpload
               onFileSelectSuccess={(file) => setSelectedFile(file)}
               onFileSelectError={({ error }) => alert(error)}

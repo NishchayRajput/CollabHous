@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./css/ExploreCommune.css";
 import { useNavigate } from "react-router-dom";
 
 const ExploreCommune = () => {
   const navigate = useNavigate();
+  useEffect(() => {
+    localStorage.setItem("selectedTabIndex", "3");
+  }, []);
   return (
     <div id="exploreconnect">
       <div className="container">

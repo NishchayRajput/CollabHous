@@ -37,6 +37,9 @@ const CommuneWelcome = () => {
   const handleAvatarError = () => {
     setAvatarSrc("images/defaultAvatar.jpg");
   };
+  useEffect(() => {
+    localStorage.setItem("selectedTabIndex", "3");
+  }, []);
   return (
     <div className="settingCotainer">
       <div className="greyBox">
