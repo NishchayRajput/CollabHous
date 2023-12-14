@@ -325,6 +325,10 @@
   justify-content: flex-end;
 }
 
+.section3{
+  padding-bottom: 6vh;
+}
+
 .section3 .container .save {
   height: 40px;
   width: 90px;
