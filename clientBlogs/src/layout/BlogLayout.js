@@ -6,9 +6,9 @@ import Footer from "../components/Footer";
 const BlogLayout = () => {
   return (
     <div style={{ backgroundColor: "rgba(35, 36, 38, 1)", margin: 0 }}>
-      {/* //<Header /> */}
+      <Header />
       <Outlet />
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };
