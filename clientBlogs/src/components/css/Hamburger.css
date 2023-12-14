@@ -37,20 +37,23 @@ Note: Beware of modifying this element as it can break the animations - you shou
 */
 .bm-menu-wrap {
   position: fixed;
-  height: 100%;
-  width: 100% !important;
-  top: 0px;
-  backdrop-filter: blur(10px);
+  height: 100vh;
+  width: 100vw !important;
+  top: -20px;
+  left: -20px;
+  min-height: 100vh;
+  min-width: 100vw;
+  padding: 0em 0em;
 }
 
 /* General sidebar styles */
 .bm-menu {
-  background: rgba(0, 0, 0, 0.468);
+  background: rgba(13, 13, 13, 0.86);
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
-
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px); /* For Safari */
 }
-
 /* Morph shape necessary with bubble or elastic */
 .bm-morph-shape {
   fill: #000000;
@@ -60,7 +63,12 @@ Note: Beware of modifying this element as it can break the animations - you shou
 .bm-item-list {
   color: #b8b7ad;
   padding: 0.8em;
-  margin-top: 6rem;
+  /* margin-top: 6rem; */
+  margin: auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Individual item */
@@ -71,7 +79,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   align-items: center;
   height: 75%;
   text-transform: uppercase;
-  text-shadow: 0px 0px 2px aliceblue;
+  text-shadow: 0px 0px 3px aliceblue;
 }
 
 .menu-item {
@@ -108,7 +116,5 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 @media only screen and (max-width: 800px) {
-  #outer-container {
-    /* display:contents; */
-  }
+  #outer-container {}
 }

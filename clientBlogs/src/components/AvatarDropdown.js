@@ -13,7 +13,6 @@ import axios from "axios";
 
 export default function AvatarDropdown() {
   const navigate = useNavigate();
-  
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -29,7 +28,7 @@ export default function AvatarDropdown() {
   const handleProfile = () => {
     navigate("/settings");
   };
-  
+
   const handleLogOut = () => {
     async function logout() {
       try {
@@ -51,6 +50,15 @@ export default function AvatarDropdown() {
     }
     logout();
   };
+
+  const [avatarSrc, setAvatarSrc] = React.useState(
+    "path/to/original-image.jpg"
+  );
+
+  const handleAvatarError = () => {
+    setAvatarSrc("images/defaultAvatar.jpg");
+  };
+
   return (
     <React.Fragment>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
@@ -62,7 +70,12 @@ export default function AvatarDropdown() {
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
         >
-          <Avatar sx={{ width: 29, height: 29 }}></Avatar>
+          <Avatar
+            src={avatarSrc}
+            onError={handleAvatarError}
+            alt="Avatar"
+            sx={{ width: 29, height: 29 }}
+          />
         </IconButton>
       </Box>
       <Menu
@@ -118,7 +131,6 @@ export default function AvatarDropdown() {
         </MenuItem>
 
         <Divider className="divider" />
-
 
         <MenuItem onClick={handleLogOut} className="dropAvatar">
           <ListItemIcon>

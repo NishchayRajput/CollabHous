@@ -3,7 +3,7 @@ import axios from "axios";
 import BlogCard from "../components/BlogCard";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import { Box} from "@mui/material";
+import { Box } from "@mui/material";
 import { Link } from "react-router-dom";
 
 import TrendingBlogCard from "../components/TrendingBlogCard";
@@ -19,10 +19,16 @@ const Blogs = () => {
   };
   const getAllBlogs = async () => {
     try {
-      const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/blogs/`);
+      const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/blogs/`,
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        });
       setAllBlogs(data);
       setBlogs(data);
-      // console.log(data);
+      console.log(data);
     } catch (error) {
       console.log(error);
     }

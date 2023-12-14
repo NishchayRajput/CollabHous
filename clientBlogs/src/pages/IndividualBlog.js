@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import { Box,Typography, IconButton } from "@mui/material";
+import { Box, Typography, IconButton } from "@mui/material";
 
 import Markdown from "react-markdown";
 import CardActions from "@mui/material/CardActions";
@@ -18,11 +18,7 @@ import {
   TwitterShareButton,
   WhatsappShareButton,
 } from "react-share";
-import {
-  EmailIcon,
-  TwitterIcon,
-  WhatsappIcon,
-} from "react-share";
+import { EmailIcon, TwitterIcon, WhatsappIcon } from "react-share";
 
 export default function IndividualBlog() {
   //global stae
@@ -92,7 +88,6 @@ export default function IndividualBlog() {
   // Get the blogId from the URL using useParams
 
   useEffect(() => {
-  
     async function getBlog() {
       try {
         const { data } = await axios.get(
@@ -119,7 +114,7 @@ export default function IndividualBlog() {
     getBlog();
     getAllBlogs();
     setUpVoteCount(blog.like);
-  }, [blog.like,blogId]);
+  }, [blog.like, blogId]);
 
   const handleUpVote = async (e) => {
     try {
@@ -193,7 +188,7 @@ export default function IndividualBlog() {
                 <Typography className="username">
                   {blog.user_id?.name}
                 </Typography>
-                <img src="" alt="f"/>{" "}
+                <img src="" alt="f" />{" "}
               </div>
             </Box>
           </Box>
@@ -214,107 +209,10 @@ export default function IndividualBlog() {
             </Box>
           </Box>
           <Box className="blogContainer">
-            <Typography className="subtitle">Fashion</Typography>
+            {/* <Typography className="subtitle">Fashion</Typography> */}
             <Box className="blogContent">
               <Markdown className="content">{blog.content}</Markdown>
             </Box>
-            {/* <Box className="blogContent">
-              {blog.image == null ? (
-                <Box
-                  display={"flex"}
-                  justifyContent={"center"}
-                  width={"38%"}
-                  paddingRight={"2%"}
-                  className="image"
-                >
-                  <img src="https://picsum.photos/300/300" alt="" />
-                </Box>
-              ) : (
-                ""
-              )}
-
-              <Typography className="content" width={"60"}>
-                Lorem ipsum dolor sit amet consectetur. Habitant diam mi semper
-                in ultricies ipsum sed ac. Consectetur nascetur sit pharetra
-                donec augue netus eget phasellus scelerisque. Laoreet elementum
-                bibendum penatibus vitae arcu arcu lectus tincidunt. Volutpat
-                nibh netus vitae arcu mattis orci. Lorem faucibus nunc sit at
-                faucibus. Pellentesque turpis habitasse urna id. Dignissim vitae
-                enim congue est ut odio mauris rutrum dictum. Turpis sagittis
-                arcu amet nec adipiscing mattis. Neque viverra sed quis
-                convallis. Non aliquam elit vivamus varius eleifend purus. Massa
-                mattis quam amet tortor arcu nisl. Eros elementum cras orci at
-                proin ut sem dignissim pharetra. Fermentum aliquet in mattis
-                lacus. Cras facilisis nec sem scelerisque vulputate. Enim tellus
-                ut condimentum tortor sit lectus purus. Aliquet eget dui
-                faucibus dui bibendum consequat.
-              </Typography>
-            </Box>
-            <Typography className="content" mt={"1rem"}>
-              Lorem ipsum dolor sit amet consectetur. Habitant diam mi semper in
-              ultricies ipsum sed ac. Consectetur nascetur sit pharetra donec
-              augue netus eget phasellus scelerisque. Laoreet elementum bibendum
-              penatibus vitae arcu arcu lectus tincidunt. Volutpat nibh netus
-              vitae arcu mattis orci. Lorem faucibus nunc sit at faucibus.
-              Pellentesque turpis habitasse urna id. Dignissim vitae enim congue
-              est ut odio mauris rutrum dictum. Turpis sagittis arcu amet nec
-              adipiscing mattis. Neque viverra sed quis convallis. Non aliquam
-              elit vivamus varius eleifend purus. Massa mattis quam amet tortor
-              arcu nisl. Eros elementum cras orci at proin ut sem dignissim
-              pharetra. Fermentum aliquet in mattis lacus. Cras facilisis nec
-              sem scelerisque vulputate. Enim tellus ut condimentum tortor sit
-              lectus purus. Aliquet eget dui faucibus dui bibendum consequat.
-            </Typography>
-            <Box className="blogContent">
-              <Typography className="content" width={"60"}>
-                Lorem ipsum dolor sit amet consectetur. Habitant diam mi semper
-                in ultricies ipsum sed ac. Consectetur nascetur sit pharetra
-                donec augue netus eget phasellus scelerisque. Laoreet elementum
-                bibendum penatibus vitae arcu arcu lectus tincidunt. Volutpat
-                nibh netus vitae arcu mattis orci. Lorem faucibus nunc sit at
-                faucibus. Pellentesque turpis habitasse urna id. Dignissim vitae
-                enim congue est ut odio mauris rutrum dictum. Turpis sagittis
-                arcu amet nec adipiscing mattis. Neque viverra sed quis
-                convallis. Non aliquam elit vivamus varius eleifend purus. Massa
-                mattis quam amet tortor arcu nisl. Eros elementum cras orci at
-                proin ut sem dignissim pharetra. Fermentum aliquet in mattis
-                lacus. Cras facilisis nec sem scelerisque vulputate. Enim tellus
-                ut condimentum tortor sit lectus purus. Aliquet eget dui
-                faucibus dui bibendum consequat.
-              </Typography>
-
-              {
-                //change this on fetching the image data form database
-                blog.image == null ? (
-                  <Box
-                    display={"flex"}
-                    justifyContent={"center"}
-                    width={"38%"}
-                    paddingLeft={"2%"}
-                    className="image"
-                  >
-                    <img src="https://picsum.photos/300/300" alt="" />
-                  </Box>
-                ) : (
-                  ""
-                )
-              }
-            </Box>
-            <Typography className="content" mt={"1rem"}>
-              Lorem ipsum dolor sit amet consectetur. Habitant diam mi semper in
-              ultricies ipsum sed ac. Consectetur nascetur sit pharetra donec
-              augue netus eget phasellus scelerisque. Laoreet elementum bibendum
-              penatibus vitae arcu arcu lectus tincidunt. Volutpat nibh netus
-              vitae arcu mattis orci. Lorem faucibus nunc sit at faucibus.
-              Pellentesque turpis habitasse urna id. Dignissim vitae enim congue
-              est ut odio mauris rutrum dictum. Turpis sagittis arcu amet nec
-              adipiscing mattis. Neque viverra sed quis convallis. Non aliquam
-              elit vivamus varius eleifend purus. Massa mattis quam amet tortor
-              arcu nisl. Eros elementum cras orci at proin ut sem dignissim
-              pharetra. Fermentum aliquet in mattis lacus. Cras facilisis nec
-              sem scelerisque vulputate. Enim tellus ut condimentum tortor sit
-              lectus purus. Aliquet eget dui faucibus dui bibendum consequat.
-            </Typography> */}
           </Box>
         </section>
         <section>
@@ -322,18 +220,18 @@ export default function IndividualBlog() {
             <CardActions
               disableSpacing
               onMouseLeave={() => setShowSharingBox(false)}
-              sx={{ padding: "0px", paddingLeft: "10px" }}
+              sx={{ padding: "2px", paddingLeft: "10px" }}
             >
               <IconButton arqia-label="add to favorites" onClick={handleUpVote}>
                 {!likeStatus && (
-                  <ThumbUpOffAltIcon style={{ color: "#626262" }} />
+                  <ThumbUpOffAltIcon style={{ color: "#626262", width:'30px', height:'30px'}} />
                 )}
-                {likeStatus && <ThumbUpAltIcon style={{ color: "#F74D79" }} />}
+                {likeStatus && <ThumbUpAltIcon style={{ color: "#F74D79", width:'30px', height:'30px'}} />}
                 <span className="upvote">{upVoteCount}</span>
               </IconButton>
               <IconButton aria-label="add to favorites" onClick={handleComment}>
                 {/* <MapsUgcRoundedIcon style={{ color: "#FFFFFF" }} /> */}
-                <img src="/images/commentIcon.svg " alt="f"/>
+                <img src="/images/commentIcon.svg " alt="f" />
               </IconButton>
               <IconButton
                 aria-label="share"
@@ -344,19 +242,13 @@ export default function IndividualBlog() {
               </IconButton>
               {showSharingBox && (
                 <Box className="sharingBox">
-                  <TwitterShareButton
-                    url={`${frontendURL}/blogs/${blogId}`}
-                  >
+                  <TwitterShareButton url={`${frontendURL}/blogs/${blogId}`}>
                     <TwitterIcon size={32} round />
                   </TwitterShareButton>
-                  <EmailShareButton
-                    url={`${frontendURL}/blogs/${blogId}`}
-                  >
+                  <EmailShareButton url={`${frontendURL}/blogs/${blogId}`}>
                     <EmailIcon size={32} round />
                   </EmailShareButton>
-                  <WhatsappShareButton
-                    url={`${frontendURL}/blogs/${blogId}`}
-                  >
+                  <WhatsappShareButton url={`${frontendURL}/blogs/${blogId}`}>
                     <WhatsappIcon size={32} round />
                   </WhatsappShareButton>
                 </Box>
