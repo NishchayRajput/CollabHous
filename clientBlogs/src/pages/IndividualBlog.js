@@ -174,7 +174,6 @@ export default function IndividualBlog() {
                 <Typography className="username">
                   {blog.user_id?.name}
                 </Typography>
-                <img src="" alt="f" />{" "}
               </div>
             </Box>
           </Box>
@@ -188,7 +187,6 @@ export default function IndividualBlog() {
                 <Typography className="username">
                   {blog.user_id?.name}
                 </Typography>
-                <img src="" alt="f" />{" "}
               </div>
             </Box>
           </Box>
@@ -224,9 +222,15 @@ export default function IndividualBlog() {
             >
               <IconButton arqia-label="add to favorites" onClick={handleUpVote}>
                 {!likeStatus && (
-                  <ThumbUpOffAltIcon style={{ color: "#626262", width:'30px', height:'30px'}} />
+                  <ThumbUpOffAltIcon
+                    style={{ color: "#626262", width: "30px", height: "30px" }}
+                  />
                 )}
-                {likeStatus && <ThumbUpAltIcon style={{ color: "#F74D79", width:'30px', height:'30px'}} />}
+                {likeStatus && (
+                  <ThumbUpAltIcon
+                    style={{ color: "#F74D79", width: "30px", height: "30px" }}
+                  />
+                )}
                 <span className="upvote">{upVoteCount}</span>
               </IconButton>
               <IconButton aria-label="add to favorites" onClick={handleComment}>

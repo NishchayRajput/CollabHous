@@ -25,6 +25,7 @@
     color: white;
     margin-bottom: 20px;
     font-weight: 700;
+
 }
 
 #exploreconnect .options {
@@ -35,6 +36,10 @@
     height: auto;
     gap: 20px;
     width: 100%;
+}
+
+#exploreconnect .options>div {
+    cursor: pointer;
 }
 
 #exploreconnect .options .box {
@@ -55,13 +60,13 @@
 
 #exploreconnect .options .follow {
     height: 200px;
-
 }
 
 #exploreconnect .options .iconBox {
     display: flex;
     flex-direction: row;
     gap: 15px;
+
 }
 
 #exploreconnect .options .title {

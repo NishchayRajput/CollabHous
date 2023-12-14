@@ -159,9 +159,9 @@ const Setting = () => {
           <div className="title1"> Settings</div>
           <div className="editBanner">
             <div className="title">Account</div>
-            <button className="edit" onClick={handleEdit}>
+            <div className="edit" onClick={handleEdit}>
               <EditNoteIcon fontSize="large" />
-            </button>
+            </div>
           </div>
           <div className="subtitle">
             Your basic information is submitted with every application at

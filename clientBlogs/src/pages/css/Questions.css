@@ -62,6 +62,7 @@
     border-radius: 10px;
     color: aliceblue;
     font-weight: 700;
+    cursor:pointer;
 }
 
 .qsection .nextBtn {
@@ -78,6 +79,7 @@
     color: aliceblue;
     font-weight: 700;
     margin-top: 15px;
+    cursor:pointer;
 }
 
 .qsection .title {
