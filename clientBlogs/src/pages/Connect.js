@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./css/Connect.css";
 import { Box } from "@mui/material";
-import { ReactNotifications, Store } from "react-notifications-component";
+import { Store } from "react-notifications-component";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
