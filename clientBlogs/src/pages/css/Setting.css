@@ -388,7 +388,7 @@
   .section1 .form  {
    display: flex;
    flex-direction: column;
-    height: 63vh;
+    height: auto;
   }
 
   .section1 .form .left_form{
@@ -426,5 +426,3 @@
   }
 
 }
-
-
