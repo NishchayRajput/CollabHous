@@ -330,7 +330,7 @@ const Home = () => {
             </Box>
           </FullpageSection>
           <FullpageSection>
-                <div className="footer">
+                <div className="home_footer">
             {/* </div><div style={{ position: "absolute", bottom: "0px" }}> */}
               <Footer />
             </div>
