@@ -55,6 +55,21 @@ const Blogs = () => {
     setBlogs(updateBlogs);
   };
 
+
+  const [isMobile, setIsMobile] = useState(document.documentElement.clientWidth < 769);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(document.documentElement.clientWidth < 769);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <>
       <Box className="mainContainer">
@@ -66,7 +81,7 @@ const Blogs = () => {
           aria-label="scrollable auto tabs example"
           TabIndicatorProps={{
             style: {
-              backgroundColor: true ? "#F74D79" : "rgba(35, 36, 38, 1)", // Colored underline for selected tab
+              backgrosettingundColor: true ? "#F74D79" : "rgba(35, 36, 38, 1)", // Colored underline for selected tab
             },
           }}
           className="tabsContainer"
@@ -168,7 +183,7 @@ const Blogs = () => {
                   position: "relative",
                 }}
               >
-                {window.innerWidth < 800 ? (
+                {isMobile ? (
                   <BlogCard
                     bId={blog?._id}
                     // key={blog?.user_id}

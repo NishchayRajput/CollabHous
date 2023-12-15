@@ -330,10 +330,11 @@ const Home = () => {
             </Box>
           </FullpageSection>
           <FullpageSection>
-            <div style={{ position: "absolute", bottom: "0px" }}>
+                <div className="footer">
+            {/* </div><div style={{ position: "absolute", bottom: "0px" }}> */}
               <Footer />
             </div>
-          </FullpageSection>
+          </FullpageSection> 
         </FullPageSections>
       </Fullpage>
     </div>
