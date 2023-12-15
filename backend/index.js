@@ -9,11 +9,19 @@ const cookieParser = require("cookie-parser");
 // const mongoStore = require("connect-mongo");
 
 const app = express();
-app.use(cors({
-  origin: ['http://localhost:3000', 'http://127.0.0.1:3000'],
-  credentials: true,
-  exposedHeaders: ["Set-Cookie"],
-}));
+if (process.env.NODE_ENV === 'production') {
+  app.use(cors({
+    origin: ['http://chcommune.com', 'http://www.chcommune.com', 'https://chcommune.com', 'https://www.chcommune.com'],
+    credentials: true,
+    exposedHeaders: ["Set-Cookie"],
+  }));
+} else {
+  app.use(cors({
+    origin: ['http://localhost:3000', 'http://127.0.0.1:3000'],
+    credentials: true,
+    exposedHeaders: ["Set-Cookie"],
+  }));
+}
 app.use(express.json());
 app.use(cookieParser());
 // app.use(passport.initialize());
