@@ -1,4 +1,4 @@
-.FAQcontainer{
+/* .FAQcontainer{
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -7,26 +7,9 @@
   
 }
 
-.allboxes{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-    justify-content: center;
-}
 
 
 
-.FAQtext{
-    color: #FFF;
-font-family: Cardo;
-font-size: 45px;
-font-style: normal;
-font-weight: 700;
-letter-spacing: 2.25px;
-text-align: center;
-transform: translateY(60px);
-}
 
 
 
@@ -67,10 +50,10 @@ font-weight: 700;
 line-height: normal;
 letter-spacing: 1.013px;
 }
-/* 
+
     .FAQDrop{
         position: relative;
-    } */
+    }
 
  .FAQDrop .row2{
     width: 60vw;
@@ -86,12 +69,33 @@ top: 50px;
 
 .FAQDrop .label2{
     color: #B5B5B5;
-/* text-align: justify; */
 font-family: Questrial;
 font-size: 13.5px;
 font-style: normal;
 font-weight: 400;
-line-height: 19.125px; /* 141.667% */
+line-height: 19.125px;
 letter-spacing: 0.675px;
+} */
+.FAQcontainer{
+    display: flex;
+    flex-direction: column;
+}
+.FAQtext{
+    color: #FFF;
+font-family: Cardo;
+font-size: 45px;
+font-style: normal;
+font-weight: 700;
+letter-spacing: 2.25px;
+text-align: center;
+transform: translateY(60px);
 }
 
+.FAQsmallcontainer{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+.FAQtext{
+    position: relative;
+}
