@@ -4,7 +4,7 @@ import "./css/Hamburger.css";
 import { slide as Menu } from "react-burger-menu";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-const Hamburger = () => {
+const Hamburger = ({ isLogin }) => {
   const navigate = useNavigate();
   const handleLogOut = () => {
     async function logout() {
@@ -60,9 +60,16 @@ const Hamburger = () => {
             Settings
           </a>
           <div className="break-line" />
-          <div href="" id="connect" className="menu-item" onClick={handleLogOut}>
-            LogOut
-          </div>
+          {isLogin && (
+            <div
+              href=""
+              id="connect"
+              className="menu-item"
+              onClick={handleLogOut}
+            >
+              LogOut
+            </div>
+          )}
         </main>
       </Menu>
     </div>

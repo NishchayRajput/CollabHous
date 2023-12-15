@@ -2,14 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import {
-  Box,
-  AppBar,
-  Toolbar,
-  Tabs,
-  Tab,
-  Button,
-} from "@mui/material";
+import { Box, AppBar, Toolbar, Tabs, Tab, Button } from "@mui/material";
 import AvatarDropdown from "./AvatarDropdown";
 import Notification from "./Notification";
 import { Link } from "react-router-dom";
@@ -103,7 +96,11 @@ const Header = () => {
       >
         <Toolbar className="toolbar">
           <div className="logoImageCont">
-          <img src={`${process.env.PUBLIC_URL}/CHcommune.png`} height="20px" alt="CH" />
+            <img
+              src={`${process.env.PUBLIC_URL}/CHcommune.png`}
+              height="20px"
+              alt="CH"
+            />
           </div>
           <Box display={"flex"} marginLeft="auto" marginRight={"auto"}>
             <Tabs
@@ -176,7 +173,7 @@ const Header = () => {
               </Button>
             </div>
           )}
-          <Hamburger />
+          <Hamburger isLogin={!isLogin} />
         </Toolbar>
       </AppBar>
     </>
