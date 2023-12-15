@@ -8,7 +8,6 @@ import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
-import { red } from "@mui/material/colors";
 import { Box, IconButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -70,7 +69,7 @@ export default function BlogCard({
     }
   };
   const [avatarSrc, setAvatarSrc] = React.useState(
-    "path/to/original-image.jpg"
+    "images/defaultAvatar.jpg"
   );
 
   const handleAvatarError = () => {

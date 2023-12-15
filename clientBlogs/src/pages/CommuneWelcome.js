@@ -31,7 +31,7 @@ const CommuneWelcome = () => {
     connect();
   }, []);
   const [avatarSrc, setAvatarSrc] = React.useState(
-    "path/to/original-image.jpg"
+    "images/defaultAvatar.jpg"
   );
 
   const handleAvatarError = () => {

@@ -72,7 +72,7 @@ export default function BlogCard({
     setLikeStatus(likeStat);
   }, [upVoteC, likeStat]);
   const [avatarSrc, setAvatarSrc] = React.useState(
-    "path/to/original-image.jpg"
+    "images/defaultAvatar.jpg"
   );
 
   const handleAvatarError = () => {
