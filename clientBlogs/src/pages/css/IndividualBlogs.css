@@ -258,7 +258,7 @@
         flex-direction: column;
         width: 100%;
         padding: 10vw;
-        top: -334px;
+        top: -200px;
     }
 
     .heroBanner .container .usernameContainer {
@@ -269,11 +269,17 @@
         gap: 16px;
         justify-content: flex-start;
     }
+    .heroBanner .container .title {
+       font-size: 32px;
+    }
 
     .blogBanner .container {
         flex-direction: column;
         width: 100%;
         padding: 10vw;
+    }
+    .blogBanner .container>.title {
+       font-size: 32px;
     }
 
     .blogBanner .container .usernameContainer {
@@ -318,5 +324,15 @@
     .blogContainer .content {
         margin: 20px 40px;
         text-align: justify;
+    }
+    .relatedBlogsSection {
+        width:86%;
+        align-items: end;
+    }
+    .relatedBlogsSection .title{
+        font-size: 30px;
+    }
+    .relatedBlogsSection .more{
+        font-size: 18px;
     }
 }

@@ -1,7 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
 
-.mainContainer {
+.BlogContainerBox{
     max-width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0px auto;
+}
+.mainContainer {
+    max-width: 90%;
+    width:90%;
     margin: 0px auto;
 
 }
@@ -20,8 +29,12 @@
 }
 
 .blogCardContainer {
+    max-width:100%;
+    width: 100%;
     margin: 0px 10%;
-
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .blogCard {

@@ -71,7 +71,7 @@ const Blogs = () => {
   }, []);
 
   return (
-    <>
+    <div className="BlogContainerBox">
       <Box className="mainContainer">
         <Tabs
           value={valueT}
@@ -170,7 +170,7 @@ const Blogs = () => {
       </Box>
 
       <Box className="blogCardContainer">
-        <Box display={"flex"} flexWrap={"wrap"}>
+        <Box display={"flex"} flexWrap={"wrap"} justifyContent={"space-around"}>
           {blogs &&
             blogs.map((blog, index) => (
               <Box
@@ -263,7 +263,7 @@ const Blogs = () => {
             ))}
         </Box>
       </Box>
-    </>
+    </div>
   );
 };
 

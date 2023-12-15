@@ -100,3 +100,10 @@
     border: 1px solid white;
     background-color: #2F2F2F;
 }
+
+@media only screen and (max-width: 430px) {
+    .containerCommentArea {
+        width: 90%;
+    }
+
+}   
