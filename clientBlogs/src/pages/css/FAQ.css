@@ -1,30 +1,26 @@
 
-.FAQcontainer{
-    display: flex;
-    flex-direction: column;
-}
 .FAQtext{
-    color: #FFF;
+color: #FFF;
 font-family: Cardo;
 font-size: 45px;
 font-style: normal;
 font-weight: 700;
 letter-spacing: 2.25px;
 text-align: center;
-transform: translateY(60px);
+/* transform: translateY(60px); */
 }
 
-.FAQsmallcontainer{
+.FAQcontainer{
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     gap:10px;
     align-items: center;
     text-align: center;
 }
-.FAQtext{
-    position: relative;
+.FAQboxes{
+    width: 50vw;
 }
-
 @media only screen and (min-width:320px ) and (max-width:1023px){
     .FAQtext{
         font-size: 30px;
