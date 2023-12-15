@@ -23,7 +23,7 @@ const Header = () => {
   const [value, setValue] = useState(0);
   const [scrollValue, setScrollValue] = useState(0);
   const [isLogin, setIsLogin] = useState();
-
+  const screenWidth = window.innerWidth;
   const storeSelectedTab = (index) => {
     localStorage.setItem("selectedTabIndex", index);
   };
@@ -68,7 +68,6 @@ const Header = () => {
         setNotification(data.notifications);
         if (data.message === "Please login first") setIsLogin(true);
         else setIsLogin(false);
-      
       } catch (error) {
         console.log(error);
       }
@@ -134,7 +133,7 @@ const Header = () => {
                 style={{
                   color: value === 1 ? "#F74D79" : "white", // Text color for selected tab
                 }}
-                onClick={() => (value !==1 ? scrollToPercentage(42) : "")}
+                onClick={() => (value !== 1 ? scrollToPercentage(42) : "")}
               >
                 Who are we
               </Tab>
@@ -161,7 +160,7 @@ const Header = () => {
               />
             </Tabs>
           </Box>
-          <Notification notificationArray={notification} />
+          {!isLogin && <Notification notificationArray={notification} />}
           {!isLogin && (
             <div id="avatarContainer">
               {" "}

@@ -9,6 +9,11 @@
   box-sizing: border-box;
 }
 
+#root {
+  height: 100%;
+  width: 100vw;
+}
+
 a :hover {
   cursor: pointer;
 }

@@ -61,12 +61,13 @@
 
 @media only screen and (min-width: 315px) and (max-width:767px) {
     .appbar {
-        background-color: rgba(72, 72, 72, 0) !important;
         border: none !important;
         box-shadow: none !important;
-        top: 20px !important;
-        backdrop-filter: blur(0px);
+        top: 10px !important;
+        backdrop-filter: blur(10px);
         width: 90% !important;
+        padding: 4px 1%;
+        /* border-radius: 0px; */
     }
 
     .appbar .tab {
@@ -76,4 +77,6 @@
     #avatarContainer {
         display: none !important;
     }
+
+
 }

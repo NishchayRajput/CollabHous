@@ -68,12 +68,24 @@
 
 }
 
-@media only screen and (max-width:430px) {
+@media only screen and (max-width:321px) {
     .tabsContainer .tabs {
         font-size: 1rem;
     }
 
     .blogCardContainer {
         margin: 0px 7%;
+    }
+    .blogIntroContainer {
+        margin: 0px 54px;
+    }
+
+    .blogCard {
+        min-width: 250px;
+        width: 300px;
+        margin: 3rem 2rem;
+        min-height: 435px;
+        height: auto;
+        flex-wrap: wrap;
     }
 }

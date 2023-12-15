@@ -52,8 +52,10 @@ Note: Beware of modifying this element as it can break the animations - you shou
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
   backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px); /* For Safari */
+  -webkit-backdrop-filter: blur(18px);
+  /* For Safari */
 }
+
 /* Morph shape necessary with bubble or elastic */
 .bm-morph-shape {
   fill: #000000;
@@ -95,6 +97,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 /* Styling of overlay */
 .bm-overlay {
+  position: relative !important;
   background: none !important;
 }
 
