@@ -290,7 +290,7 @@ const Login = () => {
           </div>
           <div className="submit">
             <GoogleOAuthProvider
-              clientId="673293732147-5pde4aq555gdp0b3m8gv3f6s84peico5.apps.googleusercontent.com"
+              clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
               className="loginWith"
             >
           

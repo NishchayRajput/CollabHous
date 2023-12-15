@@ -17,6 +17,7 @@ import { Link } from "react-router-dom";
 import "./css/Header.css";
 import Hamburger from "./Hamburger";
 import axios from "axios";
+// import logo from "public/CHcommune.png"; // adjust the path as needed
 const Header = () => {
   const location = useLocation();
   const [notification, setNotification] = useState([]);
@@ -103,7 +104,9 @@ const Header = () => {
         }}
       >
         <Toolbar className="toolbar">
-          <Typography fontSize="32px">cH</Typography>
+          <div className="logoImageCont">
+          <img src={`${process.env.PUBLIC_URL}/CHcommune.png`} height="20px" alt="CH" />
+          </div>
           <Box display={"flex"} marginLeft="auto" marginRight={"auto"}>
             <Tabs
               textColor="inherit"
