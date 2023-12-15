@@ -42,7 +42,7 @@
 }
 
 .heroBanner .container .usernameContainer>.username {
-    font-size: 23px;
+    font-size: 22px;
     color: white;
     font-weight: 500;
 }
@@ -89,7 +89,7 @@
 }
 
 .blogBanner .container .username {
-    font-size: 23px;
+    font-size: 22px;
     color: white;
     font-weight: 500;
 }
@@ -270,7 +270,7 @@
         justify-content: flex-start;
     }
     .heroBanner .container .title {
-       font-size: 32px;
+       font-size: 28px;
     }
 
     .blogBanner .container {
@@ -279,7 +279,7 @@
         padding: 10vw;
     }
     .blogBanner .container>.title {
-       font-size: 32px;
+       font-size: 28px;
     }
 
     .blogBanner .container .usernameContainer {

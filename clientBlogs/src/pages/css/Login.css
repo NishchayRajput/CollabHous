@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Questrial&display=swap');
 
-.loginpage{
+.loginpage {
     background-image: url("../../../public/images/Login.png");
     display: flex;
     justify-content: space-around;
@@ -10,7 +10,8 @@
     height: 100vh;
 }
 
-.signinBox, .signupBox{
+.signinBox,
+.signupBox {
     background: rgba(31, 28, 28, 0.2);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(11px);
@@ -18,51 +19,57 @@
     border-radius: 16px;
 }
 
-.signupBox{
+.signupBox {
     width: 28vw;
     height: 70vh;
 }
 
-.signinBox{
+.signinBox {
     width: 28vw;
     height: 60vh;
 }
 
 
 
-.signinBox .signInText, .signupBox .signInText{
+.signinBox .signInText,
+.signupBox .signInText {
 
-font-family: 'Montserrat';
-font-style: normal;
-font-weight: 700;
-font-size: 28px;
-line-height: 34px;
-color: #FFFFFF;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 34px;
+    color: #FFFFFF;
 
 }
 
-.signinBox .newUser, .signupBox .newUser, .requirements{
+.signinBox .newUser,
+.signupBox .newUser,
+.requirements {
     margin: 0;
     padding: 1% 0;
-    display:flex;
+    display: flex;
     justify-content: flex-start;
     font-size: 15px;
-    line-height: 15px; 
-    font-family: 'Montserrat'; 
+    line-height: 15px;
+    font-family: 'Montserrat';
     text-decoration: none;
     text-transform: none;
 }
 
-.signinBox .newUser span, .signupBox .newUser span, .requirements{
+.signinBox .newUser span,
+.signupBox .newUser span,
+.requirements {
     font-weight: 400;
     color: #FFFFFF;
 }
 
-.signupBox .stepNo{
+.signupBox .stepNo {
     font-weight: 550;
 }
 
-.signinBox .newUser, .signupBox .newUser {
+.signinBox .newUser,
+.signupBox .newUser {
     font-weight: 700;
     color: #FF2E64;
 }
@@ -73,35 +80,37 @@ color: #FFFFFF;
    
 }  */
 
-.requirements{
+.requirements {
     font-size: 9px;
     font-weight: 600;
 }
 
-.signinBox .continue, .signupBox .continue{
+.signinBox .continue,
+.signupBox .continue {
 
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-padding: 10px;
-gap: 10px;
-margin-top: 20px;
-margin-left:75%;
-width: 25%;
-height: 25px;
-background: #F74D79;
-border-radius: 16px;
-font-family: 'Montserrat';
-text-transform: none;
-font-weight: 700;
-font-size: 12px;
-line-height: 15px;
-color: #FFFFFF;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    margin-top: 20px;
+    margin-left: 75%;
+    width: 25%;
+    height: 25px;
+    background: #F74D79;
+    border-radius: 16px;
+    font-family: 'Montserrat';
+    text-transform: none;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    color: #FFFFFF;
 
 }
 
-.signinBox .or, .signupBox .or{
+.signinBox .or,
+.signupBox .or {
     font-size: 15px;
     font-family: "Montserrat";
     margin-top: 5%;
@@ -111,7 +120,8 @@ color: #FFFFFF;
     justify-content: center;
 }
 
-.signinBox .or div, .signupBox .or div{
+.signinBox .or div,
+.signupBox .or div {
     background-color: white;
     height: 1px;
     width: 45%;
@@ -119,33 +129,35 @@ color: #FFFFFF;
 
 
 
-.signinBox .submit .loginWith, .signupBox .submit .loginWith{
+.signinBox .submit .loginWith,
+.signupBox .submit .loginWith {
     /* Frame 139 */
 
-/* box-sizing: border-box; */
+    /* box-sizing: border-box; */
 
-/* Auto layout */
-display: flex;
-flex-direction: row;
-justify-content: flex-end;
-align-items: center;
-padding: 10px 30px 10px 10px;
-gap: 10px;
-height: 5vh;
-width: 20vw;
-border: 1px solid #7B7B7B;
-border-radius: 40px;
-font-family: 'Montserrat';
-font-style: normal;
-font-weight: 700;
-font-size: 12px;
-line-height: 15px;
-color: #FFFFFF;
-text-transform: none;
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 30px 10px 10px;
+    gap: 10px;
+    height: 5vh;
+    width: 20vw;
+    border: 1px solid #7B7B7B;
+    border-radius: 40px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    color: #FFFFFF;
+    text-transform: none;
 
 }
 
-.signinBox .submit, .signupBox .submit{
+.signinBox .submit,
+.signupBox .submit {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -154,16 +166,19 @@ text-transform: none;
     gap: 3vh;
 }
 
-.loginpage img{
+.loginpage img {
     height: 10vw;
     width: auto;
 }
 
-.signinBox .email ::placeholder,.signinBox .password ::placeholder {
+.signinBox .email ::placeholder,
+.signinBox .password ::placeholder {
     text-align: left;
 }
 
-.signupBox .registerUsername ::placeholder, .signupBox .registerEmail ::placeholder, .signupBox .registerPassword ::placeholder{
+.signupBox .registerUsername ::placeholder,
+.signupBox .registerEmail ::placeholder,
+.signupBox .registerPassword ::placeholder {
     text-align: left;
 }
 
@@ -172,56 +187,64 @@ text-transform: none;
 /*****************************************************************************/
 
 @media screen and (max-width:1024px) {
-    .signinBox .newUser, .signupBox .newUser{
+
+    .signinBox .newUser,
+    .signupBox .newUser {
         font-size: 12px;
     }
 
-    .signinBox, .signupBox{
+    .signinBox,
+    .signupBox {
         width: 37vw;
     }
-    
+
     .loginpage img {
         height: 20vw;
     }
 
-    .signinBox .submit .loginWith, .signupBox .submit .loginWith{
+    .signinBox .submit .loginWith,
+    .signupBox .submit .loginWith {
         justify-content: center !important;
     }
 }
 
 @media screen and (max-width:768px) {
 
-    .signinBox, .signupBox{
+    .signinBox,
+    .signupBox {
         width: 45vw;
     }
-    .signinBox .submit .loginWith, .signupBox .submit .loginWith{
+
+    .signinBox .submit .loginWith,
+    .signupBox .submit .loginWith {
         justify-content: center;
         width: 27vw;
     }
- 
-    .loginpage img{
+
+    .loginpage img {
         height: 24vw;
     }
 }
 
-@media screen and (max-width:425px) {
-    
-    .loginpage{
+@media screen and (max-width:426px) {
+
+    .loginpage {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
 
-    .signinBox, .signupBox{
+    .signinBox,
+    .signupBox {
         width: 82vw;
     }
 
-    .signinBox .submit .loginWith, .signupBox .submit .loginWith{
-        justify-content:center;
+    .signinBox .submit .loginWith,
+    .signupBox .submit .loginWith {
+        justify-content: center;
         width: 60vw;
     }
 
-    
-}
 
+}
