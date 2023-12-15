@@ -29,14 +29,7 @@ export default function BasicAccordion() {
       <div className="FAQcontainer">
         <div className="FAQsmallcontainer">
           <div className="FAQtext">Frequently Asked Questions</div>
-          <div className="allboxes">
             <FAQBox />
-            <FAQBox />
-            <FAQBox />
-            <FAQBox />
-            <FAQBox />
-            <FAQBox />
-          </div>
         </div>
       </div>
     </div>
