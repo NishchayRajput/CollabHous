@@ -12,7 +12,6 @@ import Fullpage, {
 } from "@ap.cx/react-fullpage";
 import Footer from "../components/Footer";
 import "./css/Home.css";
-import Header from "../components/Header";
 
 const Home = () => {
   const [mostLikedBlog, setMostLikedBlog] = useState([]);

@@ -3,7 +3,6 @@ import "./css/FAQ.css";
 import FAQBox from "../components/FAQ_box";
 
 export default function BasicAccordion() {
-  let count = 0;
   React.useEffect(() => {
     localStorage.setItem("selectedTabIndex", "NULL");
     // const index = localStorage.getItem("selectedTabIndex");

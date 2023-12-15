@@ -28,7 +28,7 @@ export default function IndividualBlog() {
   let { blogId } = useParams();
   const [showSharingBox, setShowSharingBox] = useState(false); // State to control the sharing box
   const [showCommentBox, setShowCommentBox] = useState(true); // State to control the sharing box
-  const [allBlogs, setAllBlogs] = useState([]);
+  // const [allBlogs, setAllBlogs] = useState([]);
   const [blog, setBlog] = useState([]);
   const [interaction, setInteraction] = useState([]);
   const [relatedBlog, setRelatedBlog] = useState([]);
@@ -51,7 +51,7 @@ export default function IndividualBlog() {
       const { data } = await axios.get(
         `${process.env.REACT_APP_BACKEND_URL}/blogs/`
       ); //sending without credentials as it was causing bugs
-      setAllBlogs(data);
+      // setAllBlogs(data);
       console.log();
       const filterBlogs = (category) => {
         const updateBlogs = data.filter((e) => {

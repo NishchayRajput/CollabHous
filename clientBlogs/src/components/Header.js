@@ -6,7 +6,6 @@ import {
   Box,
   AppBar,
   Toolbar,
-  Typography,
   Tabs,
   Tab,
   Button,
@@ -24,7 +23,6 @@ const Header = () => {
   const [value, setValue] = useState(0);
   const [scrollValue, setScrollValue] = useState(0);
   const [isLogin, setIsLogin] = useState();
-  const screenWidth = window.innerWidth;
   const storeSelectedTab = (index) => {
     localStorage.setItem("selectedTabIndex", index);
   };

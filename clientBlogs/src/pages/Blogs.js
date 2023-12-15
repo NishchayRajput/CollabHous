@@ -81,7 +81,7 @@ const Blogs = () => {
           aria-label="scrollable auto tabs example"
           TabIndicatorProps={{
             style: {
-              backgrosettingundColor: true ? "#F74D79" : "rgba(35, 36, 38, 1)", // Colored underline for selected tab
+              backgroundColor: true ? "#F74D79" : "rgba(35, 36, 38, 1)", // Colored underline for selected tab
             },
           }}
           className="tabsContainer"

@@ -60,9 +60,9 @@ const Hamburger = () => {
             Settings
           </a>
           <div className="break-line" />
-          <a id="connect" className="menu-item" onClick={handleLogOut}>
+          <div href="" id="connect" className="menu-item" onClick={handleLogOut}>
             LogOut
-          </a>
+          </div>
         </main>
       </Menu>
     </div>
