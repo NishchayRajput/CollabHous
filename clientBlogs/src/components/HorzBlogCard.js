@@ -80,7 +80,7 @@ export default function BlogCard({
   };
   return (
     <Card id="cardContainer">
-      <Box display={"flex"}>
+      <Box className="cardContainerInner" display={"flex"}>
         <div style={{ display: "block", width: "50%" }}>
           <Link to={`/blogs/${bId}`}>
             <CardMedia

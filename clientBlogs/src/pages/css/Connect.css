@@ -490,9 +490,7 @@
 
 }
 
-.text2 {
-    width: 388.8px;
-    height: 43.2px;
+.text2,.text4, .text6 {
     flex-shrink: 0;
     color: #FFF;
     font-family: Roboto;
@@ -515,18 +513,6 @@
     letter-spacing: 1.44px;
 }
 
-.text4 {
-    width: 388.8px;
-    height: 43.2px;
-    flex-shrink: 0;
-    color: #FFF;
-    font-family: Roboto;
-    font-size: 22px;
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-    letter-spacing: 0.9px;
-}
 
 .text5 {
     width: 424px;
@@ -539,20 +525,6 @@
     line-height: normal;
     letter-spacing: 1.44px;
 }
-
-.text6 {
-    width: 388.8px;
-    height: 43.2px;
-    flex-shrink: 0;
-    color: #FFF;
-    font-family: Roboto;
-    font-size: 22px;
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-    letter-spacing: 0.9px;
-}
-
 
 .sidepart2 {
     width: 40vw;
@@ -826,10 +798,10 @@
     .text2,
     .text4,
     .text6 {
-        font-size: 17px;
+        font-size: 16px;
         font-weight: 300;
         letter-spacing: 0.6px;
-        width: 90vw;
+        /* width: 90vw; */
   
         word-wrap: break-word;
     }
