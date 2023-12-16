@@ -28,7 +28,6 @@ const Blogs = () => {
         });
       setAllBlogs(data);
       setBlogs(data);
-      console.log(data);
     } catch (error) {
       console.log(error);
     }

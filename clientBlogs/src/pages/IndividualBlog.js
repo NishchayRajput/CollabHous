@@ -72,21 +72,6 @@ export default function IndividualBlog() {
     }
   };
 
-  // console.log(allBlogs);
-  // const filterBlogs = (category) => {
-  //   const updateBlogs = allBlogs.filter((e) => {
-  //     let l = e.tag.split(",").length;
-  //     let check = false;
-  //     for (let i = 0; i < l - 1; i++) {
-  //       check = check || e.tag.split(",")[i] === category;
-  //     }
-  //     return check;
-  //   });
-  //   setRelatedBlog(updateBlogs);
-  // };
-
-  // Get the blogId from the URL using useParams
-
   useEffect(() => {
     async function getBlog() {
       try {
@@ -99,14 +84,14 @@ export default function IndividualBlog() {
             },
           }
         );
-        setLoginUsername(data.ud.name);
+        
+        setLoginUsername(data.ud?.name);
         setBlog(data.blogF);
+        console.log(data.blogF);
         setInteraction(data.interaction);
         setUserId(data.blogF.user_id._id);
         setLikeStatus(data.blogF.like_status);
-        // console.log(data.blogF.like_status);
-        data.ud.length !== 0 ? setIsLogin(true) : setIsLogin(false);
-        // console.log(data.interaction);
+        data.ud?.length !== 0 ? setIsLogin(true) : setIsLogin(false);
       } catch (error) {
         console.log(error);
       }
@@ -169,7 +154,7 @@ export default function IndividualBlog() {
           ></Box>
           <Box className="heroBanner">
             <Box className="container">
-              <Typography className="title">{blog.title}</Typography>
+              <Typography className="title">{blog?.title}</Typography>
               <div className="usernameContainer">
                 <Typography className="X">X</Typography>
                 <Typography className="username">
