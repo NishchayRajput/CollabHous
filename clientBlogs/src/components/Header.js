@@ -2,28 +2,20 @@
 
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import {
-  Box,
-  AppBar,
-  Toolbar,
-  Typography,
-  Tabs,
-  Tab,
-  Button,
-} from "@mui/material";
+import { Box, AppBar, Toolbar, Tabs, Tab, Button } from "@mui/material";
 import AvatarDropdown from "./AvatarDropdown";
 import Notification from "./Notification";
 import { Link } from "react-router-dom";
 import "./css/Header.css";
 import Hamburger from "./Hamburger";
 import axios from "axios";
+// import logo from "public/CHcommune.png"; // adjust the path as needed
 const Header = () => {
   const location = useLocation();
   const [notification, setNotification] = useState([]);
   const [value, setValue] = useState(0);
   const [scrollValue, setScrollValue] = useState(0);
   const [isLogin, setIsLogin] = useState();
-  const screenWidth = window.innerWidth;
   const storeSelectedTab = (index) => {
     localStorage.setItem("selectedTabIndex", index);
   };
@@ -103,7 +95,13 @@ const Header = () => {
         }}
       >
         <Toolbar className="toolbar">
-          <Typography fontSize="32px">cH</Typography>
+          <div className="logoImageCont">
+            <img
+              src={`${process.env.PUBLIC_URL}/CHcommune.png`}
+              height="20px"
+              alt="CH"
+            />
+          </div>
           <Box display={"flex"} marginLeft="auto" marginRight={"auto"}>
             <Tabs
               textColor="inherit"
@@ -175,7 +173,7 @@ const Header = () => {
               </Button>
             </div>
           )}
-          <Hamburger />
+          <Hamburger isLogin={!isLogin} />
         </Toolbar>
       </AppBar>
     </>

@@ -3,7 +3,6 @@ import "./css/FAQ.css";
 import FAQBox from "../components/FAQ_box";
 
 export default function BasicAccordion() {
-  let count = 0;
   React.useEffect(() => {
     localStorage.setItem("selectedTabIndex", "NULL");
     // const index = localStorage.getItem("selectedTabIndex");
@@ -27,9 +26,14 @@ export default function BasicAccordion() {
       }}
     >
       <div className="FAQcontainer">
-        <div className="FAQsmallcontainer">
-          <div className="FAQtext">Frequently Asked Questions</div>
-            <FAQBox />
+        <div className="FAQtext">Frequently Asked Questions</div>
+        <div className="FAQboxes">
+          <FAQBox />
+          <FAQBox />
+          <FAQBox />
+          <FAQBox />
+          <FAQBox />
+          <FAQBox />
         </div>
       </div>
     </div>

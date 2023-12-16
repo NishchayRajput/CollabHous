@@ -73,3 +73,23 @@
     height: 200px;
 
 }
+
+@media screen and (max-width: 426px) {
+    #exploreconnect .title {
+        font-size: 24px;
+        margin-bottom: 0px;
+        margin-top: 20px;
+    }
+
+    #exploreconnect .options {
+        flex-direction: column;
+    }
+
+    #exploreconnect .options .box {
+        height: auto;
+        min-height: 200px;
+        width: auto;
+        min-width: 200px;
+        max-width: 200px;
+    }
+}

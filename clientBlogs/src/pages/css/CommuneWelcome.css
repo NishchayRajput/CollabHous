@@ -4,7 +4,8 @@
     align-items: center;
     justify-content: center;
     height: 94vh;
-    margin: 6% 0;
+    margin: 6% auto;
+    max-width:1500px;
 }
 
 .settingCotainer .greyBox {
@@ -145,6 +146,7 @@
 @media screen and (max-width:425px) {
     .settingCotainer{
         margin: 20% 0;
+        height:auto;
     }
 
     .settingCotainer .greyBox{

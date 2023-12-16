@@ -8,7 +8,6 @@ import  "../components/css/FAQ_box.css"
 
 const FAQ_box= () => {
 return (
-<div className="FAQ_ques">
       <Accordion className="row1">
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -30,9 +29,7 @@ return (
           </div>
         </AccordionDetails>
       </Accordion>
-      
-      
-      </div>
+
 );
 }
 

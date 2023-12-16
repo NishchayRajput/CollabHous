@@ -1,4 +1,4 @@
-.settingsContainer{
+.settingsContainer {
     display: flex;
     flex-direction: column;
     gap: 5vh;
@@ -11,7 +11,8 @@
 
 }
 
-.settingsContainer #userBoard, #userDetails {
+.settingsContainer #userBoard,
+#userDetails {
     border-radius: 10px;
     background-color: #2F2F2F;
     min-width: 100%;
@@ -23,41 +24,41 @@
     position: relative;
 }
 
-.settingsContainer #userBoard .div1{
+.settingsContainer #userBoard .div1 {
     display: flex;
     gap: 0.1vw;
     margin-left: 3vw;
 }
 
-.settingsContainer .div2{
+.settingsContainer .div2 {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-   
-  
+
+
 }
 
-.settingsContainer #userDetails{
+.settingsContainer #userDetails {
     min-height: 50vh;
-    
+
 }
 
-.settingsContainer #avatar{
+.settingsContainer #avatar {
     height: 10vw;
     width: 10vw;
     max-width: 180px;
     max-height: 180px;
     top: -5vw;
     border: "2px solid blue";
-    
+
 }
 
 
 
-.settingsContainer .username{
+.settingsContainer .username {
 
     color: white !important;
-    font-family: 'Roboto'!important;
+    font-family: 'Roboto' !important;
     font-weight: 700 !important;
     font-size: 26px !important;
     line-height: 28px !important;
@@ -65,8 +66,8 @@
 
 
 
-.settingsContainer .bio{
- 
+.settingsContainer .bio {
+
 
     font-family: 'Roboto';
     font-style: normal;
@@ -75,15 +76,15 @@
     line-height: 19px;
 
     color: #787878;
-    
 
-} 
 
-.settingsContainer .usernameHeader{
+}
+
+.settingsContainer .usernameHeader {
     padding-bottom: 0px;
 }
 
-.settingsContainer .info{
+.settingsContainer .info {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -91,42 +92,44 @@
     gap: 6vh;
 }
 
-.settingsContainer .row{
+.settingsContainer .row {
     display: flex;
     justify-content: space-between;
 }
 
-.settingsContainer .label{
+.settingsContainer .label {
 
-        font-family: 'Questrial' !important;
-        font-style: normal !important;
-        font-weight: 400 !important;
-        font-size: 20px !important;
-        line-height: 16px !important;
+    font-family: 'Questrial' !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 20px !important;
+    line-height: 16px !important;
 
-        color: #FFFFFF !important;
+    color: #FFFFFF !important;
 
+
+}
+
+.settingsContainer .values {
+
+    font-family: 'Questrial' !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 20px !important;
+    line-height: 16px !important;
+    text-transform: none;
+    text-decoration: none;
+    color: #787878 !important;
+    padding-right: 0;
 
 }
 
-.settingsContainer  .values{
-
-        font-family: 'Questrial'!important;
-        font-style: normal !important;
-        font-weight: 400 !important;
-        font-size: 20px !important;
-        line-height: 16px !important;
-        text-transform: none;
-        text-decoration: none;
-        color: #787878 !important;
-        padding-right: 0;
-
-}
-.settingsContainer  .signoutDiv{
+.settingsContainer .signoutDiv {
     display: flex;
     justify-content: flex-end;
 }
-.settingsContainer  .signout{
+
+.settingsContainer .signout {
     font-family: 'Roboto' !important;
     font-weight: 700 !important;
     font-size: 16px !important;
@@ -135,79 +138,87 @@
 
 }
 
-.settingsContainer  .socialMediaDrop{
+.settingsContainer .socialMediaDrop {
     display: flex;
     flex-direction: column;
     gap: 3vh;
     padding: 2vh 0 3vh 5vw;
 }
 
-.settingsContainer .dataDrop{
+.settingsContainer .dataDrop {
     display: flex;
     flex-direction: row;
     gap: 2vh;
-    
+
 }
 
 /*******************************************************/
 
-@media screen and (max-width:768px){
-  
-    .settingsContainer .dataDrop{
+@media screen and (max-width:768px) {
+
+    .settingsContainer .dataDrop {
         display: grid;
         grid-template-columns: [first] 50% [second] 50%;
-        justify-self: center ;
+        justify-self: center;
         align-self: center;
 
     }
 }
 
-@media screen and (max-width:425px) {
-    .settingsContainer #userBoard, #userDetails {
+@media screen and (max-width:426px) {
+
+    .settingsContainer #userBoard,
+    #userDetails {
         background-color: rgba(35, 36, 38, 1);
         border: none;
         box-shadow: none;
     }
 
-    .settingsContainer #userBoard .img{
+    .settingsContainer #userBoard .img {
         visibility: hidden;
     }
 
-    .settingsContainer #avatar{
+    .settingsContainer #avatar {
         top: 0;
         height: 100px;
         width: 100px;
     }
 
-    .settingsContainer .div1{
+    .settingsContainer .div1 {
         position: absolute;
         top: 10vh;
         align-items: center;
-        
-    }
-    
-    .settingsContainer{
-        margin:0 !important;
-        width:100vw;
-        gap: 0;
+
     }
 
-    .settingsContainer #userBoard, #userDetails{
+    .settingsContainer {
+        margin: 0 !important;
+        width: 100vw;
+        gap: 0;
+    }
+    .settingsContainer .label{
+        font-size: 16px !important;
+    }
+    .settingsContainer .values{
+        font-size: 15px !important;
+    }
+
+    .settingsContainer #userBoard,
+    #userDetails {
         width: 100%;
     }
 
-    .settingsContainer #userBoard{
-        height: 30vh ;
+    .settingsContainer #userBoard {
+        min-height: 240px;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
-    .settingsContainer .dataDrop{
+    .settingsContainer .dataDrop {
         display: flex;
         flex-direction: column;
         gap: 3vh;
     }
 }
-
-
-
-
-

@@ -26,7 +26,11 @@
     font-family: 'Questrial', sans-serif;
     height: 40px !important;
 }
-
+.logoImageCont{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .appbar #avatarContainer {
     height: 24px;
     width: 24px;

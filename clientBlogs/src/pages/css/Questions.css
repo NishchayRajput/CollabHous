@@ -62,7 +62,7 @@
     border-radius: 10px;
     color: aliceblue;
     font-weight: 700;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .questionsPage .qsection .nextBtn {
@@ -79,7 +79,7 @@
     color: aliceblue;
     font-weight: 700;
     margin-top: 15px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .questionsPage .qsection .title {
@@ -88,7 +88,9 @@
     margin-bottom: 15px;
 }
 
-.questionsPage .section2>div, .section3 > div, .section4 > div {
+.questionsPage .section2>div,
+.section3>div,
+.section4>div {
     width: 50%;
 }
 
@@ -124,7 +126,7 @@
 }
 
 .questionsPage .section4>div {
- 
+
     display: flex;
     flex-direction: column;
     /* align-items: center; */
@@ -139,7 +141,7 @@
 
 .questionsPage .section5 {
     padding: 0px 10%;
-    gap:30px;
+    gap: 30px;
 }
 
 .questionsPage .section5>.titleC {
@@ -187,18 +189,22 @@
 /**********************************************************************************************************/
 
 
-@media screen and (max-width:425px) {
+@media screen and (max-width:426px) {
 
-    .questionsPage .section1 .titleContainer, .questionsPage .section2>div, .questionsPage .section3>div, .questionsPage .section4 > div, .questionsPage .section5 > div{
+    .questionsPage .section1 .titleContainer,
+    .questionsPage .section2>div,
+    .questionsPage .section3>div,
+    .questionsPage .section4>div,
+    .questionsPage .section5>div {
         width: 90vw;
     }
 
-    .questionsPage .section5 .titleC .subtitle{
-       text-align: start;
-       padding: 0;
+    .questionsPage .section5 .titleC .subtitle {
+        text-align: start;
+        padding: 0;
     }
 
-    .questionsPage .section5 .form{
+    .questionsPage .section5 .form {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -208,7 +214,7 @@
 
     }
 
-    .questionsPage .section5 .form .inputBox{
+    .questionsPage .section5 .form .inputBox {
         width: 100%;
 
     }

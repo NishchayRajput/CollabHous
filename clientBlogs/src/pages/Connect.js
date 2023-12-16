@@ -66,13 +66,7 @@ const Connect = () => {
       connect();
     }
   };
-  const [avatarSrc, setAvatarSrc] = React.useState(
-    "path/to/original-image.jpg"
-  );
 
-  const handleAvatarError = () => {
-    setAvatarSrc("images/defaultAvatar.jpg");
-  };
   return (
     <div>
       <div style={{ backgroundColor: "rgba(35, 36, 38, 1)" }}>
