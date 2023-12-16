@@ -324,6 +324,12 @@ const Register = () => {
                   onError={() => {
                     console.log("Login Failed");
                   }}
+
+                  
+                theme="filled_black"
+                shape="pill"
+                text="continue_with"
+             
                 />
               </GoogleOAuthProvider>
             </Button>
