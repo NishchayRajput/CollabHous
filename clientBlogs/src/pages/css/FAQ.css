@@ -7,6 +7,7 @@ font-style: normal;
 font-weight: 700;
 letter-spacing: 2.25px;
 text-align: center;
+margin-top: 40px;
 /* transform: translateY(60px); */
 }
 
@@ -14,15 +15,21 @@ text-align: center;
     margin-top: 10px;
     display: flex;
     flex-direction: column;
-    gap:10px;
+    gap:50px;
     align-items: center;
     text-align: center;
 }
 .FAQboxes{
     width: 50vw;
+    border-radius: 18px;
+    gap: 25px;
 }
+
 @media only screen and (min-width:320px ) and (max-width:1023px){
     .FAQtext{
         font-size: 30px;
+    }
+    .FAQboxes{
+        width: 85vw;
     }
 }

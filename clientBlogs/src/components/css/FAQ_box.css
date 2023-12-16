@@ -1,7 +1,5 @@
+
  .row1{
-    /* width:65vw;
-    height: 7.5vh; */
-    border-radius: 9px;
     background: #2F2F2F;
 }
 
@@ -37,10 +35,12 @@ letter-spacing: 1.013px;
 align-items: center;
 text-align: center;
 border-radius: 4.5px;
-background: #3A3A3A;
-/* margin: auto; */
 
 } 
+.FAQDrop{
+    background-color: #3A3A3A;
+}
+  
 
 .FAQDrop .label2{
     color: #B5B5B5;
