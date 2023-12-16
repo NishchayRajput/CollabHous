@@ -71,9 +71,7 @@ export default function BlogCard({
     setUpVoteCount(upVoteC);
     setLikeStatus(likeStat);
   }, [upVoteC, likeStat]);
-  const [avatarSrc, setAvatarSrc] = React.useState(
-    "images/defaultAvatar.jpg"
-  );
+  const [avatarSrc, setAvatarSrc] = React.useState("images/defaultAvatar.jpg");
 
   const handleAvatarError = () => {
     setAvatarSrc("images/defaultAvatar.jpg");
@@ -122,9 +120,11 @@ export default function BlogCard({
             />
           </Box>
 
-          <Typography className="title" variant="h6" color="text.secondary">
-            {title}
-          </Typography>
+          <Link to={`/blogs/${bId}`} style={{textDecoration:'none'}}>
+            <Typography className="title" variant="h6" color="text.secondary">
+              {title}
+            </Typography>
+          </Link>
 
           <Box className="blogDetails">
             <div>

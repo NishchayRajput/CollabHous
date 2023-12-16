@@ -5,6 +5,7 @@ import { alpha, styled } from "@mui/material/styles";
 import { pink } from "@mui/material/colors";
 import Switch from "@mui/material/Switch";
 import EditNoteIcon from "@mui/icons-material/EditNote";
+import { Avatar } from "@mui/material";
 const PinkSwitch = styled(Switch)(({ theme }) => ({
   "& .MuiSwitch-switchBase.Mui-checked": {
     color: pink[600],
@@ -21,6 +22,11 @@ const Setting = () => {
   const [isDisabled, setIsDisabled] = useState(true);
   const handleEdit = () => {
     setIsDisabled(!isDisabled);
+  };
+  const checkEdit = () => {
+    if (isDisabled) {
+      alert("Please, Enable the Edit mode");
+    }
   };
   const [inputs, setInputs] = useState({
     name: "",
@@ -141,6 +147,7 @@ const Setting = () => {
             anotherCheckbox: data.job_notification_type[2],
           });
         }
+
         // response.data.message?.(navigate("/home"));
         // console.log(inputs);
         // console.log(deptSubscription);
@@ -148,9 +155,16 @@ const Setting = () => {
         console.log(error);
       }
     }
+    localStorage.setItem("selectedTabIndex", "3");
     setJobCheck(false);
     checkSettings();
   }, [placeholder]);
+
+  const [avatarSrc, setAvatarSrc] = React.useState("images/defaultAvatar.jpg");
+
+  const handleAvatarError = () => {
+    setAvatarSrc("images/defaultAvatar.jpg");
+  };
   return (
     <div>
       <div className="ssection section1">
@@ -158,7 +172,14 @@ const Setting = () => {
           <div className="title1"> Settings</div>
           <div className="editBanner">
             <div className="title">Account</div>
-            <div className="edit" onClick={handleEdit}>
+            <div
+              className="edit"
+              onClick={handleEdit}
+              style={{
+                borderRadius: "5px",
+                backgroundColor: !isDisabled ? "#343434" : "",
+              }}
+            >
               <EditNoteIcon fontSize="large" />
             </div>
           </div>
@@ -168,18 +189,25 @@ const Setting = () => {
           </div>
         </div>
         <form action=" " className="form">
-          <div className="left_form">
+          <div className="left_form" onClick={checkEdit}>
             <label htmlFor="upload-file" className="custom-file-upload">
-              Upload
+              <Avatar
+                src={avatarSrc}
+                onError={handleAvatarError}
+                alt="Avatar"
+                sx={{ width: "100%", height: "100%" }}
+              />
             </label>
-            <input
-              type="file"
-              id="upload-file"
-              className="inputBox_profile"
-              name="profile"
-              onChange={handleFileChange}
-              style={{ display: "none" }}
-            />
+            {!isDisabled && (
+              <input
+                type="file"
+                id="upload-file"
+                className="inputBox_profile"
+                name="profile"
+                onChange={handleFileChange}
+                style={{ display: "none" }}
+              />
+            )}
           </div>
           <div className="right_form">
             <input
@@ -497,7 +525,7 @@ const Setting = () => {
                 className="save"
                 onClick={() => {
                   if (!isDisabled) handleSubmit();
-                  else alert("Not in Edit mode");
+                  else alert("Please, Enable the Edit mode");
                 }}
               >
                 Save

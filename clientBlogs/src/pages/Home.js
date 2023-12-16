@@ -218,7 +218,7 @@ const Home = () => {
                       read_time={mostLikedBlog.read_time}
                       likeStat={mostLikedBlog?.like_status}
                     />
-                    <Link
+                    {/* <Link
                       to={`/blogs/${mostLikedBlog.id}`}
                       style={{
                         textDecoration: "none",
@@ -228,7 +228,7 @@ const Home = () => {
                         top: "-531px",
                         left: 0,
                       }}
-                    ></Link>
+                    ></Link> */}
                   </Box>
                   <Box className="horzBlogsOuter">
                     <Box className="horzBlogsInner">

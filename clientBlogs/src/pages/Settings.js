@@ -18,12 +18,15 @@ const Settings = () => {
   const handleLogOut = () => {
     async function logout() {
       try {
-        const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/blogs/logout`, {
-          withCredentials: true,
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-        });
+        const { data } = await axios.get(
+          `${process.env.REACT_APP_BACKEND_URL}/blogs/logout`,
+          {
+            withCredentials: true,
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+          }
+        );
         console.log(data);
         if (data.message === "logout successfull") navigate("/home");
         window.location.reload();
@@ -75,9 +78,18 @@ const Settings = () => {
   }, []);
   const image = "";
   const username = userInfo?.name;
+  const userimage = `public/defaultAvatar.jpg`;
   const bio = userInfo?.bio;
   const email = userInfo?.email;
   const mobile = userInfo?.mobile;
+  const [avatarSrc, setAvatarSrc] = React.useState(userimage);
+
+  const handleAvatarError = () => {
+    setAvatarSrc("images/defaultAvatar.jpg");
+  };
+  useEffect(() => {
+    localStorage.setItem("selectedTabIndex", "3");
+  }, []);
   return (
     <div style={{ minHeight: "100vh", backgroundColor: "rgba(35, 36, 38, 1)" }}>
       <div className="settingsContainer">
@@ -92,8 +104,11 @@ const Settings = () => {
           <div className="div1">
             <Avatar
               id="avatar"
-              sx={{ border: "2px solid rgba(35, 36, 38, 1)", boxShadow: 20 }}
-            ></Avatar>
+              src={avatarSrc}
+              onError={handleAvatarError}
+              alt="Avatar"
+              sx={{ width: 29, height: 29 }}
+            />
             <div className="div2">
               <CardHeader
                 title=<p className="username">{username}</p>

@@ -5,6 +5,7 @@ import "./css/CommentArea.css";
 import CommentCard from "./CommentCard";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Avatar } from "@mui/material";
 const CommentArea = ({ bId, bloguId, interactionArray, isLogin, username }) => {
   const [comment, setComment] = useState({ comment: "" });
   const navigate = useNavigate();
@@ -51,14 +52,26 @@ const CommentArea = ({ bId, bloguId, interactionArray, isLogin, username }) => {
     setloginStatus(isLogin);
   }, [isLogin]);
   // console.log(loginStatus);
+  const [avatarSrc, setAvatarSrc] = React.useState(
+    `${process.env.PUBLIC_URL}/defaultAvatar.jpg`
+  );
+
+  const handleAvatarError = () => {
+    setAvatarSrc(`${process.env.PUBLIC_URL}/defaultAvatar.jpg`);
+  };
+ 
   return (
     <div className="containerCommentArea">
       {loginStatus && (
         <form onSubmit={handleSubmit} className="typeBox">
           <div className="userDetail">
             <div className="logoUsernameContainer">
-              <div className="logo">Ch</div>
-              <div className="username">{username}</div>
+              <Avatar
+                src={avatarSrc}
+                onError={handleAvatarError}
+                alt="Avatar"
+                sx={{ width: 29, height: 29 }}
+              />
             </div>
           </div>
           <div className="textArea">

@@ -52,8 +52,8 @@ const CommuneWelcome = () => {
               sx={{ width: "100%", height: "100%" }}
             />
           </div>
-          <div className="name">{userData?.name}dfd</div>
-          <div className="email">{userData?.email}dfdsf</div>
+          <div className="name">{userData?.name}</div>
+          <div className="email">{userData?.email}</div>
         </div>
         <div className="detailsContainer">
           <div className="top">

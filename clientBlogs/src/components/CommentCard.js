@@ -6,6 +6,7 @@ import ChatRoundedIcon from "@mui/icons-material/ChatRounded";
 import ReplyCard from "./ReplyCard";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import { Avatar } from "@mui/material";
 
 const CommentCard = ({
   content,
@@ -67,15 +68,25 @@ const CommentCard = ({
       console.log(error);
     }
   };
+  const [avatarSrc, setAvatarSrc] = React.useState(
+    "images/defaultAvatar.jpg"
+  );
 
+  const handleAvatarError = () => {
+    setAvatarSrc("images/defaultAvatar.jpg");
+  };
   return (
     //showing comments
     <div className="commentContainer">
       <div className="commentCard">
         <div className="userDetail">
           <div className="logoUsernameContainer">
-            <div className="logo">Ch</div>
-            <div className="username">{commentUserName}</div>
+          <Avatar
+            src={avatarSrc}
+            onError={handleAvatarError}
+            alt="Avatar"
+            sx={{ width: 29, height: 29 }}
+          />
           </div>
         </div>
         <div className="textArea">{content}</div>

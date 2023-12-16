@@ -8,7 +8,7 @@ import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import { Box, IconButton } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
@@ -76,9 +76,7 @@ export default function BlogCard({
       // }
     }
   };
-  const [avatarSrc, setAvatarSrc] = React.useState(
-    "images/defaultAvatar.jpg"
-  );
+  const [avatarSrc, setAvatarSrc] = React.useState("images/defaultAvatar.jpg");
 
   const handleAvatarError = () => {
     setAvatarSrc("images/defaultAvatar.jpg");
@@ -92,7 +90,14 @@ export default function BlogCard({
   // console.log("like status", likeStat);
   return (
     <Card id="card">
-      <CardMedia component="img" height="50%" image={image} alt="Paella dish" />
+      <Link to={`/blogs/${bId}`}>
+        <CardMedia
+          component="img"
+          height="50%"
+          image={image}
+          alt="Paella dish"
+        />
+      </Link>
       <Box className="cardContent">
         <Box display={"flex"} justifyContent="space-between">
           <CardHeader
@@ -129,9 +134,11 @@ export default function BlogCard({
           </div>
         </Box>
         <CardContent className="titleCard">
-          <Typography variant="h6" className="title">
-            {title}
-          </Typography>
+          <Link to={`/blogs/${bId}`} style={{textDecoration:'none'}}>
+            <Typography variant="h6" className="title">
+              {title}
+            </Typography>
+          </Link>
         </CardContent>
         <CardContent className="titleCard">
           <Typography variant="body2" className="description">
