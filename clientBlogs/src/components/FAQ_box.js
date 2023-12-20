@@ -8,7 +8,8 @@ import  "../components/css/FAQ_box.css"
 
 const FAQ_box= () => {
 return (
-      <Accordion className="row1">
+      <Accordion>
+        <div className='row1'>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
@@ -18,6 +19,7 @@ return (
           <span className="whatis">What is </span><span className="collabhous">collabHous?</span>
           </Typography>
         </AccordionSummary>
+        </div>
         <AccordionDetails className="FAQDrop">
             <div className="row2">
           <Typography className="label2">
