@@ -218,21 +218,10 @@ const Home = () => {
                       read_time={mostLikedBlog.read_time}
                       likeStat={mostLikedBlog?.like_status}
                     />
-                    {/* <Link
-                      to={`/blogs/${mostLikedBlog.id}`}
-                      style={{
-                        textDecoration: "none",
-                        display: "block",
-                        width: "100%",
-                        position: "relative",
-                        top: "-531px",
-                        left: 0,
-                      }}
-                    ></Link> */}
                   </Box>
                   <Box className="horzBlogsOuter">
                     <Box className="horzBlogsInner">
-                      <div style={{ height: "100%" }}>
+                
                         <HorzBlogCard
                           bId={recentBlog[0]?.id}
                           uId={recentBlog[0]?.user.id}
@@ -265,7 +254,7 @@ const Home = () => {
                             recentBlog[0] !==null && recentBlog[0]!==undefined?.recentBlog[0].like_status
                           }
                         />
-                      </div>
+                     
                       <HorzBlogCard
                         bId={recentBlog[1]?.id}
                         uId={recentBlog[1]?.user.id}

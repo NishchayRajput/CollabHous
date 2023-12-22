@@ -33,16 +33,6 @@ export default function BlogCard({
 
   const [likeStatus, setLikeStatus] = useState(0);
   const [upVoteCount, setUpVoteCount] = useState(0);
-  // const handleUpVote = () => {
-  //   if (!isLogin) {
-  //     navigate("/login");
-  //   } else {
-  //     // You can implement the upvote logic here, for example, send a request to your backend to record the upvote.
-  //     // For this example, I'll simply increase the count by 1.
-  //     // setUpvoteCount(upvoteCount + 1);
-  //     console.log("clicked the liked button");
-  //   }
-  // };
 
   const handleUpVote = async (e) => {
     try {
@@ -87,17 +77,19 @@ export default function BlogCard({
     setUpVoteCount(upVoteC);
     setLikeStatus(likeStat);
   }, [upVoteC, likeStat]);
-  // console.log("like status", likeStat);
+
   return (
     <Card id="card">
-      <Link to={`/blogs/${bId}`}>
-        <CardMedia
-          component="img"
-          height="50%"
-          image={image}
-          alt="Paella dish"
-        />
-      </Link>
+      <div className="imageCard">
+        <Link to={`/blogs/${bId}`}>
+          <CardMedia
+            component="img"
+            sx={{ height: "100%" }}
+            image={image}
+            alt="Paella dish"
+          />
+        </Link>
+      </div>
       <Box className="cardContent">
         <Box display={"flex"} justifyContent="space-between">
           <CardHeader
@@ -134,7 +126,7 @@ export default function BlogCard({
           </div>
         </Box>
         <CardContent className="titleCard">
-          <Link to={`/blogs/${bId}`} style={{textDecoration:'none'}}>
+          <Link to={`/blogs/${bId}`} style={{ textDecoration: "none" }}>
             <Typography variant="h6" className="title">
               {title}
             </Typography>
