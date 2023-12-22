@@ -1,8 +1,8 @@
 .footerContainer {
+    margin-top:5rem;
     padding-top: 3rem;
     padding-left: 6rem;
     border-top: 3px solid white;
-    /* display: none !important; */
 }
 
 .footerContainer .row2 {

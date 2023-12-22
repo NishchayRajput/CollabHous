@@ -6,9 +6,8 @@
 
 
   .ourBlogContainer {
-
       padding: 10px;
-      margin-bottom: 50px !important;
+      margin-bottom: 40px !important;
       text-align: center;
       color: white;
       height: 110px;
@@ -54,8 +53,8 @@
       font-family: 'Questrial';
       font-style: normal;
       font-weight: 400;
-      font-size: 14.25px;
-      line-height: 10px;
+      font-size: 16.5px;
+      line-height: 12px;
       color: #ABABAB;
       padding: 5px;
       text-align: center;

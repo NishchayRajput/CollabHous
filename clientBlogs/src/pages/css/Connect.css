@@ -95,7 +95,7 @@
     display: flex;
     width: 30vw;
     height: 60vh;
-
+    margin-top: 10rem;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -196,9 +196,9 @@
     color: #FFF;
     text-align: justify;
     font-family: Roboto;
-    font-size: 30px;
+    font-size: 20px;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 500;
     line-height: normal;
     letter-spacing: 1px;
 
@@ -213,6 +213,7 @@
     justify-content: center;
     text-align: center;
     gap: 10px;
+    margin-top: 10rem;
 }
 
 .lowerbox2 {
@@ -222,7 +223,7 @@
     justify-content: center;
     text-align: center;
     gap: 5px;
-
+    margin-top: 10rem;
 }
 
 .ch2 {
@@ -259,31 +260,29 @@
 }
 
 .frame65 {
-    /* display: flex; */
     width: 25vw;
     min-height: 11vh;
     height: auto;
-    /* padding: 18px 26px 24px 26px; */
-    /* justify-content: center; */
-    /* align-items: center; */
     border-radius: 8.36px;
     border: 1.045px solid #414141;
     background: #2F2F2F;
-    /* margin-left: 91px; */
-    text-align: center;
     margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:16px;
 }
 
 .text {
+    height: auto;
     color: #A0A0A0;
     text-align: center;
     font-family: Questrial;
-    font-size: 19px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 19px;
     letter-spacing: 0.96px;
-
 }
 
 .frame67 input {
@@ -462,7 +461,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+margin-top: 10rem;
     gap: 50.6px;
 }
 
@@ -536,7 +535,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* position: absolute; */
+    margin-top: 10rem;
     gap: 50.6px;
     /* margin-top: 100px; */
     margin-left: -10px;

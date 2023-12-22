@@ -173,7 +173,7 @@ const Connect = () => {
               </div>
               <div>
               <p className="cont" onClick={handleConnectClick}>
-                Connect
+                Continue
               </p>
               </div>
             </div>
