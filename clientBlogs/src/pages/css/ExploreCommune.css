@@ -51,11 +51,48 @@
     width: 30%;
 }
 
+#exploreconnect .options .question {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 #exploreconnect .options .nTitle {
     height: 50px;
     font-weight: 700;
     font-size: 26px;
     color: white;
+}
+
+#exploreconnect .options .bottomQue {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+#exploreconnect .options .bottomQue .completedQue {
+    font-size: 26px;
+    font-weight: 900;
+    color: #868686;
+    display: flex;
+}
+
+#exploreconnect .options .bottomQue .outerPinkC {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255, 124, 158, 0.22);
+    border-radius: 50%;
+}
+
+#exploreconnect .options .bottomQue .innerPinkC {
+    height: 20px;
+    width: 20px;
+    background-color: #F74D79;
+    border-radius: 50%;
 }
 
 #exploreconnect .options .follow {

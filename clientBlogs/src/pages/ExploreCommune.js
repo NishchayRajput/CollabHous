@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import "./css/ExploreCommune.css";
 import { useNavigate } from "react-router-dom";
+import { colors } from "@mui/material";
 
 const ExploreCommune = () => {
   const navigate = useNavigate();
@@ -33,7 +34,15 @@ const ExploreCommune = () => {
             }}
           >
             <div className="nTitle">Our questions to you</div>
-            <div></div>
+            <div className="bottomQue">
+              <div className="completedQue">
+                <p style={{ color: "#868686" }}>1</p>
+                <p style={{ color: "#E7E7E7" }}>/4</p>
+              </div>
+              <div className="outerPinkC">
+                <div className="innerPinkC"></div>
+              </div>
+            </div>
           </div>
           <div
             className="settings box"
