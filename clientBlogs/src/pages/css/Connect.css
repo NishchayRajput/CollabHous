@@ -54,10 +54,13 @@
 }
 
 .btn2 {
+    padding: 0px 25px;
     color: #000000;
     z-index: 2;
-    width: 13vw;
-    height: 7vh;
+    min-width: 13vw;
+    width: auto;
+    min-height: 7vh;
+    height: auto;
     border-radius: 26.857px;
     border-color: black;
     border-style: solid;
@@ -270,7 +273,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding:16px;
+    padding: 16px;
 }
 
 .text {
@@ -461,7 +464,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-margin-top: 10rem;
+    margin-top: 10rem;
     gap: 50.6px;
 }
 
@@ -680,7 +683,7 @@ margin-top: 10rem;
 
     .text {
         font-size: 14px;
-        padding:10px;
+        padding: 10px;
     }
 
     .frame67 input {

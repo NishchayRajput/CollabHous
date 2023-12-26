@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Button,Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Element } from "react-scroll";
@@ -18,6 +18,7 @@ const Home = () => {
   const [recentBlog, setRecentBlog] = useState([]);
   const [selectedButton, setSelectedButton] = useState(1);
   const [displayText, setDisplayText] = useState("");
+  const [cImageLink, setCImageLink] = useState("images/heroLanding.png");
   const [heroData, setHeroData] = useState([]);
   const formatDate = (isoDate) => {
     const date = new Date(isoDate);
@@ -52,19 +53,16 @@ const Home = () => {
     }
     getBlog();
   }, []);
-  // console.log(mostLikedBlog.like);
-
-  const cImages = [
-    { link: "images/carouselSample.png" },
-    { link: "images/carouselSample.png" },
-  ];
 
   const handleButtonClick = (buttonId, buttonText) => {
     setSelectedButton(buttonId);
     setDisplayText(buttonText);
+    if (buttonId === 1) setCImageLink("images/heroLanding.png");
+    if (buttonId === 2) setCImageLink("images/carouselSample.png");
+    if (buttonId === 3) setCImageLink("images/heroLanding.png");
+    if (buttonId === 4) setCImageLink("images/carouselSample.png");
   };
-
-  // console.log(recentBlog);
+  const cImages = [{ link: cImageLink }];
 
   return (
     <div>
@@ -88,7 +86,9 @@ const Home = () => {
             >
               <Box className="carouselSection">
                 <Box>
+                  <div className="carouselBtn"></div>
                   <ControlledCarousel image={cImages} />
+                  <div className="carouselBtn"></div>
                 </Box>
                 <Box className="carouselContentContainer">
                   <Button
@@ -145,7 +145,9 @@ const Home = () => {
                           : "rgba(72, 72, 72, 0.3)",
                     }}
                     variant="contained"
-                    onClick={() => handleButtonClick(4, heroData[3].value)}
+                    onClick={() =>
+                      handleButtonClick(4, heroData[3] && heroData[3].value)
+                    }
                   >
                     {selectedButton === 4 ? <p>Identity</p> : <p>I</p>}
                   </Button>
@@ -221,40 +223,36 @@ const Home = () => {
                   </Box>
                   <Box className="horzBlogsOuter">
                     <Box className="horzBlogsInner">
-                
-                        <HorzBlogCard
-                          bId={recentBlog[0]?.id}
-                          uId={recentBlog[0]?.user.id}
-                          // key={blog?.user_id}
-                          // isUser={
-                          //   localStorage.getItem("userId") === blog?.user?.user_id
-                          // }
-                          tag={recentBlog[0] != null ? recentBlog[0].tag : ""}
-                          title={
-                            recentBlog[0] !=null ? recentBlog[0].title : ""
-                          }
-                          image="images/carouselSample.png"
-                          username={
-                            recentBlog[0] != null ? recentBlog[0].user.name : ""
-                          }
-                          time={
-                            recentBlog[0] != null
-                              ? formatDate(recentBlog[0].time)
-                              : ""
-                          }
-                          upVoteC={
-                            recentBlog[0] != null ? recentBlog[0].like : "0"
-                          }
-                          read_time={
-                            recentBlog[0] !=null
-                              ? recentBlog[0].read_time
-                              : "5"
-                          }
-                          likeStat={
-                            recentBlog[0] !==null && recentBlog[0]!==undefined?.recentBlog[0].like_status
-                          }
-                        />
-                     
+                      <HorzBlogCard
+                        bId={recentBlog[0]?.id}
+                        uId={recentBlog[0]?.user.id}
+                        // key={blog?.user_id}
+                        // isUser={
+                        //   localStorage.getItem("userId") === blog?.user?.user_id
+                        // }
+                        tag={recentBlog[0] != null ? recentBlog[0].tag : ""}
+                        title={recentBlog[0] != null ? recentBlog[0].title : ""}
+                        image="images/carouselSample.png"
+                        username={
+                          recentBlog[0] != null ? recentBlog[0].user.name : ""
+                        }
+                        time={
+                          recentBlog[0] != null
+                            ? formatDate(recentBlog[0].time)
+                            : ""
+                        }
+                        upVoteC={
+                          recentBlog[0] != null ? recentBlog[0].like : "0"
+                        }
+                        read_time={
+                          recentBlog[0] != null ? recentBlog[0].read_time : "5"
+                        }
+                        likeStat={
+                          recentBlog[0] !== null &&
+                          recentBlog[0] !== undefined?.recentBlog[0].like_status
+                        }
+                      />
+
                       <HorzBlogCard
                         bId={recentBlog[1]?.id}
                         uId={recentBlog[1]?.user.id}
@@ -268,7 +266,7 @@ const Home = () => {
                           recentBlog[1] != null ? recentBlog[1].user.name : ""
                         }
                         time={
-                          recentBlog[1] !=null
+                          recentBlog[1] != null
                             ? formatDate(recentBlog[1].time)
                             : ""
                         }
@@ -280,7 +278,8 @@ const Home = () => {
                           recentBlog[1] != null ? recentBlog[1].read_time : "5"
                         }
                         likeStat={
-                          recentBlog[1] !== null && recentBlog[0]!==undefined?.recentBlog[1].like_status
+                          recentBlog[1] !== null &&
+                          recentBlog[0] !== undefined?.recentBlog[1].like_status
                         }
                       />
                       <HorzBlogCard
@@ -293,7 +292,7 @@ const Home = () => {
                         title={recentBlog[2] != null ? recentBlog[2].title : ""}
                         image="images/carouselSample.png"
                         username={
-                          recentBlog[2] !=null ? recentBlog[2].user.name : ""
+                          recentBlog[2] != null ? recentBlog[2].user.name : ""
                         }
                         time={
                           recentBlog[2] != null
@@ -308,7 +307,9 @@ const Home = () => {
                           recentBlog[2] != null ? recentBlog[2].read_time : "5"
                         }
                         likeStat={
-                          recentBlog[2] !== null && recentBlog[2] !== undefined ? recentBlog[2].like_status : ""
+                          recentBlog[2] !== null && recentBlog[2] !== undefined
+                            ? recentBlog[2].like_status
+                            : ""
                         }
                       />
                     </Box>
@@ -318,11 +319,11 @@ const Home = () => {
             </Box>
           </FullpageSection>
           <FullpageSection>
-                <div className="home_footer">
-            {/* </div><div style={{ position: "absolute", bottom: "0px" }}> */}
+            <div className="home_footer">
+              {/* </div><div style={{ position: "absolute", bottom: "0px" }}> */}
               <Footer />
             </div>
-          </FullpageSection> 
+          </FullpageSection>
         </FullPageSections>
       </Fullpage>
     </div>

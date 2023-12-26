@@ -1,4 +1,10 @@
-.carouselImage{
+.carousel {
+    width: "95%" !important;
+    margin: "0 auto" !important;
+    border-radius: "20px" !important;
+}
+
+.carouselImage {
     display: flex;
     position: relative;
     justify-content: center;
@@ -6,10 +12,10 @@
     background-color: pink;
     /* width: 765px; */
     /* height: 447.37px; */
-    flex-direction: row ;
-} 
- 
-.carouselArrows{
+    flex-direction: row;
+}
+
+.carouselArrows {
     /* display: flex; */
     height: 33.6px;
     width: 33.6px;
@@ -21,9 +27,9 @@
     bottom: 0;
     /* padding: .4em; */
     /* z-index: 2; */
-} 
+}
 
-@media only screen and (min-width: 768px) and (max-width:1024px){
+@media only screen and (min-width: 768px) and (max-width:1024px) {
 
     /* .carouselArrows{
         height: 70vh;

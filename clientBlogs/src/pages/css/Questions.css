@@ -106,6 +106,13 @@
     background-color: #343434;
     border: 1px solid #5E5E5E;
     border-radius: 8px;
+    color: #A0A0A0;
+    padding: 20px;
+    font-family: 'Questrial', sans-serif;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    text-align: left;
 }
 
 .questionsPage .section3 .subtitle {
@@ -123,6 +130,13 @@
     border: 1px solid #5E5E5E;
     border-radius: 8px;
     font-size: 18px;
+    color: #A0A0A0;
+    padding: 35px;
+    font-family: 'Questrial', sans-serif;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    text-align: left;
 }
 
 .questionsPage .section4>div {
@@ -178,6 +192,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 8px;
+    padding: 25px;
 }
 
 .questionsPage .section5 .btn {

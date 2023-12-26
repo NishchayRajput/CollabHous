@@ -76,9 +76,9 @@ const Settings = () => {
     }
     getInfo();
   }, []);
-  const image = "";
+  const image = `images/individualBlog.png`;
   const username = userInfo?.name;
-  const userimage = `public/defaultAvatar.jpg`;
+  const userimage = `images/defaultAvatar.jpg`;
   const bio = userInfo?.bio;
   const email = userInfo?.email;
   const mobile = userInfo?.mobile;
@@ -110,12 +110,9 @@ const Settings = () => {
               sx={{ width: 29, height: 29 }}
             />
             <div className="div2">
-              <CardHeader
-                title=<p className="username">{username}</p>
-                className="usernameHeader"
-              />
+              <CardHeader title=<p className="username">{username}</p> />
               <CardContent>
-                <Typography className="bio">{bio}lll</Typography>
+                <Typography className="bio">{bio}</Typography>
               </CardContent>
             </div>
           </div>

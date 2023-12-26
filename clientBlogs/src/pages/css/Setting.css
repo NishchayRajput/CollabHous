@@ -131,6 +131,13 @@
   background: #343434;
   font-size: 18px;
   margin: 10px;
+  color: #A0A0A0;
+  padding: 0px 20px;
+  font-family: 'Questrial', sans-serif;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  text-align: left;
 }
 
 .ssection .title {
@@ -292,7 +299,7 @@
   font-weight: 700;
   margin-top: 20px;
   color: #f74d79;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .section3 .view:hover {
@@ -363,7 +370,7 @@
   font-weight: 700;
   color: #f74d79;
   font-size: 18px;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .section3 .container .save:hover {
@@ -428,7 +435,7 @@
   .section3 .inner_box {
     width: 100%;
     min-height: 28vh;
-    height:auto;
+    height: auto;
   }
 
 }
