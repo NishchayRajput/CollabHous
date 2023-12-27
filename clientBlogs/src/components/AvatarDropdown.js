@@ -26,7 +26,7 @@ export default function AvatarDropdown() {
     navigate("/setting");
   };
   const handleProfile = () => {
-    navigate("/settings");
+    navigate("/profile");
   };
 
   const handleLogOut = () => {

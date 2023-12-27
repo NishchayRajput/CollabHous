@@ -127,7 +127,6 @@ const Setting = () => {
             },
           }
         );
-        // console.log("check Responce", response);
         if (response.data.message === "data found") {
           const data = response.data.data.data.settings;
           // console.log(data);
@@ -147,10 +146,6 @@ const Setting = () => {
             anotherCheckbox: data.job_notification_type[2],
           });
         }
-
-        // response.data.message?.(navigate("/home"));
-        // console.log(inputs);
-        // console.log(deptSubscription);
       } catch (error) {
         console.log(error);
       }

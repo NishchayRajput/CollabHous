@@ -52,7 +52,7 @@ const Hamburger = ({ isLogin }) => {
             Connect
           </a>
           <div className="break-line" />
-          <a id="profile" className="menu-item" href="/settings">
+          <a id="profile" className="menu-item" href="/profile">
             Profile
           </a>
           <div className="break-line" />

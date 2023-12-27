@@ -8,7 +8,7 @@ import BlogLayout from "./layout/BlogLayout";
 import Home from "./pages/Home";
 import IndividualBlog from "./pages/IndividualBlog";
 import Connect from "./pages/Connect";
-import Settings from "./pages/Settings";
+import Profile from "./pages/Profile";
 
 import CommuneWelcome from "./pages/CommuneWelcome";
 import ExploreCommune from "./pages/ExploreCommune";
@@ -30,7 +30,7 @@ function App() {
           </Route>
           <Route path="/blogs/:blogId" element={<IndividualBlog />} />
           <Route path="/connect" element={<Connect />} />
-          <Route path="/settings" element={<Settings />} />
+          <Route path="/profile" element={<Profile />} />
 
           <Route path="/commune" element={<CommuneWelcome />} />
           <Route path="/exploreConnect" element={<ExploreCommune />} />

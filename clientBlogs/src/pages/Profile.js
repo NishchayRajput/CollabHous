@@ -8,12 +8,12 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
-import "../pages/css/Settings.css";
+import "../pages/css/Profile.css";
 import { Button } from "@mui/material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const Settings = () => {
+const Profile = () => {
   const navigate = useNavigate();
   const handleLogOut = () => {
     async function logout() {
@@ -233,4 +233,4 @@ const Settings = () => {
   );
 };
 
-export default Settings;
+export default Profile;
