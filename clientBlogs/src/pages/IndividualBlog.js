@@ -84,7 +84,7 @@ export default function IndividualBlog() {
             },
           }
         );
-        
+
         setLoginUsername(data.ud?.name);
         setBlog(data.blogF);
         console.log(data.blogF);
@@ -137,6 +137,10 @@ export default function IndividualBlog() {
     setShowCommentBox(!showCommentBox);
   };
   // You can use this ID to fetch the specific blog content
+  const imageRenderer = ({ node, ...props }) => {
+    const { src, alt } = props; // Extract needed props from the component props
+    return <img src={src} alt={alt} />; // Render the image
+  };
 
   return (
     <div style={{ marginTop: "-68px" }}>
@@ -195,7 +199,12 @@ export default function IndividualBlog() {
           <Box className="blogContainer">
             {/* <Typography className="subtitle">Fashion</Typography> */}
             <Box className="blogContent">
-              <Markdown className="content">{blog.content}</Markdown>
+              <Markdown
+                className="content"
+                components={{ image: imageRenderer }}
+              >
+                {blog.content}
+              </Markdown>
             </Box>
           </Box>
         </section>
@@ -287,7 +296,6 @@ export default function IndividualBlog() {
                       to={`/blogs/${blog._id}`}
                       onClick={() => {
                         scrollToPercentage(0);
-                        // window.location.reload();
                       }}
                       style={{
                         textDecoration: "none",
@@ -297,9 +305,7 @@ export default function IndividualBlog() {
                         top: 0,
                         left: 0,
                       }}
-                    >
-                      {/* Content inside the Link component (if any) */}
-                    </Link>
+                    ></Link>
                   </Box>
                 ))}
             </Box>

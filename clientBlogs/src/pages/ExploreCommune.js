@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import "./css/ExploreCommune.css";
 import { useNavigate } from "react-router-dom";
-import { colors } from "@mui/material";
 
 const ExploreCommune = () => {
   const navigate = useNavigate();
