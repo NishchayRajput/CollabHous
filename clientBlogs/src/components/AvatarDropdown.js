@@ -51,9 +51,7 @@ export default function AvatarDropdown() {
     logout();
   };
 
-  const [avatarSrc, setAvatarSrc] = React.useState(
-    "images/defaultAvatar.jpg"
-  );
+  const [avatarSrc, setAvatarSrc] = React.useState("images/defaultAvatar.jpg");
 
   const handleAvatarError = () => {
     setAvatarSrc("images/defaultAvatar.jpg");
@@ -119,7 +117,12 @@ export default function AvatarDropdown() {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <MenuItem onClick={handleProfile} className="dropAvatar">
-          <Avatar style={{ height: "30px", width: "30px" }} />
+          <Avatar
+            src={avatarSrc}
+            onError={handleAvatarError}
+            alt="Avatar"
+            sx={{ width: 29, height: 29 }}
+          />
           &nbsp;Profile
         </MenuItem>
 
