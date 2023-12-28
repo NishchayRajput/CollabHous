@@ -157,7 +157,7 @@ const Setting = () => {
       }
     }
     checkSettings();
-  }, [placeholder]);
+  }, []);
   useEffect(() => {
     setJobCheck(false);
   }, []);
