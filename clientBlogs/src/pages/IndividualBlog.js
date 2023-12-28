@@ -32,6 +32,7 @@ export default function IndividualBlog() {
   const [blog, setBlog] = useState([]);
   const [interaction, setInteraction] = useState([]);
   const [relatedBlog, setRelatedBlog] = useState([]);
+  const [imgurl , setimgurl] = useState('');
   const [loginUsername, setLoginUsername] = useState("");
   const frontendURL = process.env.REACT_APP_FRONTEND_URL;
   const formatDate = (isoDate) => {
@@ -63,6 +64,8 @@ export default function IndividualBlog() {
           check = e.tag === category;
           return check;
         });
+        setimgurl(`https://${blog.items[0].bucket}.s3.${blog.items[0].region}.amazonaws.com/${blog.items[0].s3Key}`);
+        console.log(imgurl);
         // console.log(updateBlogs);
         setRelatedBlog(updateBlogs);
       };
@@ -87,7 +90,10 @@ export default function IndividualBlog() {
 
         setLoginUsername(data.ud?.name);
         setBlog(data.blogF);
-        console.log(data.blogF);
+        // console.log(blog);
+        console.log(data);
+        // console.log(blog.items[0]);
+        
         setInteraction(data.interaction);
         setUserId(data.blogF.user_id._id);
         setLikeStatus(data.blogF.like_status);
@@ -150,7 +156,7 @@ export default function IndividualBlog() {
             className="section"
             position="relative"
             sx={{
-              background: 'url("https://picsum.photos/300/200") no-repeat',
+              background: `url(${imgurl}) no-repeat`,
               backgroundSize: "cover",
               backgroundBlendMode: "overlay",
               backgroundColor: "#00000090",

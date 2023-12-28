@@ -4,11 +4,11 @@ const userInfo = require('../../ecommerce/models/userInfo');
 
 async function get_settings(req, res){
   try{
-    // console.log(req.body.uId);
+    
     const udata = await userInfo.findById(req.body.uId);
-    // console.log(udata );
+    
     const data = await commune.findOne({user : req.body.uId});
-    // console.log(data);
+    
     if(data){
       res.status(200).json({message : "data found", data : {data , udata}});
     }else{
@@ -69,7 +69,7 @@ async function questions(req, res) {
     const user = await commune.findOne({ user: id });
 
     const { fname, lname, number, pitch } = req.body;
-    console.log(req.body);
+    
     const newQuestion = {
       fname: fname,
       lname: lname,

@@ -43,7 +43,7 @@ async function getBlogById(req, res) {
             .status(401)
             .json({ message: "Unauthorized: Invalid token" });
         }
-        // console.log(user);
+        
         const existuser = userInfo.findById(user.userId);
 
         if (existuser) {
@@ -54,11 +54,14 @@ async function getBlogById(req, res) {
         id = user.userId;
         // next();
       });
-      // console.log(id);
+      
     }
+    
 
     // Extract the blog ID from the request parameters
     const blogId = req.params.id;
+
+    // console.log(blogId);
 
     // Use Mongoose to find the blog by its ID
     const blog = await Blog.findById(blogId)
@@ -68,6 +71,7 @@ async function getBlogById(req, res) {
         select: "_id name email", // Specify the fields you want to populate
       })
       .exec();
+      
 
     const interaction = await Interaction.find({ blog_id: blogId })
       .populate({
