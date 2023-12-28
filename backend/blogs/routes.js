@@ -27,4 +27,5 @@ router.post('/questions', questions);
 router.get('/get_settings', get_settings);
 router.get('/:id', blogs);
 
+
 module.exports = router;

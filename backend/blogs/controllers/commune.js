@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const commune = require('../models/commune');
 const userInfo = require('../../ecommerce/models/userInfo');
-
+const {S3} = require('aws-sdk/clients/s3');
+const fs = require('fs');
 async function get_settings(req, res){
   try{
     
@@ -34,8 +35,27 @@ async function settings(req, res) {
       res.status(200).json({ message: 'User details already exist', user : user});
 
     } else {
-      const { fname, lname, email, number, primary_role, job_notification_status, job_notification_type } = req.body;
+      const { fname, lname, email, number, primary_role, job_notification_status, job_notification_type ,profileImg} = req.body;
 
+      const s3 = new S3({
+        accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
+        region: process.env.REACT_APP_AWS_REGION
+      });
+      const profileStream = fs.createReadStream(profileImg.path);
+      const params = {
+        Bucket: process.env.REACT_APP_AWS_BUCKET,
+        Key: profileImg.name,
+        Body: profileStream
+      };      
+      const upload = await s3.upload(params).promise();
+      const itemsArray = [];
+      itemsArray.push({
+        s3Key: upload.Key,
+        bucket: upload.Bucket,
+        mime: upload.ContentType,
+        region: process.env.REACT_APP_AWS_REGION
+      })
       const settings = {
         fname: fname,
         lname: lname,
@@ -44,7 +64,7 @@ async function settings(req, res) {
         primary_role: primary_role,
         job_notification_status: job_notification_status,
         job_notification_type: job_notification_type,
-        // image : image
+        items: itemsArray
       };
 
       const communeInstance = new commune({ user: id, settings: settings });
