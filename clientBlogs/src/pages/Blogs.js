@@ -193,7 +193,11 @@ const Blogs = () => {
                     tag={blog.tag}
                     title={blog.title}
                     description={blog.content}
-                    image="https://picsum.photos/id/11/300/200"
+                    image={
+                      blog
+                        ? `https://${blog.image[0].bucket}.s3.${blog.image[0].region}.amazonaws.com/${blog.image[0].s3Key}`
+                        : 'images/blogBg.jpg'
+                    }
                     username={blog.user != null ? blog.user.name : "Username"}
                     time={formatDate(blog.time)}
                     upVoteC={blog.like}
@@ -213,7 +217,11 @@ const Blogs = () => {
                         tag={blog.tag}
                         title={blog.title}
                         description={blog.content}
-                        image="https://picsum.photos/id/11/300/200"
+                        image={
+                          blog
+                            ? `https://${blog.image[0].bucket}.s3.${blog.image[0].region}.amazonaws.com/${blog.image[0].s3Key}`
+                            : 'images/blogBg.jpg'
+                        }
                         username={
                           blog.user != null ? blog.user.name : "Username"
                         }
@@ -233,7 +241,11 @@ const Blogs = () => {
                         tag={blog.tag}
                         title={blog.title}
                         description={blog.content}
-                        image="https://picsum.photos/id/11/300/200"
+                        image={
+                          blog
+                            ? `https://${blog.image[0].bucket}.s3.${blog.image[0].region}.amazonaws.com/${blog.image[0].s3Key}`
+                            : 'images/blogBg.jpg'
+                        }
                         username={
                           blog.user != null ? blog.user.name : "Username"
                         }

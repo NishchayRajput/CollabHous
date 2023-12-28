@@ -162,6 +162,7 @@ async function blog_card(req, res){
                   time: blog.time,
                   read_time: blog.read_time,
                   like_status: likeStatus,
+                  image : blog.items
               };
 
               return formattedBlog;

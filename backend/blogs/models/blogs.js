@@ -38,7 +38,18 @@ const blogs = new mongoose.Schema({
 
     richTextContent :{
         type: String
-    }
+    },
+    items: [
+        
+        {
+            s3Key: { type: "String", required: true },
+            bucket: { type: "String" },
+            mime: { type: "String" },
+            region: { type: "String" },
+            dateCreated: { type: "Date", default: Date.now },
+        },
+    
+],
 });
 
 // Create and export the 'blogs' model based on the schema
