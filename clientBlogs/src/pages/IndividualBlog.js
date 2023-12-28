@@ -33,7 +33,7 @@ export default function IndividualBlog() {
   const [blog, setBlog] = useState([]);
   const [interaction, setInteraction] = useState([]);
   const [relatedBlog, setRelatedBlog] = useState([]);
-  const [imgurl, setimgurl] = useState("");
+  const [imgurl, setimgurl] = useState(`images/blogBg.jpg`);
   const [loginUsername, setLoginUsername] = useState("");
   const frontendURL = process.env.REACT_APP_FRONTEND_URL;
   const formatDate = (isoDate) => {
@@ -54,24 +54,20 @@ export default function IndividualBlog() {
         `${process.env.REACT_APP_BACKEND_URL}/blogs/`
       ); //sending without credentials as it was causing bugs
       // setAllBlogs(data);
-      console.log();
+      // console.log(data);
       const filterBlogs = (category) => {
         const updateBlogs = data.filter((e) => {
-          // let l = e.tag.split(",").length;
           let check = false;
-          // for (let i = 0; i < l - 1; i++) {
-          // check = check || e.tag.split(",")[i] === category;
-          // }
           check = e.tag === category;
           return check;
         });
+        setRelatedBlog(updateBlogs);
+      };
+      if (blog.items[0]) {
         setimgurl(
           `https://${blog.items[0].bucket}.s3.${blog.items[0].region}.amazonaws.com/${blog.items[0].s3Key}`
         );
-        console.log(imgurl);
-        // console.log(updateBlogs);
-        setRelatedBlog(updateBlogs);
-      };
+      }
       filterBlogs("Community");
     } catch (error) {
       console.log(error);
@@ -104,7 +100,6 @@ export default function IndividualBlog() {
         setLoginUsername(data.ud?.name);
         setBlog(data.blogF);
         // console.log(blog);
-        console.log(data);
         setInteraction(data.interaction);
         setUserId(data.blogF.user_id._id);
         setLikeStatus(data.blogF.like_status);
@@ -238,7 +233,10 @@ export default function IndividualBlog() {
                 {blog.content}
               </Markdown> */}
               {/* {console.log(blog.richTextContent)} */}
-              <div className="blogData" dangerouslySetInnerHTML={{ __html: data }} />
+              <div
+                className="blogData"
+                dangerouslySetInnerHTML={{ __html: data }}
+              />
               {/* <div>{)}</div> */}
               {/* <img src={blog.richTextContent} alt="Blog Content" /> */}
             </Box>
