@@ -99,13 +99,16 @@
         margin:0px;
     }
 
-
+    #cardContainer .blogDetails {
+        padding-left: 0px;
+        display: flex;
+        justify-content: space-between;
+    }
     #cardContainer .blogDetails>div {
         padding-left: 16px;
         display: flex;
-        flex-direction: column;
-    
-    
+        flex-direction: row;
+        align-items: baseline;
     }
     #cardContainer .title {
         font-size: 15px;
