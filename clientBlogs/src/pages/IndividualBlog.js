@@ -22,6 +22,7 @@ import { EmailIcon, TwitterIcon, WhatsappIcon } from "react-share";
 
 export default function IndividualBlog() {
   //global stae
+  const [data, setData] = useState('');
   const [isLogin, setIsLogin] = useState();
   const navigate = useNavigate();
   const [userId, setUserId] = useState();
@@ -148,6 +149,20 @@ export default function IndividualBlog() {
     return <img src={src} alt={alt} />; // Render the image
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(blog.richTextContent);
+        const textData = await response.text();
+        console.log("text data",textData);
+        setData(textData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <div style={{ marginTop: "-68px" }}>
       <Box>
@@ -205,12 +220,16 @@ export default function IndividualBlog() {
           <Box className="blogContainer">
             {/* <Typography className="subtitle">Fashion</Typography> */}
             <Box className="blogContent">
-              <Markdown
+              {/* <Markdown
                 className="content"
                 components={{ image: imageRenderer }}
               >
                 {blog.content}
-              </Markdown>
+              </Markdown> */}
+              {/* {console.log(blog.richTextContent)} */}
+              <div dangerouslySetInnerHTML={{ __html: data }} />
+              {/* <div>{)}</div> */}
+              {/* <img src={blog.richTextContent} alt="Blog Content" /> */}
             </Box>
           </Box>
         </section>

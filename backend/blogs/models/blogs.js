@@ -35,6 +35,7 @@ const blogs = new mongoose.Schema({
     read_time: {
         type: Number,
     },
+<<<<<<< HEAD
     richTextContent: { type: String },
     items: [
         {
@@ -60,6 +61,11 @@ const blogs = new mongoose.Schema({
             }
         }
     ]
+=======
+    richTextContent :{
+        type: String
+    }
+>>>>>>> 3ef56cd (feat:richtexteditor)
 });
 
 // Create and export the 'blogs' model based on the schema
