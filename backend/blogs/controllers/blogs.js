@@ -37,7 +37,7 @@ async function blog_card(req, res){
                 // If the token is invalid or expired, return a 401 (Unauthorized) response
                 return res.status(401).json({ message: 'Unauthorized: Invalid token' });
             }
-            // console.log(user);
+            
             const existuser = userInfo.findById(user.userId);
 
             if (existuser) {
@@ -49,9 +49,9 @@ async function blog_card(req, res){
             id = user.userId;
             // next();
         });
-        // console.log(id);
+        
     }
-    console.log(id);
+    
       // const sampleBlogs = [
       //   {
     //         user_id: new mongoose.Types.ObjectId('654ce535d56da75d299f01e7'), // Replace with a valid user ID from your 'userInfo' collection
@@ -94,14 +94,10 @@ async function blog_card(req, res){
     })
     .exec();
 
-    // console.log(blogs[0]._id);
-
-
-          // console.log(blogs);
     
           // const formattedBlogs = await Promise.all(
           //   blogs.map(async (blog) => {
-          //     console.log(blog._id);
+          
           
           //     // Convert blog._id to ObjectId
           //     // const blogId =new  mongoose.Types.ObjectId(blog._id);
@@ -113,10 +109,8 @@ async function blog_card(req, res){
           //       user_id: id,
           //     }).exec();
           
-          //     // console.log(likeInteraction);
+          
           //     const likeStatus = !!likeInteraction.length;
-          //     // console.log(likeStatus);
-          //     console.log(blog._id);
           
           //     // Create a new object with the required properties
           //     const formattedBlog = {
@@ -139,17 +133,16 @@ async function blog_card(req, res){
           //   })
           // );
         
-        // console.log(formattedBlogs);
+        
         const formattedBlogs = await Promise.all(
           blogs.map(async (blog) => {
               // Find the like interaction for the specified blog and user
-              console.log(blog._id.toString());
               const likeInteraction = await Interaction.findOne({
                   blog_id: blog._id.toString(),
                   user_id: id,
                   interaction_type: "like",
               }).exec();
-              // console.log(likeInteraction);
+              
 
               // Determine the like status based on whether the like interaction exists
               const likeStatus = likeInteraction ? true : false;

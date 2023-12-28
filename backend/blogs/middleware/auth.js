@@ -4,7 +4,7 @@ require("dotenv").config();
 
 function authenticateMiddleware(req, res, next) {
   // Function to extract the token value from a cookie string
-  console.log(req.body);
+  
   function extractTokenValue(tokenString) {
     if (tokenString && typeof tokenString === "string") {
       const tokenIndex = tokenString.indexOf("token=");
@@ -34,7 +34,7 @@ function authenticateMiddleware(req, res, next) {
   // Extract the token from the request's cookies
   const token = extractTokenValue(req.headers.cookie);
 
-  // console.log(token);
+  
   // next();
   if (!token) {
     // If no token is provided, return a 401 (Unauthorized) response
@@ -47,7 +47,7 @@ function authenticateMiddleware(req, res, next) {
       // If the token is invalid or expired, return a 401 (Unauthorized) response
       return res.status(401).json({ message: "Unauthorized: Invalid token" });
     }
-    // console.log(user);
+    
     const existuser = userInfo.findById(user.userId);
 
     if (existuser) {

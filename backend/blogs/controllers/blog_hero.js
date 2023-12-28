@@ -43,7 +43,7 @@ async function blog_hero(req, res) {
                     // If the token is invalid or expired, return a 401 (Unauthorized) response
                     return res.status(401).json({ message: 'Unauthorized: Invalid token' });
                 }
-                // console.log(user);
+                
                 const existuser = userInfo.findById(user.userId);
 
                 if (existuser) {
@@ -55,7 +55,7 @@ async function blog_hero(req, res) {
                 id = user.userId;
                 // next();
             });
-            // console.log(id);
+            
         }
         // Find the 3 latest blogs, sorted by the 'time' field in descending order
         const latestBlogs = await Blog.find({})
