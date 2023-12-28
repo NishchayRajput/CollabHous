@@ -22,6 +22,7 @@ import { EmailIcon, TwitterIcon, WhatsappIcon } from "react-share";
 
 export default function IndividualBlog() {
   //global stae
+  const [data, setData] = useState('');
   const [isLogin, setIsLogin] = useState();
   const navigate = useNavigate();
   const [userId, setUserId] = useState();
@@ -32,6 +33,7 @@ export default function IndividualBlog() {
   const [blog, setBlog] = useState([]);
   const [interaction, setInteraction] = useState([]);
   const [relatedBlog, setRelatedBlog] = useState([]);
+  const [imgurl , setimgurl] = useState('');
   const [loginUsername, setLoginUsername] = useState("");
   const frontendURL = process.env.REACT_APP_FRONTEND_URL;
   const formatDate = (isoDate) => {
@@ -63,6 +65,8 @@ export default function IndividualBlog() {
           check = e.tag === category;
           return check;
         });
+        setimgurl(`https://${blog.items[0].bucket}.s3.${blog.items[0].region}.amazonaws.com/${blog.items[0].s3Key}`);
+        console.log(imgurl);
         // console.log(updateBlogs);
         setRelatedBlog(updateBlogs);
       };
@@ -71,7 +75,16 @@ export default function IndividualBlog() {
       console.log(error);
     }
   };
-
+  const fetchData = async () => {
+    try {
+      const response = await fetch(blog.richTextContent);
+      const textData = await response.text();
+      console.log("text data",textData);
+      setData(textData);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
   useEffect(() => {
     async function getBlog() {
       try {
@@ -87,7 +100,10 @@ export default function IndividualBlog() {
 
         setLoginUsername(data.ud?.name);
         setBlog(data.blogF);
-        console.log(data.blogF);
+        // console.log(blog);
+        console.log(data);
+        // console.log(blog.items[0]);
+        
         setInteraction(data.interaction);
         setUserId(data.blogF.user_id._id);
         setLikeStatus(data.blogF.like_status);
@@ -100,6 +116,7 @@ export default function IndividualBlog() {
     getBlog();
     getAllBlogs();
     setUpVoteCount(blog.like);
+    fetchData();
   }, [blog.like, blogId]);
 
   const handleUpVote = async (e) => {
@@ -142,6 +159,19 @@ export default function IndividualBlog() {
     return <img src={src} alt={alt} />; // Render the image
   };
 
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch(blog.richTextContent);
+  //       const textData = await response.text();
+  //       console.log("text data",textData);
+  //       setData(textData);
+  //     } catch (error) {
+  //       console.error('Error fetching data:', error);
+  //     }
+  //   };
+  //   fetchData();
+  // }, [blogId]);
   return (
     <div style={{ marginTop: "-68px" }}>
       <Box>
@@ -150,7 +180,7 @@ export default function IndividualBlog() {
             className="section"
             position="relative"
             sx={{
-              background: 'url("https://picsum.photos/300/200") no-repeat',
+              background: `url(${imgurl}) no-repeat`,
               backgroundSize: "cover",
               backgroundBlendMode: "overlay",
               backgroundColor: "#00000090",
@@ -199,12 +229,16 @@ export default function IndividualBlog() {
           <Box className="blogContainer">
             {/* <Typography className="subtitle">Fashion</Typography> */}
             <Box className="blogContent">
-              <Markdown
+              {/* <Markdown
                 className="content"
                 components={{ image: imageRenderer }}
               >
                 {blog.content}
-              </Markdown>
+              </Markdown> */}
+              {/* {console.log(blog.richTextContent)} */}
+              <div dangerouslySetInnerHTML={{ __html: data }} />
+              {/* <div>{)}</div> */}
+              {/* <img src={blog.richTextContent} alt="Blog Content" /> */}
             </Box>
           </Box>
         </section>

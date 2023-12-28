@@ -43,7 +43,7 @@ async function getBlogById(req, res) {
             .status(401)
             .json({ message: "Unauthorized: Invalid token" });
         }
-        // console.log(user);
+        
         const existuser = userInfo.findById(user.userId);
 
         if (existuser) {
@@ -54,20 +54,26 @@ async function getBlogById(req, res) {
         id = user.userId;
         // next();
       });
-      // console.log(id);
+      
     }
+    
 
     // Extract the blog ID from the request parameters
     const blogId = req.params.id;
 
+    console.log(blogId);
+
     // Use Mongoose to find the blog by its ID
-    const blog = await Blog.findById(blogId)
+    if(blogId != undefined && blogId != null){
+      console.log('Blog ID:', blogId);
+      const blog = await Blog.findById(blogId)
       .populate({
         path: "user_id",
         model: "userInfo",
         select: "_id name email", // Specify the fields you want to populate
       })
       .exec();
+      
 
     const interaction = await Interaction.find({ blog_id: blogId })
       .populate({
@@ -87,7 +93,6 @@ async function getBlogById(req, res) {
       ...blog.toObject(), // Convert the Mongoose document to a plain JavaScript object
       like_status: likeStatus,
     };
-
     // If the blog is not found, return a 404 error response
     if (!blog) {
       return res.status(404).json({ message: "Blog not found" });
@@ -95,6 +100,7 @@ async function getBlogById(req, res) {
     const ud = await userInfo.findById(id).populate("name email").exec();
     // Send the blog data to the frontend as a JSON response
     res.status(200).json({ blogF, interaction, ud });
+  }
   } catch (error) {
     // If an error occurs, return a 500 error response with the error message
 

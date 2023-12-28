@@ -34,6 +34,10 @@ const blogs = new mongoose.Schema({
     },
     read_time: {
         type: Number,
+    },
+
+    richTextContent :{
+        type: String
     }
 });
 
