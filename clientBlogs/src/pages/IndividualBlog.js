@@ -22,7 +22,7 @@ import { EmailIcon, TwitterIcon, WhatsappIcon } from "react-share";
 
 export default function IndividualBlog() {
   //global stae
-  const [data, setData] = useState('');
+  const [data, setData] = useState("");
   const [isLogin, setIsLogin] = useState();
   const navigate = useNavigate();
   const [userId, setUserId] = useState();
@@ -33,7 +33,7 @@ export default function IndividualBlog() {
   const [blog, setBlog] = useState([]);
   const [interaction, setInteraction] = useState([]);
   const [relatedBlog, setRelatedBlog] = useState([]);
-  const [imgurl , setimgurl] = useState('');
+  const [imgurl, setimgurl] = useState("");
   const [loginUsername, setLoginUsername] = useState("");
   const frontendURL = process.env.REACT_APP_FRONTEND_URL;
   const formatDate = (isoDate) => {
@@ -65,7 +65,9 @@ export default function IndividualBlog() {
           check = e.tag === category;
           return check;
         });
-        setimgurl(`https://${blog.items[0].bucket}.s3.${blog.items[0].region}.amazonaws.com/${blog.items[0].s3Key}`);
+        setimgurl(
+          `https://${blog.items[0].bucket}.s3.${blog.items[0].region}.amazonaws.com/${blog.items[0].s3Key}`
+        );
         console.log(imgurl);
         // console.log(updateBlogs);
         setRelatedBlog(updateBlogs);
@@ -79,10 +81,10 @@ export default function IndividualBlog() {
     try {
       const response = await fetch(blog.richTextContent);
       const textData = await response.text();
-      console.log("text data",textData);
+      console.log("text data", textData);
       setData(textData);
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error("Error fetching data:", error);
     }
   };
   useEffect(() => {
@@ -97,16 +99,16 @@ export default function IndividualBlog() {
             },
           }
         );
-
+        const response = await fetch(blog.richTextContent);
+        const textData = await response.text();
         setLoginUsername(data.ud?.name);
         setBlog(data.blogF);
         // console.log(blog);
         console.log(data);
-        // console.log(blog.items[0]);
-        
         setInteraction(data.interaction);
         setUserId(data.blogF.user_id._id);
         setLikeStatus(data.blogF.like_status);
+        setData(textData);
         data.ud?.length !== 0 ? setIsLogin(true) : setIsLogin(false);
       } catch (error) {
         console.log(error);
@@ -116,7 +118,7 @@ export default function IndividualBlog() {
     getBlog();
     getAllBlogs();
     setUpVoteCount(blog.like);
-    fetchData();
+    // fetchData();
   }, [blog.like, blogId]);
 
   const handleUpVote = async (e) => {
