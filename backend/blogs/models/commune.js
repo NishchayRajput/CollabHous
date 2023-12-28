@@ -9,7 +9,13 @@ const SettingsSchema = new mongoose.Schema({
     primary_role: { type: String, default: '' }, // Provide default values as needed
     job_notification_status: { type: String, default: '' },
     job_notification_type: { type: [String], default: [] }, // Define an array of strings with a default value of an empty array
-    image: { type: Buffer },
+    items: [{
+        s3Key: { type: String },
+        bucket: { type: String },
+        mime: { type: String },        
+        region: { type: String },
+    }],
+
 });
 
 const QuestionSchema = new mongoose.Schema({
@@ -25,6 +31,7 @@ const CommuneSchema = new mongoose.Schema({
     settings: SettingsSchema,
     questions: [QuestionSchema],
     interest: { type: [String] },
+    
 });
 
 // Use the singular form 'Commune' for the model name

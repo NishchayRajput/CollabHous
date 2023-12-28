@@ -11,6 +11,7 @@ async function get_settings(req, res){
     const data = await commune.findOne({user : req.body.uId});
     
     if(data){
+      console.log(data, udata);
       res.status(200).json({message : "data found", data : {data , udata}});
     }else{
       res.status(200).json({message : 'data not found'});
@@ -36,26 +37,27 @@ async function settings(req, res) {
 
     } else {
       const { fname, lname, email, number, primary_role, job_notification_status, job_notification_type ,profileImg} = req.body;
-      console.log(profileImg);
-      const s3 = new S3({
+      console.log(profileImg, fname);
+      const itemsArray = [];
+      if(profileImg){const s3 = new S3({
         accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
         secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
         region: process.env.REACT_APP_AWS_REGION
       });
+      const key = `profileImage/${fname}_${profileImg.name}`
       const profileStream = fs.createReadStream(profileImg.path);
       const params = {
         Bucket: process.env.REACT_APP_AWS_BUCKET,
-        Key: profileImg.name,
+        Key: key,
         Body: profileStream
       };      
-      const upload = await s3.upload(params).promise();
-      const itemsArray = [];
+      const upload = await s3.upload(params).promise();      
       itemsArray.push({
         s3Key: upload.Key,
         bucket: upload.Bucket,
         mime: upload.ContentType,
         region: process.env.REACT_APP_AWS_REGION
-      })
+      })}
       const settings = {
         fname: fname,
         lname: lname,

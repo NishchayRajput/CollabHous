@@ -135,6 +135,8 @@ const Setting = () => {
             },
           }
         );
+        // console.log(response);
+        // console.log(response.data.data.data);
         if (response.data.message === "data found") {
           const data = response.data.data.data.settings;
           setPlaceholder({
@@ -151,6 +153,7 @@ const Setting = () => {
             customerService: data.job_notification_type[1],
             anotherCheckbox: data.job_notification_type[2],
           });
+          
         }
       } catch (error) {
         console.log(error);
