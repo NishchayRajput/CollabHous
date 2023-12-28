@@ -48,9 +48,8 @@ const blogs = new mongoose.Schema({
             region: { type: "String" },
             dateCreated: { type: "Date", default: Date.now },
         },
-        
-    ],
-
+    
+],
 });
 
 // Create and export the 'blogs' model based on the schema

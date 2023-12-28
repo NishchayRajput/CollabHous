@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { Box, Typography, IconButton } from "@mui/material";
-
 import Markdown from "react-markdown";
 import CardActions from "@mui/material/CardActions";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
@@ -22,7 +21,8 @@ import { EmailIcon, TwitterIcon, WhatsappIcon } from "react-share";
 
 export default function IndividualBlog() {
   //global stae
-  const [data, setData] = useState("");
+
+  const [richdata, setrichData] = useState("");
   const [isLogin, setIsLogin] = useState();
   const navigate = useNavigate();
   const [userId, setUserId] = useState();
@@ -53,34 +53,25 @@ export default function IndividualBlog() {
       const { data } = await axios.get(
         `${process.env.REACT_APP_BACKEND_URL}/blogs/`
       ); //sending without credentials as it was causing bugs
-      // setAllBlogs(data);
-      // console.log(data);
       const filterBlogs = (category) => {
         const updateBlogs = data.filter((e) => {
           let check = false;
+          // for (let i = 0; i < l - 1; i++) {
+          // check = check || e.tag.split(",")[i] === category;
+          // }
+          setimgurl(
+            `https://${blog.items[0].bucket}.s3.${blog.items[0].region}.amazonaws.com/${blog.items[0].s3Key}`
+          );
+          console.log(imgurl);
           check = e.tag === category;
           return check;
         });
+
         setRelatedBlog(updateBlogs);
       };
-      if (blog.items[0]) {
-        setimgurl(
-          `https://${blog.items[0].bucket}.s3.${blog.items[0].region}.amazonaws.com/${blog.items[0].s3Key}`
-        );
-      }
       filterBlogs("Community");
     } catch (error) {
       console.log(error);
-    }
-  };
-  const fetchData = async () => {
-    try {
-      const response = await fetch(blog.richTextContent);
-      const textData = await response.text();
-      console.log("text data", textData);
-      setData(textData);
-    } catch (error) {
-      console.error("Error fetching data:", error);
     }
   };
   useEffect(() => {
@@ -95,15 +86,16 @@ export default function IndividualBlog() {
             },
           }
         );
-        const response = await fetch(blog.richTextContent);
+        const response = await fetch(data.blogF.richTextContent);
         const textData = await response.text();
         setLoginUsername(data.ud?.name);
         setBlog(data.blogF);
-        // console.log(blog);
+        console.log(textData);
+        console.log(data);
         setInteraction(data.interaction);
         setUserId(data.blogF.user_id._id);
         setLikeStatus(data.blogF.like_status);
-        setData(textData);
+        setrichData(textData);
         data.ud?.length !== 0 ? setIsLogin(true) : setIsLogin(false);
       } catch (error) {
         console.log(error);
@@ -235,7 +227,7 @@ export default function IndividualBlog() {
               {/* {console.log(blog.richTextContent)} */}
               <div
                 className="blogData"
-                dangerouslySetInnerHTML={{ __html: data }}
+                dangerouslySetInnerHTML={{ __html: richdata }}
               />
               {/* <div>{)}</div> */}
               {/* <img src={blog.richTextContent} alt="Blog Content" /> */}
