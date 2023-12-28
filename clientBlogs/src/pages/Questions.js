@@ -17,20 +17,7 @@ const Questions = () => {
     pitch: "",
     company: "",
   });
-  //handle input change
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    // if (file) {
-    //   const reader = new FileReader();
-    //   reader.onloadend = () => {
-    //     // The file's text will be printed here
-
-    //   };
-    //   reader.readAsDataURL(file);
-    // }
-    setSelectedFile(file);
-    console.log(file);
-  };
+ 
   const handleChange = (e) => {
     setInputs((prevState) => ({
       ...prevState,
@@ -159,7 +146,10 @@ const Questions = () => {
           <div className="title">My CV</div>
           <div>
             <FileUpload
-              onFileSelectSuccess={(file) => setSelectedFile(file)}
+              onFileSelect={(file) => {
+                // Handle the selected file here
+                setSelectedFile(file);
+              }}
               onFileSelectError={({ error }) => alert(error)}
             />
           </div>

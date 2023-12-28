@@ -137,7 +137,6 @@ const Setting = () => {
         );
         if (response.data.message === "data found") {
           const data = response.data.data.data.settings;
-          // console.log(data);
           setPlaceholder({
             ...placeholder,
             email: data.email,
@@ -157,11 +156,14 @@ const Setting = () => {
         console.log(error);
       }
     }
-    localStorage.setItem("selectedTabIndex", "3");
-    setJobCheck(false);
     checkSettings();
   }, [placeholder]);
-
+  useEffect(() => {
+    setJobCheck(false);
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("selectedTabIndex", "3");
+  }, []);
   const [avatarSrc, setAvatarSrc] = React.useState("images/defaultAvatar.jpg");
 
   const handleAvatarError = () => {

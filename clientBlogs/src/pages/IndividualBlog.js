@@ -238,7 +238,7 @@ export default function IndividualBlog() {
                 {blog.content}
               </Markdown> */}
               {/* {console.log(blog.richTextContent)} */}
-              <div dangerouslySetInnerHTML={{ __html: data }} />
+              <div className="blogData" dangerouslySetInnerHTML={{ __html: data }} />
               {/* <div>{)}</div> */}
               {/* <img src={blog.richTextContent} alt="Blog Content" /> */}
             </Box>
