@@ -7,7 +7,7 @@ import axios from "axios";
 
 const Questions = () => {
   const navigate = useNavigate();
-  const [setSelectedFile] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null);
   const [inputs, setInputs] = useState({
     name: "",
     email: "",
@@ -18,6 +18,19 @@ const Questions = () => {
     company: "",
   });
   //handle input change
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    // if (file) {
+    //   const reader = new FileReader();
+    //   reader.onloadend = () => {
+    //     // The file's text will be printed here
+
+    //   };
+    //   reader.readAsDataURL(file);
+    // }
+    setSelectedFile(file);
+    console.log(file);
+  };
   const handleChange = (e) => {
     setInputs((prevState) => ({
       ...prevState,
