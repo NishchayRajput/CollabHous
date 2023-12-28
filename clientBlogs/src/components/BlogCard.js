@@ -133,7 +133,7 @@ export default function BlogCard({
             {limitedDescription}...
           </Typography>
         </CardContent>
-        <Box paddingLeft={"22px"}>
+        <Box className="content2">
           <div style={{ display: "flex", alignItems: "center" }}>
             <p className="read_time">{read_time} min read</p>
             <Dot />

@@ -6,7 +6,7 @@
     background-color: #2F2F2F;
     min-width: 100%;
     min-height: 100%;
-    height:auto;
+    height: auto;
     margin-top: 1;
     border: 1px solid #414141;
 }
@@ -104,4 +104,15 @@
     position: relative;
     bottom: -2px;
     color: #626262;
+}
+.content2{
+    padding-left:22px;
+}
+@media only screen and (max-width:425px) {
+    .cardContent{
+        padding:5px 10px !important;
+    }
+    .content2{
+        padding: 0px 15px;
+    }
 }
