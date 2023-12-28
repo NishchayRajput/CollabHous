@@ -61,7 +61,7 @@ async function getBlogById(req, res) {
     // Extract the blog ID from the request parameters
     const blogId = req.params.id;
 
-    // console.log(blogId);
+    console.log(blogId);
 
     // Use Mongoose to find the blog by its ID
     if(blogId != undefined && blogId != null){

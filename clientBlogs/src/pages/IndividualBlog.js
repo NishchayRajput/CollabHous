@@ -75,7 +75,16 @@ export default function IndividualBlog() {
       console.log(error);
     }
   };
-
+  const fetchData = async () => {
+    try {
+      const response = await fetch(blog.richTextContent);
+      const textData = await response.text();
+      console.log("text data",textData);
+      setData(textData);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
   useEffect(() => {
     async function getBlog() {
       try {
@@ -107,6 +116,7 @@ export default function IndividualBlog() {
     getBlog();
     getAllBlogs();
     setUpVoteCount(blog.like);
+    fetchData();
   }, [blog.like, blogId]);
 
   const handleUpVote = async (e) => {
@@ -149,20 +159,19 @@ export default function IndividualBlog() {
     return <img src={src} alt={alt} />; // Render the image
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(blog.richTextContent);
-        const textData = await response.text();
-        console.log("text data",textData);
-        setData(textData);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch(blog.richTextContent);
+  //       const textData = await response.text();
+  //       console.log("text data",textData);
+  //       setData(textData);
+  //     } catch (error) {
+  //       console.error('Error fetching data:', error);
+  //     }
+  //   };
+  //   fetchData();
+  // }, [blogId]);
   return (
     <div style={{ marginTop: "-68px" }}>
       <Box>
