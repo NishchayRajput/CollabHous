@@ -59,17 +59,13 @@ export default function IndividualBlog() {
           // for (let i = 0; i < l - 1; i++) {
           // check = check || e.tag.split(",")[i] === category;
           // }
-          setimgurl(
-            `https://${blog.items[0].bucket}.s3.${blog.items[0].region}.amazonaws.com/${blog.items[0].s3Key}`
-          );
-          console.log(imgurl);
           check = e.tag === category;
           return check;
         });
 
         setRelatedBlog(updateBlogs);
       };
-      filterBlogs("Community");
+      filterBlogs("Trending");
     } catch (error) {
       console.log(error);
     }
@@ -90,6 +86,10 @@ export default function IndividualBlog() {
         const textData = await response.text();
         setLoginUsername(data.ud?.name);
         setBlog(data.blogF);
+        setimgurl(
+          `https://${blog.items[0].bucket}.s3.${blog.items[0].region}.amazonaws.com/${blog.items[0].s3Key}`
+        );
+        console.log(imgurl);
         console.log(textData);
         console.log(data);
         setInteraction(data.interaction);
