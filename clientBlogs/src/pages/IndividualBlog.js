@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { Box, Typography, IconButton } from "@mui/material";
-
 import Markdown from "react-markdown";
 import CardActions from "@mui/material/CardActions";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
@@ -22,7 +21,8 @@ import { EmailIcon, TwitterIcon, WhatsappIcon } from "react-share";
 
 export default function IndividualBlog() {
   //global stae
-  const [data, setData] = useState('');
+
+  const [richdata, setrichData] = useState("");
   const [isLogin, setIsLogin] = useState();
   const navigate = useNavigate();
   const [userId, setUserId] = useState();
@@ -33,7 +33,7 @@ export default function IndividualBlog() {
   const [blog, setBlog] = useState([]);
   const [interaction, setInteraction] = useState([]);
   const [relatedBlog, setRelatedBlog] = useState([]);
-  const [imgurl , setimgurl] = useState('');
+  const [imgurl, setimgurl] = useState(`images/blogBg.jpg`);
   const [loginUsername, setLoginUsername] = useState("");
   const frontendURL = process.env.REACT_APP_FRONTEND_URL;
   const formatDate = (isoDate) => {
@@ -53,11 +53,8 @@ export default function IndividualBlog() {
       const { data } = await axios.get(
         `${process.env.REACT_APP_BACKEND_URL}/blogs/`
       ); //sending without credentials as it was causing bugs
-      // setAllBlogs(data);
-      console.log();
       const filterBlogs = (category) => {
         const updateBlogs = data.filter((e) => {
-          // let l = e.tag.split(",").length;
           let check = false;
           // for (let i = 0; i < l - 1; i++) {
           // check = check || e.tag.split(",")[i] === category;
@@ -65,24 +62,12 @@ export default function IndividualBlog() {
           check = e.tag === category;
           return check;
         });
-        setimgurl(`https://${blog.items[0].bucket}.s3.${blog.items[0].region}.amazonaws.com/${blog.items[0].s3Key}`);
-        console.log(imgurl);
-        // console.log(updateBlogs);
+
         setRelatedBlog(updateBlogs);
       };
-      filterBlogs("Community");
+      filterBlogs("Trending");
     } catch (error) {
       console.log(error);
-    }
-  };
-  const fetchData = async () => {
-    try {
-      const response = await fetch(blog.richTextContent);
-      const textData = await response.text();
-      console.log("text data",textData);
-      setData(textData);
-    } catch (error) {
-      console.error('Error fetching data:', error);
     }
   };
   useEffect(() => {
@@ -97,16 +82,20 @@ export default function IndividualBlog() {
             },
           }
         );
-
+        const response = await fetch(data.blogF.richTextContent);
+        const textData = await response.text();
         setLoginUsername(data.ud?.name);
         setBlog(data.blogF);
-        // console.log(blog);
+        setimgurl(
+          `https://${blog.items[0].bucket}.s3.${blog.items[0].region}.amazonaws.com/${blog.items[0].s3Key}`
+        );
+        console.log(imgurl);
+        console.log(textData);
         console.log(data);
-        // console.log(blog.items[0]);
-        
         setInteraction(data.interaction);
         setUserId(data.blogF.user_id._id);
         setLikeStatus(data.blogF.like_status);
+        setrichData(textData);
         data.ud?.length !== 0 ? setIsLogin(true) : setIsLogin(false);
       } catch (error) {
         console.log(error);
@@ -116,7 +105,7 @@ export default function IndividualBlog() {
     getBlog();
     getAllBlogs();
     setUpVoteCount(blog.like);
-    fetchData();
+    // fetchData();
   }, [blog.like, blogId]);
 
   const handleUpVote = async (e) => {
@@ -236,7 +225,10 @@ export default function IndividualBlog() {
                 {blog.content}
               </Markdown> */}
               {/* {console.log(blog.richTextContent)} */}
-              <div dangerouslySetInnerHTML={{ __html: data }} />
+              <div
+                className="blogData"
+                dangerouslySetInnerHTML={{ __html: richdata }}
+              />
               {/* <div>{)}</div> */}
               {/* <img src={blog.richTextContent} alt="Blog Content" /> */}
             </Box>

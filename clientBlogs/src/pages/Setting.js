@@ -62,12 +62,22 @@ const Setting = () => {
     Buying: "",
   });
 
-  const [setSelectedFile] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null);
+
   const [jobCheck, setJobCheck] = useState(false);
+
   const handleFileChange = (event) => {
-    // Access the selected file from the input
     const file = event.target.files[0];
+    // if (file) {
+    //   const reader = new FileReader();
+    //   reader.onloadend = () => {
+    //     // The file's text will be printed here
+
+    //   };
+    //   reader.readAsDataURL(file);
+    // }
     setSelectedFile(file);
+    console.log(file);
   };
   const [deptSubscription, setDeptSubscription] = useState([]);
   //handle input change
@@ -91,6 +101,7 @@ const Setting = () => {
       const response = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/blogs/settings`,
         {
+          profileImg: selectedFile,
           fname: inputs.firstName,
           lname: inputs.lastName,
           email: inputs.email,
@@ -107,9 +118,6 @@ const Setting = () => {
         }
       );
       console.log(response);
-      // response.data.message?.(navigate("/home"));
-      // console.log(inputs);
-      // console.log(deptSubscription);
     } catch (error) {
       console.log(error);
     }
@@ -127,16 +135,16 @@ const Setting = () => {
             },
           }
         );
+        // console.log(response);
+        // console.log(response.data.data.data);
         if (response.data.message === "data found") {
           const data = response.data.data.data.settings;
-          // console.log(data);
           setPlaceholder({
             ...placeholder,
             email: data.email,
             firstName: data.fname,
             lastName: data.lname,
             mobile: data.number,
-
             primaryRole: data.primary_role,
 
             job: "Once per week",
@@ -145,16 +153,20 @@ const Setting = () => {
             customerService: data.job_notification_type[1],
             anotherCheckbox: data.job_notification_type[2],
           });
+          
         }
       } catch (error) {
         console.log(error);
       }
     }
-    localStorage.setItem("selectedTabIndex", "3");
-    setJobCheck(false);
     checkSettings();
-  }, [placeholder]);
-
+  }, []);
+  useEffect(() => {
+    setJobCheck(false);
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("selectedTabIndex", "3");
+  }, []);
   const [avatarSrc, setAvatarSrc] = React.useState("images/defaultAvatar.jpg");
 
   const handleAvatarError = () => {
@@ -199,6 +211,7 @@ const Setting = () => {
                 id="upload-file"
                 className="inputBox_profile"
                 name="profile"
+                value={inputs.dp}
                 onChange={handleFileChange}
                 style={{ display: "none" }}
               />

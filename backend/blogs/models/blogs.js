@@ -41,6 +41,7 @@ const blogs = new mongoose.Schema({
     },
     items: [
         
+
             {
                 s3Key: { type: "String", required: true },
                 bucket: { type: "String" },
@@ -50,6 +51,7 @@ const blogs = new mongoose.Schema({
             },
         
     ],
+
 });
 
 // Create and export the 'blogs' model based on the schema

@@ -82,7 +82,7 @@ export default function BlogCard({
     <Card id="card">
       <div className="imageCard">
         <Link to={`/blogs/${bId}`}>
-          <CardMedia
+          <CardMedia  
             component="img"
             sx={{ height: "100%" }}
             image={image}

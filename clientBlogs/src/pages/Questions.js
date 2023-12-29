@@ -7,7 +7,7 @@ import axios from "axios";
 
 const Questions = () => {
   const navigate = useNavigate();
-  const [setSelectedFile] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null);
   const [inputs, setInputs] = useState({
     name: "",
     email: "",
@@ -17,7 +17,7 @@ const Questions = () => {
     pitch: "",
     company: "",
   });
-  //handle input change
+ 
   const handleChange = (e) => {
     setInputs((prevState) => ({
       ...prevState,
@@ -146,7 +146,10 @@ const Questions = () => {
           <div className="title">My CV</div>
           <div>
             <FileUpload
-              onFileSelectSuccess={(file) => setSelectedFile(file)}
+              onFileSelect={(file) => {
+                // Handle the selected file here
+                setSelectedFile(file);
+              }}
               onFileSelectError={({ error }) => alert(error)}
             />
           </div>

@@ -2,9 +2,11 @@
     height: 165px;
     background-color: #2F2F2F;
     min-width: 100%;
-    /* margin: auto; */
-    /* margin-top: 8px; */
     border: 1px solid #414141;
+}
+
+#cardContainer .cardContainerInner {
+    height: 100%;
 }
 
 #cardContainer .avatar {
@@ -28,11 +30,12 @@
     padding: 0px 18px;
 
     font-family: "Roboto";
-                font-weight: 700;
-            
-                line-height: 21px;
-                letter-spacing: 0.05em;;
-                
+    font-weight: 700;
+
+    line-height: 21px;
+    letter-spacing: 0.05em;
+    ;
+
 }
 
 #cardContainer .blogDetails {
@@ -54,7 +57,7 @@
     font-size: 12px;
     font-family: "Questrial";
     font-weight: 400;
-    line-height:12px;
+    line-height: 12px;
     letter-spacing: 0.05em;
 }
 
@@ -76,7 +79,7 @@
 
 
 
-    
+
 }
 
 #cardContainer .cardActions {
@@ -93,47 +96,53 @@
     color: #626262;
 }
 
-@media only screen and (min-width: 320px) and (max-width:767px){
+@media only screen and (min-width: 320px) and (max-width:767px) {
 
-    #cardContainer{
-        margin:0px;
+    #cardContainer {
+        margin: 0px;
     }
 
+    #cardContainer .blogDetails {
+        padding-left: 0px;
+        display: flex;
+        justify-content: space-between;
+    }
 
     #cardContainer .blogDetails>div {
         padding-left: 16px;
         display: flex;
-        flex-direction: column;
-    
-    
+        flex-direction: row;
+        align-items: baseline;
     }
+
     #cardContainer .title {
-        font-size: 15px;
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    #cardContainer .blogDetails>div .readT {
+        padding: 0px;
+        line-height: 10px;
+    }
+
+    #cardContainer .blogDetails>div .tag {
+
+        padding: 0px;
+    }
 
 }
 
-#cardContainer .blogDetails>div .readT {
-    padding: 0px;
-    line-height:10px;
-}
-
-#cardContainer .blogDetails>div .tag {
- 
-    padding: 0px;
-   }
-
-}
-
-@media only screen and (min-width: 768px) and (max-width:1023px){
+@media only screen and (min-width: 768px) and (max-width:1023px) {
 
     #cardContainer .blogDetails>div {
-    padding: 4px;
+        padding: 4px;
     }
+
     #cardContainer .blogDetails>div .readT {
         padding: 4px;
     }
 
     #cardContainer .blogDetails>div .date {
-    margin-bottom: 15px;
+        margin-bottom: 15px;
     }
 }

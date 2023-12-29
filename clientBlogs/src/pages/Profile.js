@@ -175,7 +175,7 @@ const Profile = () => {
               ""
             )}
 
-            <div className="row">
+            {/* <div className="row">
               <Typography className="label">Data & Privacy</Typography>
               <Button onClick={handleButtonDataClick}>
                 {dataArrow === 0 ? (
@@ -218,7 +218,7 @@ const Profile = () => {
               </div>
             ) : (
               ""
-            )}
+            )} */}
             <div className="signoutDiv">
               <Button className="signout" onClick={handleLogOut}>
                 <img src="images/VectorSignOut.png" alt="" />

@@ -19,13 +19,15 @@ const Blogs = () => {
   };
   const getAllBlogs = async () => {
     try {
-      const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/blogs/`,
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/blogs/`,
         {
           withCredentials: true,
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
           },
-        });
+        }
+      );
       setAllBlogs(data);
       setBlogs(data);
     } catch (error) {
@@ -54,18 +56,19 @@ const Blogs = () => {
     setBlogs(updateBlogs);
   };
 
-
-  const [isMobile, setIsMobile] = useState(document.documentElement.clientWidth < 769);
+  const [isMobile, setIsMobile] = useState(
+    document.documentElement.clientWidth < 769
+  );
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(document.documentElement.clientWidth < 769);
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -193,7 +196,11 @@ const Blogs = () => {
                     tag={blog.tag}
                     title={blog.title}
                     description={blog.content}
-                    image="https://picsum.photos/id/11/300/200"
+                    image={
+                      blog
+                        ? `https://${blog.image[0].bucket}.s3.${blog.image[0].region}.amazonaws.com/${blog.image[0].s3Key}`
+                        : "./css/blogBg.jpg"
+                    }
                     username={blog.user != null ? blog.user.name : "Username"}
                     time={formatDate(blog.time)}
                     upVoteC={blog.like}
@@ -213,7 +220,11 @@ const Blogs = () => {
                         tag={blog.tag}
                         title={blog.title}
                         description={blog.content}
-                        image="https://picsum.photos/id/11/300/200"
+                        image={
+                          blog
+                            ? `https://${blog.image[0].bucket}.s3.${blog.image[0].region}.amazonaws.com/${blog.image[0].s3Key}`
+                            : `./css/blogBg.jpg`
+                        }
                         username={
                           blog.user != null ? blog.user.name : "Username"
                         }
@@ -233,7 +244,11 @@ const Blogs = () => {
                         tag={blog.tag}
                         title={blog.title}
                         description={blog.content}
-                        image="https://picsum.photos/id/11/300/200"
+                        image={
+                          blog
+                            ? `https://${blog.image[0].bucket}.s3.${blog.image[0].region}.amazonaws.com/${blog.image[0].s3Key}`
+                            : `./css/blogBg.jpg`
+                        }
                         username={
                           blog.user != null ? blog.user.name : "Username"
                         }

@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const commune = require('../models/commune');
 const userInfo = require('../../ecommerce/models/userInfo');
-
+const {S3} = require('aws-sdk/clients/s3');
+const fs = require('fs');
 async function get_settings(req, res){
   try{
     
@@ -10,7 +11,9 @@ async function get_settings(req, res){
     const data = await commune.findOne({user : req.body.uId});
     
     if(data){
+
       res.status(200).json({message : "data found", data : { udata}});
+
     }else{
       res.status(404).json({message : "data not found", error : error});
     }
@@ -26,8 +29,8 @@ async function settings(req, res) {
     
     let id = req.body.uId;
     
-
       const { fname, lname, email, number, primary_role, job_notification_status, job_notification_type } = req.body;
+
 
       const settings = {
         fname: fname,
@@ -37,7 +40,7 @@ async function settings(req, res) {
         primary_role: primary_role,
         job_notification_status: job_notification_status,
         job_notification_type: job_notification_type,
-        // image : image
+        items: itemsArray
       };
 
 

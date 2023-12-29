@@ -157,7 +157,11 @@
     width: 100%;
     margin: 0px auto;
     display: flex;
+    padding: 3rem 0;
+}
 
+.blogData {
+    color: white;
 }
 
 .blogContainer .subtitle {
@@ -185,7 +189,7 @@
 
 .reactSection .upvote {
     margin: 5px;
-    margin-right:0px;
+    margin-right: 0px;
     font-size: 16px;
     position: relative;
     bottom: -2px;
@@ -269,8 +273,9 @@
         gap: 16px;
         justify-content: flex-start;
     }
+
     .heroBanner .container .title {
-       font-size: 28px;
+        font-size: 28px;
     }
 
     .blogBanner .container {
@@ -278,8 +283,9 @@
         width: 100%;
         padding: 10vw;
     }
+
     .blogBanner .container>.title {
-       font-size: 28px;
+        font-size: 28px;
     }
 
     .blogBanner .container .usernameContainer {
@@ -318,21 +324,26 @@
         padding: 4px;
         padding: 0px 8px;
     }
+
     .blogContainer .subtitle {
         margin: 0px 40px;
     }
+
     .blogContainer .content {
         margin: 20px 40px;
         text-align: justify;
     }
+
     .relatedBlogsSection {
-        width:86%;
+        width: 86%;
         align-items: end;
     }
-    .relatedBlogsSection .title{
+
+    .relatedBlogsSection .title {
         font-size: 30px;
     }
-    .relatedBlogsSection .more{
+
+    .relatedBlogsSection .more {
         font-size: 18px;
     }
 }
