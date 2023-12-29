@@ -3,9 +3,23 @@ const mongoose = require('mongoose');
 const userInfo = require('../models/userInfo');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const commune = require('../../blogs/models/commune');
 
 // Define the signup function
 async function signup(req, res) {
+    //function to split full name into first and last name
+    function splitFullName(fullName) {
+        // Split the full name into an array of words
+        const nameArray = fullName.split(' ');
+      
+        // Create an object with first and last names
+        const nameObject = {
+          firstName: nameArray[0],
+          lastName: nameArray.slice(1).join(' ') // Join the remaining words for the last name
+        };
+      
+        return nameObject;
+      }
     // Extract required fields from the request body
     const { name, email, password, g_id } = req.body;
 
@@ -55,8 +69,24 @@ async function signup(req, res) {
             isGoogleSignup: isGoogleSignup
         });
 
+        const splitName = splitFullName(name);
+        const settings = {
+            fname: splitName.firstName,
+            lname: splitName.lastName,
+            email: email,
+            number: "",
+            primary_role: "",
+            job_notification_status: "",
+            job_notification_type: "",
+            // image : image
+        };
+        const communeInstance = new commune({ user: newUser._id, settings: settings });
+        await communeInstance.save();
+
+
         // Save the user to the database
         const id = await newUser.save();
+
 
         // Create a JWT token for the user
         const token = jwt.sign({ userId: id}, process.env.secret);
