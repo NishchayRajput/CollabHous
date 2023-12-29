@@ -5,7 +5,7 @@ const SettingsSchema = new mongoose.Schema({
     fname: { type: String, required: true },
     lname: { type: String, required: true },
     email: { type: String, required: true },
-    number: { type: String, required: true, maxLength: 10 },
+    number: { type: String, maxLength: 10 },
     primary_role: { type: String, default: '' }, // Provide default values as needed
     job_notification_status: { type: String, default: '' },
     job_notification_type: { type: [String], default: [] }, // Define an array of strings with a default value of an empty array
