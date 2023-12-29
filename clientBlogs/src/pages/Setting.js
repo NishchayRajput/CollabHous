@@ -6,6 +6,9 @@ import { pink } from "@mui/material/colors";
 import Switch from "@mui/material/Switch";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import { Avatar } from "@mui/material";
+import { Store } from "react-notifications-component";
+import { useNavigate } from "react-router-dom";
+
 const PinkSwitch = styled(Switch)(({ theme }) => ({
   "& .MuiSwitch-switchBase.Mui-checked": {
     color: pink[600],
@@ -19,6 +22,7 @@ const PinkSwitch = styled(Switch)(({ theme }) => ({
 }));
 
 const Setting = () => {
+  const Navigate = useNavigate();
   const [isDisabled, setIsDisabled] = useState(true);
   const handleEdit = () => {
     setIsDisabled(!isDisabled);
@@ -29,28 +33,10 @@ const Setting = () => {
     }
   };
   const [inputs, setInputs] = useState({
-    name: "",
     email: "",
     firstName: "",
     lastName: "",
     mobile: "",
-
-    primaryRole: "",
-
-    job: "",
-    jobCheck: "",
-
-    anotherCheckbox: "",
-    customerService: "",
-    Buying: "",
-  });
-
-  const [placeholder, setPlaceholder] = useState({
-    name: "",
-    email: "Email",
-    firstName: "First Name",
-    lastName: "Last Name",
-    mobile: "Mobile",
 
     primaryRole: "",
 
@@ -93,6 +79,7 @@ const Setting = () => {
       inputs?.anotherCheckbox,
       inputs?.customerService,
     ]);
+    // console.log(inputs);
     if (e) {
       e.preventDefault();
     }
@@ -117,7 +104,25 @@ const Setting = () => {
           },
         }
       );
-      console.log(response);
+      Store.addNotification({
+        title: response.data.message,
+        message: "",
+        type: "success",
+        insert: "top",
+        container: "bottom-center",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+        dismiss: {
+          duration: 2000,
+          onScreen: true,
+        },
+      });
+      if (response.data.message === "User created") {
+        window.location.reload();
+      }
+      // if (response.data.message === "User details already exist") {
+      //   window.location.reload();
+      // }
     } catch (error) {
       console.log(error);
     }
@@ -135,12 +140,27 @@ const Setting = () => {
             },
           }
         );
-        // console.log(response);
-        // console.log(response.data.data.data);
+        console.log(response);
+        if (response.data.message === "Please login first") {
+          Store.addNotification({
+            title: "Please login first",
+            message: "",
+            type: "danger",
+            insert: "top",
+            container: "bottom-center",
+            animationIn: ["animate__animated", "animate__fadeIn"],
+            animationOut: ["animate__animated", "animate__fadeOut"],
+            dismiss: {
+              duration: 2000,
+              onScreen: true,
+            },
+          });
+          Navigate("/home");
+        }
         if (response.data.message === "data found") {
           const data = response.data.data.data.settings;
-          setPlaceholder({
-            ...placeholder,
+          setInputs({
+            ...inputs,
             email: data.email,
             firstName: data.fname,
             lastName: data.lname,
@@ -153,7 +173,6 @@ const Setting = () => {
             customerService: data.job_notification_type[1],
             anotherCheckbox: data.job_notification_type[2],
           });
-          
         }
       } catch (error) {
         console.log(error);
@@ -220,7 +239,7 @@ const Setting = () => {
           <div className="right_form">
             <input
               type="text"
-              placeholder={placeholder.firstName}
+              placeholder="First Name"
               className="inputBox"
               value={inputs.firstName}
               name="firstName"
@@ -229,7 +248,7 @@ const Setting = () => {
             />
             <input
               type="text"
-              placeholder={placeholder.lastName}
+              placeholder="Last Name"
               className="inputBox"
               value={inputs.lastName}
               name="lastName"
@@ -238,7 +257,7 @@ const Setting = () => {
             />
             <input
               type="text"
-              placeholder={placeholder.email}
+              placeholder="Email"
               className="inputBox"
               value={inputs.email}
               name="email"
@@ -247,7 +266,7 @@ const Setting = () => {
             />
             <input
               type="text"
-              placeholder={placeholder.mobile}
+              placeholder="Mobile"
               className="inputBox"
               value={inputs.mobile}
               name="mobile"
@@ -273,9 +292,7 @@ const Setting = () => {
               id="buying"
               name="primaryRole"
               value="buying"
-              checked={
-                isDisabled ? placeholder.primaryrole === "buying" : undefined
-              } // Set checked to true
+              checked={isDisabled ? inputs.primaryrole === "buying" : undefined} // Set checked to true
               onChange={handleChange}
               disabled={isDisabled}
             />
@@ -290,7 +307,7 @@ const Setting = () => {
               id="content"
               name="primaryRole"
               checked={
-                isDisabled ? placeholder.primaryrole === "content" : undefined
+                isDisabled ? inputs.primaryrole === "content" : undefined
               } // Set checked to true
               value="content"
               onChange={handleChange}
@@ -308,9 +325,7 @@ const Setting = () => {
               name="primaryRole"
               value="customerCare"
               checked={
-                isDisabled
-                  ? placeholder.primaryrole === "customerCare"
-                  : undefined
+                isDisabled ? inputs.primaryrole === "customerCare" : undefined
               } // Set checked to true
               onChange={handleChange}
               disabled={isDisabled}
@@ -326,9 +341,7 @@ const Setting = () => {
               id="ecom"
               name="primaryRole"
               value="ecom"
-              checked={
-                isDisabled ? placeholder.primaryrole === "ecom" : undefined
-              } // Set checked to true
+              checked={isDisabled ? inputs.primaryrole === "ecom" : undefined} // Set checked to true
               onChange={handleChange}
               disabled={isDisabled}
             />
@@ -344,7 +357,7 @@ const Setting = () => {
               name="primaryRole"
               value="finance"
               checked={
-                isDisabled ? placeholder.primaryrole === "finance" : undefined
+                isDisabled ? inputs.primaryrole === "finance" : undefined
               } // Set checked to true
               onChange={handleChange}
               disabled={isDisabled}
@@ -375,7 +388,7 @@ const Setting = () => {
                 handleChange(event);
                 setJobCheck(!jobCheck);
               }}
-              checked={isDisabled ? placeholder.job : undefined} // Set checked to true only when isDisabled is true
+              checked={isDisabled ? inputs.job : undefined} // Set checked to true only when isDisabled is true
               disabled={isDisabled}
             />
             <label className="label" htmlFor="Audi">
@@ -394,7 +407,7 @@ const Setting = () => {
                   disabled={isDisabled}
                   checked={
                     isDisabled
-                      ? placeholder.job === "Every time a job is added"
+                      ? inputs.job === "Every time a job is added"
                       : undefined
                   } // Set checked to true
                 />
@@ -411,7 +424,7 @@ const Setting = () => {
                   onChange={handleChange}
                   disabled={isDisabled}
                   checked={
-                    isDisabled ? placeholder.job === "Once per week" : undefined
+                    isDisabled ? inputs.job === "Once per week" : undefined
                   } // Set checked to true
                 />
                 <label className="label" htmlFor="Audi">
@@ -427,9 +440,7 @@ const Setting = () => {
                   onChange={handleChange}
                   disabled={isDisabled}
                   checked={
-                    isDisabled
-                      ? placeholder.job === "Once per month"
-                      : undefined
+                    isDisabled ? inputs.job === "Once per month" : undefined
                   } // Set checked to true
                 />
                 <label className="label" htmlFor="Audi">
@@ -450,7 +461,7 @@ const Setting = () => {
                   value="Buying"
                   onChange={handleChange}
                   disabled={isDisabled}
-                  checked={isDisabled ? placeholder.Buying : undefined} // Set checked to true
+                  checked={isDisabled ? inputs.Buying : undefined} // Set checked to true
                 />
                 <label className="label" htmlFor="Audi">
                   Buying
@@ -464,7 +475,7 @@ const Setting = () => {
                   value="CustomerService"
                   onChange={handleChange}
                   disabled={isDisabled}
-                  checked={isDisabled ? placeholder.customerService : undefined} // Set checked to true
+                  checked={isDisabled ? inputs.customerService : undefined} // Set checked to true
                 />
                 <label className="label" htmlFor="Audi">
                   Customer Service
@@ -478,7 +489,7 @@ const Setting = () => {
                   value="AnotherCheckbox"
                   onChange={handleChange}
                   disabled={isDisabled}
-                  checked={isDisabled ? placeholder.anotherCheckbox : undefined} // Set checked to true
+                  checked={isDisabled ? inputs.anotherCheckbox : undefined} // Set checked to true
                 />
                 <label className="label" htmlFor="Audi">
                   Another Checkbox
@@ -533,7 +544,20 @@ const Setting = () => {
                 className="save"
                 onClick={() => {
                   if (!isDisabled) handleSubmit();
-                  else alert("Please, Enable the Edit mode");
+                  else
+                    Store.addNotification({
+                      title: "Please Enable the Edit mode",
+                      message: "",
+                      type: "default",
+                      insert: "top",
+                      container: "bottom-center",
+                      animationIn: ["animate__animated", "animate__fadeIn"],
+                      animationOut: ["animate__animated", "animate__fadeOut"],
+                      dismiss: {
+                        duration: 2000,
+                        onScreen: true,
+                      },
+                    });
                 }}
               >
                 Save

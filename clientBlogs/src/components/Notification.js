@@ -101,11 +101,11 @@ export default function Notification({ notificationArray }) {
                     className="dropAvatar"
                   >
                     {notification.type === "like"
-                      ? `${notification.blog_id.title} is ${notification.type}d`
+                      ? `${notification.blog_id?.title} is ${notification.type}d`
                       : notification.type === "comment"
-                      ? `${notification.blog_id.title} has ${notification.type}s`
+                      ? `${notification.blog_id?.title} has ${notification.type}s`
                       : notification.type === "unlike"
-                      ? `${notification.blog_id.title} is ${notification.type}d`
+                      ? `${notification.blog_id?.title} is ${notification.type}d`
                       : null}
                   </MenuItem>
                   <Divider className="divider" />
