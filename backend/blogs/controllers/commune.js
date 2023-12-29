@@ -6,15 +6,16 @@ const fs = require('fs');
 async function get_settings(req, res){
   try{
     
-    const udata = await userInfo.findById(req.body.uId);
+    // const udata = await userInfo.findById(req.body.uId);
     
     const data = await commune.findOne({user : req.body.uId});
     
     if(data){
-      console.log(data, udata);
-      res.status(200).json({message : "data found", data : {data , udata}});
+
+      res.status(200).json({message : "data found", data : { udata}});
+
     }else{
-      res.status(200).json({message : 'data not found'});
+      res.status(404).json({message : "data not found", error : error});
     }
   }
   catch(error){
@@ -28,36 +29,9 @@ async function settings(req, res) {
     
     let id = req.body.uId;
     
+      const { fname, lname, email, number, primary_role, job_notification_status, job_notification_type } = req.body;
 
-    const user = await commune.findOne({ user: id });
 
-    if (user && user.settings) {
-
-      res.status(200).json({ message: 'User details already exist', user : user});
-
-    } else {
-      const { fname, lname, email, number, primary_role, job_notification_status, job_notification_type ,profileImg} = req.body;
-      console.log(profileImg, fname);
-      const itemsArray = [];
-      if(profileImg){const s3 = new S3({
-        accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
-        secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
-        region: process.env.REACT_APP_AWS_REGION
-      });
-      const key = `profileImage/${fname}_${profileImg.name}`
-      const profileStream = fs.createReadStream(profileImg.path);
-      const params = {
-        Bucket: process.env.REACT_APP_AWS_BUCKET,
-        Key: key,
-        Body: profileStream
-      };      
-      const upload = await s3.upload(params).promise();      
-      itemsArray.push({
-        s3Key: upload.Key,
-        bucket: upload.Bucket,
-        mime: upload.ContentType,
-        region: process.env.REACT_APP_AWS_REGION
-      })}
       const settings = {
         fname: fname,
         lname: lname,
@@ -69,11 +43,14 @@ async function settings(req, res) {
         items: itemsArray
       };
 
-      const communeInstance = new commune({ user: id, settings: settings });
-      await communeInstance.save();
+
+      const communeInstance = commune.findByIdAndUpdate(id, { settings: settings });
+
+      // const communeInstance = new commune({ user: id, settings: settings });
+      // await communeInstance.save();
 
       res.status(200).json({ message: 'User created', communeInstance });
-    }
+
 
   } catch (error) {
     res.status(500).json({ message: 'Internal server error', error: error });
@@ -122,17 +99,18 @@ async function questions(req, res) {
 
 async function set_interest(req, res) {
   try {
+    const { interest } = req.body;
     const userId = req.body.uId;
     const user = await commune.findOne({ user: userId });
 
     if (user) {
-      user.interest = req.body.interest;
-      await user.save();
+      user.interest = interest; // Update the interest field directly
+      await user.save(); // Save the changes
       res.status(200).json({ message: "Interest set", user: user });
     } else {
       const newCommuneUser = new commune({
         user: userId,
-        interest: req.body.interest,
+        interest: interest,
       });
       await newCommuneUser.save();
       res.status(200).json({ message: "Interest set", user: newCommuneUser });
@@ -143,10 +121,12 @@ async function set_interest(req, res) {
   }
 }
 
+
 async function get_interest(req, res) {
   try {
     const userId = req.body.uId; // Assuming the user ID is in the URL parameters
-    const user = await commune.findOne({ user: userId });
+    const user = await commune.findOne({ user: userId }).select('interest');
+
 
     if (user) {
       const interest = user.interest || [];
