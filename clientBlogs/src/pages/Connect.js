@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./css/Connect.css";
 import { Box } from "@mui/material";
 import { Store } from "react-notifications-component";
@@ -6,15 +6,24 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Connect = () => {
-  const [selectedOption, setSelectedOption] = useState("");
   const navigate = useNavigate();
-  // Function to handle option selection
-  const handleOptionSelect = (value) => {
-    setSelectedOption(value);
-    console.log("Selected option:", value); // For testing purposes, log the selected value
+
+  const [selectedOptions, setSelectedOptions] = useState([]);
+
+  const handleOptionSelect = (option) => {
+    setSelectedOptions((prevOptions) => {
+      if (prevOptions.includes(option)) {
+        // If the option is already selected, remove it from the array
+        return prevOptions.filter((prevOption) => prevOption !== option);
+      } else {
+        // If the option is not selected, add it to the array
+        return [...prevOptions, option];
+      }
+    });
   };
   const handleConnectClick = () => {
-    if (selectedOption === "") {
+    console.log(selectedOptions);
+    if (selectedOptions.length === 0) {
       Store.addNotification({
         title: "Please select your interest",
         message: "",
@@ -34,7 +43,7 @@ const Connect = () => {
           const response = await axios.post(
             "http://localhost:5000/blogs/set_interest",
             {
-              page: "Connect",
+              interest: selectedOptions,
             },
             {
               withCredentials: true,
@@ -80,7 +89,25 @@ const Connect = () => {
       connect();
     }
   };
-
+  useEffect(() => {
+    async function connect() {
+      try {
+        const response = await axios.get(
+          "http://localhost:5000/blogs/get_interest",
+          {
+            withCredentials: true,
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+          }
+        );
+        setSelectedOptions(response.data.interest);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    connect();
+  }, []);
   return (
     <div>
       <div style={{ backgroundColor: "rgba(35, 36, 38, 1)" }}>
@@ -117,10 +144,9 @@ const Connect = () => {
                   className="item"
                   onClick={() => handleOptionSelect("Digital Communities")}
                   style={{
-                    color:
-                      selectedOption === "Digital Communities"
-                        ? "#F74D79"
-                        : "#ffffff",
+                    color: selectedOptions.includes("Digital Communities")
+                      ? "#F74D79"
+                      : "#ffffff",
                   }}
                 >
                   Digital Communities
@@ -130,10 +156,9 @@ const Connect = () => {
                   className="item"
                   onClick={() => handleOptionSelect("Fashion Blogging")}
                   style={{
-                    color:
-                      selectedOption === "Fashion Blogging"
-                        ? "#F74D79"
-                        : "#ffffff",
+                    color: selectedOptions.includes("Fashion Blogging")
+                      ? "#F74D79"
+                      : "#ffffff",
                   }}
                 >
                   Fashion Blogging
@@ -143,10 +168,9 @@ const Connect = () => {
                   className="item"
                   onClick={() => handleOptionSelect("Digital marketing")}
                   style={{
-                    color:
-                      selectedOption === "Digital marketing"
-                        ? "#F74D79"
-                        : "#ffffff",
+                    color: selectedOptions.includes("Digital marketing")
+                      ? "#F74D79"
+                      : "#ffffff",
                   }}
                 >
                   Digital marketing
@@ -156,10 +180,9 @@ const Connect = () => {
                   className="item"
                   onClick={() => handleOptionSelect("Collaborations")}
                   style={{
-                    color:
-                      selectedOption === "Collaborations"
-                        ? "#F74D79"
-                        : "#ffffff",
+                    color: selectedOptions.includes("Collaborations")
+                      ? "#F74D79"
+                      : "#ffffff",
                   }}
                 >
                   Collaborations
@@ -169,7 +192,9 @@ const Connect = () => {
                   className="item"
                   onClick={() => handleOptionSelect("Buying")}
                   style={{
-                    color: selectedOption === "Buying" ? "#F74D79" : "#ffffff",
+                    color: selectedOptions.includes("Buying")
+                      ? "#F74D79"
+                      : "#ffffff",
                   }}
                 >
                   Buying
@@ -179,7 +204,9 @@ const Connect = () => {
                   className="item"
                   onClick={() => handleOptionSelect("More")}
                   style={{
-                    color: selectedOption === "More" ? "#F74D79" : "#ffffff",
+                    color: selectedOptions.includes("More")
+                      ? "#F74D79"
+                      : "#ffffff",
                   }}
                 >
                   More

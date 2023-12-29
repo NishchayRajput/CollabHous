@@ -14,17 +14,20 @@ const SettingsSchema = new mongoose.Schema({
         bucket: { type: String },
         mime: { type: String },        
         region: { type: String },
-    }],
+    },{ _id: false }],
 
-});
+}, { _id: false });
 
 const QuestionSchema = new mongoose.Schema({
     fname: { type: String, default: '' },
     lname: { type: String, default: '' },
+    rname: { type: String, default: '' },
+    remail: { type: String, default: '' },
+    rtitle: { type: String, default: '' },
     number: { type: String, maxLength: 10, default: '' },
     pitch: { type: String, maxLength: 140, default: '' },
     pdf: { type: Buffer },
-});
+}, { _id: false });
 
 const CommuneSchema = new mongoose.Schema({
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'userInfo' },

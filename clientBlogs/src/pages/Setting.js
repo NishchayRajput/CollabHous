@@ -50,20 +50,12 @@ const Setting = () => {
 
   const [selectedFile, setSelectedFile] = useState(null);
 
-  const [jobCheck, setJobCheck] = useState(false);
+  const [jobCheck, setJobCheck] = useState();
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
-    // if (file) {
-    //   const reader = new FileReader();
-    //   reader.onloadend = () => {
-    //     // The file's text will be printed here
 
-    //   };
-    //   reader.readAsDataURL(file);
-    // }
     setSelectedFile(file);
-    console.log(file);
   };
   const [deptSubscription, setDeptSubscription] = useState([]);
   //handle input change
@@ -73,13 +65,15 @@ const Setting = () => {
       [e.target.name]: e.target.value,
     }));
   };
+  const handleMultiChange = (event) => {
+    const { name, checked, value } = event.target;
+    setInputs((prevState) => ({
+      ...prevState,
+      [name]: checked ? value : undefined,
+    }));
+  };
   const handleSubmit = async (e) => {
-    setDeptSubscription([
-      inputs?.Buying,
-      inputs?.anotherCheckbox,
-      inputs?.customerService,
-    ]);
-    // console.log(inputs);
+    console.log(inputs);
     if (e) {
       e.preventDefault();
     }
@@ -95,7 +89,11 @@ const Setting = () => {
           number: inputs.mobile,
           primary_role: inputs.primaryRole,
           job_notification_status: inputs.job,
-          job_notification_type: deptSubscription,
+          job_notification_type: [
+            inputs.Buying,
+            inputs.anotherCheckbox,
+            inputs.customerService,
+          ],
         },
         {
           withCredentials: true,
@@ -179,9 +177,6 @@ const Setting = () => {
       }
     }
     checkSettings();
-  }, []);
-  useEffect(() => {
-    setJobCheck(false);
   }, []);
   useEffect(() => {
     localStorage.setItem("selectedTabIndex", "3");
@@ -388,7 +383,7 @@ const Setting = () => {
                 handleChange(event);
                 setJobCheck(!jobCheck);
               }}
-              checked={isDisabled ? inputs.job : undefined} // Set checked to true only when isDisabled is true
+              // checked={inputs.job} // Set checked to true only when isDisabled is true
               disabled={isDisabled}
             />
             <label className="label" htmlFor="Audi">
@@ -459,9 +454,9 @@ const Setting = () => {
                   type="checkbox"
                   name="Buying"
                   value="Buying"
-                  onChange={handleChange}
+                  onChange={handleMultiChange}
                   disabled={isDisabled}
-                  checked={isDisabled ? inputs.Buying : undefined} // Set checked to true
+                  checked={inputs.Buying} // Set checked to true
                 />
                 <label className="label" htmlFor="Audi">
                   Buying
@@ -473,9 +468,9 @@ const Setting = () => {
                   type="checkbox"
                   name="customerService"
                   value="CustomerService"
-                  onChange={handleChange}
+                  onChange={handleMultiChange}
                   disabled={isDisabled}
-                  checked={isDisabled ? inputs.customerService : undefined} // Set checked to true
+                  checked={inputs.customerService} // Set checked to true
                 />
                 <label className="label" htmlFor="Audi">
                   Customer Service
@@ -487,9 +482,9 @@ const Setting = () => {
                   type="checkbox"
                   name="anotherCheckbox"
                   value="AnotherCheckbox"
-                  onChange={handleChange}
+                  onChange={handleMultiChange}
                   disabled={isDisabled}
-                  checked={isDisabled ? inputs.anotherCheckbox : undefined} // Set checked to true
+                  checked={inputs.anotherCheckbox} // Set checked to true
                 />
                 <label className="label" htmlFor="Audi">
                   Another Checkbox
