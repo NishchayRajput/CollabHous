@@ -62,8 +62,8 @@ export default function IndividualBlog() {
           check = e.tag === category;
           return check;
         });
-
         setRelatedBlog(updateBlogs);
+        console.log(updateBlogs);
       };
       filterBlogs("Trending");
     } catch (error) {
@@ -86,12 +86,6 @@ export default function IndividualBlog() {
         const textData = await response.text();
         setLoginUsername(data.ud?.name);
         setBlog(data.blogF);
-        setimgurl(
-          `https://${blog.items[0].bucket}.s3.${blog.items[0].region}.amazonaws.com/${blog.items[0].s3Key}`
-        );
-        console.log(imgurl);
-        console.log(textData);
-        console.log(data);
         setInteraction(data.interaction);
         setUserId(data.blogF.user_id._id);
         setLikeStatus(data.blogF.like_status);
@@ -108,6 +102,18 @@ export default function IndividualBlog() {
     // fetchData();
   }, [blog.like, blogId]);
 
+  useEffect(() => {
+    if (blog?.items?.[0]) {
+      // const link = encodeURIComponent(
+      //   `https://${blog.items[0].bucket}.s3.${blog.items[0].region}.amazonaws.com/${blog.items[0].s3Key}`
+      // );
+
+      // console.log(decodeURIComponent(link));
+      setimgurl(
+        `https://${blog.items[0].bucket}.s3.${blog.items[0].region}.amazonaws.com/${blog.items[0].s3Key}`
+      );
+    }
+  }, [blog?.items?.[0]]);
   const handleUpVote = async (e) => {
     try {
       console.log("request ", !likeStatus);
@@ -301,7 +307,13 @@ export default function IndividualBlog() {
             </Link>
           </Box>
           <Box marginBottom={"66px"}>
-            <Box display={"flex"} flexWrap={"wrap"}>
+            <Box
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                flexWrap: "nowrap",
+              }}
+            >
               {relatedBlog &&
                 relatedBlog.map((blog) => (
                   <Box key={blog._id} className="relatedBlogCard">
@@ -309,9 +321,13 @@ export default function IndividualBlog() {
                       bId={blog?._id}
                       uId={blog.user != null ? blog.user.id : ""}
                       tag={blog.tag}
-                      title={blog.title}
+                      title={blog.title?.split(/\s+/).slice(0, 6).join(" ")}
                       description={blog.content}
-                      image="https://picsum.photos/id/11/300/200"
+                      image={
+                        blog?.image?.[0]
+                          ? `https://${blog.image[0].bucket}.s3.${blog.image[0].region}.amazonaws.com/${blog.image[0].s3Key}`
+                          : `images/carouselSample.png`
+                      }
                       username={blog.user != null ? blog.user.name : "Username"}
                       time={formatDate(blog.time)}
                       upVoteC={blog.like}

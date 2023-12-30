@@ -25,6 +25,11 @@ const Home = () => {
     const options = { year: "numeric", month: "short", day: "numeric" };
     return date.toLocaleDateString(undefined, options);
   };
+  const scrollToPercentage = (percentage) => {
+    const scrollToY =
+      (percentage / 100) * (document.body.scrollHeight - window.innerHeight);
+    window.scrollTo({ top: scrollToY, behavior: "instant" });
+  };
   useEffect(() => {
     async function getBlog() {
       try {
@@ -40,7 +45,7 @@ const Home = () => {
             },
           }
         );
-
+        console.log(data);
         setMostLikedBlog(data.mostLikedBlog);
         setHeroData(data.heroData);
         setRecentBlog(data.latestBlogs);
@@ -192,7 +197,7 @@ const Home = () => {
 
                   <Link to="/blogs" style={{ textDecoration: "none" }}>
                     {" "}
-                    <Typography className="moreText">More</Typography>
+                    <Typography onClick={() => scrollToPercentage(0)} className="moreText">More</Typography>
                   </Link>
                 </Box>
                 <Box className="blogsBox">
@@ -211,7 +216,11 @@ const Home = () => {
                         .slice(0, 6)
                         .join(" ")}
                       description={mostLikedBlog.content}
-                      image="images/carouselSample.png"
+                      image={
+                        mostLikedBlog?.items?.[0]
+                          ? `https://${mostLikedBlog.items[0].bucket}.s3.${mostLikedBlog.items[0].region}.amazonaws.com/${mostLikedBlog.items[0].s3Key}`
+                          : `images/carouselSample.png`
+                      }
                       username={
                         mostLikedBlog.user != null
                           ? mostLikedBlog.user.name
@@ -242,7 +251,11 @@ const Home = () => {
                                 .join(" ")
                             : ""
                         }
-                        image="images/carouselSample.png"
+                        image={
+                          recentBlog[0]
+                            ? `https://${recentBlog[0].items[0].bucket}.s3.${recentBlog[0].items[0].region}.amazonaws.com/${recentBlog[0].items[0].s3Key}`
+                            : `images/carouselSample.png`
+                        }
                         username={
                           recentBlog[0] != null ? recentBlog[0].user.name : ""
                         }
@@ -257,10 +270,7 @@ const Home = () => {
                         read_time={
                           recentBlog[0] != null ? recentBlog[0].read_time : ""
                         }
-                        likeStat={
-                          recentBlog[0] !== null &&
-                          recentBlog[0] !== undefined?.recentBlog[0].like_status
-                        }
+                        likeStat={recentBlog[0]?.like_status}
                       />
 
                       <HorzBlogCard
@@ -278,7 +288,11 @@ const Home = () => {
                                 .join(" ")
                             : ""
                         }
-                        image="images/carouselSample.png"
+                        image={
+                          recentBlog[1]
+                            ? `https://${recentBlog[1].items[0].bucket}.s3.${recentBlog[1].items[0].region}.amazonaws.com/${recentBlog[1].items[0].s3Key}`
+                            : `images/carouselSample.png`
+                        }
                         username={
                           recentBlog[1] != null ? recentBlog[1].user.name : ""
                         }
@@ -294,10 +308,7 @@ const Home = () => {
                         read_time={
                           recentBlog[1] != null ? recentBlog[1].read_time : ""
                         }
-                        likeStat={
-                          recentBlog[1] !== null &&
-                          recentBlog[0] !== undefined?.recentBlog[1].like_status
-                        }
+                        likeStat={recentBlog[1]?.like_status}
                       />
                       <HorzBlogCard
                         bId={recentBlog[2]?.id}
@@ -314,7 +325,11 @@ const Home = () => {
                                 .join(" ")
                             : ""
                         }
-                        image="images/carouselSample.png"
+                        image={
+                          recentBlog[2]
+                            ? `https://${recentBlog[2].items[0].bucket}.s3.${recentBlog[2].items[0].region}.amazonaws.com/${recentBlog[2].items[0].s3Key}`
+                            : `images/carouselSample.png`
+                        }
                         username={
                           recentBlog[2] != null ? recentBlog[2].user.name : ""
                         }

@@ -31,7 +31,7 @@ export default function BlogCard({
   likeStat,
 }) {
   const navigate = useNavigate();
-  const [likeStatus, setLikeStatus] = useState(0);
+  const [likeStatus, setLikeStatus] = useState();
   const [upVoteCount, setUpVoteCount] = useState(0);
 
   const handleUpVote = async (e) => {
@@ -79,7 +79,7 @@ export default function BlogCard({
   return (
     <Card id="cardContainer">
       <Box className="cardContainerInner" display={"flex"}>
-        <div style={{ display: "block", width: "48%"}}>
+        <div style={{ display: "block", width: "48%" }}>
           <Link to={`/blogs/${bId}`}>
             <CardMedia
               component="img"
@@ -120,7 +120,7 @@ export default function BlogCard({
             />
           </Box>
 
-          <Link to={`/blogs/${bId}`} style={{textDecoration:'none'}}>
+          <Link to={`/blogs/${bId}`} style={{ textDecoration: "none" }}>
             <Typography className="title" variant="h6" color="text.secondary">
               {title}
             </Typography>
