@@ -68,7 +68,7 @@ const Setting = () => {
     setSelectedFile(file);
     setAvatarSrc(URL.createObjectURL(file));
   };
-  const [deptSubscription, setDeptSubscription] = useState([]);
+
   //handle input change
   const handleChange = (e) => {
     setInputs((prevState) => ({

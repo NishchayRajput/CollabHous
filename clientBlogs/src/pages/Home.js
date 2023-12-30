@@ -206,7 +206,10 @@ const Home = () => {
                       uId={
                         mostLikedBlog.user != null ? mostLikedBlog.user.id : ""
                       }
-                      title={mostLikedBlog.title}
+                      title={mostLikedBlog.title
+                        ?.split(/\s+/)
+                        .slice(0, 6)
+                        .join(" ")}
                       description={mostLikedBlog.content}
                       image="images/carouselSample.png"
                       username={
@@ -231,7 +234,14 @@ const Home = () => {
                         //   localStorage.getItem("userId") === blog?.user?.user_id
                         // }
                         tag={recentBlog[0] != null ? recentBlog[0].tag : ""}
-                        title={recentBlog[0] != null ? recentBlog[0].title : ""}
+                        title={
+                          recentBlog[0] != null
+                            ? recentBlog[0].title
+                                ?.split(/\s+/)
+                                .slice(0, 4)
+                                .join(" ")
+                            : ""
+                        }
                         image="images/carouselSample.png"
                         username={
                           recentBlog[0] != null ? recentBlog[0].user.name : ""
@@ -245,7 +255,7 @@ const Home = () => {
                           recentBlog[0] != null ? recentBlog[0].like : "0"
                         }
                         read_time={
-                          recentBlog[0] != null ? recentBlog[0].read_time : "5"
+                          recentBlog[0] != null ? recentBlog[0].read_time : ""
                         }
                         likeStat={
                           recentBlog[0] !== null &&
@@ -260,7 +270,14 @@ const Home = () => {
                         // isUser={
                         //   localStorage.getItem("userId") === blog?.user?.user_id
                         // }
-                        title={recentBlog[1] != null ? recentBlog[1].title : ""}
+                        title={
+                          recentBlog[1] != null
+                            ? recentBlog[1].title
+                                ?.split(/\s+/)
+                                .slice(0, 4)
+                                .join(" ")
+                            : ""
+                        }
                         image="images/carouselSample.png"
                         username={
                           recentBlog[1] != null ? recentBlog[1].user.name : ""
@@ -275,7 +292,7 @@ const Home = () => {
                           recentBlog[1] != null ? recentBlog[1].like : "0"
                         }
                         read_time={
-                          recentBlog[1] != null ? recentBlog[1].read_time : "5"
+                          recentBlog[1] != null ? recentBlog[1].read_time : ""
                         }
                         likeStat={
                           recentBlog[1] !== null &&
@@ -289,7 +306,14 @@ const Home = () => {
                         // isUser={
                         //   localStorage.getItem("userId") === blog?.user?.user_id
                         // }
-                        title={recentBlog[2] != null ? recentBlog[2].title : ""}
+                        title={
+                          recentBlog[2] != null
+                            ? recentBlog[2].title
+                                ?.split(/\s+/)
+                                .slice(0, 4)
+                                .join(" ")
+                            : ""
+                        }
                         image="images/carouselSample.png"
                         username={
                           recentBlog[2] != null ? recentBlog[2].user.name : ""
@@ -304,7 +328,7 @@ const Home = () => {
                           recentBlog[2] != null ? recentBlog[2].like : "0"
                         }
                         read_time={
-                          recentBlog[2] != null ? recentBlog[2].read_time : "5"
+                          recentBlog[2] != null ? recentBlog[2].read_time : ""
                         }
                         likeStat={
                           recentBlog[2] !== null && recentBlog[2] !== undefined

@@ -30,7 +30,7 @@
 .blogsBox {
     display: flex;
     justify-content: space-between;
-    height: 531px;
+    height: 540px;
     width: 100%;
     min-height: 531px;
     max-width: 1200px;
