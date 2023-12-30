@@ -16,6 +16,7 @@ const {
   set_interest,
   get_interest,
 } = require("./controllers/commune");
+const update_notification = require('./controllers/notification');
 
 router.use(
   [
@@ -29,6 +30,7 @@ router.use(
     "/get_settings*",
     "/set_interest*",
     "/get_interest*",
+    "/notification/status*"
   ],
   auth
 );
@@ -43,6 +45,7 @@ router.post("/hero", blog_hero);
 router.post("/reply", reply);
 router.post("/settings", settings);
 router.post("/questions", questions);
+router.get("/notification/status", update_notification );
 router.get("/get_settings", get_settings);
 router.get("/get_interest", get_interest);
 router.get("/:id", blogs);
