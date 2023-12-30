@@ -41,7 +41,6 @@ const Setting = () => {
     primaryRole: "",
 
     job: "",
-    jobCheck: "",
 
     anotherCheckbox: "",
     customerService: "",
@@ -83,8 +82,21 @@ const Setting = () => {
       [name]: checked ? value : undefined,
     }));
   };
+  const handleToggle = () => {
+    setJobCheck(!jobCheck);
+    if (jobCheck === false) {
+      setInputs((prevState) => ({
+        ...prevState,
+        job: "",
+      }));
+    }
+  };
   const handleSubmit = async (e) => {
-    console.log(inputs);
+    console.log(jobCheck);
+    if (jobCheck === false) {
+      inputs.job = "";
+    }
+    console.log("Inputs: ", inputs);
     if (e) {
       e.preventDefault();
     }
@@ -175,7 +187,7 @@ const Setting = () => {
             mobile: data.number,
             primaryRole: data.primary_role,
 
-            job: "Once per week",
+            job: data.job_notification_status,
 
             Buying: data.job_notification_type.includes("Buying")
               ? "Buying"
@@ -191,6 +203,9 @@ const Setting = () => {
               ? "anotherCheckbox"
               : undefined,
           });
+          if (data.job_notification_status != "") {
+            setJobCheck(true);
+          }
           console.log("Data: ", data);
         }
       } catch (error) {
@@ -339,9 +354,7 @@ const Setting = () => {
               id="customerCare"
               name="primaryRole"
               value="customerCare"
-              checked={
-                isDisabled ? inputs.primaryRole === "customerCare" : undefined
-              } // Set checked to true
+              checked={inputs.primaryRole === "customerCare"} // Set checked to true
               onChange={handleChange}
               disabled={isDisabled}
             />
@@ -356,7 +369,7 @@ const Setting = () => {
               id="ecom"
               name="primaryRole"
               value="ecom"
-              checked={isDisabled ? inputs.primaryRole === "ecom" : undefined} // Set checked to true
+              checked={inputs.primaryRole === "ecom"} // Set checked to true
               onChange={handleChange}
               disabled={isDisabled}
             />
@@ -371,9 +384,7 @@ const Setting = () => {
               id="finance"
               name="primaryRole"
               value="finance"
-              checked={
-                isDisabled ? inputs.primaryRole === "finance" : undefined
-              } // Set checked to true
+              checked={inputs.primaryRole === "finance"} // Set checked to true
               onChange={handleChange}
               disabled={isDisabled}
             />
@@ -399,11 +410,8 @@ const Setting = () => {
               id="jobCheck"
               name="jobCheck"
               value="Notify about new jobs"
-              onChange={(event) => {
-                handleChange(event);
-                setJobCheck(!jobCheck);
-              }}
-              // checked={inputs.job} // Set checked to true only when isDisabled is true
+              onChange={handleToggle}
+              checked={jobCheck}
               disabled={isDisabled}
             />
             <label className="label" htmlFor="Audi">
@@ -420,11 +428,7 @@ const Setting = () => {
                   value="Every time a job is added"
                   onChange={handleChange}
                   disabled={isDisabled}
-                  checked={
-                    isDisabled
-                      ? inputs.job === "Every time a job is added"
-                      : undefined
-                  } // Set checked to true
+                  checked={inputs.job === "Every time a job is added"} // Set checked to true
                 />
                 <label className="label" htmlFor="Audi">
                   Every time a job is added
@@ -438,9 +442,7 @@ const Setting = () => {
                   value="Once per week"
                   onChange={handleChange}
                   disabled={isDisabled}
-                  checked={
-                    isDisabled ? inputs.job === "Once per week" : undefined
-                  } // Set checked to true
+                  checked={inputs.job === "Once per week"} // Set checked to true
                 />
                 <label className="label" htmlFor="Audi">
                   Once per week
@@ -454,9 +456,7 @@ const Setting = () => {
                   value="Once per month"
                   onChange={handleChange}
                   disabled={isDisabled}
-                  checked={
-                    isDisabled ? inputs.job === "Once per month" : undefined
-                  } // Set checked to true
+                  checked={inputs.job === "Once per month"} // Set checked to true
                 />
                 <label className="label" htmlFor="Audi">
                   Once per month{" "}
