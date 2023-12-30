@@ -66,6 +66,7 @@ const Setting = () => {
     // Read the file as data URL
     // reader.readAsDataURL(file);
     setSelectedFile(file);
+    setAvatarSrc(URL.createObjectURL(file));
   };
   const [deptSubscription, setDeptSubscription] = useState([]);
   //handle input change
