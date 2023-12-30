@@ -54,7 +54,7 @@ const Setting = () => {
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
-     // // Create a new FileReader instance
+    // // Create a new FileReader instance
     // const reader = new FileReader();
 
     // // Define the onload event handler
@@ -149,7 +149,6 @@ const Setting = () => {
             },
           }
         );
-        console.log(response);
         if (response.data.message === "Please login first") {
           Store.addNotification({
             title: "Please login first",
@@ -178,16 +177,28 @@ const Setting = () => {
 
             job: "Once per week",
 
-            Buying: data.job_notification_type[0],
-            customerService: data.job_notification_type[1],
-            anotherCheckbox: data.job_notification_type[2],
+            Buying: data.job_notification_type.includes("Buying")
+              ? "Buying"
+              : undefined,
+            customerService: data.job_notification_type.includes(
+              "customerService"
+            )
+              ? "customerService"
+              : undefined,
+            anotherCheckbox: data.job_notification_type.includes(
+              "anotherCheckbox"
+            )
+              ? "anotherCheckbox"
+              : undefined,
           });
+          console.log("Data: ", data);
         }
       } catch (error) {
         console.log(error);
       }
     }
     checkSettings();
+    console.log("Inputs: ", inputs);
   }, []);
   useEffect(() => {
     localStorage.setItem("selectedTabIndex", "3");
@@ -298,7 +309,7 @@ const Setting = () => {
               id="buying"
               name="primaryRole"
               value="buying"
-              checked={isDisabled ? inputs.primaryrole === "buying" : undefined} // Set checked to true
+              checked={inputs.primaryRole === "buying"} // Set checked to true
               onChange={handleChange}
               disabled={isDisabled}
             />
@@ -312,12 +323,10 @@ const Setting = () => {
               type="radio"
               id="content"
               name="primaryRole"
-              checked={
-                isDisabled ? inputs.primaryrole === "content" : undefined
-              } // Set checked to true
               value="content"
               onChange={handleChange}
               disabled={isDisabled}
+              checked={inputs.primaryRole === "content"} // Set checked to true
             />
             <label className="label" htmlFor="content">
               Content and Activation
@@ -331,7 +340,7 @@ const Setting = () => {
               name="primaryRole"
               value="customerCare"
               checked={
-                isDisabled ? inputs.primaryrole === "customerCare" : undefined
+                isDisabled ? inputs.primaryRole === "customerCare" : undefined
               } // Set checked to true
               onChange={handleChange}
               disabled={isDisabled}
@@ -347,7 +356,7 @@ const Setting = () => {
               id="ecom"
               name="primaryRole"
               value="ecom"
-              checked={isDisabled ? inputs.primaryrole === "ecom" : undefined} // Set checked to true
+              checked={isDisabled ? inputs.primaryRole === "ecom" : undefined} // Set checked to true
               onChange={handleChange}
               disabled={isDisabled}
             />
@@ -363,7 +372,7 @@ const Setting = () => {
               name="primaryRole"
               value="finance"
               checked={
-                isDisabled ? inputs.primaryrole === "finance" : undefined
+                isDisabled ? inputs.primaryRole === "finance" : undefined
               } // Set checked to true
               onChange={handleChange}
               disabled={isDisabled}
