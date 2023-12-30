@@ -92,11 +92,11 @@ const Setting = () => {
     }
   };
   const handleSubmit = async (e) => {
-    console.log(jobCheck);
+    // console.log(jobCheck);
     if (jobCheck === false) {
       inputs.job = "";
     }
-    console.log("Inputs: ", inputs);
+    // console.log("Inputs: ", inputs);
     if (e) {
       e.preventDefault();
     }
@@ -213,7 +213,7 @@ const Setting = () => {
       }
     }
     checkSettings();
-    console.log("Inputs: ", inputs);
+    // console.log("Inputs: ", inputs);
   }, []);
   useEffect(() => {
     localStorage.setItem("selectedTabIndex", "3");

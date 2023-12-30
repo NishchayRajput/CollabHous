@@ -9,16 +9,35 @@ import IconButton from "@mui/material/IconButton";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import "./css/AvatarDropDown.css";
 import "./css/Notification.css";
-export default function Notification({ notificationArray }) {
+import axios from "axios";
+export default function Notification({ dotStatus, notificationArray }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  const handleClick = (event) => {
+  const [read, setRead] = React.useState();
+  const handleClick = async (event) => {
+    setRead(false);
     setAnchorEl(event.currentTarget);
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/blogs/notification/status`,
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      );
+    } catch (error) {
+      console.log(error);
+    }
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
   // console.log("Notifications Page: ", notificationArray);
+  React.useEffect(() => {
+    setRead(dotStatus);
+  }, [dotStatus]);
 
   return (
     <React.Fragment>
@@ -31,14 +50,16 @@ export default function Notification({ notificationArray }) {
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
         >
-          <Box
-            width="5px"
-            height="5px"
-            bgcolor={"#F74D79"}
-            position={"absolute"}
-            top={"6px"}
-            right={"10px"}
-          ></Box>
+          {read && (
+            <Box
+              width="5px"
+              height="5px"
+              bgcolor={"#F74D79"}
+              position={"absolute"}
+              top={"6px"}
+              right={"10px"}
+            ></Box>
+          )}
           <NotificationsNoneIcon
             style={{ height: "24px", width: "24px", color: "white" }}
           />
