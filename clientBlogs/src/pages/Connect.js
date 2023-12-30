@@ -3,90 +3,97 @@ import "./css/Connect.css";
 import { Box } from "@mui/material";
 import { Store } from "react-notifications-component";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Connect = () => {
   const navigate = useNavigate();
-
+  const [loginStatus, setLoginStatus] = useState(true);
   const [selectedOptions, setSelectedOptions] = useState([]);
 
   const handleOptionSelect = (option) => {
-    setSelectedOptions((prevOptions) => {
-      if (prevOptions.includes(option)) {
-        // If the option is already selected, remove it from the array
-        return prevOptions.filter((prevOption) => prevOption !== option);
-      } else {
-        // If the option is not selected, add it to the array
-        return [...prevOptions, option];
-      }
-    });
+    if (loginStatus === false) {
+      navigate("/login");
+    } else {
+      setSelectedOptions((prevOptions) => {
+        if (prevOptions.includes(option)) {
+          // If the option is already selected, remove it from the array
+          return prevOptions.filter((prevOption) => prevOption !== option);
+        } else {
+          // If the option is not selected, add it to the array
+          return [...prevOptions, option];
+        }
+      });
+    }
   };
   const handleConnectClick = () => {
-    console.log(selectedOptions);
-    if (selectedOptions.length === 0) {
-      Store.addNotification({
-        title: "Please select your interest",
-        message: "",
-        type: "danger",
-        insert: "top",
-        container: "bottom-center",
-        animationIn: ["animate__animated", "animate__fadeIn"],
-        animationOut: ["animate__animated", "animate__fadeOut"],
-        dismiss: {
-          duration: 2000,
-          onScreen: true,
-        },
-      });
+    if (loginStatus === false) {
+      navigate("/login");
     } else {
-      async function connect() {
-        try {
-          const response = await axios.post(
-            "http://localhost:5000/blogs/set_interest",
-            {
-              interest: selectedOptions,
-            },
-            {
-              withCredentials: true,
-              headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
+      if (selectedOptions.length === 0) {
+        Store.addNotification({
+          title: "Please select your interest",
+          message: "",
+          type: "danger",
+          insert: "top",
+          container: "bottom-center",
+          animationIn: ["animate__animated", "animate__fadeIn"],
+          animationOut: ["animate__animated", "animate__fadeOut"],
+          dismiss: {
+            duration: 2000,
+            onScreen: true,
+          },
+        });
+      } else {
+        async function connect() {
+          try {
+            const response = await axios.post(
+              "http://localhost:5000/blogs/set_interest",
+              {
+                interest: selectedOptions,
               },
+              {
+                withCredentials: true,
+                headers: {
+                  "Content-Type": "application/x-www-form-urlencoded",
+                },
+              }
+            );
+            if (response.data.message === "Please login first") {
+              Store.addNotification({
+                title: "Please login first",
+                message: "",
+                type: "danger",
+                insert: "top",
+                container: "bottom-center",
+                animationIn: ["animate__animated", "animate__fadeIn"],
+                animationOut: ["animate__animated", "animate__fadeOut"],
+                dismiss: {
+                  duration: 2000,
+                  onScreen: true,
+                },
+              });
             }
-          );
-          if (response.data.message === "Please login first") {
-            Store.addNotification({
-              title: "Please login first",
-              message: "",
-              type: "danger",
-              insert: "top",
-              container: "bottom-center",
-              animationIn: ["animate__animated", "animate__fadeIn"],
-              animationOut: ["animate__animated", "animate__fadeOut"],
-              dismiss: {
-                duration: 2000,
-                onScreen: true,
-              },
-            });
+            if (response.data.message === "Interest set") {
+              Store.addNotification({
+                title: "Interest set",
+                message: "",
+                type: "success",
+                insert: "top",
+                container: "bottom-center",
+                animationIn: ["animate__animated", "animate__fadeIn"],
+                animationOut: ["animate__animated", "animate__fadeOut"],
+                dismiss: {
+                  duration: 2000,
+                  onScreen: true,
+                },
+              });
+            }
+          } catch (error) {
+            console.log(error);
           }
-          if (response.data.message === "Interest set") {
-            Store.addNotification({
-              title: "Interest set",
-              message: "",
-              type: "success",
-              insert: "top",
-              container: "bottom-center",
-              animationIn: ["animate__animated", "animate__fadeIn"],
-              animationOut: ["animate__animated", "animate__fadeOut"],
-              dismiss: {
-                duration: 2000,
-                onScreen: true,
-              },
-            });
-          }
-        } catch (error) {
-          console.log(error);
         }
+        connect();
       }
-      connect();
     }
   };
   useEffect(() => {
@@ -101,6 +108,9 @@ const Connect = () => {
             },
           }
         );
+        if (response.data.message === "Please login first") {
+          setLoginStatus(false);
+        }
         setSelectedOptions(response.data.interest);
       } catch (error) {
         console.log(error);
@@ -144,7 +154,7 @@ const Connect = () => {
                   className="item"
                   onClick={() => handleOptionSelect("Digital Communities")}
                   style={{
-                    color: selectedOptions.includes("Digital Communities")
+                    color: selectedOptions?.includes("Digital Communities")
                       ? "#F74D79"
                       : "#ffffff",
                   }}
@@ -156,7 +166,7 @@ const Connect = () => {
                   className="item"
                   onClick={() => handleOptionSelect("Fashion Blogging")}
                   style={{
-                    color: selectedOptions.includes("Fashion Blogging")
+                    color: selectedOptions?.includes("Fashion Blogging")
                       ? "#F74D79"
                       : "#ffffff",
                   }}
@@ -168,7 +178,7 @@ const Connect = () => {
                   className="item"
                   onClick={() => handleOptionSelect("Digital marketing")}
                   style={{
-                    color: selectedOptions.includes("Digital marketing")
+                    color: selectedOptions?.includes("Digital marketing")
                       ? "#F74D79"
                       : "#ffffff",
                   }}
@@ -180,7 +190,7 @@ const Connect = () => {
                   className="item"
                   onClick={() => handleOptionSelect("Collaborations")}
                   style={{
-                    color: selectedOptions.includes("Collaborations")
+                    color: selectedOptions?.includes("Collaborations")
                       ? "#F74D79"
                       : "#ffffff",
                   }}
@@ -192,7 +202,7 @@ const Connect = () => {
                   className="item"
                   onClick={() => handleOptionSelect("Buying")}
                   style={{
-                    color: selectedOptions.includes("Buying")
+                    color: selectedOptions?.includes("Buying")
                       ? "#F74D79"
                       : "#ffffff",
                   }}
@@ -204,7 +214,7 @@ const Connect = () => {
                   className="item"
                   onClick={() => handleOptionSelect("More")}
                   style={{
-                    color: selectedOptions.includes("More")
+                    color: selectedOptions?.includes("More")
                       ? "#F74D79"
                       : "#ffffff",
                   }}

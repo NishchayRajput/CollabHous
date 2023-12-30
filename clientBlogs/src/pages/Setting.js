@@ -54,7 +54,18 @@ const Setting = () => {
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
+     // // Create a new FileReader instance
+    // const reader = new FileReader();
 
+    // // Define the onload event handler
+    // reader.onload = (e) => {
+    //   const fileData = e.target.result;
+    //   const metaData = fileData.split(";")[0].split(":")[1];
+    //   console.log("File metadata:", reader.result);
+    // };
+
+    // Read the file as data URL
+    // reader.readAsDataURL(file);
     setSelectedFile(file);
   };
   const [deptSubscription, setDeptSubscription] = useState([]);
