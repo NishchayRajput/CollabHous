@@ -18,7 +18,11 @@ module.exports = async (req, res) => {
             path : 'blog_id', model : 'blogs', select : '_id title'
         });
 
-        res.status(200).json({ user, notifications });
+        let popup = notifications.some((item) => item.status === "unread");
+
+        // console.log(popup);
+
+        res.status(200).json({ user, notifications ,popup});
 
     } catch (error) {
         console.log(error);
