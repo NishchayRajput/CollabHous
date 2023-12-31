@@ -5,7 +5,7 @@
     justify-content: center;
     height: 94vh;
     margin: 0px 6% auto;
-    max-width:1500px;
+    max-width: 1500px;
 }
 
 .settingCotainer .greyBox {
@@ -13,8 +13,9 @@
     border-radius: 10px;
     border: 1px solid #414141;
     width: 60%;
+    max-width: 800px;
     height: auto;
-    min-height: 70%;
+    max-height: 700px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -104,7 +105,8 @@
 }
 
 .settingCotainer .greyBox .detailsContainer .mid .btn1 {
-    height: auto;
+    height: auto !important;
+    max-height: 70px !important;
     width: 50%;
     display: flex;
     flex-direction: row;
@@ -118,7 +120,8 @@
 }
 
 .settingCotainer .greyBox .detailsContainer .mid .btn2 {
-    height: auto;
+    height: 70px !important;
+    max-height: 70px !important;
     width: 50%;
     display: flex;
     flex-direction: row;
@@ -144,12 +147,12 @@
 
 
 @media screen and (max-width:425px) {
-    .settingCotainer{
+    .settingCotainer {
         margin: 20% 0;
-        height:auto;
+        height: auto;
     }
 
-    .settingCotainer .greyBox{
+    .settingCotainer .greyBox {
         width: 85vw;
     }
 }

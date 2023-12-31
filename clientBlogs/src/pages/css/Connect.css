@@ -261,14 +261,15 @@
     line-height: normal;
     letter-spacing: 1.6px;
     height: 38px;
-    /* margin-left: 151px; */
+    
 
 }
 
 .frame65 {
     width: 25vw;
-    min-height: 11vh;
+    min-height: 100px;
     height: auto;
+    max-height:200px;
     border-radius: 8.36px;
     border: 1.045px solid #414141;
     background: #2F2F2F;

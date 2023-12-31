@@ -79,7 +79,7 @@ export default function BlogCard({
   return (
     <Card id="cardContainer">
       <Box className="cardContainerInner" display={"flex"}>
-        <div style={{ display: "block", width: "48%" }}>
+        <div className="imageContainer">
           <Link to={`/blogs/${bId}`}>
             <CardMedia
               component="img"
@@ -91,7 +91,7 @@ export default function BlogCard({
             />
           </Link>
         </div>
-        <Box width={"50%"} paddingTop={"5px"}>
+        <Box className="contentContainer">
           <Box display={"flex"} justifyContent="space-between" width={"100%"}>
             <CardHeader
               avatar={

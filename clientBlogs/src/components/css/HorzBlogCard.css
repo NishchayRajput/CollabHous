@@ -5,6 +5,16 @@
     border: 1px solid #414141;
 }
 
+#cardContainer .imageContainer {
+    display: block;
+    width: 48%;
+}
+
+#cardContainer .contentContainer {
+    width: 50%;
+    padding-top: 5px;
+}
+
 #cardContainer .cardContainerInner {
     height: 100%;
 }
@@ -96,9 +106,15 @@
     color: #626262;
 }
 
-@media only screen and (min-width: 320px) and (max-width:767px) {
+@media only screen and (min-width: 320px) and (max-width:769px) {
 
     #cardContainer {
+        height: 165px;
+        background-color: #2F2F2F;
+        min-width: 100%;
+        min-height: 30%;
+        /* height: auto; */
+        border: 1px solid #414141;
         margin: 0px;
     }
 
@@ -116,23 +132,30 @@
     }
 
     #cardContainer .title {
-        font-size: 12px;
+        font-size: 13px;
         line-height: 16px;
     }
 
     #cardContainer .blogDetails>div .readT {
         padding: 0px;
+        font-size: 11px;
+        line-height: 10px;
+    }
+
+    #cardContainer .blogDetails>div .date {
+        padding: 0px;
+        font-size: 11px;
         line-height: 10px;
     }
 
     #cardContainer .blogDetails>div .tag {
-
+        font-size: 11px;
         padding: 0px;
     }
 
 }
 
-@media only screen and (min-width: 768px) and (max-width:1023px) {
+@media only screen and (min-width: 768px) and (max-width:1025px) {
 
     #cardContainer .blogDetails>div {
         padding: 4px;
@@ -144,5 +167,25 @@
 
     #cardContainer .blogDetails>div .date {
         margin-bottom: 15px;
+    }
+
+    #cardContainer .imageContainer {
+        display: block;
+        width: 42%;
+    }
+
+    #cardContainer .contentContainer {
+        width: 58%;
+        padding-top: 5px;
+    }
+
+    #cardContainer .cardActions {
+        padding-top: 0px;
+    }
+    #cardContainer .blogDetails>div{
+        padding-top:4px;
+    }
+    #cardContainer .blogDetails>div .date {
+        margin-bottom: 0px;
     }
 }

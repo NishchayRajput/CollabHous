@@ -2,7 +2,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
+  justify-content:center;
   margin-top: 10vh;
   align-items: center;
 }
@@ -52,10 +52,8 @@
   background: #2f2f2f;
   width: 50vw;
   height: 55vh;
+  max-height: 600px;
   padding: 30px;
-
-  /* align-items: center; */
-  /* justify-content: center; */
 }
 
 .section1 .editBanner {
@@ -255,6 +253,7 @@
 .section3 .inner_box {
   width: 40vw;
   height: 30vh;
+  max-height: 300px;
   border-radius: 11px;
   background-color: #2f2f2f;
   padding: 20px;

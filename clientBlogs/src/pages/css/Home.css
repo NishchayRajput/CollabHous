@@ -59,11 +59,9 @@
 .heroLandingImage {
     object-fit: cover;
     width: 100vw;
-    height: 100vh;
+    height: 100vh !important;
     position: absolute;
 }
-
-
 
 .carouselSection {
     min-height: 100vh;
@@ -242,13 +240,13 @@
     letter-spacing: 0.05em !important;
 }
 
-@media only screen and (min-width: 320px) and (max-width:767px) {
+@media only screen and (min-width: 320px) and (max-width:900px) {
 
     .heroLandingImage {
         object-fit: cover;
         width: 100vw;
         height: 100vh;
-}
+    }
 
     .carouselSection {
         min-height: 100vh;
@@ -320,10 +318,10 @@
     }
 
     .whoAreWeContainer .imagePanel {
-        width: 100%;
+        width: 80%;
+        margin: 0px auto;
         height: fit-content;
         padding: 20px;
-
     }
 
     .whoAreWeContainer .imagePanel>img {
@@ -424,16 +422,12 @@
 }
 
 
-@media only screen and (min-width: 768px) and (max-width:1024px) {
-
-    .heroLandingImage {
-        height: fit-content;
-    }
-
+@media only screen and (min-width: 900px) and (max-width:1024px) {
 
     .welcomeSection {
         display: flex;
         flex-direction: column;
+        align-items: center;
         width: 100%;
         gap: 20px;
     }
@@ -446,11 +440,16 @@
     }
 
     .welcomeSection>detail {
+        width: 80%;
+        font-family: 'Questrial';
+        font-style: normal;
         font-weight: 400;
-        font-size: 30px;
-        line-height: 50px;
-        letter-spacing: 0.06em;
-        margin-top: 10px;
+        font-size: 20px;
+        line-height: 32px;
+        text-align: center;
+        letter-spacing: 0.05em;
+        color: #e7e7e7;
+
     }
 
 
@@ -464,21 +463,20 @@
     }
 
     .carouselContentContainer {
-        display: flex;
-        width: 100%;
-        margin-left: auto;
-        gap: 7px;
+        width: 85%;
+        transform: translateY(10px);
+        justify-content: center;
     }
 
     .carouselSection .carouselContentBtn {
         border-radius: 30px;
         text-transform: none;
-        font-size: 23px;
-        min-width: 25%;
-        height: 25%;
         border: 0.83px solid rgba(71, 71, 71, 1);
 
-
+        width: auto;
+        height: 40px;
+        line-height: 29px;
+        min-width: 40px;
 
 
         font-family: 'Roboto';
@@ -497,12 +495,11 @@
     .carouselDisplayText {
         padding: 20px 0px;
         color: rgba(177, 177, 177, 1);
-        width: 100%;
         margin: 0px auto;
-        font-size: 24px;
-
-
-
+        width: 90%;
+        font-size: 16px;
+        gap: 10px;
+        text-align: justify;
 
         font-family: 'Questrial';
         font-style: normal;

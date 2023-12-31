@@ -114,7 +114,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 /* RESPONSIVENESS */
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 900px) {
   #outer-container {
     display: none;
   }
