@@ -51,8 +51,16 @@ export default function IndividualBlog() {
   const getAllBlogs = async () => {
     try {
       const { data } = await axios.get(
-        `${process.env.REACT_APP_BACKEND_URL}/blogs/`
-      ); //sending without credentials as it was causing bugs
+        `${process.env.REACT_APP_BACKEND_URL}/blogs/`,
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      );
+
+      console.log(data);
       const filterBlogs = (category) => {
         const updateBlogs = data.filter((e) => {
           let check = false;

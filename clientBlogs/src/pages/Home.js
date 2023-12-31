@@ -20,6 +20,7 @@ const Home = () => {
   const [displayText, setDisplayText] = useState("");
   const [cImageLink, setCImageLink] = useState("images/heroLanding.png");
   const [heroData, setHeroData] = useState([]);
+  const [imgSrc, setImgSrc] = useState();
   const formatDate = (isoDate) => {
     const date = new Date(isoDate);
     const options = { year: "numeric", month: "short", day: "numeric" };
@@ -68,7 +69,13 @@ const Home = () => {
     if (buttonId === 4) setCImageLink("images/carouselSample.png");
   };
   const cImages = [{ link: cImageLink }];
-
+  useEffect(() => {
+    if (window.innerWidth < 500) {
+      setImgSrc("images/heroPortrait.png");
+    } else {
+      setImgSrc("images/heroLanding.png");
+    }
+  }, []);
   return (
     <div>
       <Fullpage>
@@ -76,7 +83,7 @@ const Home = () => {
           <FullpageSection id="Home">
             <Box className="section" position="relative">
               <img
-                src="images/heroLanding.png"
+                src={imgSrc}
                 alt="heroLanding"
                 className="heroLandingImage"
               />
@@ -197,7 +204,12 @@ const Home = () => {
 
                   <Link to="/blogs" style={{ textDecoration: "none" }}>
                     {" "}
-                    <Typography onClick={() => scrollToPercentage(0)} className="moreText">More</Typography>
+                    <Typography
+                      onClick={() => scrollToPercentage(0)}
+                      className="moreText"
+                    >
+                      More
+                    </Typography>
                   </Link>
                 </Box>
                 <Box className="blogsBox">

@@ -33,8 +33,6 @@ export default function BlogCard({
 
   const [likeStatus, setLikeStatus] = useState(likeStat);
   const [upVoteCount, setUpVoteCount] = useState(0);
-  // console.log(title);
-  // console.log("Likestatus", likeStat);
 
   const handleUpVote = async (e) => {
     try {
@@ -68,21 +66,20 @@ export default function BlogCard({
       // }
     }
   };
-  const [avatarSrc, setAvatarSrc] = React.useState(
-    "images/defaultAvatar.jpg"
-  );
+  const [avatarSrc, setAvatarSrc] = React.useState("images/defaultAvatar.jpg");
 
   const handleAvatarError = () => {
     setAvatarSrc("images/defaultAvatar.jpg");
   };
   const limitedDescription = description?.split(/\s+/).slice(0, 18).join(" ");
+
   React.useEffect(() => {
     setUpVoteCount(upVoteC);
-    setLikeStatus(likeStat);
-  }, [upVoteC, likeStat]);
-  React.useEffect(() => {
-    setLikeStatus(false);
   }, [upVoteC]);
+
+  React.useEffect(() => {
+    setLikeStatus(likeStat);
+  }, [likeStat]);
 
   return (
     <div className="card">

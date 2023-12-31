@@ -9,7 +9,7 @@ const Connect = () => {
   const navigate = useNavigate();
   const [loginStatus, setLoginStatus] = useState(true);
   const [selectedOptions, setSelectedOptions] = useState([]);
-
+  const [imgSrc, setImgSrc] = useState();
   const handleOptionSelect = (option) => {
     if (loginStatus === false) {
       navigate("/login");
@@ -118,15 +118,18 @@ const Connect = () => {
     }
     connect();
   }, []);
+  useEffect(() => {
+    if (window.innerWidth < 500) {
+      setImgSrc("images/connect_portrait.png");
+    } else {
+      setImgSrc("images/connect_landscape.png");
+    }
+  }, []);
   return (
     <div>
       <div style={{ backgroundColor: "rgba(35, 36, 38, 1)" }}>
         <Box className="section">
-          <img
-            src="images/contactus_hero_image.png"
-            alt="heroLanding"
-            className="background"
-          />
+          <img src={imgSrc} alt="heroLanding" className="background overlay" />
           <div className="buttons_top">
             <button
               className="btn1"

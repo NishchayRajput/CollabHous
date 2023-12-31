@@ -16,7 +16,7 @@ export default function Notification({ dotStatus, notificationArray }) {
     setRead(false);
     setAnchorEl(event.currentTarget);
     try {
-      const response = await axios.get(
+      await axios.get(
         `${process.env.REACT_APP_BACKEND_URL}/blogs/notification/status`,
         {
           withCredentials: true,
