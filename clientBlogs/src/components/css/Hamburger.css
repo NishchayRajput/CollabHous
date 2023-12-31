@@ -44,6 +44,8 @@ Note: Beware of modifying this element as it can break the animations - you shou
   min-height: 100vh;
   min-width: 100vw;
   padding: 0em 0em;
+  border:0px solid #000000;
+  box-shadow: 0px 0px 50px 50px rgba(13, 13, 13, 0.86);
 }
 
 /* General sidebar styles */
