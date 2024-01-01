@@ -39,10 +39,10 @@ const Hamburger = ({ isLogin }) => {
           <a id="home" className="menu-item" href="/">
             Home
           </a>
-          <div className="break-line" />
+          {/* <div className="break-line" />
           <a id="whoAreWe" className="menu-item" href="/">
             Who are we
-          </a>
+          </a> */}
           <div className="break-line" />
           <a id="blogs" className="menu-item" href="/blogs">
             Blogs

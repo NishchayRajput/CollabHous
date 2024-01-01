@@ -36,7 +36,7 @@ export default function BlogCard({
 
   const handleUpVote = async (e) => {
     try {
-      console.log("request ", !likeStatus);
+      // console.log("request ", !likeStatus);
       const { data } = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/blogs/like`,
         {
@@ -52,7 +52,7 @@ export default function BlogCard({
           },
         }
       );
-
+        
       if (data.message === "Please login first") {
         navigate("/login");
         console.log("navigating");
@@ -72,7 +72,7 @@ export default function BlogCard({
     setAvatarSrc("images/defaultAvatar.jpg");
   };
 
-  const limitedDescription = description?.split(/\s+/).slice(0, 25).join(" ");
+  const limitedDescription = description?.split(/\s+/).slice(0, 20).join(" ");
   React.useEffect(() => {
     setUpVoteCount(upVoteC);
     setLikeStatus(likeStat);

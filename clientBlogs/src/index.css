@@ -23,3 +23,21 @@ a :hover {
 body {
   font-family: "roboto", sans-serif;
 }
+/* For Chrome, Safari, and Opera */
+::-webkit-scrollbar {
+  width: 10px; /* width of the entire scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #232426; /* color of the tracking area */
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 30px;
+  box-shadow: 0px 0px 10px 20px #f2f2f298;
+  background: #f2f2f298; /* color of the scroll thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ffffff00; /* color of the scroll thumb on hover */
+}

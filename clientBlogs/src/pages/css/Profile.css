@@ -21,6 +21,7 @@
 
 .settingsContainer #userBoard {
     height: 35vh;
+    max-height: 350px;
     position: relative;
 }
 
@@ -39,8 +40,9 @@
 }
 
 .settingsContainer #userDetails {
-    min-height: 50vh;
-
+    min-height: 400px;
+    height: auto;
+    max-height: 800px;
 }
 
 .settingsContainer #avatar {
@@ -89,7 +91,7 @@
     flex-direction: column;
     justify-content: center;
     padding: 4% 13%;
-    gap: 6vh;
+    gap: 50px;
 }
 
 .settingsContainer .row {
@@ -196,10 +198,12 @@
         width: 100vw;
         gap: 0;
     }
-    .settingsContainer .label{
+
+    .settingsContainer .label {
         font-size: 16px !important;
     }
-    .settingsContainer .values{
+
+    .settingsContainer .values {
         font-size: 15px !important;
     }
 

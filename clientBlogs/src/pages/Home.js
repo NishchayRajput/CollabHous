@@ -20,10 +20,16 @@ const Home = () => {
   const [displayText, setDisplayText] = useState("");
   const [cImageLink, setCImageLink] = useState("images/heroLanding.png");
   const [heroData, setHeroData] = useState([]);
+  const [imgSrc, setImgSrc] = useState();
   const formatDate = (isoDate) => {
     const date = new Date(isoDate);
     const options = { year: "numeric", month: "short", day: "numeric" };
     return date.toLocaleDateString(undefined, options);
+  };
+  const scrollToPercentage = (percentage) => {
+    const scrollToY =
+      (percentage / 100) * (document.body.scrollHeight - window.innerHeight);
+    window.scrollTo({ top: scrollToY, behavior: "instant" });
   };
   useEffect(() => {
     async function getBlog() {
@@ -40,7 +46,7 @@ const Home = () => {
             },
           }
         );
-
+        console.log(data);
         setMostLikedBlog(data.mostLikedBlog);
         setHeroData(data.heroData);
         setRecentBlog(data.latestBlogs);
@@ -63,7 +69,13 @@ const Home = () => {
     if (buttonId === 4) setCImageLink("images/carouselSample.png");
   };
   const cImages = [{ link: cImageLink }];
-
+  useEffect(() => {
+    if (window.innerWidth < 500) {
+      setImgSrc("images/heroPortrait.png");
+    } else {
+      setImgSrc("images/heroLanding.png");
+    }
+  }, []);
   return (
     <div>
       <Fullpage>
@@ -71,7 +83,7 @@ const Home = () => {
           <FullpageSection id="Home">
             <Box className="section" position="relative">
               <img
-                src="images/heroLanding.png"
+                src={imgSrc}
                 alt="heroLanding"
                 className="heroLandingImage"
               />
@@ -192,7 +204,12 @@ const Home = () => {
 
                   <Link to="/blogs" style={{ textDecoration: "none" }}>
                     {" "}
-                    <Typography className="moreText">More</Typography>
+                    <Typography
+                      onClick={() => scrollToPercentage(0)}
+                      className="moreText"
+                    >
+                      More
+                    </Typography>
                   </Link>
                 </Box>
                 <Box className="blogsBox">
@@ -206,9 +223,16 @@ const Home = () => {
                       uId={
                         mostLikedBlog.user != null ? mostLikedBlog.user.id : ""
                       }
-                      title={mostLikedBlog.title}
+                      title={mostLikedBlog.title
+                        ?.split(/\s+/)
+                        .slice(0, 6)
+                        .join(" ")}
                       description={mostLikedBlog.content}
-                      image="images/carouselSample.png"
+                      image={
+                        mostLikedBlog?.items?.[0]
+                          ? `https://${mostLikedBlog.items[0].bucket}.s3.${mostLikedBlog.items[0].region}.amazonaws.com/${mostLikedBlog.items[0].s3Key}`
+                          : `images/carouselSample.png`
+                      }
                       username={
                         mostLikedBlog.user != null
                           ? mostLikedBlog.user.name
@@ -231,8 +255,19 @@ const Home = () => {
                         //   localStorage.getItem("userId") === blog?.user?.user_id
                         // }
                         tag={recentBlog[0] != null ? recentBlog[0].tag : ""}
-                        title={recentBlog[0] != null ? recentBlog[0].title : ""}
-                        image="images/carouselSample.png"
+                        title={
+                          recentBlog[0] != null
+                            ? recentBlog[0].title
+                                ?.split(/\s+/)
+                                .slice(0, 4)
+                                .join(" ")
+                            : ""
+                        }
+                        image={
+                          recentBlog[0]
+                            ? `https://${recentBlog[0].items[0].bucket}.s3.${recentBlog[0].items[0].region}.amazonaws.com/${recentBlog[0].items[0].s3Key}`
+                            : `images/carouselSample.png`
+                        }
                         username={
                           recentBlog[0] != null ? recentBlog[0].user.name : ""
                         }
@@ -245,12 +280,9 @@ const Home = () => {
                           recentBlog[0] != null ? recentBlog[0].like : "0"
                         }
                         read_time={
-                          recentBlog[0] != null ? recentBlog[0].read_time : "5"
+                          recentBlog[0] != null ? recentBlog[0].read_time : ""
                         }
-                        likeStat={
-                          recentBlog[0] !== null &&
-                          recentBlog[0] !== undefined?.recentBlog[0].like_status
-                        }
+                        likeStat={recentBlog[0]?.like_status}
                       />
 
                       <HorzBlogCard
@@ -260,8 +292,19 @@ const Home = () => {
                         // isUser={
                         //   localStorage.getItem("userId") === blog?.user?.user_id
                         // }
-                        title={recentBlog[1] != null ? recentBlog[1].title : ""}
-                        image="images/carouselSample.png"
+                        title={
+                          recentBlog[1] != null
+                            ? recentBlog[1].title
+                                ?.split(/\s+/)
+                                .slice(0, 4)
+                                .join(" ")
+                            : ""
+                        }
+                        image={
+                          recentBlog[1]
+                            ? `https://${recentBlog[1].items[0].bucket}.s3.${recentBlog[1].items[0].region}.amazonaws.com/${recentBlog[1].items[0].s3Key}`
+                            : `images/carouselSample.png`
+                        }
                         username={
                           recentBlog[1] != null ? recentBlog[1].user.name : ""
                         }
@@ -275,12 +318,9 @@ const Home = () => {
                           recentBlog[1] != null ? recentBlog[1].like : "0"
                         }
                         read_time={
-                          recentBlog[1] != null ? recentBlog[1].read_time : "5"
+                          recentBlog[1] != null ? recentBlog[1].read_time : ""
                         }
-                        likeStat={
-                          recentBlog[1] !== null &&
-                          recentBlog[0] !== undefined?.recentBlog[1].like_status
-                        }
+                        likeStat={recentBlog[1]?.like_status}
                       />
                       <HorzBlogCard
                         bId={recentBlog[2]?.id}
@@ -289,8 +329,19 @@ const Home = () => {
                         // isUser={
                         //   localStorage.getItem("userId") === blog?.user?.user_id
                         // }
-                        title={recentBlog[2] != null ? recentBlog[2].title : ""}
-                        image="images/carouselSample.png"
+                        title={
+                          recentBlog[2] != null
+                            ? recentBlog[2].title
+                                ?.split(/\s+/)
+                                .slice(0, 4)
+                                .join(" ")
+                            : ""
+                        }
+                        image={
+                          recentBlog[2]
+                            ? `https://${recentBlog[2].items[0].bucket}.s3.${recentBlog[2].items[0].region}.amazonaws.com/${recentBlog[2].items[0].s3Key}`
+                            : `images/carouselSample.png`
+                        }
                         username={
                           recentBlog[2] != null ? recentBlog[2].user.name : ""
                         }
@@ -304,7 +355,7 @@ const Home = () => {
                           recentBlog[2] != null ? recentBlog[2].like : "0"
                         }
                         read_time={
-                          recentBlog[2] != null ? recentBlog[2].read_time : "5"
+                          recentBlog[2] != null ? recentBlog[2].read_time : ""
                         }
                         likeStat={
                           recentBlog[2] !== null && recentBlog[2] !== undefined

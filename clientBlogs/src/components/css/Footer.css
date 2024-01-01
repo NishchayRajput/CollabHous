@@ -1,5 +1,5 @@
 .footerContainer {
-    margin-top:5rem;
+    /* margin-top: 5rem; */
     padding-top: 3rem;
     padding-left: 6rem;
     border-top: 3px solid white;
@@ -92,7 +92,7 @@
     width: 40%;
 }
 
-@media only screen and (max-width:767px) {
+@media only screen and (max-width:900px) {
 
     .footerContainer {
         min-height: 100vh;
@@ -207,7 +207,7 @@
 
 }
 
-@media only screen and (min-width:768) and (max-width:1024) {
+@media only screen and (min-width:900) and (max-width:1024) {
 
 
     .footerContainer {

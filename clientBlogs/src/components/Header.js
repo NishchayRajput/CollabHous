@@ -13,6 +13,7 @@ import axios from "axios";
 const Header = () => {
   const location = useLocation();
   const [notification, setNotification] = useState([]);
+  const [dot, setDot] = useState();
   const [value, setValue] = useState(0);
   const [scrollValue, setScrollValue] = useState(0);
   const [isLogin, setIsLogin] = useState();
@@ -57,6 +58,7 @@ const Header = () => {
             },
           }
         );
+        setDot(data.popup);
         setNotification(data.notifications);
         if (data.message === "Please login first") setIsLogin(true);
         else setIsLogin(false);
@@ -158,7 +160,9 @@ const Header = () => {
               />
             </Tabs>
           </Box>
-          {!isLogin && <Notification notificationArray={notification} />}
+          {!isLogin && (
+            <Notification dotStatus={dot} notificationArray={notification} />
+          )}
           {!isLogin && (
             <div id="avatarContainer">
               {" "}
