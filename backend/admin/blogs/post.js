@@ -47,6 +47,43 @@ async function postBlogs(req ,res){
     }
 }
 
+async function postAdminInfo(req,res){
+    const {name, email, password} = req.body;
+    try {
+        // Validate inputs
+        if (!name || !email || !password) {
+            return res.status(400).json({ message: "Please enter all required fields." });
+        }
+
+        // Check if the email is already in use
+        const existingUser = await adminInfo.findOne({ email: email });
+        if (existingUser) {
+            return res.status(400).json({ message: "Email is already registered. Please choose a different one." });
+        }
+
+        // Hash the password
+        const saltRounds = 10; // Adjust according to your security needs
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+        // Create a new adminInfo document
+        const newAdmin = new adminInfo({
+            name: name,
+            email: email,
+            password: hashedPassword,
+        });
+
+        // Save the new adminInfo to the database
+        await newAdmin.save();
+
+        // Create and send a JWT token for immediate login after signup
+
+        return res.status(201).json({ message: "Signup successful" });
+
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ error: "An error occurred while processing your request" });
+    }
+}
 
 
-module.exports = {postHero, postBlogs};
+module.exports = {postHero, postBlogs, postAdminInfo};

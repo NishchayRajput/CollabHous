@@ -6,7 +6,7 @@ const notification = require('../../blogs/models/notification');
 const userInfo = require('../../ecommerce/models/userInfo');
 const mongoose = require('mongoose');
 
-async function putBlogs(req, res){
+async function patchBlogs(req, res){
     const id = req.params.id;
     
     const { title, content , tags,read_time, richTextContent,items } = req.body;
@@ -33,7 +33,7 @@ async function putBlogs(req, res){
 
 }
 
-async function putuserInfo(req,res){
+async function patchuserInfo(req,res){
     const { id } = req.params; // Assuming you have the user ID in the request parameters
     const { name, email, address } = req.body;
   try {
@@ -65,7 +65,7 @@ async function putuserInfo(req,res){
   }
 }
 
-async function putNotification(req,res){
+async function patchNotification(req,res){
     const { id } = req.params; // Assuming you have the notification ID in the request parameters
   const { status } = req.body;
 
@@ -94,7 +94,7 @@ async function putNotification(req,res){
   }
 }
 
-async function putInteraction(req,res){
+async function patchInteraction(req,res){
     const { id } = req.params; // Assuming you have the interaction ID in the request parameters
     const { interaction_content } = req.body;
   
@@ -123,7 +123,7 @@ async function putInteraction(req,res){
     }
   }   /////////////////////////check this one
 
-async function putHero(req,res){
+async function patchHero(req,res){
     const { id } = req.params; // Assuming you have the hero ID in the request parameters
     const { page, key, value } = req.body;
   
@@ -152,7 +152,7 @@ async function putHero(req,res){
     }
   }
 
-async function putCommune(req,res){
+async function patchCommune(req,res){
     const { id } = req.params; // Assuming you have the commune ID in the request parameters
     const { settings, questions, interest } = req.body;
   
@@ -181,4 +181,44 @@ async function putCommune(req,res){
     }
   }
 
-module.exports = {putBlogs, putuserInfo, putNotification, putInteraction, putHero, putCommune};
+async function patchAdminInfo(req,res){
+  const userId = req.params.id;
+    const { name, email, password } = req.body;
+
+    try {
+        // Prepare the update fields
+        const updateFields = {};
+        
+        if (name) {
+            updateFields.name = name;
+        }
+
+        if (email) {
+            updateFields.email = email;
+        }
+
+        if (password) {
+            // Hash the new password
+            const saltRounds = 10;
+            updateFields.password = await bcrypt.hash(password, saltRounds);
+        }
+
+        // Find the user by ID and update the specified fields
+        const updatedUser = await userInfoModel.findByIdAndUpdate(
+            userId,
+            updateFields,
+            { new: true, projection: { password: 0 } }
+        );
+
+        if (!updatedUser) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        res.status(200).json(updatedUser);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'An error occurred while processing your request' });
+    }
+}
+
+module.exports = {patchBlogs, patchuserInfo, patchNotification, patchInteraction, patchHero, patchCommune, patchAdminInfo};
