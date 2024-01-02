@@ -12,8 +12,8 @@ async function getData(model, conditions = {}, sort = { createdAt: -1 }) {
       const data = await model.find(conditions).sort(sort);
       return data;
   } catch (error) {
-      console.error(`Error fetching data from ${model.modelName}: ${error}`);
-      throw new Error(`Error fetching data from ${model.modelName}`);
+    console.error(`Error fetching data from ${model.modelName}: ${error}`);
+    res.status(500).json({ error: `Error fetching data from ${model.modelName}` });
   }
 }
 
@@ -22,8 +22,8 @@ async function getIndividualData(model, id) {
       const data = await model.findById(id);
       return data;
   } catch (error) {
-      console.error(`Error fetching individual data from ${model.modelName}: ${error}`);
-      throw new Error(`Error fetching individual data from ${model.modelName}`);
+    console.error(`Error fetching individual data from ${model.modelName}: ${error}`);
+    res.status(500).json({ error: `Error fetching individual data from ${model.modelName}` });
   }
 }
 
@@ -31,8 +31,8 @@ async function handleRequestAsync(handler, req, res) {
   try {
       await handler(req, res);
   } catch (error) {
-      console.error(`Error handling request: ${error.message}`);
-      res.status(500).json({ error: 'Internal Server Error' });
+    console.error(`Error handling request: ${error.message}`);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 }
 
