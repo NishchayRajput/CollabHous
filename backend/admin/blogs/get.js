@@ -104,6 +104,7 @@ async function getIndiInteraction(req, res) {
 }
 
 async function getNotification(req, res) {
+  console.log(req);
   const data = await getData(models.notification);
   res.send(data);
 }

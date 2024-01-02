@@ -13,19 +13,19 @@ const login = require('./auth/login');
 ///////////////////////////////////////////////////////////////GET/////////////////////////////////////////////////////////////////
 
 router.get("/blogs/",getBlogs );
-router.get("/blogs/:id",getIndiBlogs );
+router.get("/blogs/indi/:id",getIndiBlogs );
 router.get("/blogs/commune",getCommune );
-router.get("/blogs/commune/:id",getIndiCommune );
+router.get("/blogs/commune/indi/:id",getIndiCommune );
 router.get("/blogs/interaction",getInteraction );
-router.get("/blogs/interaction/:id",getIndiInteraction );
+router.get("/blogs/interaction/indi/:id",getIndiInteraction );
 router.get("/blogs/hero",getHero);
-router.get("/blogs/hero/:id",getIndiHero);
+router.get("/blogs/hero/indi/:id",getIndiHero);
 router.get("/blogs/notification",getNotification );
-router.get("/blogs/notification/:id",getIndiNotification );
+router.get("/blogs/notification/indi/:id",getIndiNotification );
 router.get("/blogs/userinfo",getUserinfo );
-router.get("/blogs/userinfo/:id",getIndiUserinfo );
+router.get("/blogs/userinfo/indi/:id",getIndiUserinfo );
 router.get("/", getAdminInfo);
-router.get("/:id", getIndiAdminInfo);
+router.get("/indi/:id", getIndiAdminInfo);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -40,26 +40,26 @@ router.post("/", postAdminInfo);
 
 /////////////////////////////////////////////////////////////////PATCH/////////////////////////////////////////////////////////////
 
-router.patch("/blogs/:id",patchBlogs );
-router.patch("/blogs/commune/:id",patchCommune );
-router.patch("/blogs/interaction/:id",patchInteraction );
-router.patch("/blogs/hero/:id",patchHero);
-router.patch("/blogs/notification/:id",patchNotification );
-router.patch("/blogs/userinfo/:id",patchuserInfo );
-router.patch("/:id", patchAdminInfo );
+router.patch("/blogs/edit/:id",patchBlogs );
+router.patch("/blogs/commune/edit/:id",patchCommune );
+router.patch("/blogs/interaction/edit/:id",patchInteraction );
+router.patch("/blogs/hero/edit/:id",patchHero);
+router.patch("/blogs/notification/edit/:id",patchNotification );
+router.patch("/blogs/userinfo/edit/:id",patchuserInfo );
+router.patch("/edit/:id", patchAdminInfo );
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////////////////////////////////////////////DELETE////////////////////////////////////////////////////////////
 
 
-router.delete("/blogs/:id",deleteBlogs );
-router.delete("/blogs/commune/:id",deleteCommune );
-router.delete("/blogs/interaction/:id",deleteInteraction );
-router.delete("/blogs/hero/:id",deleteHero);
-router.delete("/blogs/notification/:id",deleteNotification );
-router.delete("/blogs/userinfo/:id",deleteUserinfo );
-router.delete("/:id", deleteAdminInfo);
+router.delete("/blogs/delete/:id",deleteBlogs );
+router.delete("/blogs/commune/delete/:id",deleteCommune );
+router.delete("/blogs/interaction/delete/:id",deleteInteraction );
+router.delete("/blogs/hero/delete/:id",deleteHero);
+router.delete("/blogs/notification/delete/:id",deleteNotification );
+router.delete("/blogs/userinfo/delete/:id",deleteUserinfo );
+router.delete("/delete/:id", deleteAdminInfo);
 
 
 
