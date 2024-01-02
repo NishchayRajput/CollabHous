@@ -31,35 +31,35 @@ router.get("/:id", getIndiAdminInfo);
 
 /////////////////////////////////////////////////////////////////POST//////////////////////////////////////////////////////////////
 
-router.post("/", postAdminInfo);
 router.post("/login", login);
 router.post("/blogs/",postBlogs );
 router.post("/blogs/hero",postHero );
+router.post("/", postAdminInfo);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////////////////////////////////////////////PATCH/////////////////////////////////////////////////////////////
 
-router.patch("/:id", patchAdminInfo );
 router.patch("/blogs/:id",patchBlogs );
 router.patch("/blogs/commune/:id",patchCommune );
 router.patch("/blogs/interaction/:id",patchInteraction );
 router.patch("/blogs/hero/:id",patchHero);
 router.patch("/blogs/notification/:id",patchNotification );
 router.patch("/blogs/userinfo/:id",patchuserInfo );
+router.patch("/:id", patchAdminInfo );
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////////////////////////////////////////////DELETE////////////////////////////////////////////////////////////
 
 
-router.delete("/:id", deleteAdminInfo);
 router.delete("/blogs/:id",deleteBlogs );
 router.delete("/blogs/commune/:id",deleteCommune );
 router.delete("/blogs/interaction/:id",deleteInteraction );
 router.delete("/blogs/hero/:id",deleteHero);
 router.delete("/blogs/notification/:id",deleteNotification );
 router.delete("/blogs/userinfo/:id",deleteUserinfo );
+router.delete("/:id", deleteAdminInfo);
 
 
 

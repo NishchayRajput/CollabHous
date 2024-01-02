@@ -1,7 +1,7 @@
 const hero = require('../../blogs/models/hero');
 const blogs = require('../../blogs/models/blogs');
 const adminInfo = require('../models/adminInfo');
-
+const bcrypt = require('bcrypt');
 async function postHero(req,res){
     try {
         // Create a new instance of the 'Hero' model with data from the request body
