@@ -40,7 +40,7 @@ router.post("/blogs/hero",postHero );
 
 /////////////////////////////////////////////////////////////////PATCH/////////////////////////////////////////////////////////////
 
-
+router.patch("/:id", patchAdminInfo );
 router.patch("/blogs/:id",patchBlogs );
 router.patch("/blogs/commune/:id",patchCommune );
 router.patch("/blogs/interaction/:id",patchInteraction );
@@ -59,7 +59,7 @@ router.delete("/blogs/interaction/:id",deleteInteraction );
 router.delete("/blogs/hero/:id",deleteHero);
 router.delete("/blogs/notification/:id",deleteNotification );
 router.delete("/blogs/userinfo/:id",deleteUserinfo );
-router.delete("/:id");
+router.delete("/:id", deleteAdminInfo);
 
 
 
