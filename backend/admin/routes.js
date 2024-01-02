@@ -12,8 +12,6 @@ const login = require('./auth/login');
 
 ///////////////////////////////////////////////////////////////GET/////////////////////////////////////////////////////////////////
 
-router.get("/", getAdminInfo);
-router.get("/:id", getIndiAdminInfo);
 router.get("/blogs/",getBlogs );
 router.get("/blogs/:id",getIndiBlogs );
 router.get("/blogs/commune",getCommune );
@@ -26,6 +24,8 @@ router.get("/blogs/notification",getNotification );
 router.get("/blogs/notification/:id",getIndiNotification );
 router.get("/blogs/userinfo",getUserinfo );
 router.get("/blogs/userinfo/:id",getIndiUserinfo );
+router.get("/", getAdminInfo);
+router.get("/:id", getIndiAdminInfo);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
