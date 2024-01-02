@@ -4,6 +4,7 @@ const hero = require('../../blogs/models/hero');
 const interaction = require('../../blogs/models/interaction');
 const notification = require('../../blogs/models/notification');
 const userInfo = require('../../ecommerce/models/userInfo');
+const adminInfo = require('../models/adminInfo');
 const mongoose = require('mongoose');
 
 async function patchBlogs(req, res){
@@ -199,12 +200,12 @@ async function patchAdminInfo(req,res){
 
         if (password) {
             // Hash the new password
-            const saltRounds = 10;
+            const saltRounds = 12;
             updateFields.password = await bcrypt.hash(password, saltRounds);
         }
 
         // Find the user by ID and update the specified fields
-        const updatedUser = await userInfoModel.findByIdAndUpdate(
+        const updatedUser = await adminInfo.findByIdAndUpdate(
             userId,
             updateFields,
             { new: true, projection: { password: 0 } }

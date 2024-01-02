@@ -113,7 +113,7 @@ async function getIndiUserinfo(req, res) {
 async function getAdminInfo(req,res){
   try {
     // Exclude the password field from the query results
-    const users = await userInfoModel.find({}, { password: 0 });
+    const users = await adminInfo.find({}, { password: 0 });
 
     res.status(200).json(users);
 } catch (error) {

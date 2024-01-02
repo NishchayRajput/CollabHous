@@ -1,5 +1,6 @@
 const hero = require('../../blogs/models/hero');
 const blogs = require('../../blogs/models/blogs');
+const adminInfo = require('../models/adminInfo');
 
 async function postHero(req,res){
     try {
@@ -62,7 +63,7 @@ async function postAdminInfo(req,res){
         }
 
         // Hash the password
-        const saltRounds = 10; // Adjust according to your security needs
+        const saltRounds = 12; // Adjust according to your security needs
         const hashedPassword = await bcrypt.hash(password, saltRounds);
 
         // Create a new adminInfo document
