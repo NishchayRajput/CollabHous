@@ -4,6 +4,7 @@ const cors = require("cors");
 const ecommerce = require("./ecommerce/routes");
 const blogs = require("./blogs/routes");
 const cookieParser = require("cookie-parser");
+const admin = require('./admin/routes');
 // const passport = require("passport");
 // const session = require("express-session");
 // const mongoStore = require("connect-mongo");
@@ -61,7 +62,7 @@ dbConnection();
 //   }
 // });
 app.use("/ecommerce", ecommerce);
-
+app.use("/admin", admin);
 app.use("/blogs", blogs);
 // app.use('/api', wishlist);
 
