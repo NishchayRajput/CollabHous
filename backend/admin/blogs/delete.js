@@ -4,6 +4,7 @@ const hero = require('../../blogs/models/hero');
 const interaction = require('../../blogs/models/interaction');
 const notification = require('../../blogs/models/notification');
 const userInfo = require('../../ecommerce/models/userInfo');
+const mongoose = require('mongoose');
 
 async function deleteBlogs(req,res){
     const id = req.params.id;
