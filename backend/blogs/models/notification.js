@@ -27,6 +27,7 @@ const notifications = new mongoose.Schema({
         type : String,
         default : 'unread',
     },
+    createdAt: { type: Date, expires: 2592000, default: Date.now }
 });
 
 module.exports = mongoose.model('notifications', notifications, 'notifications');
