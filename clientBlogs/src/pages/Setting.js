@@ -176,7 +176,7 @@ const Setting = () => {
               onScreen: true,
             },
           });
-          Navigate("/home");
+          Navigate("/login");
         }
         if (response.data.message === "data found") {
           const data = response.data.data.data.settings;

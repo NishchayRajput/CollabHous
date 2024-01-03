@@ -134,7 +134,11 @@ const Connect = () => {
             <button
               className="btn1"
               onClick={() => {
-                navigate("/commune");
+                if (loginStatus === false) {
+                  navigate("/login");
+                } else {
+                  navigate("/commune");
+                }
               }}
             >
               Connect

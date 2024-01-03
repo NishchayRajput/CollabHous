@@ -8,6 +8,28 @@ const CommuneWelcome = () => {
   const navigate = useNavigate();
   const [userData, setUserData] = useState({});
   useEffect(() => {
+    async function getInfo() {
+      try {
+        const { data } = await axios.get(
+          `${process.env.REACT_APP_BACKEND_URL}/ecommerce/verify`,
+          {
+            withCredentials: true,
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+          }
+        );
+        
+        if (data.message === "User not logged in") {
+          navigate("/login");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getInfo();
+  }, []);
+  useEffect(() => {
     async function connect() {
       try {
         const response = await axios.post(
@@ -22,7 +44,7 @@ const CommuneWelcome = () => {
             },
           }
         );
-        console.log(response.data.ud[0]);
+        console.log(response);
         setUserData(response.data?.ud[0]);
       } catch (error) {
         console.log(error);
@@ -30,9 +52,7 @@ const CommuneWelcome = () => {
     }
     connect();
   }, []);
-  const [avatarSrc, setAvatarSrc] = React.useState(
-    "images/defaultAvatar.jpg"
-  );
+  const [avatarSrc, setAvatarSrc] = React.useState("images/defaultAvatar.jpg");
 
   const handleAvatarError = () => {
     setAvatarSrc("images/defaultAvatar.jpg");

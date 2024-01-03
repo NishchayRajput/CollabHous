@@ -1,9 +1,32 @@
 import React, { useEffect } from "react";
 import "./css/ExploreCommune.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const ExploreCommune = () => {
   const navigate = useNavigate();
+  useEffect(() => {
+    async function getInfo() {
+      try {
+        const { data } = await axios.get(
+          `${process.env.REACT_APP_BACKEND_URL}/ecommerce/verify`,
+          {
+            withCredentials: true,
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+          }
+        );
+
+        if (data.message === "User not logged in") {
+          navigate("/login");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getInfo();
+  }, []);
   useEffect(() => {
     localStorage.setItem("selectedTabIndex", "3");
   }, []);

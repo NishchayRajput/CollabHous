@@ -90,6 +90,7 @@ export default function IndividualBlog() {
             },
           }
         );
+        console.log(data);
         const response = await fetch(data.blogF.richTextContent);
         const textData = await response.text();
         setLoginUsername(data.ud?.name);
@@ -175,6 +176,7 @@ export default function IndividualBlog() {
   //   };
   //   fetchData();
   // }, [blogId]);
+
   return (
     <div style={{ marginTop: "-68px" }}>
       <Box>

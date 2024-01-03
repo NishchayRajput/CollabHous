@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import "./css/FileUpload.css";
 
-const FileUploader = ({ onFileSelect }) => {
+const FileUpload = ({ customStyle, onFileSelect, onFileSelectError }) => {
   const fileInput = useRef(null);
 
   const handleFileInput = (e) => {
@@ -23,10 +23,10 @@ const FileUploader = ({ onFileSelect }) => {
         ref={fileInput}
         style={{ display: "none" }}
       />
-      <button onClick={handleButtonClick} className="btn custom">
+      <button onClick={handleButtonClick} style={customStyle}className="btn custom">
         Upload
       </button>
     </div>
   );
 };
-export default FileUploader;
+export default FileUpload;
