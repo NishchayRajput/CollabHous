@@ -74,6 +74,9 @@ export default function BlogCard({
   };
 
   const limitedDescription = description?.split(/\s+/).slice(0, 20).join(" ");
+
+  const limitedTitle = title?.substring(0,40) + "..."; 
+
   React.useEffect(() => {
     setUpVoteCount(upVoteC);
     setLikeStatus(likeStat);
@@ -126,11 +129,12 @@ export default function BlogCard({
             <p className="tag">{tag}</p>
           </div>
         </Box>
+
         <CardContent className="titleCard">
           <Link to={`/blogs/${bId}`} style={{ textDecoration: "none" }}>
             <Typography variant="h6" className="title">
             <Tooltip title={title} arrow>
-                {title}
+            {title.length > 40 ? limitedTitle : title}
             </Tooltip>
             </Typography>
           </Link>
