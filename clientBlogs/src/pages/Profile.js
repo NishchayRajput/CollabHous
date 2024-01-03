@@ -12,9 +12,10 @@ import "../pages/css/Profile.css";
 import { Button } from "@mui/material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import FileUpload from "../components/FileUpload";
 const Profile = () => {
   const navigate = useNavigate();
+  const [selectedFile, setSelectedFile] = useState(null);
   const handleLogOut = () => {
     async function logout() {
       try {
@@ -88,6 +89,28 @@ const Profile = () => {
     setAvatarSrc("images/defaultAvatar.jpg");
   };
   useEffect(() => {
+    async function getInfo() {
+      try {
+        const { data } = await axios.get(
+          `${process.env.REACT_APP_BACKEND_URL}/ecommerce/verify`,
+          {
+            withCredentials: true,
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+          }
+        );
+
+        if (data.message === "User not logged in") {
+          navigate("/login");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getInfo();
+  }, []);
+  useEffect(() => {
     localStorage.setItem("selectedTabIndex", "3");
   }, []);
   return (
@@ -120,7 +143,7 @@ const Profile = () => {
         <Card id="userDetails">
           <div className="info">
             <div className="row">
-              <Typography className="label">Username</Typography>
+              <Typography className="label">Name</Typography>
               <Typography className="values">{username}</Typography>
             </div>
             <div className="row">
@@ -135,7 +158,20 @@ const Profile = () => {
               <Typography className="label">CV</Typography>
               <Typography className="values">
                 <Button className="values">View</Button>
-                <Button className="values">Upload</Button>{" "}
+                <Button className="values">
+                  <FileUpload
+                    customStyle={{
+                      border: "none",
+                      color: "#787878",
+                      height: "auto",
+                    }}
+                    onFileSelect={(file) => {
+                      console.log(file);
+                      setSelectedFile(file);
+                    }}
+                    onFileSelectError={({ error }) => alert(error)}
+                  />
+                </Button>
               </Typography>
             </div>
             <div className="row">

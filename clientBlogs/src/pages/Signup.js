@@ -207,7 +207,7 @@ const Register = () => {
 
           <TextField
             className="registerUsername"
-            placeholder="Username"
+            placeholder="Name"
             value={inputs.name}
             onChange={handleChange}
             name="name"
