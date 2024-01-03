@@ -5,6 +5,7 @@ const ecommerce = require("./ecommerce/routes");
 const blogs = require("./blogs/routes");
 const cookieParser = require("cookie-parser");
 const admin = require('./admin/routes');
+const serverless = require('serverless-http');
 // const passport = require("passport");
 // const session = require("express-session");
 // const mongoStore = require("connect-mongo");
@@ -70,3 +71,5 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log("Server is running on", PORT);
 });
+
+module.exports.server = serverless(app);
