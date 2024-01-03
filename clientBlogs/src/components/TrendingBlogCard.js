@@ -7,6 +7,7 @@ import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
+import Tooltip from '@mui/material/Tooltip';
 import { Box, IconButton } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -128,7 +129,9 @@ export default function BlogCard({
         <CardContent className="titleCard">
           <Link to={`/blogs/${bId}`} style={{ textDecoration: "none" }}>
             <Typography variant="h6" className="title">
-              {title}
+            <Tooltip title={title} arrow>
+                {title}
+            </Tooltip>
             </Typography>
           </Link>
         </CardContent>

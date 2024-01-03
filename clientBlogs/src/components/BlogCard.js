@@ -8,6 +8,7 @@ import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
+import Tooltip from '@mui/material/Tooltip';
 import { Box, IconButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -72,6 +73,7 @@ export default function BlogCard({
     setAvatarSrc("images/defaultAvatar.jpg");
   };
   const limitedDescription = description?.split(/\s+/).slice(0, 18).join(" ");
+  const limitedTitle = title?.substring(0,26) + "..."; 
 
   React.useEffect(() => {
     setUpVoteCount(upVoteC);
@@ -123,7 +125,9 @@ export default function BlogCard({
             variant="h6"
             color="text.secondary"
           >
-            <p className="title">{title}</p>
+            <Tooltip className="title" title={title}>
+            {title.length > 25 ? limitedTitle : title}
+            </Tooltip>
           </Typography>
 
           <Typography variant="body2" className="description">
