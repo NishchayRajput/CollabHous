@@ -319,7 +319,7 @@ export default function IndividualBlog() {
               style={{
                 display: "flex",
                 flexDirection: "row",
-                flexWrap: "nowrap",
+                flexWrap: "wrap",
               }}
             >
               {relatedBlog &&

@@ -74,7 +74,7 @@
     line-height: 26px;
     letter-spacing: 0.05em;
     padding-top: 2px;
-
+    overflow-wrap: anywhere;
 
 }
 

@@ -54,6 +54,7 @@
     color: #F74D79;
     padding-top: 10px;
     text-align: start;
+    overflow-wrap: anywhere;
 }
 
 .card .cardContent .description {
