@@ -158,16 +158,6 @@ const Blogs = () => {
               color: valueT === 6 ? "#F74D79" : "white", // Text color for selected tab
             }}
           />
-          <Tab
-            label="More"
-            onClick={() => {
-              filterBlogs("More");
-            }}
-            className="tabs"
-            style={{
-              color: valueT === 7 ? "#F74D79" : "white", // Text color for selected tab
-            }}
-          />
         </Tabs>
       </Box>
 
