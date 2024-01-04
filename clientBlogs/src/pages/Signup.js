@@ -29,7 +29,6 @@ const Register = () => {
     }));
   };
 
- 
   const [type, setType] = useState("password");
   const [icon, setIcon] = useState(eyeOff);
 
@@ -71,7 +70,6 @@ const Register = () => {
           });
           navigate("/home");
         }
-        console.log(data);
       } catch (error) {
         console.log(error);
       }
@@ -101,12 +99,10 @@ const Register = () => {
           withCredentials: true,
         }
       );
-      console.log(data);
 
       if (data.message === "Signup successful") {
         navigate("/login");
 
-        console.log("Registered successfully");
         Store.addNotification({
           title: "Registered successfully",
           message: "",
@@ -168,12 +164,10 @@ const Register = () => {
   };
 
   // const login = useGoogleLogin({
-  //   //onSuccess: tokenResponse => console.log(tokenResponse),
 
   //   onSuccess: (credentialResponse) => {
   //     const details = jwtDecode(credentialResponse.credential);
-  //     console.log(credentialResponse);
-  //     console.log(details.sub);
+
   //     inputs.g_id = details.sub;
   //     inputs.name = details.name;
   //     inputs.email = details.email;
@@ -219,10 +213,10 @@ const Register = () => {
               "& .MuiInput-underline:before": {
                 borderBottomColor: "white",
               },
-              "& .MuiInput-underline:hover:before":{
+              "& .MuiInput-underline:hover:before": {
                 borderBottomColor: "#FF2E64",
               },
-              "& .MuiInput-underline:after":{
+              "& .MuiInput-underline:after": {
                 borderBottomColor: "#FF2E64",
               },
               input: {
@@ -246,10 +240,10 @@ const Register = () => {
               "& .MuiInput-underline:before": {
                 borderBottomColor: "white",
               },
-              "& .MuiInput-underline:hover:before":{
+              "& .MuiInput-underline:hover:before": {
                 borderBottomColor: "#FF2E64",
               },
-              "& .MuiInput-underline:after":{
+              "& .MuiInput-underline:after": {
                 borderBottomColor: "#FF2E64",
               },
               input: {
@@ -273,10 +267,10 @@ const Register = () => {
               "& .MuiInput-underline:before": {
                 borderBottomColor: "white",
               },
-              "& .MuiInput-underline:hover:before":{
+              "& .MuiInput-underline:hover:before": {
                 borderBottomColor: "#FF2E64",
               },
-              "& .MuiInput-underline:after":{
+              "& .MuiInput-underline:after": {
                 borderBottomColor: "#FF2E64",
               },
               input: {
@@ -314,8 +308,7 @@ const Register = () => {
                 <GoogleLogin
                   onSuccess={(credentialResponse) => {
                     const details = jwtDecode(credentialResponse.credential);
-                    console.log(credentialResponse.clientId);
-                    console.log(details);
+
                     inputs.g_id = details.sub;
                     inputs.name = details.name;
                     inputs.email = details.email;
@@ -324,12 +317,9 @@ const Register = () => {
                   onError={() => {
                     console.log("Login Failed");
                   }}
-
-                  
-                theme="filled_black"
-                shape="pill"
-                text="continue_with"
-             
+                  theme="filled_black"
+                  shape="pill"
+                  text="continue_with"
                 />
               </GoogleOAuthProvider>
             </Button>

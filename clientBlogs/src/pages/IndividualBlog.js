@@ -60,7 +60,7 @@ export default function IndividualBlog() {
         }
       );
 
-      console.log(data);
+    
       const filterBlogs = (category) => {
         const updateBlogs = data.filter((e) => {
           let check = false;
@@ -71,7 +71,7 @@ export default function IndividualBlog() {
           return check;
         });
         setRelatedBlog(updateBlogs);
-        console.log(updateBlogs);
+        
       };
       filterBlogs("Trending");
     } catch (error) {
@@ -90,7 +90,7 @@ export default function IndividualBlog() {
             },
           }
         );
-        console.log(data);
+        
         const response = await fetch(data.blogF.richTextContent);
         const textData = await response.text();
         setLoginUsername(data.ud?.name);
@@ -117,7 +117,7 @@ export default function IndividualBlog() {
       //   `https://${blog.items[0].bucket}.s3.${blog.items[0].region}.amazonaws.com/${blog.items[0].s3Key}`
       // );
 
-      // console.log(decodeURIComponent(link));
+      
       setimgurl(
         `https://${blog.items[0].bucket}.s3.${blog.items[0].region}.amazonaws.com/${blog.items[0].s3Key}`
       );
@@ -125,7 +125,7 @@ export default function IndividualBlog() {
   }, [blog?.items?.[0]]);
   const handleUpVote = async (e) => {
     try {
-      console.log("request ", !likeStatus);
+      
       const { data } = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/blogs/like`,
         {
@@ -143,7 +143,7 @@ export default function IndividualBlog() {
       );
       if (data.message === "Please login first") {
         navigate("/login");
-        console.log("navigating");
+        
       } else {
         setLikeStatus(!likeStatus);
         if (!likeStatus === true) setUpVoteCount(upVoteCount + 1);

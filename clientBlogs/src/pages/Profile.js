@@ -28,7 +28,7 @@ const Profile = () => {
             },
           }
         );
-        console.log(data);
+
         if (data.message === "logout successfull") navigate("/home");
         window.location.reload();
       } catch (error) {
@@ -70,7 +70,6 @@ const Profile = () => {
           }
         );
         setUserInfo(data.user);
-        console.log(data.user);
       } catch (error) {
         console.log(error);
       }
@@ -166,7 +165,6 @@ const Profile = () => {
                       height: "auto",
                     }}
                     onFileSelect={(file) => {
-                      console.log(file);
                       setSelectedFile(file);
                     }}
                     onFileSelectError={({ error }) => alert(error)}

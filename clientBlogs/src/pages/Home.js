@@ -46,13 +46,11 @@ const Home = () => {
             },
           }
         );
-        console.log(data);
+
         setMostLikedBlog(data.mostLikedBlog);
         setHeroData(data.heroData);
         setRecentBlog(data.latestBlogs);
         setDisplayText(data.heroData[0]?.value);
-
-        // console.log(data);
       } catch (error) {
         console.log(error);
       }

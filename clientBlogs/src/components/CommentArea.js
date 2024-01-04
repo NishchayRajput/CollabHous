@@ -42,7 +42,7 @@ const CommentArea = ({ bId, bloguId, interactionArray, isLogin, username }) => {
         navigate("/login");
       } else {
         window.location.reload();
-        console.log(response);
+        
       }
     } catch (error) {
       console.log(error);
@@ -51,7 +51,7 @@ const CommentArea = ({ bId, bloguId, interactionArray, isLogin, username }) => {
   useEffect(() => {
     setloginStatus(isLogin);
   }, [isLogin]);
-  // console.log(loginStatus);
+  
   const [avatarSrc, setAvatarSrc] = React.useState(
     `${process.env.PUBLIC_URL}/defaultAvatar.jpg`
   );

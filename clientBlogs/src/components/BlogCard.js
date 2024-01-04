@@ -8,7 +8,7 @@ import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
-import Tooltip from '@mui/material/Tooltip';
+import Tooltip from "@mui/material/Tooltip";
 import { Box, IconButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -37,7 +37,6 @@ export default function BlogCard({
 
   const handleUpVote = async (e) => {
     try {
-      console.log("request ", !likeStatus);
       const { data } = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/blogs/like`,
         {
@@ -56,7 +55,6 @@ export default function BlogCard({
 
       if (data.message === "Please login first") {
         navigate("/login");
-        console.log("navigating");
       } else {
         setLikeStatus(!likeStatus);
         if (!likeStatus === true) setUpVoteCount(upVoteCount + 1);
@@ -73,7 +71,7 @@ export default function BlogCard({
     setAvatarSrc("images/defaultAvatar.jpg");
   };
   const limitedDescription = description?.split(/\s+/).slice(0, 18).join(" ");
-  const limitedTitle = title?.substring(0,26) + "..."; 
+  const limitedTitle = title?.substring(0, 26) + "...";
 
   React.useEffect(() => {
     setUpVoteCount(upVoteC);
@@ -126,7 +124,7 @@ export default function BlogCard({
             color="text.secondary"
           >
             <Tooltip className="title" title={title}>
-            {title.length > 25 ? limitedTitle : title}
+              {title?.length > 25 ? limitedTitle : title}
             </Tooltip>
           </Typography>
 

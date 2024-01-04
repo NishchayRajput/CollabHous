@@ -6,7 +6,7 @@ import CardMedia from "@mui/material/CardMedia";
 import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
-import Tooltip from '@mui/material/Tooltip';
+import Tooltip from "@mui/material/Tooltip";
 import { Box, IconButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -37,7 +37,6 @@ export default function BlogCard({
 
   const handleUpVote = async (e) => {
     try {
-      console.log("request ", !likeStatus);
       const { data } = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/blogs/like`,
         {
@@ -56,7 +55,6 @@ export default function BlogCard({
 
       if (data.message === "Please login first") {
         navigate("/login");
-        console.log("navigating");
       } else {
         setLikeStatus(!likeStatus);
         if (!likeStatus === true) setUpVoteCount(upVoteCount + 1);
@@ -68,7 +66,7 @@ export default function BlogCard({
     }
   };
 
-  const limitedTitle = title?.substring(0,25) + "..."; 
+  const limitedTitle = title?.substring(0, 25) + "...";
 
   React.useEffect(() => {
     setUpVoteCount(upVoteC);
@@ -114,7 +112,8 @@ export default function BlogCard({
                     lineHeight: "14px",
                     letterSpacing: "0.05em",
                     color: "white",
-                  }}title
+                  }}
+                  title
                 >
                   {username}
                 </p>
@@ -125,10 +124,9 @@ export default function BlogCard({
 
           <Link to={`/blogs/${bId}`} style={{ textDecoration: "none" }}>
             <Typography className="title" variant="h6" color="text.secondary">
-            <Tooltip title={title} arrow>
-            {title.length > 25 ? limitedTitle : title}
-            </Tooltip>
-              
+              <Tooltip title={title} arrow>
+                {title.length > 25 ? limitedTitle : title}
+              </Tooltip>
             </Typography>
           </Link>
 

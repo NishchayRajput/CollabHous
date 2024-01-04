@@ -44,7 +44,7 @@ const CommuneWelcome = () => {
             },
           }
         );
-        console.log(response);
+        
         setUserData(response.data?.ud[0]);
       } catch (error) {
         console.log(error);

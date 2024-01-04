@@ -32,7 +32,7 @@ export default function Notification({ dotStatus, notificationArray }) {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  // console.log("Notifications Page: ", notificationArray);
+
   React.useEffect(() => {
     setRead(dotStatus);
   }, [dotStatus]);

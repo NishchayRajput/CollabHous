@@ -18,7 +18,7 @@ const Hamburger = ({ isLogin }) => {
             },
           }
         );
-        console.log(data);
+        
         if (data.message === "logout successfull") navigate("/home");
         window.location.reload();
       } catch (error) {

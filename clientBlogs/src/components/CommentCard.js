@@ -62,7 +62,7 @@ const CommentCard = ({
         navigate("/login");
       } else {
         window.location.reload();
-        console.log(response);
+        
       }
     } catch (error) {
       console.log(error);

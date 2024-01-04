@@ -10,8 +10,7 @@ export default function BasicAccordion() {
     //   count++;
     //   if (count === 1 && index != "NULL") {
     //     window.location.reload();
-    //   }
-    //   console.log(count);
+    //   
     // }
 
     // setInterval(timerFunction, 1000);

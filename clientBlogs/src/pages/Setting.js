@@ -60,7 +60,7 @@ const Setting = () => {
     // reader.onload = (e) => {
     //   const fileData = e.target.result;
     //   const metaData = fileData.split(";")[0].split(":")[1];
-    //   console.log("File metadata:", reader.result);
+    
     // };
 
     // Read the file as data URL
@@ -93,11 +93,11 @@ const Setting = () => {
     }
   };
   const handleSubmit = async (e) => {
-    // console.log(jobCheck);
+    
     if (jobCheck === false) {
       inputs.job = "";
     }
-    // console.log("Inputs: ", inputs);
+    
     if (e) {
       e.preventDefault();
     }
@@ -207,14 +207,14 @@ const Setting = () => {
           if (data.job_notification_status != "") {
             setJobCheck(true);
           }
-          console.log("Data: ", data);
+          
         }
       } catch (error) {
         console.log(error);
       }
     }
     checkSettings();
-    // console.log("Inputs: ", inputs);
+    
   }, []);
   useEffect(() => {
     localStorage.setItem("selectedTabIndex", "3");

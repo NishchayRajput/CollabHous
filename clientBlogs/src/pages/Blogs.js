@@ -52,7 +52,7 @@ const Blogs = () => {
       check = e.tag === category;
       return check;
     });
-    console.log(updateBlogs);
+    
     setBlogs(updateBlogs);
   };
 

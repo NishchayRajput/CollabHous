@@ -7,7 +7,7 @@ import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
-import Tooltip from '@mui/material/Tooltip';
+import Tooltip from "@mui/material/Tooltip";
 import { Box, IconButton } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -37,7 +37,6 @@ export default function BlogCard({
 
   const handleUpVote = async (e) => {
     try {
-      // console.log("request ", !likeStatus);
       const { data } = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/blogs/like`,
         {
@@ -53,10 +52,9 @@ export default function BlogCard({
           },
         }
       );
-        
+
       if (data.message === "Please login first") {
         navigate("/login");
-        console.log("navigating");
       } else {
         setLikeStatus(!likeStatus);
         if (!likeStatus === true) setUpVoteCount(upVoteCount + 1);
@@ -75,7 +73,7 @@ export default function BlogCard({
 
   const limitedDescription = description?.split(/\s+/).slice(0, 20).join(" ");
 
-  const limitedTitle = title?.substring(0,40) + "..."; 
+  const limitedTitle = title?.substring(0, 40) + "...";
 
   React.useEffect(() => {
     setUpVoteCount(upVoteC);
@@ -86,7 +84,7 @@ export default function BlogCard({
     <Card id="card">
       <div className="imageCard">
         <Link to={`/blogs/${bId}`}>
-          <CardMedia  
+          <CardMedia
             component="img"
             sx={{ height: "100%" }}
             image={image}
@@ -133,9 +131,9 @@ export default function BlogCard({
         <CardContent className="titleCard">
           <Link to={`/blogs/${bId}`} style={{ textDecoration: "none" }}>
             <Typography variant="h6" className="title">
-            <Tooltip title={title} arrow>
-            {title.length > 40 ? limitedTitle : title}
-            </Tooltip>
+              <Tooltip title={title} arrow>
+                {title?.length > 40 ? limitedTitle : title}
+              </Tooltip>
             </Typography>
           </Link>
         </CardContent>

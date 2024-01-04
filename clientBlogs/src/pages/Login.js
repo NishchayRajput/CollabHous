@@ -64,7 +64,7 @@ const Login = () => {
   });
 
   //eye icon near password
-  
+
   const [type, setType] = useState("password");
   const [icon, setIcon] = useState(eyeOff);
 
@@ -108,9 +108,8 @@ const Login = () => {
         }
       );
       const { data } = response;
-      console.log(response);
+
       const setCookieHeader = response.headers.get("set-cookie");
-      console.log("Set-Cookie Header:", setCookieHeader);
 
       if (data.message === "Login successful") {
         // toast.success("User login Successsfully");
@@ -195,7 +194,7 @@ const Login = () => {
 
   return (
     <div className="loginpage">
-      <img src="images/logo.png" alt="f"/>
+      <img src="images/logo.png" alt="f" />
       <form onSubmit={handleSubmit} className="signinBox">
         <Box
           maxWidth={450}
@@ -225,14 +224,13 @@ const Login = () => {
             onChange={handleChange}
             variant="standard"
             sx={{
-
               "& .MuiInput-underline:before": {
                 borderBottomColor: "white",
               },
-              "& .MuiInput-underline:hover:before":{
+              "& .MuiInput-underline:hover:before": {
                 borderBottomColor: "#FF2E64",
               },
-              "& .MuiInput-underline:after":{
+              "& .MuiInput-underline:after": {
                 borderBottomColor: "#FF2E64",
               },
               input: {
@@ -240,8 +238,6 @@ const Login = () => {
                 fontFamily: "Montserrat",
                 fontSize: "15px",
               },
-
-             
             }}
           />
 
@@ -259,10 +255,10 @@ const Login = () => {
               "& .MuiInput-underline:before": {
                 borderBottomColor: "white",
               },
-              "& .MuiInput-underline:hover:before":{
+              "& .MuiInput-underline:hover:before": {
                 borderBottomColor: "#FF2E64",
               },
-              "& .MuiInput-underline:after":{
+              "& .MuiInput-underline:after": {
                 borderBottomColor: "#FF2E64",
               },
               input: {
@@ -293,14 +289,11 @@ const Login = () => {
               clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
               className="loginWith"
             >
-          
               <GoogleLogin
-
                 buttonText="Continue with Google"
                 onSuccess={(credentialResponse) => {
                   const details = jwtDecode(credentialResponse.credential);
-                  console.log(credentialResponse);
-                  console.log(details.sub);
+
                   inputs.g_id = details.sub;
                   inputs.name = details.name;
                   inputs.email = details.email;
@@ -309,16 +302,10 @@ const Login = () => {
                 onError={() => {
                   console.log("Login Failed");
                 }}
-
                 theme="filled_black"
                 shape="pill"
                 text="continue_with"
-             
-
-             
-               
               />
-            
             </GoogleOAuthProvider>
 
             {/* <Button className="loginWith">Continue with Facebook</Button> */}

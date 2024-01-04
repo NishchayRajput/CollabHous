@@ -25,7 +25,7 @@ const Questions = () => {
     }));
   };
   const handleSubmit = async (e) => {
-    console.log(inputs);
+    
     if (e) {
       e.preventDefault();
     }
